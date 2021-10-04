@@ -1,0 +1,398 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+body {
+    height: 100%;
+    font-family: "Time News Roman", serif;
+    font-size: 1em;
+    /*background-color: #F1FFAB;*/
+    background-image: linear-gradient( #F1FFAB,white);
+}
+ion-icon {
+  font-size: 18 px;
+}
+/*-----------------------NAV----------------*/
+#nav{
+  width: 100%;
+  height: 60px;
+  background-color: #16697A;
+  position: fixed;
+  z-index: 1;
+}
+#nav_contains{
+  background-color: #16697A;
+  max-width: 1440px;
+  height: 60px;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+}
+#logo{
+  color: #111;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  float: left;
+  padding: 10px 20px;
+}
+#main{
+  float: left;
+}
+#mid_nav{
+  float: left;
+  overflow: hidden;
+}
+#mid_nav div{
+  float: left;
+  max-height: 100%;
+}
+#mid_nav div a{
+  display: inline-block;
+  padding: 15px 20px;
+  margin: auto;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+#mid_nav div a ion-icon{
+  color: white;
+}
+#mid_nav div:hover{
+  background-color: #A3F3EB;
+}
+#mid_nav div:hover a{
+  color: black;
+}
+#right_nav{
+  float: right;
+}
+.search{
+  float: right;
+  padding-left: 20px;
+}
+.search input[type = text]{
+  float: left;
+  padding: 6px;
+  margin-top: 9px;
+  font-size: 17px;
+  border: none;
+  width: 300px;
+  border-radius: 6px;
+}
+.search button{
+  float: left;
+  padding: 6px 6px 4px 6px;
+  margin-left: 8px;
+  margin-top: 9px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.cart{
+  float: left;
+  margin-left: 10px;
+  padding: 15px 20px;
+  border-radius: 6px;
+}
+.cart:hover{
+  background-color: #A3F3EB;
+}
+.cart:hover a{
+  color: black;
+}
+.cart a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.login{
+  float: right;
+  margin-left: 10px;
+  padding: 15px 20px;
+  border-radius: 6px;
+}
+.login:hover{
+  background-color: #A3F3EB;
+}
+.login:hover a{
+  color: black;
+}
+.login a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+#checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  display: none;
+}
+#check{
+  display: none;
+}
+#clean{
+  clear: both;
+}
+/*--------------contents---------------*/
+#content{
+  min-height: 1000px;
+  max-width: 1440px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin: auto;
+  display: flex;
+}
+.left{
+  width: 40%;
+  height: 100%;
+  margin: auto 0;
+  text-align: center;
+  background-color: #2F5D62;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px grey;
+}
+#content .left h1{
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  padding: 20px;
+  margin: 30px 10px 10px 20px;
+}
+.local{
+  display: flex;
+  height: 125px;
+  width: 100%;
+}
+.local .icon{
+  width: 20%;
+  padding: 20px;
+  font-size: 60px;
+}
+.local div{
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  font-size: 30px;
+}
+.local div a:visited{
+  color: white;
+}
+.mail{
+  display: flex;
+  height: 125px;
+  width: 100%;
+}
+.mail .icon{
+  width: 20%;
+  padding: 20px;
+  font-size: 60px;
+}
+.mail div{
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  font-size: 30px;
+}
+.phone{
+  display: flex;
+  height: 125px;
+  width: 100%;
+}
+.phone .icon{
+  width: 20%;
+  padding: 20px;
+  font-size: 60px;
+}
+.phone div{
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  font-size: 30px;
+}
+.link{
+  display: flex;
+  height: 175px;
+  width: 100%;
+}
+.link .icon{
+  width: 20%;
+  font-size: 60px;
+  padding: 20px;
+  padding-top: 60px;
+}
+.right{
+  width: 60%;
+  height: 100%;
+  margin: auto 5px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px grey;
+}
+.right div .title{
+  float: left;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 20px;
+  margin: 30px 10px 10px 20px;
+}
+.right div div ion-icon{
+  float: right;
+  font-size: 60px;
+  padding: 20px;
+  margin: 30px 10px 10px 20px;
+}
+.right .form input[type = text], textarea{
+  width: 90%;
+  padding: 20px 0;
+  margin: 20px 0;
+  margin-left: 5%;
+  font-size: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1 #2F5D62;;
+  resize: vertical;
+}
+.right .form textarea{
+  height: 200px;
+}
+.right .form button{
+  background-color: #2F5D62;
+  color: white;
+  padding: 20px 50px;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 8px grey;
+}
+.right .form button{
+  font-size: 20px;
+}
+.right .form button:hover{
+  background-color: #A3F3EB;
+  color: black;
+}
+/*--------------footer-----------------*/
+#footer{
+  height: 60px;
+  font-size: 30px;
+  color: white;
+  background-color: #16697A;
+  width: 100%;
+  align-content: center;
+}
+#footer .content{
+  max-width: 1440px;
+  padding: 10px 20px;
+  margin: auto;
+}
+
+@media (max-width:  1440px){
+  #mid_nav{
+    float: none;
+    display: block;
+    position: fixed;
+    top: 60px;
+    bottom: 60px;
+    width: 75vh;
+    left: -100%;
+  }
+  #mid_nav div{
+    width: 75%;
+    border-bottom: solid 1px white;
+    background-color: lightblue;
+  }
+  #main{
+    float: right;
+  }
+  #checkbtn{
+    display: block;
+    padding: 15px 20px;
+    cursor: pointer;
+  }
+  #checkbtn ion-icon{
+    cursor: pointer;
+  }
+  /*----------------------------------------------------------*/
+  #content{
+    flex-wrap: wrap;
+  }
+  .left{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .left h1, .link{
+    width: 100%;
+  }
+  .left #local-mail, #phone-link{
+    width: 50%;
+  }
+  .left #phone-link{
+    border-left: solid 1px white;
+  }
+  .right{
+    width: 100%;
+  }
+}
+
+@media (max-width:  890px){
+  #main{
+    float: none;
+    display: flex;
+    position: fixed;
+    top: 60px;
+    width: 75%;
+    left: -100%;
+    flex-wrap: wrap;
+    background-color: lightblue;
+  }
+  #main #mid_nav{
+    position: static;
+    width: 100%;
+    margin: auto;
+    align-content: center;
+  }
+  #mid_nav div{
+    width: 100%;
+  }
+  #main .search{
+    width: 100%;
+    padding: 15px 20px;
+    border-bottom: solid 1px white;
+  }
+  .search *{
+    margin: auto;
+  }
+  /*---------------------------------------------*/
+  #content{
+    width: 100%;
+  }
+  .left{
+    text-align: left;
+    border-bottom: solid 1px white;
+  }
+  .left h1{
+    text-align: center;
+  }
+  .left #local-mail, #phone-link{
+    width: 100%;
+  }
+  .left #phone-link{
+    border-left: none;
+  }
+}
+
+@media screen and (max-width:  535px){
+  .right div div ion-icon{
+    display: none;
+  }
+}

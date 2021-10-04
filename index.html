@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- setting page -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Lab1 bài 4">
+    <meta name="author" content="Phạm Minh Hiếu">
+
+    <title>Assignment</title>
+
+  <!-- link css file -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  <!-- link icon -->
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="myScript.js"></script>
+  </head>
+  <body>
+  <!-- nav -->
+    <div id = "nav">
+      <div id = "nav_contains">
+
+        <!-- Left -->
+        <div id = "logo">Assignment</div>
+        <!-- end Left -->
+
+        <!-- list icon -->
+        <div id = "checkbtn">
+          <input type = "checkbox" id = "check" onclick = "click_Checkbox()">
+          <label for = "check" ><ion-icon name="list-outline"></ion-icon></label>
+        </div>
+        <!-- end list icon -->
+
+        <!-- Right -->
+        <div id = "right_nav">
+          <div class = "login">
+            <a href = "#login">Login</a>
+          </div>
+          <div class="cart">
+            <a href = "#cart">Cart <ion-icon name="cart-outline"></ion-icon></a>
+          </div>
+        </div>
+        <!-- end Right -->
+
+        <div id = "main">
+
+          <!-- mid nav -->
+          <div id = "mid_nav">
+            <div><a href="#home"><ion-icon name="home-outline"></ion-icon> Home</a></div>
+            <div><a href="#Aboutus">About US</a></div>
+            <div><a href="#products">Products</a></div>
+            <div><a href="#costtable">Cost table</a></div>
+            <div><a href="#news">News</a></div>
+            <div><a href="#contact">Contact US</a></div>
+          </div>
+          <!-- end mid nav -->
+
+          <!-- search -->
+          <form class="search">
+            <input type="text" placeholder="Search..">
+            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+          </form>
+          <!-- end search -->
+
+        </div>
+      </div><div id = "clean"></div>
+    </div>
+  <!-- end nav -->
+
+  <!-- contents -->
+  <div id = "content">
+
+    <div class = "left">
+      <h1>Contact Information</h1>
+<div id = "local-mail">
+      <div class = "local">
+        <div class = "icon"><ion-icon name="location-outline"></ion-icon></div>
+        <div><a href="#">268 Lý Thường Kiệt<br>P.14, Q.10, Tp. Hồ Chí Minh</a></div>
+      </div>
+      <div class = "mail">
+        <div class = "icon"><ion-icon name="mail-outline"></ion-icon></div>
+        <div>Info@mail.com</div>
+      </div>
+</div>
+<div id = "phone-link">
+      <div class = "phone">
+        <div class = "icon"><ion-icon name="call-outline"></ion-icon></div>
+        <div>099122888 - 0999991111</div>
+      </div>
+      <div class="link">
+        <div class="icon"><ion-icon name="logo-facebook"></ion-icon></div>
+        <div class="icon"><ion-icon name="logo-twitter"></ion-icon></div>
+      </div>
+</div>
+    </div>
+
+    <div class = "right">
+      <div>
+        <div class = "title">Send us a Message</div>
+        <div><ion-icon name="mail-open-outline"></ion-icon></div>
+      </div><div id = "clean"></div>
+      <div class = "form">
+            <input type="text" name="name" placeholder="     Enter your Name"><br>
+            <input type="text" name="email" placeholder="     Enter a vaild email Address"><br>
+            <textarea name="comment" placeholder="   Write something......"></textarea>
+            <button>Send</button>
+      </div>
+    </div>
+
+  </div><div id = "clean"></div>
+  <!-- end contents -->
+
+  <!-- footer -->
+    <div id = "footer">
+      <div class= "content" >
+        This is Footer.
+      </div>
+    </div>
+  <!-- end footer -->
+
+  </body>
+</html>
