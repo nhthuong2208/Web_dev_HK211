@@ -229,10 +229,11 @@ h6{
   font-weight: normal;
 }
 .padding-10{
-  padding: 5px 10px;
+  padding: 10px;
+  margin: 5px;
 }
 .padding-10:nth-child(1){
-  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 .padding-20{
   padding: 20px !important;
@@ -286,7 +287,9 @@ iframe{
 i, a{
   color: #f6950c;
 }
-
+.mgl-12{
+  margin-left: 12px !important;
+}
 .head{
   background-color: white;
   background-image: url(./contact-2.jpg);
@@ -298,4 +301,64 @@ i, a{
 .head > h1{
   text-align: center;
   color: #f6950c;
+}
+
+@media screen and (max-width: 1200px) {
+    .padding-10{
+      padding: 10px 0;
+      margin: 5px;
+    }
+    .col-md-6.col-lg-5.col-xl-4.col-xxl-3{
+      padding: 0;
+      margin: 0;
+    }
+    .col-md-6.col-lg-5.col-xl-4.col-xxl-3 > div{
+      width: 96%;
+      margin: 0 auto;
+    }
+    .col-md-6.col-lg-6.col-xl-5{
+      padding: 10px 0 !important;
+    }
+}
+@media screen and (max-width: 770px){
+  .col-sm-6.col-md-5.col-lg-5.col-xl-4.col-xxl-3{
+    padding: 0;
+    margin: 0;
+  }
+  .col-11.padding-10 h4, .col-11.padding-10 h6{
+    font-size: medium;
+  }
+  .paddingTD-100{
+    padding: 50px 0;
+  }
+}
+@media screen and (max-width: 576px){
+  .col-11.padding-10{
+    padding: 5px;
+  }
+  .head{
+    min-height: 350px;
+  }
+  .col-11.col-sm-6{
+    margin-top: 10px;
+  }
+  iframe{
+    height: 350px;
+  }
+}
+@media screen and (max-width: 430px){
+  .col-11.padding-10{
+    width: 100%;
+    margin: 5px 10px;
+    max-width: 100%;
+  }
+  .col-11.col-sm-6{
+    width: 100%;
+  }
+  .head{
+    min-height: 250px;
+  }
+  iframe{
+    height: 300px;
+  }
 }
