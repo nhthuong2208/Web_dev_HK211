@@ -31,7 +31,7 @@
       </div>
 
       <div class="login-button">
-        <button class="btn btn-primary" type="button"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='../Login/login.html';"><i class="fas fa-sign-in-alt"></i> Login</button>
       </div>
     </nav>
   </div>
