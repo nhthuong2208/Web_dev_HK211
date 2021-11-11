@@ -1,0 +1,214 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*------------------------------------------------*/
+body{
+    background-color: #f4f4f4;
+}
+img{
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.node{
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0px 1px 2px black;
+}
+.nonemg{
+    margin: 5px 0 !important;
+}
+.node > .col-8 > .row > .col-12{
+    margin-bottom: 3px;
+}
+.col-12.col-md-6{
+    padding-bottom: 30px;
+    border-radius: 10px;
+}
+h3{
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+.col-12.col-md-6 > .row{
+    max-height: 600px;
+    overflow: auto;
+}
+.col-12.col-md-6 > .row::-webkit-scrollbar{
+    width: 10px;
+}
+.col-12.col-md-6 > .row::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 5px #dfb883; 
+  border-radius: 10px;
+}
+.col-12.col-md-6 > .row::-webkit-scrollbar-thumb{
+    background: #ffa62b;
+    border-radius: 10px;
+}
+.col-12.col-md-6 > .row::-webkit-scrollbar-thumb:hover {
+    background: #dfb883;
+}
+.white{
+    background-color: white;
+}
+.container-fuild{
+    padding: 50px;
+}
+span{
+    color: #ffa62b;
+    font-size: larger;
+    font-weight: bolder;
+}
+.total{
+    border-top: 2px solid black;
+    padding-top: 10px;
+}
+.total span{
+    display: block;
+}
+h6{
+    font-size: larger;
+    margin-bottom: 0;
+}
+.line-top{
+    border-top: 1px solid black;
+    margin: 20px 0;
+    padding-top: 5px;
+}
+.nonepad{
+    padding: 0;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.cart{
+    max-width: 90%;
+    border: 1px solid black;
+    height: 80px;
+    margin: 10px 5px;
+    border-radius: 15px;
+}
+.cart > .row > .col-6 h5{
+    margin-top: 8px;
+    margin-bottom: 0 !important;
+}
+.cart > .row > .col-1 input{
+    margin-top: 15px;
+    width: 100%;
+}
+.cart:nth-child(2) > .row > .col-5 img{
+    width: 75px;
+    object-fit: contain, cover;
+}
+.cart:nth-child(3) > .row > .col-5 img{
+    width: 75px;
+    object-fit: contain, cover;
+}
+button{
+    margin: 5px 10px;
+}
+.row.d-flex.justify-content-center.nonemg{
+    padding: 20px;
+}
+
+
+
+
+
+
+/*---------------------------------------------------------------*/
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+  
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+  
+  /* The Close Button */
+.close {
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.modal-header {
+    padding: 2px 16px;
+}
+  
+.modal-header h2{
+    margin-left: 10%;
+}
+.modal-body{
+    padding: 10px 16px;
+}
+
+.modal-body > .row{
+    width: 80%;
+    margin: auto;
+}
+.modal-body > .row > div{
+    margin: 10px;
+}
+.modal-body input{
+    height: 30px;
+    width: 100%;
+    max-width: 450px;
+}
+.modal-body button{
+    max-width: 120px;
+    margin: 10px auto;
+}
+
+/*--------------------------------------------*/
+
+
+@media screen and (max-width: 1000px) {
+    .container-fuild{
+        padding: 50px 0;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .body_2{
+        margin-top: 20px;
+    }
+}
