@@ -1,7 +1,7 @@
 (function() {
   document.querySelector('.navbar-holder').innerHTML = `
   <div>
-    <nav class="navbar sticky-top">
+    <nav>
       <h1><a href="#">Assignment</a></h1>
 
       <div class="burger">

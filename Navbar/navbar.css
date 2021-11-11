@@ -169,6 +169,7 @@ nav .form-1 {
 
     .form {
         margin-left: 50px;
+        z-index: 999;
     }
 }
 
