@@ -12,11 +12,11 @@
 
       <ul class="nav-links">
         <li><a href="../Home page/home.html">Home</a></li>
-        <li><a href="#">About Us</a></li>
+        <li><a href="../About US/aboutus.html">About Us</a></li>
         <li><a href="../Products/product.html">Products</a></li>
-        <li><a href="#">Cost Table</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="../Cost table/price.html">Cost Table</a></li>
+        <li><a href="../News/news.html">News</a></li>
+        <li><a href="../Contact US/contact.html">Contact Us</a></li>
       </ul>
 
       <form class="form">
