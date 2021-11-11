@@ -44,7 +44,7 @@ nav ul li {
     display: inline-block;
 }
 
-nav ul li a {
+nav ul li a, .active {
     text-decoration: none;
     font-size: 1.2rem;
     color: #fff;
@@ -69,10 +69,19 @@ nav form .form-group {
     margin-right: 5px;
 }
 
+nav form .btn:hover {
+    background-color: #16697a;
+    border-color: #16697a;
+}
+
 nav .cart {
     width: fit-content;
     align-self: center;
     margin-right: 20px;
+}
+
+nav .cart .btn:hover, nav .login-button .btn:hover {
+    background-color: #16697a;
 }
 
 nav .cart .btn-primary {
@@ -108,19 +117,19 @@ nav .form-1 {
     display: none;
 }
 
-@media (max-width: 1510px) {
+@media (max-width: 1525px) {
     nav h1 {
         font-size: 2rem;
-        transition: all .5s;
+        transition: all .5s ease;
     }
 
     nav ul li a {
         font-size: 1rem;
-        transition: all .5s;
+        transition: all .5s ease;
     }
 }
 
-@media (max-width: 1394px) {
+@media (max-width: 1420px) {
     body {
         overflow-x: hidden;
     }
@@ -135,6 +144,7 @@ nav .form-1 {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        z-index: 999;
     }
 
     .nav-links {
@@ -162,7 +172,7 @@ nav .form-1 {
     }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 880px) {
     .nav-links {
         height: 45vh;
     }
@@ -213,3 +223,23 @@ nav .form-1 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+/* Footer CSS */
+
+footer {
+    padding: 2rem 1rem;
+    background-color: #061f24;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    color: white;
+}
+
+footer .gg-map {
+    width: 70%;
+    height: 90%;
+}
+
+footer .social i {
+    color: white;
+    margin-right: 2rem;
+}
