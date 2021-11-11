@@ -4,119 +4,159 @@
     <!-- setting page -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Lab1 bài 4">
+    <meta name="description" content="Contact us page">
     <meta name="author" content="Phạm Minh Hiếu">
 
     <title>Assignment</title>
 
-  <!-- link css file -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  <!-- link icon -->
-  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-  <script src="myScript.js"></script>
+    <!-- link icon -->
+    <script src="https://kit.fontawesome.com/320d0ac08e.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="./style.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
-  <!-- nav -->
-    <div id = "nav">
-      <div id = "nav_contains">
+    <!--Nav-->
+    <!--div>
+      <nav>
+        <h1><a href="#">Assignment</a></h1>
 
-        <!-- Left -->
-        <div id = "logo">Assignment</div>
-        <!-- end Left -->
-
-        <!-- list icon -->
-        <div id = "checkbtn">
-          <input type = "checkbox" id = "check" onclick = "click_Checkbox()">
-          <label for = "check" ><ion-icon name="list-outline"></ion-icon></label>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
         </div>
-        <!-- end list icon -->
 
-        <!-- Right -->
-        <div id = "right_nav">
-          <div class = "login">
-            <a href = "#login">Login</a>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Cost Table</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+
+        <form class="form">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search...">  
           </div>
-          <div class="cart">
-            <a href = "#cart">Cart <ion-icon name="cart-outline"></ion-icon></a>
+          <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+
+        <div class="cart">
+          <button class="btn btn-primary" type="button"><i class="fas fa-shopping-cart"></i> Cart</button>
+        </div>
+
+        <div class="login-button">
+          <button class="btn btn-primary" type="button"><i class="fas fa-sign-in-alt"></i> Login</button>
+        </div>
+      </nav>
+    </div-->
+    <!--Nav-->
+
+    <!--Body-->
+    <div class="container-fuild">
+      <div class="row">
+        <div class="col-12 nonepadding head d-flex justify-content-center flex-wrap align-content-center">
+          <h1>Contact Informations</h1>
+        </div> 
+        <div class="col-12 nonepadding">
+          <div class="row justify-content-center flex-wrap align-content-center paddingTD-100">
+            <div class="col-sm-6 col-md-5 col-lg-5 col-xl-4 col-xxl-3">
+              <div class="row flex-wrap align-content-center justify-content-center">
+                <div class="col-11 col-sm-10 col-md-12 padding-10 white myshadow border-10">
+                  <div class="row align-content-center align-items-center">
+                    <div class="col-3">
+                      <p class="circle"><i class="fas fa-phone-alt"></i></p>
+                    </div>
+                    <div class="col-9">
+                      <div class="d-flex flex-column ">
+                        <h4>Phone number</h4>
+                        <h6>+0973409127</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-11 col-sm-10 col-md-12 padding-10 white myshadow border-10">
+                  <div class="row align-content-center  align-items-center">
+                    <div class="col-3">
+                      <p class="circle"><i class="far fa-envelope"></i></p>
+                    </div>
+                    <div class="col-9">
+                      <div class="d-flex flex-column ">
+                        <h4>Email Address</h4>
+                        <h6>hieu.phamgc@gmail.com</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-11 col-sm-10 col-md-12 padding-10 white myshadow border-10">
+                  <div class="row align-content-center align-items-center">
+                    <div class="col-3">
+                      <p class="circle"><i class="fas fa-fax"></i></p>
+                    </div>
+                    <div class="col-9">
+                      <div class="d-flex flex-column ">
+                        <h4>Fax Address</h4>
+                        <h6>+0733843999</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-11 col-sm-10 col-md-12 padding-10 white myshadow border-10">
+                  <div class="row align-content-center align-items-center">
+                    <div class="col-3">
+                      <p class="circle"><a href="https://goo.gl/maps/y9Ft1okpSkiZA1zr8"><i class="fas fa-map-marker-alt"></i></a></p>
+                    </div>
+                    <div class="col-9">
+                      <div class="d-flex flex-column ">
+                        <h4>Location</h4>
+                        <h6>Lý Thường Kiệt, p14, quận 10, Tp.HCM</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-11 col-sm-6 col-md-6 col-lg-6 col-xl-5 white border-10 myshadow padding-20">
+              <h4 class="mgl-12">Send Messege</h4>
+              <div class="row">
+                <div class="col-xxl-6">
+                  <input type="text" name="name" placeholder="   Your name">
+                </div>
+                <div class="col-xxl-6">
+                  <input type="text" name="address" placeholder="  Email address">
+                </div>
+                <div class="col-xxl-6">
+                  <input type="text" name="name" placeholder="  Phone number">
+                </div>
+                <div class="col-xxl-6">
+                  <input type="text" name="address" placeholder="  Subject">
+                </div>
+                <div class="col-12">
+                  <textarea placeholder="Messege"></textarea>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary active mgl-12">Send Messege</button>
+            </div>
           </div>
         </div>
-        <!-- end Right -->
-
-        <div id = "main">
-
-          <!-- mid nav -->
-          <div id = "mid_nav">
-            <div><a href="#home"><ion-icon name="home-outline"></ion-icon> Home</a></div>
-            <div><a href="#Aboutus">About US</a></div>
-            <div><a href="#products">Products</a></div>
-            <div><a href="#costtable">Cost table</a></div>
-            <div><a href="#news">News</a></div>
-            <div><a href="#contact">Contact US</a></div>
+        <div class="col-12">
+          <div class="row justify-content-center padding-20">
+              <div class="col-12 col-xxl-7">
+                <h3 class="padding-20">Find Us on Google Maps</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15698.832298759462!2d106.68722035!3d10.36521035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1636531160983!5m2!1svi!2s" allowfullscreen="" loading="lazy"></iframe>
+              </div>
           </div>
-          <!-- end mid nav -->
-
-          <!-- search -->
-          <form class="search">
-            <input type="text" placeholder="Search..">
-            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
-          </form>
-          <!-- end search -->
-
         </div>
-      </div><div id = "clean"></div>
-    </div>
-  <!-- end nav -->
-
-  <!-- contents -->
-  <div id = "content">
-
-    <div class = "left">
-      <h1>Contact Information</h1>
-<div id = "local-mail">
-      <div class = "local">
-        <div class = "icon"><ion-icon name="location-outline"></ion-icon></div>
-        <div><a href="#">268 Lý Thường Kiệt<br>P.14, Q.10, Tp. Hồ Chí Minh</a></div>
-      </div>
-      <div class = "mail">
-        <div class = "icon"><ion-icon name="mail-outline"></ion-icon></div>
-        <div>Info@mail.com</div>
-      </div>
-</div>
-<div id = "phone-link">
-      <div class = "phone">
-        <div class = "icon"><ion-icon name="call-outline"></ion-icon></div>
-        <div>099122888 - 0999991111</div>
-      </div>
-      <div class="link">
-        <div class="icon"><ion-icon name="logo-facebook"></ion-icon></div>
-        <div class="icon"><ion-icon name="logo-twitter"></ion-icon></div>
-      </div>
-</div>
-    </div>
-
-    <div class = "right">
-      <div>
-        <div class = "title">Send us a Message</div>
-        <div><ion-icon name="mail-open-outline"></ion-icon></div>
-      </div><div id = "clean"></div>
-      <div class = "form">
-            <input type="text" name="name" placeholder="     Enter your Name"><br>
-            <input type="text" name="email" placeholder="     Enter a vaild email Address"><br>
-            <textarea name="comment" placeholder="   Write something......"></textarea>
-            <button>Send</button>
       </div>
     </div>
+    <!--Body-->
 
-  </div><div id = "clean"></div>
-  <!-- end contents -->
-
-  <!-- footer -->
-    <div id = "footer">
-      <div class= "content" >
-        This is Footer.
-      </div>
-    </div>
-  <!-- end footer -->
-
+    <!--Footer-->
+    <!--Footer-->
+  
+  <script src="./myScript.js"></script>
   </body>
 </html>
