@@ -71,7 +71,8 @@ select{
     margin: 10px 0;
     padding-bottom: 5px;
 }
-button{
+
+.nonemg button{
     margin: 5px 10px;
 }
 /*---------------------------------------------------------------*/
