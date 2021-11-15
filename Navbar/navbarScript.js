@@ -16,18 +16,18 @@
         <li><a href="../Products/product.html">Products</a></li>
         <li><a href="../Cost table/price.html">Cost Table</a></li>
         <li><a href="../News/news.html">News</a></li>
-        <li><a href="../Contact US/contact.html">Contact Us</a></li>
+        <li><a href="../Contact US/contact.html">Contact</a></li>
       </ul>
 
       <form class="form">
         <div class="form-group">
           <input class="form-control" type="text" placeholder="Search...">  
         </div>
-        <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i> Search</button>
+        <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
       </form>
 
       <div class="cart">
-        <button class="btn btn-primary" type="button"><i class="fas fa-shopping-cart"></i> Cart</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='../Cart/cart.html';"><i class="fas fa-shopping-cart"></i> Cart</button>
       </div>
 
       <div class="login-button">
