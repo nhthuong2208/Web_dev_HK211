@@ -83,30 +83,30 @@ h6{
     margin-left: 12px;
     margin-right: 12px;
 }
-.cart{
+.payment .cart{
     max-width: 90%;
     border: 1px solid black;
     height: 80px;
     margin: 10px 5px;
     border-radius: 15px;
 }
-.cart > .row > .col-6 h5{
+.payment .cart > .row > .col-6 h5{
     margin-top: 8px;
     margin-bottom: 0 !important;
 }
-.cart > .row > .col-1 input{
+.payment .cart > .row > .col-1 input{
     margin-top: 15px;
     width: 100%;
 }
-.cart:nth-child(2) > .row > .col-5 img{
+.payment .cart:nth-child(2) > .row > .col-5 img{
     width: 75px;
     object-fit: contain, cover;
 }
-.cart:nth-child(3) > .row > .col-5 img{
+.payment .cart:nth-child(3) > .row > .col-5 img{
     width: 75px;
     object-fit: contain, cover;
 }
-button{
+.payment button{
     margin: 5px 10px;
 }
 .row.d-flex.justify-content-center.nonemg{

@@ -1,6 +1,6 @@
 (function() {
   document.querySelector('.navbar-holder').innerHTML = `
-  <div>
+  <div id="navbar">
     <nav>
       <h1><a href="#">Assignment</a></h1>
 
@@ -16,29 +16,30 @@
         <li><a href="../Products/product.html">Products</a></li>
         <li><a href="../Cost table/price.html">Cost Table</a></li>
         <li><a href="../News/news.html">News</a></li>
-        <li><a href="../Contact US/contact.html">Contact Us</a></li>
+        <li><a href="../Contact US/contact.html">Contact</a></li>
       </ul>
 
       <form class="form">
         <div class="form-group">
           <input class="form-control" type="text" placeholder="Search...">  
         </div>
-        <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i> Search</button>
+        <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
       </form>
 
       <div class="cart">
-        <button class="btn btn-primary" type="button"><i class="fas fa-shopping-cart"></i> Cart</button>
+        <button id="cart-button-nav" class="btn btn-primary" type="button" onclick="window.location.href='../Cart/cart.html';"><i class="fas fa-shopping-cart"></i> Cart</button>
       </div>
 
       <div class="login-button">
-        <button class="btn btn-primary" type="button"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='../Login/login.html';"><i class="fas fa-sign-in-alt"></i> Login</button>
       </div>
     </nav>
   </div>
   `
 })();
 
-
+let index = parseInt(document.currentScript.getAttribute('index'));
+document.querySelectorAll('.nav-links')[0].children[index].classList.add('active');
 
 $(document).ready(function () {
     // Underline to remain in navbar after click using URL

@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-size: medium;
 }
+=======
+
+>>>>>>> 527676370e05261aad30167ec4dfd18d1a98a6e6
 /*----------------------------------------------------------------------------*/
 img{
     max-width: 100%;
@@ -76,7 +80,8 @@ select{
     margin: 10px 0;
     padding-bottom: 5px;
 }
-button{
+
+.nonemg button{
     margin: 5px 10px;
 }
 /*---------------------------------------------------------------*/
