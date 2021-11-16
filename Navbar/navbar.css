@@ -254,9 +254,3 @@ footer .social i {
   margin-right: 2rem;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-}
