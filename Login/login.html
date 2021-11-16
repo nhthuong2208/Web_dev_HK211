@@ -47,11 +47,11 @@
 				<div class="card fat p-1">
 					<div class="card-body">
 						<h3 class="card-title mb-4">Đăng nhập</h3>
-						<form method="POST" class="my-login-validation" novalidate="">
+						<form method="POST" class="my-login-validation" novalidate="" action="./connection.php">
 							<div class="form-group">
 								<label for="validationCustomUsername" class="form-label">Tên đăng nhập</label>
 								<div class="input-group has-validation">
-									<input type="text" class="form-control" id="validationCustomUsername" required>
+									<input type="text" class="form-control" id="validationCustomUsername" required name="user">
 									<div class="invalid-feedback">
 										Tên đăng nhập trống.
 									</div>

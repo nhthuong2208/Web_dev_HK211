@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 function minus(element){
     var a = Number(element.innerText) - 1;
     if(a <= 0) element.innerText = 0;
