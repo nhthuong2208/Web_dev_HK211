@@ -27,7 +27,7 @@
       </form>
 
       <div class="cart">
-        <button class="btn btn-primary" type="button" onclick="window.location.href='../Cart/cart.html';"><i class="fas fa-shopping-cart"></i> Cart</button>
+        <button id="cart-button-nav" class="btn btn-primary" type="button" onclick="window.location.href='../Cart/cart.html';"><i class="fas fa-shopping-cart"></i> Cart</button>
       </div>
 
       <div class="login-button">
@@ -37,6 +37,9 @@
   </div>
   `
 })();
+
+let index = parseInt(document.currentScript.getAttribute('index'));
+document.querySelectorAll('.nav-links')[0].children[index].classList.add('active');
 
 $(document).ready(function () {
     // Underline to remain in navbar after click using URL
