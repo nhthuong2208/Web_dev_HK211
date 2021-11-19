@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://use.fontawesome.com/721412f694.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <nav>
+        <h1><a href="#">Assignment</a></h1>
+
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="../Products/product.html">Products</a></li>
+          <li><a href="#">Cost Table</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+
+        <form class="form">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search...">  
+          </div>
+          <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+
+        <div class="cart">
+          <button class="btn btn-primary" type="button"><i class="fas fa-shopping-cart"></i> Cart</button>
+        </div>
+
+        <div class="login-button">
+          <button class="btn btn-primary" type="button"><i class="fas fa-sign-in-alt"></i> Login</button>
+        </div>
+      </nav>
+    </div>
+
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 col-12">
+            <h1>Assignment</h1>
+            <p>Copyright 2021&copy Web Assignment</p>
+            <p>Alright Reserved</p>
+            <div class="d-flex social">
+              <p><i class="fab fa-facebook"></i></p>
+              <p><i class="fab fa-youtube"></i></p>
+              <p><i class="fab fa-twitter"></i></p>
+            </div>
+            
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <iframe class="gg-map" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15672.534479971051!2d106.80437943487959!3d10.877440187075889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIC0gxJDhuqFpIGjhu41jIFF14buRYyBnaWEgVFAuSENNLCBraHUgcGhvIDYsIGxpbmggdHJ1bmcgdGh1IGR1YyBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1635853396221!5m2!1svi!2s" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <h4>Contact</h4>
+            <p><i class="fas fa-phone-alt"></i> +(84)999 888 xxx</p>
+            <p><i class="fas fa-map-marker-alt"></i> Khu phố 6, Linh Trung, Thủ Đức, TPHCM</p>
+            <p><i class="far fa-envelope"></i> assignment@hcmut.edu.vn</p>
+          </div>
+        </div>
+      </div>
+      
+    </footer>
+ 
+    <script src="./Views/Navbar/navbarScript.js"></script>
+  </body>
+</html>
