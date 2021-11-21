@@ -1,0 +1,13 @@
+<?php
+class Controller{
+
+    public function model($model){
+        require_once "./Model/".$model.".php";
+        return new $model;
+    }
+
+    public function view($view, $data=[]){
+        include "./Views/". $view . "/index.php";
+    }
+}
+?>
