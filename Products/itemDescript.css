@@ -55,6 +55,14 @@
     font-size: 1.5rem;
 }
 
+.product-item .right-content .select-size select {
+    margin: 0 0 1rem 1rem;
+    padding: 0.5rem;
+    width: 5rem;
+    border: 1px solid #16697a;
+    outline: none;
+}
+
 .product-item .right-content .select-quantity {
     margin-bottom: 3rem;
 }
