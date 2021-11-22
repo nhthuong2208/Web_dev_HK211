@@ -10,7 +10,7 @@ class App{
  
         $arr = $this->UrlProcess();
         // Controller
-        if( file_exists("./Controller/" . $arr[0].".php") ){
+        if(!empty($arr) && file_exists("./Controller/" . $arr[0].".php")){
             $this->controller = $arr[0];
             unset($arr[0]);
         }
@@ -34,7 +34,7 @@ class App{
         // Home/function/parametors
     function UrlProcess(){
         if( isset($_GET["url"]) ){
-            echo $_GET["url"];
+            //echo $_GET["url"];
             return explode("/", filter_var(trim($_GET["url"], "/")));
         }
     }
