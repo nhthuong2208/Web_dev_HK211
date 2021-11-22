@@ -4,7 +4,7 @@
         protected $servername = "localhost";
         protected $username = "root";
         protected $password = "";
-        protected $dbname = "web_bd";
+        protected $dbname = "web_db";
 
         function __construct(){
             $this->connect = mysqli_connect($this->servername, $this->username, $this->password);

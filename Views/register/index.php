@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../Login/login.css" />
+    <link rel="stylesheet" type="text/css" href="./Views/Login/login.css" />
     <link href="../Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -33,13 +33,13 @@
 
   <body>
     <div class="navbar-holder sticky-top"></div>
-    <script src="../Navbar/navbarScript.js"></script>
+    <script src="./Views/Navbar/navbarScript.js"></script>
     <div class="login mb-5" style="min-height: 66vh;">
       <div class="row justify-content-md-center h-100">
         <div class="card-wrapper col-md-4">
           <div class="card fat p-1 bg-warning">
             <div class="brand">
-              <img class="w-100" src="../images/np.png" alt="logo" />
+              <img class="w-100" src="./Views/images/np.png" alt="logo" />
             </div>
             <div class="card-body mb-3 mt-3">
               <div class="row col-md-12 text-light ms-0">
@@ -116,7 +116,7 @@
                   </button>
                 </div>
                 <div class="mt-4 text-center">
-                  Bạn đã có tài khoản? <a href="../Login">Đăng nhập</a>
+                  Bạn đã có tài khoản? <a href="?url=/Home/Login">Đăng nhập</a>
                 </div>
               </form>
             </div>
@@ -132,6 +132,6 @@
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
-    <script src="../Vews/Login/login.js"></script>
+    <script src="../Views/Login/login.js"></script>
   </body>
 </html>

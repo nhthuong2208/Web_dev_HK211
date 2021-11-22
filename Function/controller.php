@@ -7,7 +7,7 @@ class Controller{
     }
 
     public function view($view, $data=[]){
-        include "./Views/". $view . "/index.php";
+        require_once "./Views/". $view . "/index.php";
     }
 }
 ?>

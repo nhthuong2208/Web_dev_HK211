@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: medium;
 }
 /*----------------------------------------------------------------------------*/
 img{
@@ -101,7 +100,7 @@ select{
     margin: auto;
     padding: 0;
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -159,6 +158,14 @@ select{
 .modal-body button{
     max-width: 120px;
     margin: 10px auto;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+}
+button a:hover{
+    color: white;
 }
 /*--------------------------------------------------------*/
 @media screen and (max-width: 850px) {

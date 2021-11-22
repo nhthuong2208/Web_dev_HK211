@@ -37,12 +37,12 @@
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>
-    <link href="../Views/Navbar/navbar.css" rel="stylesheet">
+    <link href="./Views/Navbar/navbar.css" rel="stylesheet">
   </head>
   <body>
     <!--Nav-->
     <div class="navbar-holder sticky-top"></div>
-    <script src="../Navbar/navbarScript.js" type="text/javascript"></script>
+    <script src="./Views/Navbar/navbarScript.js" type="text/javascript"></script>
     <!--Nav-->
 
     <!--Body-->
@@ -54,7 +54,7 @@
               <div class="col-12">
                 <div class="row node nonemg">
                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./ao.jpg" alt="ao 1">
+                        <img src="./Views/images/ao.jpg" alt="ao 1">
                     </div>
                     <div class="col-8">
                         <div class="row">
@@ -72,7 +72,7 @@
               <div class="col-12">
                 <div class="row node nonemg">
                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./ao.jpg" alt="ao 1">
+                        <img src="./Views/images/ao.jpg" alt="ao 1">
                     </div>
                     <div class="col-8">
                         <div class="row">
@@ -90,7 +90,7 @@
               <div class="col-12">
                 <div class="row node nonemg">
                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./ao.jpg" alt="ao 1">
+                        <img src="./Views/images/ao.jpg" alt="ao 1">
                     </div>
                     <div class="col-8">
                         <div class="row">
@@ -108,7 +108,7 @@
               <div class="col-12">
                 <div class="row node nonemg">
                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./ao.jpg" alt="ao 1">
+                        <img src="./Views/images/ao.jpg" alt="ao 1">
                     </div>
                     <div class="col-8">
                         <div class="row">
@@ -132,21 +132,21 @@
                   <div class="row d-flex justify-content-center">
                     <div class="col-1"><input type="radio" name="cart" id="credit"></div>
                     <div class="col-6"><label for="credit"><h5>Credit Card</h5></label></div>
-                    <div class="col-5"><label for="credit"><img src="./visa.png" alt="Visa picture" ></label></div>
+                    <div class="col-5"><label for="credit"><img src="./Views/images/visa.png" alt="Visa picture" ></label></div>
                   </div>
                 </div>
                 <div class="col-12 cart">
                   <div class="row">
                     <div class="col-1"><input type="radio" name="cart" id="momo"></div>
                     <div class="col-6"><label for="momo"><h5>MoMo</h5></label></div>
-                    <div class="col-5 d-flex justify-content-end"><label for="momo"><img src="./MoMo Logo.png" alt="MoMo picture" ></label></div>
+                    <div class="col-5 d-flex justify-content-end"><label for="momo"><img src="./Views/images/MoMo Logo.png" alt="MoMo picture" ></label></div>
                   </div>
                 </div>
                 <div class="col-12 cart">
                   <div class="row">
                     <div class="col-1"><input type="radio" name="cart" id="paypal"></div>
                     <div class="col-6"><label for="paypal"><h5>Paypal</h5></label></div>
-                    <div class="col-5 d-flex justify-content-end"><label for="paypal"><img src="./paypal.png" alt="paypal picture" ></label></div>
+                    <div class="col-5 d-flex justify-content-end"><label for="paypal"><img src="./Views/images/paypal.png" alt="paypal picture" ></label></div>
                   </div>
                 </div>
               </div>
@@ -176,8 +176,8 @@
                 </div>
                 <div class="col-12">
                   <div class="d-flex flex-wrap justify-content-end">
-                    <button id="myBtn" type="button" class="btn btn-primary"><a href="../Cart/" style="color: white">Hủy đơn</a></button>
-                    <button type="button" class="btn btn-primary"><a href="../Home page/" style="color: white;">Thanh toán</a></button>
+                    <button id="myBtn" type="button" class="btn btn-primary"><a href="?url=Home/Cart/" style="color: white">Hủy đơn</a></button>
+                    <button type="button" class="btn btn-primary"><a href="?url=Home/Home_page/" style="color: white;">Thanh toán</a></button>
                   </div>
                 </div>
               </div>
@@ -215,9 +215,9 @@
 
     <!--Footer-->
     <div class="footer-holder"></div>
-    <script src="../footer/footerScript.js"></script>
+    <script src="./Views/footer/footerScript.js"></script>
     <!--Footer-->
   
-  <script src="./Views/myScript.js"></script>
+  <script src="./Views/Payment/myScript.js"></script>
   </body>
 </html>

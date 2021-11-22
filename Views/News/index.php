@@ -12,8 +12,9 @@
     />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../Navbar/navbar.css">
+
 	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 	<link href="../Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
 	<link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -48,7 +49,7 @@
 		<div class="row gx-5">
 		  <div class="col-md-7 mb-4">
 			<div class="bg-image shadow-lg bg-white">
-			  <img src="h1.jpg" class="img-fluid rounded" />
+			  <img src="./Views/images/h1_news.jpg" class="img-fluid rounded" />
 			</div>
 		  </div>
   
@@ -69,7 +70,7 @@
 			<div class="col-lg-4">
 				<div>
 					<div class="bg-image shadow-lg bg-white">
-						<img src="h4.png" class="img-fluid rounded">
+						<img src="./Views/images/h4.png" class="img-fluid rounded">
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
@@ -88,7 +89,7 @@
 			<div class="col-lg-4">
 				<div>
 					<div class="bg-image shadow-lg bg-white">
-						<img src="h3.jpg" class="img-fluid rounded">
+						<img src="./Views/images/h3.jpg" class="img-fluid rounded">
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
@@ -107,7 +108,7 @@
 			<div class="col-lg-4">
 				<div>
 					<div class="bg-image shadow-lg bg-white">
-						<img src="h4.jpg" class="img-fluid rounded">
+						<img src="./Views/images/h4.jpg" class="img-fluid rounded">
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
@@ -126,7 +127,7 @@
 			<div class="col-lg-4">
 				<div>
 					<div class="bg-image shadow-lg bg-white">
-						<img src="h4.png" class="img-fluid rounded">
+						<img src="./Views/images/h4.png" class="img-fluid rounded">
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
@@ -145,7 +146,7 @@
 			<div class="col-lg-4">
 				<div>
 					<div class="bg-image shadow-lg bg-white">
-						<img src="h3.jpg" class="img-fluid rounded">
+						<img src="./Views/images/h3.jpg" class="img-fluid rounded">
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
@@ -164,7 +165,7 @@
 			<div class="col-lg-4">
 				<div>
 					<div class="bg-image shadow-lg bg-white">
-						<img src="h4.jpg" class="img-fluid rounded">
+						<img src="./Views/images/h4.jpg" class="img-fluid rounded">
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
@@ -186,7 +187,5 @@
 
 <div class="footer-holder"></div>
 <script src="../Views/footer/footerScript.js"></script>
-
-<script src="news.js"></script>
 </body>
 </html>

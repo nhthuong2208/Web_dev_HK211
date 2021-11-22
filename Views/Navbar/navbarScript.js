@@ -11,12 +11,12 @@
       </div>
 
       <ul class="nav-links">
-        <li><a href="<?php require_once ?>">Home</a></li>
-        <li><a href="../Views/About US/">About Us</a></li>
-        <li><a href="../Views/Products/">Products</a></li>
-        <li><a href="../Views/Cost table/">Cost Table</a></li>
-        <li><a href="../Views/News/">News</a></li>
-        <li><a href="../Views/Contact US/">Contact</a></li>
+        <li><a href="?url=Home/Home_page/">Home</a></li>
+        <li><a href="?url=Home/About_us/">About Us</a></li>
+        <li><a href="?url=Home/Products/">Products</a></li>
+        <li><a href="?url=Home/Cost_table/">Cost Table</a></li>
+        <li><a href="?url=Home/News/">News</a></li>
+        <li><a href="?url=Home/Contact_us/">Contact</a></li>
       </ul>
 
       <form class="form">
@@ -27,11 +27,11 @@
       </form>
 
       <div class="cart">
-        <button id="cart-button-nav" class="btn btn-primary" type="button" onclick="window.location.href='../Views/Cart/';"><i class="fas fa-shopping-cart"></i> Cart</button>
+        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="?url=Home/Cart/"><i class="fas fa-shopping-cart"></i> Cart</a></button>
       </div>
 
       <div class="login-button">
-        <button class="btn btn-primary" type="button" onclick="window.location.href='../Views/Login/';"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button class="btn btn-primary" type="button"><a href="?url=Home/Login/"><i class="fas fa-sign-in-alt"></i> Login</a></button>
       </div>
     </nav>
   </div>
@@ -39,7 +39,7 @@
 })();
 
 let index = parseInt(document.currentScript.getAttribute('index'));
-document.querySelectorAll('.nav-links')[0].children[index].classList.add('active');
+if(!isNaN(index)){document.querySelectorAll('.nav-links')[0].children[index].classList.add('active');}
 
 $(document).ready(function () {
     // Underline to remain in navbar after click using URL

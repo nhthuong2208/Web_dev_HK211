@@ -232,8 +232,8 @@
       </div>
 
       <div class="footer-holder"></div>
-      <script src="../Views/Navbar/footerScript.js"></script>
+      <script src="./Views/footer/footerScript.js"></script>
     </div>
-    <script src="../Views/item.js"></script>
+    <script src="./Views/Item/item.js"></script>
   </body>
 </html>

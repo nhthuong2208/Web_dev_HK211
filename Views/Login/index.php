@@ -12,9 +12,9 @@
     />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="login.css">
-	<link href="../Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
-    <link rel="import" href="../Navbar/navbar.html" />
+	<link rel="stylesheet" type="text/css" href="./Views/Login/login.css">
+	<link href="./Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
+	
 	<link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
@@ -31,14 +31,14 @@
 
 <body>
 	<div class="navbar-holder sticky-top"></div>
-	<script src="../Views/Navbar/navbarScript.js"></script>
+	<script src="./Views/Navbar/navbarScript.js"></script>
 
-	<div class="login mb-5" style="min-height: 66vh;">
+	<div class="login mb-5" style="min-height: 60vh;">
 		<div class="row justify-content-md-center h-100">
 			<div class="card-wrapper col-md-4">
 				<div class="card fat p-1 bg-warning">
 					<div class="brand">
-						<img class="w-100" src="../images/np.png" alt="logo">
+						<img class="w-100" src="./views/images/np.png" alt="logo">
 					</div>
 					<div class="card-body mb-3 mt-3">
 						<div class="row col-md-12 text-light ms-0">
@@ -76,7 +76,7 @@
 	
 							<div class="form-group mt-2 mb-2">
 								<label class="d-flex justify-content-between" for="password">Mật khẩu
-								<a href="../Views/forgot/" class="float-right">
+								<a href="?url=/Home/forgot/" class="float-right">
 									Quên mật khẩu?
 								</a>
 								</label>
@@ -97,7 +97,7 @@
 								</button>
 							</div>
 							<div class="mt-4 text-center">
-								Bạn chưa có tài khoản? <a href="../Views/register/">Đăng kí thành viên</a>
+								Bạn chưa có tài khoản? <a href="?url=/Home/register/">Đăng kí thành viên</a>
 							</div>
 						</form>
 					</div>
@@ -107,7 +107,7 @@
 	</div>
 
 	<div class="footer-holder"></div>
-	<script src="../Views/footer/footerScript.js"></script>
+	<script src="./Views/footer/footerScript.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 	<script src="./Views/Login/login.js"></script>
 </body>

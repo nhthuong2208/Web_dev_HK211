@@ -12,9 +12,10 @@
     />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="news.css">
+
 	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-	<link type="text/css" rel="stylesheet" href="style.css">
+
+	<link type="text/css" rel="stylesheet" href="./Views/About US/style.css">
 	<link href="./Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -100,7 +101,7 @@
 								mức giá và chắc chắn không hề đắt với những người đã đi làm.
 							.</p>
 						</div>
-						<div class="author"><img class="rounded-circle" src="assets/img/1.jpg">
+						<div class="author"><img class="rounded-circle" src="./Views/images/np.png">
 							<h5 class="name">Hoàng Quang Trung</h5>
 						</div>
 					</div>
@@ -113,7 +114,7 @@
 							</p>
 							<p>Chúc các bạn thành công hơn nữa..</p>
 						</div>
-						<div class="author"><img class="rounded-circle" src="assets/img/3.jpg">
+						<div class="author"><img class="rounded-circle" src="./Views/images/np.png">
 							<h5 class="name">Nguyễn Trung Quân</h5>
 						</div>
 					</div>
@@ -126,7 +127,7 @@
 								gọi đẹp và chỉn chu, mình rất thích. 
 							</p>
 						</div>
-						<div class="author"><img class="rounded-circle" src="assets/img/2.jpg">
+						<div class="author"><img class="rounded-circle" src="./Views/images/np.png">
 							<h5 class="name">Tạ Đình Phòng</h5>
 						</div>
 					</div>
@@ -139,6 +140,5 @@
 <div class="footer-holder"></div>
 <script src="./Views/footer/footerScript.js"></script>
 
-<script src="news.js"></script>
 </body>
 </html>
