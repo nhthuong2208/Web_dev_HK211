@@ -180,10 +180,20 @@
               <?php
                     if(empty($data["featured"])) echo "featured empty";
                     else{
-                      foreach($data["featured"] as $row){
-                        echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                        echo "<div class=\"addToCart\"><i class=\"fas fa-shopping-cart\"></i></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
-                        echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "</span></div></div></div></div>";
+                      if($data["user"] == "customer")
+                        foreach($data["featured"] as $row){ // "
+      
+                          echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
+                          echo "<div class=\"addToCart\"><i class=\"fas fa-shopping-cart\"></i></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                          echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "</span></div></div></div></div>";
+                        }
+                      else if($data["user"] == "manager"){
+                        foreach($data["featured"] as $row){ // manager
+      
+                          echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
+                          echo "<div class=\"addToCart\"><i class=\"fas fa-shopping-cart\"></i></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                          echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "</span></div></div></div></div>";
+                        }
                       }
                     }
               ?>

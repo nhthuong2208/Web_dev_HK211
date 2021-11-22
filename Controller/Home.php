@@ -4,34 +4,35 @@
 class Home extends Controller{
 
         // Must have SayHi()
-        function Home_page(){
-            $cus = $this->model("customer");
+        function Home_page($user){
+            $cus = $this->model($user);
             $this->view("Home_page", [
-                "collection" => $cus->get_swiper_slide_collection(),
+                "user" => $user,
+                "collection" => $cus->get_swiper_slide_collection(), //$data["collection"] = $cus->get_swiper_slide_collection() 
                 "featured" => $cus->get_products()
             ]);
         }
-        function About_us(){
+        function About_us($user){
             $this->view("About_US", []);
         }
-        function Products(){
-            $cus = $this->model("customer");
+        function Products($user){
+            $cus = $this->model($user);
             $this->view("Products", [
                 "cate" => $cus->get_product_cates(),
                 "product" => $cus->get_products()
             ]);
         }
-        function Item(){
+        function Item($user){
             $this->view("Item", []);
         }
-        function Contact_us(){
+        function Contact_us($user){
             $this->view("Contact_US", []);
         }
-        function News(){
+        function News($user){
             $this->view("News", []);
         }
-        function Cost_table(){
-            $cus = $this->model("customer");
+        function Cost_table($user){
+            $cus = $this->model($user);
             $combo = $cus->get_combo();
             $product_in_combo = array();
             foreach($combo as $cb){
@@ -42,23 +43,23 @@ class Home extends Controller{
                 "cycle" => $cus->get_cycle()
             ]);
         }
-        function Cart(){
+        function Cart($user){
             $this->view("Cart", []);
         }
-        function Login(){
+        function Login($user){
             $this->view("Login", []);
         }
-        function Payment(){
+        function Payment($user){
             $this->view("Payment", []);
         }
-        function forgot(){
+        function forgot($user){
             $this->view("forgot", []);
         }
-        function register(){
+        function register($user){
             $this->view("register", []);
         }
         function insert_message($fname, $email, $phone, $subject, $content){
-            echo (string)$this->model("customer")->insert_message($fname, $email, $phone, $subject, $content);
+            $this->model("customer")->insert_message($fname, $email, $phone, $subject, $content);
         }
 }
 ?>
