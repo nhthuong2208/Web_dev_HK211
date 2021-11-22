@@ -18,7 +18,7 @@
     <script src="https://kit.fontawesome.com/320d0ac08e.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="../Views/Contact US/style.css" rel="stylesheet">
+    <link href="../Views/Contact_US/style.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!---------------------->
@@ -39,13 +39,13 @@
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
-    <link href="../Navbar/navbar.css" rel="stylesheet">
+    <link href="./Views/Navbar/navbar.css" rel="stylesheet">
   </head>
   <body>
     
     <!--Nav-->
     <div class="navbar-holder sticky-top"></div>
-    <script src="../Views/Navbar/navbarScript.js" index='5' type="text/javascript"></script>
+    <script src="./Views/Navbar/navbarScript.js" index='5' type="text/javascript"></script>
     <!--Nav-->
 
     <!--Body-->
@@ -115,24 +115,26 @@
             </div>
             <div class="col-11 col-sm-6 col-md-6 col-lg-6 col-xl-5 white border-10 myshadow padding-20">
               <h4 class="mgl-12">Send Messege</h4>
-              <div class="row">
-                <div class="col-xxl-6">
-                  <input type="text" name="name" placeholder="   Your name">
+              <form action="" onsubmit="return false;">
+                <div class="row">
+                  <div class="col-xxl-6">
+                    <input type="text" name="name" placeholder="   Your name">
+                  </div>
+                  <div class="col-xxl-6">
+                    <input type="text" name="address" placeholder="  Email address">
+                  </div>
+                  <div class="col-xxl-6">
+                    <input type="text" name="phone" placeholder="  Phone number">
+                  </div>
+                  <div class="col-xxl-6">
+                    <input type="text" name="subject" placeholder="  Subject">
+                  </div>
+                  <div class="col-12">
+                    <textarea name="content" placeholder="   Messege"></textarea>
+                  </div>
                 </div>
-                <div class="col-xxl-6">
-                  <input type="text" name="address" placeholder="  Email address">
-                </div>
-                <div class="col-xxl-6">
-                  <input type="text" name="name" placeholder="  Phone number">
-                </div>
-                <div class="col-xxl-6">
-                  <input type="text" name="address" placeholder="  Subject">
-                </div>
-                <div class="col-12">
-                  <textarea placeholder="   Messege"></textarea>
-                </div>
-              </div>
-              <button type="button" class="btn btn-primary active mgl-12">Send Messege</button>
+                <button type="button" class="btn btn-primary active mgl-12">Send Messege</button>
+              </form>
             </div>
           </div>
         </div>
@@ -150,10 +152,13 @@
     <!--Body-->
 
     <!--Footer-->
-      <div class="footer-holder"></div>
-      <script src="../Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="../Views/footer/footerScript.js"></script-->
+      <?php
+        require_once "./Views/footer/index.php";
+      ?>
     <!--Footer-->
   
-  <script src="../Views/Contact US/myScript.js"></script>
+  <script src="../Views/Contact_US/myScript.js"></script>
   </body>
 </html>

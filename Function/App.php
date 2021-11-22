@@ -1,8 +1,8 @@
 <?php
 class App{
-// http://localhost/live/Home/Show/1/2
+//Home/Show/1/2
     protected $controller="Home"; //""
-    protected $action="SayHi";
+    protected $action="Home_page";
     protected $params=[];
 
     function __construct(){
@@ -33,6 +33,7 @@ class App{
 
     function UrlProcess(){
         if( isset($_GET["url"]) ){
+            echo $_GET["url"];
             return explode("/", filter_var(trim($_GET["url"], "/")));
         }
     }

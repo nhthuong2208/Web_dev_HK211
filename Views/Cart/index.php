@@ -18,7 +18,7 @@
     <script src="https://kit.fontawesome.com/320d0ac08e.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="./style.css" rel="stylesheet">
+    <link href="./Views/Cart/style.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!---------------------->
     <link
@@ -37,13 +37,13 @@
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>
-    <link href="../Views/Navbar/navbar.css" rel="stylesheet">
+    <link href="./Views/Navbar/navbar.css" rel="stylesheet">
   </head>
   <body>
     
     <!--Nav-->
     <div class="navbar-holder sticky-top"></div>
-    <script src="../Views/Navbar/navbarScript.js" type="text/javascript"></script>
+    <script src="../Views/Navbar/navbarScript.js" type="text/javascript" id></script>
     <!--Nav-->
 
     <!--Body-->
@@ -59,7 +59,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -116,7 +116,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -173,7 +173,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -230,7 +230,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -287,7 +287,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -344,7 +344,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -401,7 +401,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -458,7 +458,7 @@
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
                                 <div class="row node nonemg">
                                     <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./ao.jpg" alt="ao 1">
+                                        <img src="./Views/images/ao.jpg" alt="ao 1">
                                     </div>
 
                                     <div class="col-7">
@@ -523,7 +523,7 @@
                         <h5>1.600.000(vnd)</h5>
                         <div class="d-flex flex-wrap justify-content-center">
                             <button id="myBtn" type="button" class="btn btn-primary">Địa chỉ giao hàng</button>
-                            <button type="button" class="btn btn-primary" onclick="window.location.href='../Payment/';">Thanh toán</button>
+                            <button type="button" class="btn btn-primary"><a href="?url=Home/Payment/">Thanh toán</a></button>
                         </div>
                     </div>
                 </div>
@@ -560,9 +560,9 @@
 
     <!--Footer-->
     <div class="footer-holder"></div>
-    <script src="../Views/footer/footerScript.js"></script>
+    <script src="./Views/footer/footerScript.js"></script>
   <!--Footer-->
   
-    <script src="../Views/Cart/myscript.js" type="text/javascript"></script>
+    <script src="./Views/Cart/myscript.js" type="text/javascript"></script>
   </body>
 </html>

@@ -7,8 +7,8 @@
     <title>Assignment</title>
     <link rel="icon" type="image/x-icon" href="../images/Logo BK_vien trang.png">
 
-    <link href="product.css" rel="stylesheet" type="text/css" />
-    <link href="../Navbar/navbar.css" rel="stylesheet" type="text/css" />
+    <link href="./Views/Products/product.css" rel="stylesheet" type="text/css" />
+    <link href="../Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
@@ -51,9 +51,14 @@
       <div class="header-product">
         <div id="myBtnContainer" class="filterBar">
           <div class="tab-filter active-filter" onclick="filterSelection('all')"> All</div>
-          <div class="tab-filter" onclick="filterSelection('shirt')"> Shirt</div>
-          <div class="tab-filter" onclick="filterSelection('trousers')"> Trousers</div>
-          <div class="tab-filter" onclick="filterSelection('accessories')"> Accessories</div>
+          <?php
+                if(empty($data["cate"])) echo "empty cate";
+                else{
+                  foreach($data["cate"] as $row){
+                    echo "<div class=\"tab-filter\" onclick=\"filterSelection('" . $row["cate"] . "')\">" . $row["cate"] . "</div>";
+                  }
+                }
+          ?>
         </div>
   
         <div class="form-sort">
@@ -83,9 +88,23 @@
       <div class="container-fluid">
         <div class="list-product">
           <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-            <div class="col filterDiv accessories">
+              <?php
+                  if(empty($data["product"])) echo "empty product";
+                  else{
+                    foreach($data["product"] as $row){
+                      echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"> <a href=\"?url=Home/Item/\"><img src=\"" . $row["img"] .
+                      "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a><div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
+                      "</h5><p class=\"card-text\">This is a longer card with supporting text below as a
+                      natural lead-in to additional content. This content is alittle bit longer.</p><div class=\"d-flex justify-content-between\">
+                      <div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\"></i></button></div>
+                      <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\"></i></div>
+                      </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary\">Add to cart</button></div></div></div></div></div>";
+                    }
+                  }
+              ?>
+            <!--div class="col filterDiv accessories">
               <div class="card">
-                <a href="../Item/">
+                <a href="?url=Home/Item/">
                   <img
                     src="https://media.coolmate.me/uploads/August2021/4-0_98.jpg"
                     class="card-img-top"
@@ -115,6 +134,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col filterDiv shirt">
               <div class="card">
                 <img
@@ -201,7 +221,8 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div-->
+
           </div>
         </div>
 

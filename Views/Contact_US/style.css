@@ -82,7 +82,7 @@
 }
 .body .head{
   background-color: white;
-  background-image: url(./contact-2.jpg);
+  background-image: url(../images/contact-2.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%, cover, contain;
   min-height: 400px;

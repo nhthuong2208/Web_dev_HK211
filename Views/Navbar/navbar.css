@@ -28,9 +28,9 @@ nav h1 a {
   color: #16697a;
 }
 
-nav h1 a:hover {
-  color: #16697a;
-}
+  nav h1 a:hover {
+    color: #16697a;
+  }
 
 nav ul {
   list-style: none;
@@ -254,3 +254,8 @@ footer .social i {
   margin-right: 2rem;
 }
 
+/*----------------------------------------------------*/
+.cart *, .login-button *{
+  text-decoration: none;
+  color: white;
+}

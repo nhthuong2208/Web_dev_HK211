@@ -112,12 +112,9 @@ h6{
 .row.d-flex.justify-content-center.nonemg{
     padding: 20px;
 }
-
-
-
-
-
-
+button a{
+    text-decoration: none;
+}
 /*---------------------------------------------------------------*/
 .modal {
     display: none;

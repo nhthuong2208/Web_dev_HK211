@@ -32,7 +32,7 @@ remove.onclick = function(){console.log(node.parentNode.remove())};
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
-var button = document.getElementsByClassName("btn btn-primary")[2];
+var button = document.getElementsByClassName("btn btn-primary")[4];
 
 btn.onclick = function() {
   modal.style.display = "block";
@@ -49,4 +49,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
-console.log(modal);
+console.log(btn);
+console.log(button);
