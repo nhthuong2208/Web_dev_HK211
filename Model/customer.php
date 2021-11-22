@@ -5,7 +5,7 @@ class customer extends DB{
         return mysqli_query($this->connect, $query);
     }
     public function get_product_cates(){
-        $query = "SELECT `product`.`CATEGORY` AS \"cate\" FROM `product` GROUP BY `product`.`CATEGORY`;";
+        $query = "SELECT `product`.`CATEGORY` AS \"cate\" FROM `product` GROUP BY `product`.`CATEGORY` ORDER BY `product`.`ID`;";
         return mysqli_query($this->connect, $query);
     }
     public function get_products(){
