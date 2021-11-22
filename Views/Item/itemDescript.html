@@ -74,7 +74,7 @@
                 5/5 <i class="fas fa-star"></i> <span>(Xem n đánh giá)</span>
               </p>
               <p class="item-price">169.000VND</p>
-              <div class="select-size">
+              <!-- <div class="select-size">
                 <label for="select-size-item">Chọn size</label>
                 <select name="sort-by" id="select-size-item">
                   <option value="title" selected="selected" disabled>Size</option>
@@ -96,12 +96,76 @@
               </div>
               <div class="addtocart-btn">
                 <button type="button" class="btn btn-primary">Add to cart <i class="fas fa-shopping-cart"></i></button>
-              </div>
+              </div> -->
               <div class="descript-item">
                 <h3>Chi tiết sản phẩm</h3>
                 <p>Nếu bạn đã sở hữu những chiếc mũ lưỡi trai thuần nam tính hoặc những dáng mũ fedora lịch lãm, kiểu dáng mũ cao bồi cách điệu bụi bặm, 
                   và đang muốn tìm cho mình một chiếc mũ mang đến vẻ trẻ trung, năng động thì Bucket Hat chính là câu trả lời của bạn đây. Care & Share 
                   ra mắt phiên bản mũ Bucket Hat cùng với nhiều thiết kế ấn tượng nhưng không hề mất đi vẻ nam tính, đơn giản của bạn khi mang chiếc mũ này nhé! </p>
+              </div>
+              <button type="button" id="edit-itemBtn">Chỉnh sửa</button>
+              
+              <div id="editItem-modal" class="edit-item-modal">
+                <div class="editItem-modal-content">
+                  <div class="editItem-modal-header">
+                    <span class="close-modal-edit">&times;</span>
+                    <h2>Chỉnh sửa sản phẩm</h2>
+                  </div>
+                  <div class="editItem-modal-body">
+                    <div class="row">
+                      <label class="col-lg-4" for="id">
+                        Id:
+                      </label>
+                      <div class="col-lg-8"><input type="number" name="id" placeholder="Nhập id sản phẩm"></div>
+                    </div>
+                    <div class="row">
+                      <label class="col-lg-4" for="name">
+                        Tên sản phẩm:
+                      </label>
+                      <div class="col-lg-8"><input type="text" name="name" placeholder="Nhập tên sản phẩm"></div>
+                    </div>
+                    <div class="row">
+                      <label class="col-lg-4" for="price">
+                        Giá:
+                      </label>
+                      <div class="col-lg-8"><input type="number" name="price" placeholder="Nhập giá của sản phẩm"></div>
+                    </div>
+                    <div class="row">
+                      <label class="col-lg-4" for="image-url">
+                        Ảnh sản phẩm:
+                      </label>
+                      <div class="col-lg-8"><input type="text" name="image-url" placeholder="Nhập link ảnh sản phẩm"></div>
+                    </div>
+                    <div class="row">
+                      <label class="col-lg-4" for="description">
+                        Mô tả:
+                      </label>
+                      <div class="col-lg-8"><input type="text" name="description" placeholder="Nhập mô tả sản phẩm"></div>
+                    </div>
+                    <div class="row">
+                      <label class="col-lg-4" for="remain">
+                        Số lượng tồn kho:
+                      </label>
+                      <div class="col-lg-8"><input type="number" name="remain" placeholder="Nhập số lượng sản phẩm"></div>
+                    </div>
+                    <div class="row">
+                      <label class="col-lg-4">
+                        Loại:
+                      </label>
+                      <div class="col-lg-8">
+                        <select>
+                          <option selected disabled>Chọn loại</option>
+                          <option value="shirt">Áo</option>
+                          <option value="trousers">Quần</option>
+                          <option value="accessories">Phụ kiện</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="btn-conf-edit">
+                      <button type="button">Xác nhận</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -229,12 +293,16 @@
                       <i class="fas fa-star"></i>
                     </div>
                   </div>
+                  
                   <div>
                     <p>1/1/2021</p>
                   </div>
                 </div>
-                <div class="script-cmt">
-                  <p>Trên cả toẹt dời</p>
+                <div class="comment-content">
+                  <div class="script-cmt">
+                    <p>Trên cả toẹt dời</p>
+                  </div>
+                  <div><i class="fas fa-trash-alt"></i></div>
                 </div>
               </div>
             </div>

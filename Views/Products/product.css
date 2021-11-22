@@ -1,3 +1,95 @@
+/* Style add item modal */
+.add-item-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  padding-top: 5rem;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.close-modal-add {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  align-items: baseline;
+}
+
+.close-modal-add:hover,
+.close-modal-add:focus {
+  color: #ffa62b;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Modal Header */
+.addItem-modal-header {
+  padding: 3px 16px;
+  background-color: #16697a;
+  color: white;
+}
+
+.addItem-modal-header h2 {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+/* Modal Body */
+.addItem-modal-body {
+  padding: 10px 16px;
+}
+
+.addItem-modal-body input, .addItem-modal-body select{
+  padding: 0.5rem;
+  width: 100%;
+  border: 1px solid #ffa62b;
+  border-radius: 0.2rem;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.addItem-modal-body .btn-conf-add {
+  text-align: center;
+}
+
+.addItem-modal-body button {
+  padding: 0.5rem 1rem;
+  background-color: #ffa62b;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+
+.addItem-modal-body button:hover {
+  background-color: #16697a;
+  transition: all .3s ease-in-out;
+}
+
+/* Modal Content */
+.addItem-modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/*****************************************/
+
 /* Style list product */
 .company-product .list-product {
   margin: 2rem 0;
@@ -52,7 +144,22 @@
 .company-product .header-product form a:hover {
   background-color: #16697a;
 }
+/*****************************************/
+.company-product .header-product .form-sort button {
+  padding: 0.5rem 1rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  background-color: #ffa62b;
+  border: none;
+  border-radius: 2rem;
+  color: #fff;
+}
 
+.company-product .header-product .form-sort button:hover {
+  background-color: #16697a;
+  transition: all .3s ease-in-out;
+}
+/*****************************************/
 .company-product .header-product .filterBar {
   display: flex;
   justify-content: center;
@@ -101,7 +208,7 @@
 }
 
 .company-product .list-product .quantity-section input {
-  width: 3rem;
+  width: 2rem;
   border: none;
   text-align: center;
   background-color: #fff;
@@ -162,6 +269,14 @@
 
   .company-product .header-product .filterBar {
     margin-left: 0;
+  }
+/*****************************************/
+  .company-product .header-product .form-sort {
+    text-align: center;
+  }
+  .company-product .header-product .form-sort button {
+    margin-right: 0;
+    margin-top: 1rem;
   }
 }
 
