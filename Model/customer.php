@@ -11,7 +11,7 @@ class customer extends DB{
     public function get_products(){
         $query = "SELECT `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product`;";
         return mysqli_query($this->connect, $query);
-    }
+    } 
     public function get_combo(){
         $query =    "SELECT `combo`.`NAME` AS `cbname`,
                             `combo`.`COST` AS `cost`, 
@@ -33,7 +33,7 @@ class customer extends DB{
     function insert_message($fname, $email, $phone, $subject, $content){
         $query =    "INSERT INTO `message`(`message`.`FNAME`, `message`.`EMAIL`, `message`.`PHONE`, `message`.`SUBJECT`, `message`.`CONTENT`) VALUES
                     (\"" . $fname . "\", \"" . $email . "\", \"" . $phone . "\", \"" . $subject . "\", \"" . $content . "\");";
-        return mysqli_query($this->connect, $query);
+        return mysqli_query($this->connect, $query); //insert delete update => true false -> 
     }
 }
 ?>

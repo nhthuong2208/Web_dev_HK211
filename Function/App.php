@@ -3,6 +3,7 @@ class App{
 //Home/Show/1/2
     protected $controller="Home"; //""
     protected $action="Home_page";
+    protected $user = "customer";
     protected $params=[];
 
     function __construct(){
@@ -25,12 +26,12 @@ class App{
         }
 
         // Params
-        $this->params = $arr?array_values($arr):[];
-
+        array_push($this->params,$this->user);
+        if(!empty($arr)) $this->params = array_push($this->params,$arr);
         call_user_func_array([$this->controller, $this->action], $this->params );
 
     }
-
+        // Home/function/parametors
     function UrlProcess(){
         if( isset($_GET["url"]) ){
             echo $_GET["url"];
