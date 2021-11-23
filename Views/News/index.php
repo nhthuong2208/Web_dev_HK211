@@ -48,140 +48,58 @@
 <div class="container my-5">
 	<section class="pb-4 mt-3 mb-5">
 		<div class="row gx-5">
-		  <div class="col-md-7 mb-4">
-			<div class="bg-image shadow-lg bg-white">
-			  <img src="./Views/images/h1_news.jpg" class="img-fluid rounded" />
-			</div>
-		  </div>
-  
-		  <div class="col-md-5 mb-4">
-			<span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">Tin mới</span>
-			<h4><strong>Top những mẫu áo basic tee nam phái đẹp “không thể rời mắt”</strong></h4>
-			<p class="text-muted">
-				Khi muốn chinh phục một cô nàng quyến rũ mà bạn thầm yêu trộm nhớ, 
-				hoặc khi hẹn người ấy đi chơi, 
-				bạn sẽ lựa chọn cho mình một bộ trang phục như thế nào?
-			</p>
-			<button type="button" class="btn btn-warning">Đọc thêm</button>
-		  </div>
+		<?php
+			if(empty($data["news"])) echo "empty combo";
+			else {
+				$new_news = $data["news"][count($data["news"])-1];
+					echo 
+					"<div class=\"col-md-7 mb-4\">
+						<div class=\"bg-image shadow-lg bg-white\" >
+							<img src=\""  . $new_news["imgurl"] . "\" class=\"img-fluid rounded\">
+						</div>
+					</div>
+			
+					<div class=\"col-md-5 mb-4\">
+						<span class=\"badge bg-danger px-2 py-1 shadow-1-strong mb-3\">Tin mới</span>
+						<h4><strong>" . $new_news["title"] . "</strong></h4>
+						<p class=\"text-muted\">
+							" . $new_news["shortcontent"] ."
+						</p>
+						<button type=\"button\" class=\"btn btn-warning mt-3\">Đọc thêm</button>
+					</div>";
+			}
+		?>
 		</div>
 	</section>
 	<section>
 		<div class="row"> 
-			<div class="col-lg-4">
-				<div>
-					<div class="bg-image shadow-lg bg-white">
-						<img src="./Views/images/h4.png" class="img-fluid rounded">
-					</div>
-					<div class="row mb-3">
-						<div class="col-6">
-							Streetwear
-						</div>
-						<div clas="col-6 text-end">
-							<u class="text-decoration-none">15.07.2020</u>
-						</div>
-					</div>
-					<a href="" class="text-dark text-decoration-none">
-						<h5>Phá tan sự nhàm chán bằng loạt kiểu phối đồ Streetwear Style</h5>
-						<p>Gợi ý những set đồ street style cực chất từ các local brand giúp các bạn thay vì mua riêng…</p>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div>
-					<div class="bg-image shadow-lg bg-white">
-						<img src="./Views/images/h3.jpg" class="img-fluid rounded">
-					</div>
-					<div class="row mb-3">
-						<div class="col-6">
-							Global brand
-						</div>
-						<div clas="col-6 text-end">
-							<u class="text-decoration-none">15.07.2020</u>
-						</div>
-					</div>
-					<a href="" class="text-dark text-decoration-none">
-						<h5>BST SS21 Nonnative brand phân lớp theo mùa cao điểm</h5>
-						<p>BST SS21 từ Nonnative brand sử dụng những gam màu cơ bản cùng thiết kế đơn giản dễ dàng mix…</p>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div>
-					<div class="bg-image shadow-lg bg-white">
-						<img src="./Views/images/h4.jpg" class="img-fluid rounded">
-					</div>
-					<div class="row mb-3">
-						<div class="col-6">
-							Global brand
-						</div>
-						<div clas="col-6 text-end">
-							<u class="text-decoration-none">15.07.2020</u>
-						</div>
-					</div>
-					<a href="" class="text-dark text-decoration-none">
-						<h5>VINTAS SAIGON 1980s Cảm hứng Sài Gòn xưa giữa thời hiện đại</h5>
-						<p>Là một bộ sưu tập thuộc dòng sản phẩm Vintas, Saigon 1980s Pack đem đến một sự lựa chọn “cũ kỹ thú vị”...</p>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div>
-					<div class="bg-image shadow-lg bg-white">
-						<img src="./Views/images/h4.png" class="img-fluid rounded">
-					</div>
-					<div class="row mb-3">
-						<div class="col-6">
-							Streetwear
-						</div>
-						<div clas="col-6 text-end">
-							<u class="text-decoration-none">15.07.2020</u>
-						</div>
-					</div>
-					<a href="" class="text-dark text-decoration-none">
-						<h5>Phá tan sự nhàm chán bằng loạt kiểu phối đồ Streetwear Style</h5>
-						<p>Gợi ý những set đồ street style cực chất từ các local brand giúp các bạn thay vì mua riêng…</p>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div>
-					<div class="bg-image shadow-lg bg-white">
-						<img src="./Views/images/h3.jpg" class="img-fluid rounded">
-					</div>
-					<div class="row mb-3">
-						<div class="col-6">
-							Global brand
-						</div>
-						<div clas="col-6 text-end">
-							<u class="text-decoration-none">15.07.2020</u>
-						</div>
-					</div>
-					<a href="" class="text-dark text-decoration-none">
-						<h5>BST SS21 Nonnative brand phân lớp theo mùa cao điểm</h5>
-						<p>BST SS21 từ Nonnative brand sử dụng những gam màu cơ bản cùng thiết kế đơn giản dễ dàng mix…</p>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div>
-					<div class="bg-image shadow-lg bg-white">
-						<img src="./Views/images/h4.jpg" class="img-fluid rounded">
-					</div>
-					<div class="row mb-3">
-						<div class="col-6">
-							Global brand
-						</div>
-						<div clas="col-6 text-end">
-							<u class="text-decoration-none">15.07.2020</u>
-						</div>
-					</div>
-					<a href="" class="text-dark text-decoration-none">
-						<h5>VINTAS SAIGON 1980s Cảm hứng Sài Gòn xưa giữa thời hiện đại</h5>
-						<p>Là một bộ sưu tập thuộc dòng sản phẩm Vintas, Saigon 1980s Pack đem đến một sự lựa chọn “cũ kỹ thú vị”...</p>
-					</a>
-				</div>
-			</div>
+			<?php
+				if(empty($data["news"])) echo "empty combo";
+				else {
+					foreach($data["news"] as $row){
+						echo "<div class=\"col-lg-4 mb-5\">
+							<div>
+								<div class=\"bg-image shadow-lg bg-white\">
+									<img src=\""  . $row["imgurl"] . "\" class=\"img-fluid rounded\">
+								</div>
+								<div class=\"row mb-3 mt-3\">
+									<div class=\"col-6\">"
+									. $row["key"] .
+									"</div>
+									<div class=\"col-6 text-end\">
+										<u class=\"text-decoration-none\">" . $row["time"] . "</u>
+									</div>
+								</div>
+								<a href=\"\" class=\"text-dark text-decoration-none\">
+									<h5>" . $row["title"] . "</h5>
+									<p>" . $row["shortcontent"] . "</p>
+								</a>
+							</div>
+						</div>";
+					}
+				}
+					
+			?>	
 		</div>
 	</section>   
 </div>

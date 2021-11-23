@@ -29,7 +29,23 @@ class Home extends Controller{
             $this->view("Contact_US", []);
         }
         function News($user){
-            $this->view("News", []);
+            $cus = $this->model($user);
+            $news = $cus->get_news();
+            $news_list = array();
+            foreach($news as $snews){
+                array_push($news_list, ([
+                    "id" => $snews["id"],
+                    "cid" => $snews["cid"],
+                    "key" => $snews["key"], 
+                    "time" => $snews["time"],
+                    "title" => $snews["title"],
+                    "content" => $snews["content"],
+                    "imgurl" => $snews["img_url"],
+                    "shortcontent" => $snews["short_content"]]));
+            }
+            $this->view("News", [
+                "news" => $news_list
+            ]);
         }
         function Cost_table($user){
             $cus = $this->model($user);

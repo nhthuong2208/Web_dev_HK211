@@ -35,5 +35,17 @@ class customer extends DB{
                     (\"" . $fname . "\", \"" . $email . "\", \"" . $phone . "\", \"" . $subject . "\", \"" . $content . "\");";
         return mysqli_query($this->connect, $query); //insert delete update => true false -> 
     }
+    public function get_news(){
+        $query =    "SELECT `news`.`ID` as `id`,
+                            `news`.`CID` as `cid`, 
+                            `news`.`KEY` as `key`, 
+                            `news`.`TIME` as `time`,
+                            `news`.`TITLE` as `title`,  
+                            `news`.`CONTENT` as `content`, 
+                            `news`.`IMG_URL` as `img_url`, 
+                            `news`.`SHORT_CONTENT` as `short_content` 
+                    FROM `news`";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>
