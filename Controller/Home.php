@@ -40,8 +40,51 @@ class Home extends Controller{
             $this->view("Contact_US", []);
         }
         function News($user){
-            $this->view("News", []);
+            $cus = $this->model($user);
+            $news = $cus->get_news();
+            $news_list = array();
+            foreach($news as $snews){
+                array_push($news_list, ([
+                    "id" => $snews["id"],
+                    "cid" => $snews["cid"],
+                    "key" => $snews["key"], 
+                    "time" => $snews["time"],
+                    "title" => $snews["title"],
+                    "content" => $snews["content"],
+                    "imgurl" => $snews["img_url"],
+                    "shortcontent" => $snews["short_content"]]));
+            }
+            $this->view("News", [
+                "news" => $news_list,
+                "user" => $user
+            ]);
         }
+        function News_detail($user, $params){
+            $cus = $this->model($user);
+            $news = $cus->get_news();
+            $news_list = array();
+            foreach($news as $snews){
+                array_push($news_list, ([
+                    "id" => $snews["id"],
+                    "cid" => $snews["cid"],
+                    "key" => $snews["key"], 
+                    "time" => $snews["time"],
+                    "title" => $snews["title"],
+                    "content" => $snews["content"],
+                    "imgurl" => $snews["img_url"],
+                    "shortcontent" => $snews["short_content"],
+                    "comment" => $cus->get_comment_news($snews["id"])]));
+            }   
+            $this->view("News_detail", [
+                "news" => $news_list,
+                "user" => $user,
+                "params"=> $params[2]
+            ]);
+        }
+        function delete_news($id){
+            $this->model("customer")->delete_news($id);
+        }
+
         function Cost_table($user){
             $cus = $this->model($user);
             $combo = $cus->get_combo();
