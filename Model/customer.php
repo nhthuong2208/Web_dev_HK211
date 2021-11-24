@@ -47,5 +47,17 @@ class customer extends DB{
                     FROM `news`";
         return mysqli_query($this->connect, $query);
     }
+    function delete_news($id){
+        $query = "DELETE FROM `news` WHERE `news`.`id`= ".$id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_comment_news($id){
+        $query = "SELECT `account`.`FNAME` as `name`,
+                         `comment_news`.`CONTENT` as `content`,
+                         `comment_news`.`TIME` as `time`
+                FROM `comment_news`, `account`
+                WHERE `comment_news`.`CID`=`account`.`ID` and `comment_news`.`NID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

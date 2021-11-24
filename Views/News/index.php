@@ -49,12 +49,13 @@
 	<section class="pb-4 mt-3 mb-5">
 		<div class="row gx-5">
 		<?php
+
 			if(empty($data["news"])) echo "empty combo";
 			else {
 				$new_news = $data["news"][count($data["news"])-1];
 					echo 
 					"<div class=\"col-md-7 mb-4\">
-						<div class=\"bg-image shadow-lg bg-white\" >
+						<div class=\"bg-image bg-white\" >
 							<img src=\""  . $new_news["imgurl"] . "\" class=\"img-fluid rounded\">
 						</div>
 					</div>
@@ -64,9 +65,19 @@
 						<h4><strong>" . $new_news["title"] . "</strong></h4>
 						<p class=\"text-muted\">
 							" . $new_news["shortcontent"] ."
-						</p>
-						<button type=\"button\" class=\"btn btn-warning mt-3\">Đọc thêm</button>
-					</div>";
+						</p>";
+						if($data["user"] == "customer"){
+							echo "<a href=\"?url=Home/News_detail/". (count($data["news"])) . "\">
+								<button type=\"button\" class=\"btn btn-warning mt-3\" >Đọc thêm</button>
+							</a>";
+						}
+						else if($data["user"] == "manager"){
+							echo "<a href=\"?url=Home/News_detail/\">
+								<button type=\"button\" class=\"btn btn-warning mt-3\">Thêm tin mới</button>
+							</a>
+							";
+						}
+					echo "</div>";
 			}
 		?>
 		</div>
@@ -90,7 +101,7 @@
 										<u class=\"text-decoration-none\">" . $row["time"] . "</u>
 									</div>
 								</div>
-								<a href=\"\" class=\"text-dark text-decoration-none\">
+								<a href=\"?url=Home/News_detail/". $row["id"] . "\" class=\"text-dark text-decoration-none\">
 									<h5>" . $row["title"] . "</h5>
 									<p>" . $row["shortcontent"] . "</p>
 								</a>
