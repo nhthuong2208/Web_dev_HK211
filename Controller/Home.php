@@ -112,8 +112,8 @@ class Home extends Controller{
         function register($user){
             $this->view("register", []);
         }
-        function insert_message($fname, $email, $phone, $subject, $content){
-            $this->model("customer")->insert_message($fname, $email, $phone, $subject, $content);
+        function insert_message($user, $array){
+            $this->model($user)->insert_message($array[2], $array[3], $array[4], $array[5], $array[6]);
         }
 }
 ?>

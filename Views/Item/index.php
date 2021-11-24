@@ -92,8 +92,21 @@
                     echo "Chưa có đánh giá";
                   } else {
                     $sum = 0;
+                    $sum_1 = 0;
+                    $sum_2 = 0;
+                    $sum_3 = 0;
+                    $sum_4 = 0;
                     foreach($data["comment"] as $cmt) {
                       $sum += $cmt["star"];
+                      if ($cmt["star"] == "1") {
+                        $sum_1 += 1;
+                      } else if ($cmt["star"] == "2") {
+                        $sum_2 += 1;
+                      } else if ($cmt["star"] == "3") {
+                        $sum_3 += 1;
+                      } else if ($cmt["star"] == "4") {
+                        $sum_4 += 1;
+                      }
                     }
                     $sum = $sum / count($data["comment"]);
                     echo $sum . "/5 <i class=\"fas fa-star\"></i> <a href=\"#rate-cmt\"><span>(Xem " . count($data["comment"]) . " đánh giá)</span></a>";
@@ -200,11 +213,11 @@
                 <div class="filter-rating">
                   <span id="filter-rating-btn">
                     <button type="button" class="button-filter btn btn-primary current-btn" onclick="filterComment('all')">Tất cả (<?php echo count($data["comment"]) ?>)</button>
-                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('5-star-num')">5 <span><i class="fas fa-star"></i></span></button>
-                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('4-star-num')">4 <span><i class="fas fa-star"></i></span></button>
-                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('3-star-num')">3 <span><i class="fas fa-star"></i></span></button>
-                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('2-star-num')">2 <span><i class="fas fa-star"></i></span></button>
-                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('1-star-num')">1 <span><i class="fas fa-star"></i></span></button>
+                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('5-star-num')">5 <span><i class="fas fa-star"></i></span> (<?php echo count($data["comment"]) - $sum_1 - $sum_2 - $sum_3 - $sum_4 ?>)</button>
+                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('4-star-num')">4 <span><i class="fas fa-star"></i></span> (<?php echo $sum_4 ?>)</button>
+                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('3-star-num')">3 <span><i class="fas fa-star"></i></span> (<?php echo $sum_3 ?>)</button>
+                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('2-star-num')">2 <span><i class="fas fa-star"></i></span> (<?php echo $sum_2 ?>)</button>
+                    <button type="button" class="button-filter btn btn-primary" onclick="filterComment('1-star-num')">1 <span><i class="fas fa-star"></i></span> (<?php echo $sum_1 ?>)</button>
                   </span>
                   <div>
                     <select name="sort-with" id="sort-with">
