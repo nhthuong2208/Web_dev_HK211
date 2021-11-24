@@ -93,7 +93,7 @@
                   if(empty($data["product"])) echo "empty product";
                   else{
                     foreach($data["product"] as $row){
-                      echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"> <a href=\"?url=Home/Item/\"><img src=\"" . $row["img"] .
+                      echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"> <a href=\"?url=Home/Item/" . $row["id"] ."/\"><img src=\"" . $row["img"] .
                       "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a><div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
                       "</h5><p class=\"card-text\">This is a longer card with supporting text below as a
                       natural lead-in to additional content. This content is alittle bit longer.</p><div class=\"d-flex justify-content-between\">

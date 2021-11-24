@@ -10,22 +10,66 @@ function plus(element){
     else  element.innerText = a;
 }
 function display_total(element1, element2, element3){
-    var a = element1.innerText[0] * element2.innerText;
-    console.log(element1.innerText);
-    if(a <= 0) element3.innerText = 0;
-    else element3.innerText = a + element1.innerText.slice(1, element1.innerText.length);
+    element3.innerText = enformat(String(Number(deformat(element1.innerText.split("(")[0])) * Number(element2.innerText))) + "(VND)";
+}
+function enformat(element){
+  let nodestr = "";
+    for(var j = element.length; j > 3; j -= 3){
+        nodestr = "," + element[j-3] + element[j-2] + element[j-1] + nodestr;
+    }
+    if (element .length % 3 == 0){
+        nodestr = element[0] + element[1] + element[2] + nodestr;
+    }
+    else if(element.length % 3 == 2){
+        nodestr = element[0] + element[1] + nodestr;
+    }
+    else nodestr = element[0] + nodestr;
+    return nodestr;
+}
+function deformat(element){
+  var list = element.split(",");
+  var string = ""
+  for(var i = 0; i < list.length; i++) string += list[i];
+  return string;
+}
+function minusnode(element){
+    var row = element.parentNode.parentNode.parentNode;
+    minus(row.getElementsByClassName("value_click")[0]);
+    display_total(row.getElementsByClassName("price")[0], row.getElementsByClassName("value_click")[0], row.getElementsByClassName("total")[0]);
+}
+function plusnode(element){
+  var row = element.parentNode.parentNode.parentNode;
+  plus(row.getElementsByClassName("value_click")[0]);
+  display_total(row.getElementsByClassName("price")[0], row.getElementsByClassName("value_click")[0], row.getElementsByClassName("total")[0]);
+}
+function remove_product_incart(element){
+  var id = element.parentNode.parentNode.value;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    if(this.responseText == "ok"){
+        window.location.href = "?url=Home/Login/";
+    }
+    element.parentNode.parentNode.remove();
+  };
+  xmlhttp.open("GET", "?url=Home/delete_product_incart/" + id + "/", true);
+  xmlhttp.send();
 }
 
-var node = document.getElementsByClassName("node")[0];
-var price = node.getElementsByClassName("price")[0];
-var total = node.getElementsByClassName("total")[0];
-var click = node.getElementsByClassName("click");
-var value_click = node.getElementsByClassName("value_click")[0];
-var remove = node.getElementsByClassName("fas fa-times")[0];
+var node = document.getElementsByClassName("node");
+for(var i = 0; i < node.length ; i++){
+  node[i].parentNode.value = node[i].getElementsByClassName("demo")[0].innerText;
+  node[i].getElementsByClassName("demo")[0].remove();
+  var price = node[i].getElementsByClassName("price")[0];
+  var total = node[i].getElementsByClassName("total")[0];
 
-click[0].onclick = function(){minus(value_click);display_total(price, value_click, total);};
-click[1].onclick = function(){plus(value_click);display_total(price, value_click, total);};
-remove.onclick = function(){console.log(node.parentNode.remove())};
+  price.innerText = enformat(price.innerText.split("(")[0]) + "(VND)";
+  total.innerText = enformat(total.innerText.split("(")[0]) + "(VND)";
+}
+
+
+var list = document.getElementsByClassName("container-fuild")[0].children[0].children[1];
+console.log(list);
 
 /***********************************************************/
 
@@ -36,12 +80,8 @@ var button = document.getElementsByClassName("btn btn-primary")[4];
 
 btn.onclick = function() {
   modal.style.display = "block";
-  console.log("hello");
-};
+}
 span.onclick = function() {
-  modal.style.display = "none";
-};
-button.onclick = function(){
   modal.style.display = "none";
 };
 window.onclick = function(event) {
@@ -49,5 +89,18 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
-console.log(btn);
-console.log(button);
+var id = document.getElementById("id");
+console.log(id);
+button.value = id.innerText;
+id.remove();
+
+button.onclick = function(){
+  var input = button.parentNode.getElementsByTagName("input");
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    modal.style.display = "none";
+  };
+  xmlhttp.open("GET", "?url=Home/update_user/" + button.value + "/" + input[0].value + "/" + input[1].value + "/" + input[2].value + "/", true);
+  xmlhttp.send();
+};

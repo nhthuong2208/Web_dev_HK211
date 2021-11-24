@@ -70,6 +70,9 @@ select{
 .container-fuild > .row > .col-12:nth-child(2){
     justify-self: flex-end;
 }
+.container-fuild{
+    min-height: 70vh;
+}
 .container-fuild > .row > .col-12 > .row > .col-12 h3,
 .container-fuild > .row > .col-12 > .row > .col-12 h5{
     margin: 10px 0;

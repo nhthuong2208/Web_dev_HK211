@@ -3,7 +3,7 @@ class App{
 //Home/Show/1/2
     protected $controller="Home"; //""
     protected $action="Home_page";
-    protected $user = "customer";
+    protected $user = "member";
     protected $params=[];
 
     function __construct(){
@@ -24,11 +24,11 @@ class App{
             }
             unset($arr[1]);
         }
-
+        $this->params = [];
         // Params
         array_push($this->params,$this->user);
-        if(!empty($arr)) $this->params = array_push($this->params,$arr);
-        call_user_func_array([$this->controller, $this->action], $this->params );
+        if(!empty($arr)) array_push($this->params,$arr);
+        call_user_func_array([$this->controller, $this->action], $this->params);
 
     }
         // Home/function/parametors

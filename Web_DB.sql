@@ -29,20 +29,21 @@ CREATE TABLE `ACCOUNT` (
   `PWD` VARCHAR(50),
   `RANK` INT
 );
-CREATE TABLE `PRODUCT_IN_CART`(
-  `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
-  `PID` BIGINT NOT NULL,
-  `QUANTITY` INT DEFAULT 0,
-  `SIZE` VARCHAR(5) DEFAULT "L",
-    FOREIGN KEY (`PID`) REFERENCES `PRODUCT`(`ID`)
-);
 CREATE TABLE `CART`(
     `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
     `UID` BIGINT NOT NULL,
-    `OID` BIGINT NOT NULL,
     `TIME` DATE,
-    FOREIGN KEY (`OID`) REFERENCES `PRODUCT_IN_CART`(`ID`) ,
+    `STATE` tinyint DEFAULT 0,
     FOREIGN KEY (`UID`) REFERENCES `ACCOUNT`(`ID`) 
+);
+CREATE TABLE `PRODUCT_IN_CART`(
+    `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
+    `PID` BIGINT NOT NULL,
+    `OID` BIGINT NOT NULL,
+    `QUANTITY` INT DEFAULT 1,
+    `SIZE` VARCHAR(5) DEFAULT "L",
+    FOREIGN KEY (`PID`) REFERENCES `PRODUCT`(`ID`),
+    FOREIGN KEY (`OID`) REFERENCES `CART`(`ID`)
 );
 CREATE TABLE `COMMENT`(
     `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -143,6 +144,13 @@ INSERT INTO `cycle`(`cycle`.`ID`, `cycle`.`CYCLE`) VALUES
 (1, "15 ngày"),
 (2, "30 ngày"),
 (3, "45 ngày");
+-- cart
+INSERT INTO `cart`(`cart`.`UID`, `cart`.`TIME`) VALUES(1, "2021/11/24");
+-- product_in_cart
+INSERT INTO `product_in_cart` (`product_in_cart`.`PID`, `product_in_cart`.`OID`) VALUES
+(1, 1),
+(2, 1),
+(3, 1);
 
 INSERT INTO `comment_news`(`comment_news`.`ID`, `comment_news`.`CID`, `comment_news`.`CONTENT`, `comment_news`.`TIME`) VALUES
 (1, 1, "Bài viết tuyệt vời!", "2021-10-20");

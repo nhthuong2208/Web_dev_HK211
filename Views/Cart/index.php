@@ -57,462 +57,73 @@
                     </div>
                     <div class="col-12 col-xxl-11">
                         <div class="row nonemg d-flex flex-wrap">
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div class="value_click">2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div>2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div>2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div>2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div>2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div class="value_click">2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div>2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-4 col-xxl-4">
-                                <div class="row node nonemg">
-                                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                                    </div>
-
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>Áo trơn</h4>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Size: </div>
-                                                    <div class="col-6"><select>
-                                                            <option value="S" selected>S</option>
-                                                            <option value="M">M</option>
-                                                            <option value="L">L</option>
-                                                            <option value="X">X</option>
-                                                            <option value="XL">XL</option>
-                                                            <option value="XXL">XXL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Giá: </div>
-                                                    <div class="col-6 price">100.000(VND)</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row d-flex flex-wrap align-content-center justify-content-center">
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-minus"></i></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center"><div>2</div></div>
-                                                    <div class="col-2 d-flex flex-wrap align-content-center justify-content-center click"><i class="fas fa-plus"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-6">Tổng cộng: </div>
-                                                    <div class="col-6 total">200.000(VND)</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <i class="fas fa-times"></i>    
-                                    </div>
-
-                                </div>
-                            </div>
+                            <?php   
+                                    $count = 0;
+                                    if(empty($data["product_in_cart"])) echo "product_in_cart empty";
+                                    else{
+                                        foreach($data["product_in_cart"] as $row){
+                                            $count += 1;
+                                            echo    "<div class=\"col-12 col-md-6 col-xl-4 col-xxl-4\">
+                                                        <div class=\"row node nonemg\">
+                                                            <div class=\"col-4 d-flex flex-wrap align-content-center justify-content-center\">
+                                                                <img src=\"" . $row["img"] . "\" alt=\"item\">
+                                                            </div>
+                                                            <div class=\"demo\" hindden>" . $row["id"] . "</div>
+                                                            <div class=\"col-7\">
+                                                                <div class=\"row\">
+                                                                    <div class=\"col-12\">
+                                                                        <h5>" . $row["name"] . "</h5>
+                                                                    </div>
+                            
+                                                                    <div class=\"col-12\">
+                                                                        <div class=\"row\">
+                                                                            <div class=\"col-6\">Size: </div>
+                                                                            <div class=\"col-6\"><select>
+                                                                                    <option value=\"S\" selected>S</option>
+                                                                                    <option value=\"M\">M</option>
+                                                                                    <option value=\"L\">L</option>
+                                                                                    <option value=\"X\">X</option>
+                                                                                    <option value=\"XL\">XL</option>
+                                                                                    <option value=\"XXL\">XXL</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                        
+                                                                    <div class=\"col-12\">
+                                                                        <div class=\"row\">
+                                                                            <div class=\"col-6\">Giá: </div>
+                                                                            <div class=\"col-6 price\">" . $row["price"] . "(VND)</div>
+                                                                        </div>
+                                                                    </div>
+                            
+                                                                    <div class=\"col-12\">
+                                                                        <div class=\"row d-flex flex-wrap align-content-center justify-content-center\">
+                                                                            <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center click\" onclick=\"minusnode(this);\"><i class=\"fas fa-minus\"></i></div>
+                                                                            <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center\"><div class=\"value_click\">" . $row["num"] ."</div></div>
+                                                                            <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center click\" onclick=\"plusnode(this);\"><i class=\"fas fa-plus\"></i></div>
+                                                                        </div>
+                                                                    </div>
+                            
+                                                                    <div class=\"col-12\">
+                                                                        <div class=\"row\">
+                                                                            <div class=\"col-6\">Tổng cộng: </div>
+                                                                            <div class=\"col-6 total\">" . (int)$row["price"] * (int)$row["num"] . "(VND)</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                    
+                                                            <div class=\"col-1\" onclick=\"remove_product_incart(this)\">
+                                                                <i class=\"fas fa-times\"></i>    
+                                                            </div>
+                                    
+                                                        </div>
+                                                    </div>";
+                                                        
+                                        }
+                                    }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -520,7 +131,7 @@
             <div class="col-12">
                 <div class="row nonemg d-flex flex-row-reverse">
                     <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xxl-4">
-                        <h3>Tổng thanh toán (8 sản phẩm)</h3>
+                        <h3>Tổng thanh toán (<?php echo $count; ?> sản phẩm)</h3>
                         <h5>1.600.000(vnd)</h5>
                         <div class="d-flex flex-wrap justify-content-center">
                             <button id="myBtn" type="button" class="btn btn-primary">Địa chỉ giao hàng</button>
@@ -533,29 +144,39 @@
     </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
-          <div class="modal-header">
-            <h2>Thông tin các nhân</h2>
-            <span class="close">&times;</span>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-                <div class="col-12"><div class="row">
-                    <div class="col-4">Họ và tên:  </div>
-                    <div class="col-8"><input type="text" name="name" placeholder="Họ và tên">
-                </div></div></div>
-                <div class="col-12"><div class="row">
-                    <div class="col-4">Số điện thoại: </div>
-                    <div class="col-8"><input type="text" name="numberphone" placeholder="098xxxxxxx">
-                </div></div></div>
-                 <div class="col-12"><div class="row">
-                    <div class="col-4">Địa chỉ: </div>
-                    <div class="col-8"><input type="text" name="address" placeholder="số đường...">
-                </div></div></div>
-                <button type="button" class="btn btn-primary">Hoàn tất</button>
+            <div class="modal-header">
+                <h2>Thông tin các nhân</h2>
+                <span class="close">&times;</span>
             </div>
-          </div>
+            <div class="modal-body">
+                <div class="row">
+                    <?php
+                            echo    "<div class=\"col-12\">
+                                        <div class=\"row\">
+                                            <div class=\"col-4\">Họ và tên:  </div>
+                                            <div class=\"col-8\"><input type=\"text\" name=\"name\" value=\"" . $data["user"]["name"] .  "\"></div>
+                                        </div>
+                                    </div>
+                        <div class=\"col-12\">
+                        <div class=\"row\">
+                            <div class=\"col-4\">Số điện thoại: </div>
+                            <div class=\"col-8\"><input type=\"text\" name=\"numberphone\"  value=\"".  $data["user"]["phone"] . "\"></div>
+                            </div>
+                        </div>
+                        <div class=\"col-12\">
+                            <div class=\"row\">
+                                <div class=\"col-4\">Địa chỉ: </div>
+                                <div class=\"col-8\"><input type=\"text\" name=\"address\"  value=\"". $data["user"]["add"] . "\"></div>
+                                </div>
+                            </div>
+                            <div hidden id=\"id\">" . $data["id"] . "</div>
+                            <button type=\"button\" class=\"btn btn-primary\">Hoàn tất</button>";
+                    ?>
+                    
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
       
     <!--Body-->
 

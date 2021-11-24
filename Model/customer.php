@@ -9,7 +9,7 @@ class customer extends DB{
         return mysqli_query($this->connect, $query);
     }
     public function get_products(){
-        $query = "SELECT `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product`;";
+        $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product`;";
         return mysqli_query($this->connect, $query);
     } 
     public function get_combo(){
@@ -45,6 +45,14 @@ class customer extends DB{
                             `news`.`IMG_URL` as `img_url`, 
                             `news`.`SHORT_CONTENT` as `short_content` 
                     FROM `news`";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_product_at_id($pid) {
+        $query = "SELECT product.IMG_URL AS \"img\", product.NAME \"name\", product.PRICE AS \"price\", product.DECS AS \"decs\", product.CATEGORY as \"cate\" FROM product WHERE product.ID = " . $pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_sub_img($pid) {
+        $query = "SELECT sub_img_url.IMG_URL AS \"img\" FROM sub_img_url WHERE sub_img_url.PID = " . $pid . ";";
         return mysqli_query($this->connect, $query);
     }
 }
