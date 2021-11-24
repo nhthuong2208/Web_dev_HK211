@@ -24,11 +24,14 @@ class App{
             }
             unset($arr[1]);
         }
+
+        $this->params = [];
+        // Params
         $this->params = [];
         // Params
         array_push($this->params,$this->user);
         if(!empty($arr)) array_push($this->params,$arr);
-        call_user_func_array([$this->controller, $this->action], $this->params);
+        call_user_func_array([$this->controller, $this->action], $this->params );
 
     }
         // Home/function/parametors

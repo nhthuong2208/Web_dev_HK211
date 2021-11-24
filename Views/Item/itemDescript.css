@@ -113,7 +113,8 @@
 
 /* Style item image */
 .product-item .product-image img {
-  width: 80%;
+  height: 35rem;
+  width: 30rem;
 }
 
 .product-item .product-image {
@@ -133,13 +134,14 @@
 }
 
 .product-item .addition-img img {
-  width: 16%;
-  height: 16%;
-  padding: 0.5rem 0.5rem 1rem 0;
+  width: 6.1rem;
+  height: 9rem;
+  object-fit: scale-down;
+  padding: 0.5rem 0rem 1rem 0.5rem;
 }
 
-.product-item .addition-img img:last-child {
-  padding-right: 0;
+.product-item .addition-img img:first-child {
+  padding-left: 0;
 }
 
 /* Style right content */
@@ -155,6 +157,10 @@
 
 .product-item .right-content .rating-star {
   color: #ffa62b;
+}
+
+.product-item .right-content .rating-star a {
+  text-decoration: none;
 }
 
 .product-item .right-content .rating-star span {
@@ -181,7 +187,7 @@
 }
 
 .product-item .right-content .addtocart-btn {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .product-item .right-content .addtocart-btn button {
@@ -344,6 +350,50 @@
   color: #ffa62b;
 }
 
+.product-item .filterCmt {
+  display: none;
+}
+
+.product-item .show {
+  display: block;
+}
+
+/* Style add comment */
+.product-item .bottom .add-comment {
+  margin-right: 4.2rem;
+  margin-left: 0.5rem;
+}
+
+.product-item .bottom .add-comment textarea {
+  margin-bottom: 1rem;
+  border: 1px solid #f2f2f2;
+  border-radius: 0.5rem;
+}
+
+.product-item .bottom .add-comment select {
+  padding: 0.4rem 0.5rem;
+  width: fit-content;
+  border: 1px solid #16697a;
+  outline: none;
+  border-radius: 0.2rem;
+  margin-right: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.product-item .bottom .add-comment button {
+  background-color: #ffa62b;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.product-item .bottom .add-comment button:hover {
+  background-color: #16697a;
+  transition: all .3s ease-in-out;
+}
+
 /***************************************/
 .product-item .bottom .comment-script .comment-content {
   display: flex;
@@ -361,7 +411,7 @@
   margin-top: 1rem;
 }
 
-@media (max-width: 995px) {
+@media (max-width: 1200px) {
   #edit-itemBtn {
     margin-bottom: 1rem;
   }
