@@ -98,13 +98,35 @@ class Home extends Controller{
             ]);
         }
         function Cart($user){
-            $this->view("Cart", []);
+            if($user == "member"){
+                $mem = $this->model("member");
+                $id = (int)mysqli_fetch_array($mem->get_id_user("hieu.phamgc", "helloworld"), MYSQLI_NUM)[0];
+                $this->view("Cart", [
+                    "product_in_cart" => $mem-> get_product_in_cart((int)$id),
+                    "user" => mysqli_fetch_array($mem->get_user((int)$id)),
+                    "id" => $id
+                ]);
+            }
+            else{
+                $this->Login($user);
+            }
         }
         function Login($user){
             $this->view("Login", []);
         }
         function Payment($user){
-            $this->view("Payment", []);
+            if($user == "member"){
+                $mem = $this->model("member");
+                $id = (int)mysqli_fetch_array($mem->get_id_user("hieu.phamgc", "helloworld"), MYSQLI_NUM)[0];
+                $this->view("Payment", [
+                    "product_in_cart" => $mem-> get_product_in_cart((int)$id),
+                    "user" => mysqli_fetch_array($mem->get_user((int)$id)),
+                    "id" => $id
+                ]);
+            }
+            else{
+                $this->Login($user);
+            }
         }
         function forgot($user){
             $this->view("forgot", []);
@@ -114,6 +136,12 @@ class Home extends Controller{
         }
         function insert_message($user, $array){
             $this->model($user)->insert_message($array[2], $array[3], $array[4], $array[5], $array[6]);
+        }
+        function update_user($user, $array){
+            $this->model($user)->update_user($array[2], $array[3], $array[4], $array[5]);
+        }
+        function delete_product_incart($user, $array){
+            $this->model($user)->delete_product_incart((int)$array[2]);
         }
 }
 ?>

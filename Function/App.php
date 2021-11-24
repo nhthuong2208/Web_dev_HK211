@@ -3,7 +3,7 @@ class App{
 //Home/Show/1/2
     protected $controller="Home"; //""
     protected $action="Home_page";
-    protected $user = "customer";
+    protected $user = "member";
     protected $params=[];
 
     function __construct(){
