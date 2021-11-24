@@ -1,3 +1,5 @@
+filterComment("all");
+
 // Add active class to the current control button (highlight it)
 let btnContainer = document.getElementById("filter-rating-btn");
 let tabs = btnContainer.getElementsByClassName("button-filter");
@@ -16,6 +18,79 @@ $(document).ready(function(){
     $('.main-img img').attr("src", $(this).attr("src"));
   })
 });
+
+function minus(element){
+  var a = Number(element.value) - 1;
+  if(a <= 0) element.value = 0;
+  else  element.value = a;
+}
+function plus(element){
+  var a = Number(element.value) + 1;
+  element.value = a;
+}
+function display_total(element1, element2, element3){
+  var a = element1.innerText[0] * element2.innerText;
+  console.log(element1.innerText);
+  if(a <= 0) element3.innerText = 0;
+  else element3.innerText = a + element1.innerText.slice(1, element1.innerText.length);
+}
+
+var right_content = document.getElementsByClassName("right-content")[0];
+var minusBtn = right_content.getElementsByClassName("minus-qty-btn")[0];
+var plusBtn = right_content.getElementsByClassName("plus-qty-btn")[0];
+var qty = right_content.getElementsByTagName("input")[0];
+
+minusBtn.onclick = function(){minus(qty);};
+plusBtn.onclick = function(){plus(qty)};
+
+
+function filterComment(c) {
+  let x;
+  x = document.getElementsByClassName("filterCmt");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (let i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+  if (!document.getElementById("if-no-cmt")) {
+  let check = false;
+  for(let i = 0; i < x.length; i++){
+    if (x[i].classList.contains("show")) {
+      check = true;
+    }
+  }
+  if (!check) {
+    document.getElementsByClassName("no-filter-cmt")[0].innerHTML = "<div class=\"card\"><div class=\"card-body\">No comment</div></div>";
+  } else {
+    document.getElementsByClassName("no-filter-cmt")[0].innerHTML = '';
+  }}
+}
+
+// Show filtered elements
+function addClass(element, name) {
+  let arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (let i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function removeClass(element, name) {
+  var arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (let i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
 
 // Get the modal
 var modal = document.getElementById("editItem-modal");

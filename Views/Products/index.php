@@ -93,10 +93,9 @@
                   if(empty($data["product"])) echo "empty product";
                   else{
                     foreach($data["product"] as $row){
-                      echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"> <a href=\"?url=Home/Item/\"><img src=\"" . $row["img"] .
+                      echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"><a href=\"?url=Home/Item/" . $row["id"] . "/\"><img src=\"" . $row["img"] .
                       "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a><div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
-                      "</h5><p class=\"card-text\">This is a longer card with supporting text below as a
-                      natural lead-in to additional content. This content is alittle bit longer.</p><div class=\"d-flex justify-content-between\">
+                      "</h5><p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p><div class=\"d-flex justify-content-between\">
                       <div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\"></i></button></div>
                       <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\"></i></div>
                       </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary\">Add to cart</button></div></div></div></div></div>";

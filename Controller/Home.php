@@ -22,8 +22,19 @@ class Home extends Controller{
                 "product" => $cus->get_products()
             ]);
         }
-        function Item($user){
-            $this->view("Item", []);
+        function Item($user, $pid){
+            $cus = $this->model($user);
+            $comment = $cus->get_item_comment($pid[2]);
+            $cmt_info = array();
+            foreach($comment as $cmt){
+                array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $cus->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
+            }
+            $this->view("Item", [
+                "product_id" => $cus->get_product_at_id($pid[2]),
+                "sub_img" => $cus->get_sub_img($pid[2]),
+                "cate_product" => $cus->get_product_same_cate($pid[2]),
+                "comment" => $cmt_info
+            ]);
         }
         function Contact_us($user){
             $this->view("Contact_US", []);

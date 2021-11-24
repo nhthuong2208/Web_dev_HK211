@@ -25,9 +25,10 @@ class App{
             unset($arr[1]);
         }
 
+        $this->params = [];
         // Params
         array_push($this->params,$this->user);
-        if(!empty($arr)) $this->params = array_push($this->params,$arr);
+        if(!empty($arr)) array_push($this->params,$arr);
         call_user_func_array([$this->controller, $this->action], $this->params );
 
     }
