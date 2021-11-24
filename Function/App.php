@@ -1,9 +1,8 @@
 <?php
 class App{
-//Home/Show/1/2
+//Home/Function/para/para
     protected $controller="Home"; //""
     protected $action="Home_page";
-    protected $user = "member";
     protected $params=[];
 
     function __construct(){
@@ -24,14 +23,12 @@ class App{
             }
             unset($arr[1]);
         }
-
         $this->params = [];
         // Params
-        $this->params = [];
-        // Params
-        array_push($this->params,$this->user);
+        if(isset($_SESSION["user"]))array_push($this->params,$_SESSION["user"]); //member / manager
+        else array_push($this->params, "customer");
         if(!empty($arr)) array_push($this->params,$arr);
-        call_user_func_array([$this->controller, $this->action], $this->params );
+        call_user_func_array([$this->controller, $this->action], $this->params);
 
     }
         // Home/function/parametors
