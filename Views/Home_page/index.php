@@ -71,8 +71,6 @@
 
 
     <div class="homepage">
-      
-  <?php if(isset($_SESSION["user"])) echo $_SESSION["user"];else echo "del";?>
       <div class="hero">
         <div class="row1">
           <div class="swiper-container slider-1">
