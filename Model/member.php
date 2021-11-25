@@ -77,18 +77,6 @@ class member extends customer{
                     GROUP BY `cart`.`ID`";
         return  mysqli_query($this->connect, $query);
     }
-    public function update_profile($id, $fname, $user, $pwd, $cmnd, $phone, $add, $path){
-        $query =    "UPDATE `account`
-                    SET `account`.`CMND` = \"" . $cmnd . "\",
-                        `account`.`FNAME` = \"" . $fname . "\",
-                        `account`.`PHONE` = \"" . $phone . "\",
-                        `account`.`ADDRESS` = \"" . $add . "\",
-                        `account`.`USERNAME` = \"" . $user . "\",
-                        `account`.`PWD` = \"" . $pwd . "\",
-                        `account`.`IMG_URL` = \"" . $path . "\"
-                    WHERE `account`.`ID` = " . $id ;
-        return mysqli_query($this->connect, $query);
-    }
     public function update_profile_nope_img($id, $fname, $user, $pwd, $cmnd, $phone, $add){
         $query =    "UPDATE `account`
                     SET `account`.`CMND` = \"" . $cmnd . "\",
@@ -112,6 +100,12 @@ class member extends customer{
     public function create_product_incart($pid, $oid, $quantity){
         $query =    "INSERT INTO `product_in_cart`(`product_in_cart`.`PID`, `product_in_cart`.`OID`, `product_in_cart`.`QUANTITY`)
                     VALUES (" . $pid . ", " . $oid . ", " . $quantity . ");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_pic($path){
+        $query =    "UPDATE `account`
+                    SET `account`.`IMG_URL` = \"" . $path . "\"
+                    WHERE `account`.`ID` = " . $id ;
         return mysqli_query($this->connect, $query);
     }
 }

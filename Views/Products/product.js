@@ -86,6 +86,8 @@ for (let index = 0; index < document.getElementsByClassName("addToCart").length;
   document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].remove();
 }
 
+
+
 function add_Product(element){
   if(user == "customer"){
     window.location.href = "?url=Home/Login/Products/";

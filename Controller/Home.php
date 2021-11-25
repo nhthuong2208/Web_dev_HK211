@@ -186,17 +186,24 @@ class Home extends Controller{
         function add_item_comment($user, $array){
             $this->model($user)->add_item_comment($array[2], $array[3], $array[4], $_SESSION["id"]);
         }
+        function update_pic($user){
+            if(isset($_FILES["file_pic"])){
+                if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
+                    move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
+                $this->model($user)->update_pic('./Views/images/' . $_FILES['file_pic']['name']);
+                echo "pic";
+            }
+            else echo "nope";
+        }
         function update_profile($user){
             if( isset($_POST["fname"]) && isset($_POST["username"]) && isset($_POST["pwd"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
             {
                 if(isset($_FILES["file_pic"])){
                     if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
                         move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
-                    $this->model($user)->update_profile($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"], './Views/images/' . $_FILES['file_pic']['name']);
+                    $this->model($user)->update_pic('./Views/images/' . $_FILES['file_pic']['name']);
                 }
-                else{
-                    $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
-                }
+                $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
             }
             $this->member_page($user);
             
