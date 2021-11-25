@@ -33,7 +33,8 @@ class Home extends Controller{
                 "product_id" => $cus->get_product_at_id($pid[2]),
                 "sub_img" => $cus->get_sub_img($pid[2]),
                 "cate_product" => $cus->get_product_same_cate($pid[2]),
-                "comment" => $cmt_info
+                "comment" => $cmt_info,
+                "user" => $user
             ]);
         }
         function Contact_us($user){
@@ -183,6 +184,9 @@ class Home extends Controller{
             else{
                 $this->Login($user, "member_page");
             }
+        }
+        function add_item_comment($user, $array){
+            $this->model($user)->add_item_comment($array[2], $array[3], $array[4], $_SESSION["id"]);
         }
 }
 ?>

@@ -458,4 +458,7 @@
   .product-item .bottom .comment-rating .filter-rating #filter-rating-btn {
     margin-bottom: 1rem;
   }
+  .product-item .bottom .comment-rating .filter-rating #filter-rating-btn button {
+    font-size: small;
+  }
 }
