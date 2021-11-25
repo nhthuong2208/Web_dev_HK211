@@ -30,7 +30,7 @@
         <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="?url=Home/Cart/"><i class="fas fa-shopping-cart"></i> Cart</a></button>
       </div>
 
-      <div class="login-button">
+      <div class="login-button">       
         <button class="btn btn-primary" type="button"><a href="?url=Home/Login/"><i class="fas fa-sign-in-alt"></i> Login</a></button>
       </div>
     </nav>

@@ -450,12 +450,15 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .product-item .bottom .comment-rating .filter-rating {
     flex-direction: column;
   }
 
   .product-item .bottom .comment-rating .filter-rating #filter-rating-btn {
     margin-bottom: 1rem;
+  }
+  .product-item .bottom .comment-rating .filter-rating #filter-rating-btn button {
+    font-size: small;
   }
 }

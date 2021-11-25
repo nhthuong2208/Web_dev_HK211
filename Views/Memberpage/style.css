@@ -17,6 +17,10 @@ img{
     border: 1px solid black;
     border-radius: 50%;
 }
+.profile{
+    width: 250px !important;
+    height: auto;
+}
 .max-width-400{
     max-width: 400px !important;
 }

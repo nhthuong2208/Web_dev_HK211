@@ -78,19 +78,22 @@ console.log(list);
 document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
   var children = document.getElementsByClassName("node");
   var string = children.length;
-  for(var i = 0; i < children.length; i++){
-        string += "/" + children[i].parentNode.value + "/" + children[i].getElementsByClassName("value_click")[0].innerText + "/" + children[i].getElementsByTagName("select")[0].value;
-  }
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function(){
-    console.log(this.responseText);
-    if (this.readyState == 4 && this.status == 200) {
-        window.location.href = this.responseText;
+  if( children.length != 0){
+    for(var i = 0; i < children.length; i++){
+          string += "/" + children[i].parentNode.value + "/" + children[i].getElementsByClassName("value_click")[0].innerText + "/" + children[i].getElementsByTagName("select")[0].value;
     }
-  };
-  xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);
-  xmlhttp.send();
-
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+      if (this.readyState == 4 && this.status == 200) {
+          window.location.href = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);
+    xmlhttp.send();
+  }
+  else{
+    alert("Mời bạn mua sắm thêm sản phẩm");
+  }
 };
 /***********************************************************/
 
@@ -118,7 +121,6 @@ button.onclick = function(){
   var input = button.parentNode.getElementsByTagName("input");
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
-    console.log(this.responseText);
     modal.style.display = "none";
   };
   xmlhttp.open("GET", "?url=Home/update_user/" + button.value + "/" + input[0].value + "/" + input[1].value + "/" + input[2].value + "/", true);

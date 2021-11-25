@@ -92,5 +92,12 @@ class customer extends DB{
                             AND `account`.`PWD` = \"" . $pwd ."\";";
         return mysqli_query($this->connect, $query);
     }
+    function add_item_comment($content, $rating, $item_name, $uid){
+        $sql = "SELECT `product`.ID AS `id` FROM `product` WHERE `product`.NAME = \"" . $item_name . "\";";
+        $pid = mysqli_fetch_array(mysqli_query($this->connect, $sql));
+        $query = "INSERT INTO `comment`(`comment`.PID, `comment`.UID, `comment`.STAR, `comment`.CONTENT, `comment`.TIME) VALUE
+                  (" . $pid["id"] . ", " . $uid . ", " . (int)$rating . ", \"" . $content . "\", \"" . date("Y/m/d") . "\")";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

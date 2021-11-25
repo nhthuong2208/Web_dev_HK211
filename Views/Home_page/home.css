@@ -9,9 +9,9 @@
 .hero .row1 {
   width: 100%;
 }
-.noneheight{
+/* .noneheight{
   height: unset !important;
-}
+} */
 
 .hero .row1 {
   position: relative;

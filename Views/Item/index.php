@@ -114,8 +114,9 @@
                   }
                   echo "
                   </p>
-                  <p class=\"item-price\">" . $row_product["price"] . "đ</p>
-                  <div class=\"select-quantity\">
+                  <p class=\"item-price\">" . $row_product["price"] . "đ</p>";
+                  if($data["user"] == "customer"){
+                  echo "<div class=\"select-quantity\">
                     Chọn số lượng
                     <div style=\"text-align: left;\" class=\"quantity-section\">
                       <div class=\"minus-qty-btn\"><i class=\"fas fa-minus-circle\"></i></div>
@@ -125,11 +126,83 @@
                   </div>
                   <div class=\"addtocart-btn\">
                     <button type=\"button\" class=\"btn btn-primary\">Add to cart <i class=\"fas fa-shopping-cart\"></i></button>
-                  </div>
-                  <div class=\"descript-item\">
-                    <h3>Chi tiết sản phẩm</h3>
-                    <p>" . $row_product["decs"] . "</p>
                   </div>";
+                  echo "<div class=\"descript-item\">
+                          <h3>Chi tiết sản phẩm</h3>
+                          <p>" . $row_product["decs"] . "</p>
+                        </div>";
+                }
+                  else if($data["user"] == "member"){
+                    echo "<div class=\"descript-item\">
+                          <h3>Chi tiết sản phẩm</h3>
+                          <p>" . $row_product["decs"] . "</p>
+                        </div>";
+                    echo "<button type=\"button\" id=\"edit-itemBtn\">Chỉnh sửa</button>
+              
+                    <div id=\"editItem-modal\" class=\"edit-item-modal\">
+                      <div class=\"editItem-modal-content\">
+                        <div class=\"editItem-modal-header\">
+                          <span class=\"close-modal-edit\">&times;</span>
+                          <h2>Chỉnh sửa sản phẩm</h2>
+                        </div>
+                        <div class=\"editItem-modal-body\">
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"id\">
+                              Id:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"id\" placeholder=\"Nhập id sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"name\">
+                              Tên sản phẩm:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" placeholder=\"Nhập tên sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"price\">
+                              Giá:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"image-url\">
+                              Ảnh sản phẩm:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"image-url\" placeholder=\"Nhập link ảnh sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"description\">
+                              Mô tả:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"remain\">
+                              Số lượng tồn kho:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" placeholder=\"Nhập số lượng sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\">
+                              Loại:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select>
+                                <option selected disabled>Chọn loại</option>
+                                <option value=\"shirt\">Áo</option>
+                                <option value=\"trousers\">Quần</option>
+                                <option value=\"accessories\">Phụ kiện</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class=\"btn-conf-edit\">
+                            <button type=\"button\">Xác nhận</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>";
+                  }
+                  
                 }
               ?>
               <!-- <h2 class="title-item">Mũ Bucket Hat thêu Be Cool!!!</h2>
@@ -190,7 +263,7 @@
           </div>
           <div class="comment-rating" id="rate-cmt">
             <div class="row">
-              <div class="col-lg-3 star-numbers">
+              <div class="col-lg-2 star-numbers">
                 <?php
                   if(empty($data["comment"])) {
                     echo "Chưa có đánh giá";
@@ -199,17 +272,13 @@
                     $sum .
                     "<span>
                       <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
                     </span>
                   </div>
                   <div class=\"according-to\">Theo " . count($data["comment"]) .  " đánh giá</div>";
                   }
                 ?>
               </div>
-              <div class="col-lg-9">
+              <div class="col-lg-10">
                 <p>Lọc đánh giá</p>
                 <div class="filter-rating">
                   <span id="filter-rating-btn">
@@ -263,31 +332,41 @@
                         <p>" . $row["time"] . "</p>
                       </div>
                     </div>
-                    <div class=\"script-cmt\">
-                      <p>" . $row["content"] . "</p>
+                    <div class=\"comment-content\">
+                      <div class=\"script-cmt\">
+                        <p>" . $row["content"] . "</p>
+                      </div>";
+                    if($data["user"] == "manager"){
+                      echo "<div><i class=\"fas fa-trash-alt\"></i></div>";
+                    }
+                echo "</div>
                     </div>
-                  </div>
                 </div>";
                 }
               }
             ?>
           </div>
-          <div class="add-comment">
-            <form action="" onsubmit="return false;">
-              <div class="row">
-                <textarea name="comment-content" placeholder="Viết bình luận ..."></textarea>
-                <select>
-                  <option selected disabled>Chọn số sao</option>
-                  <option>5</option>
-                  <option>4</option>
-                  <option>3</option>
-                  <option>2</option>
-                  <option>1</option>
-                </select>
-              </div>
-              <button type="button" class="btn-add-cmt">Bình luận</button>
-            </form>
-          </div>
+          <?php
+            if($data["user"] == "member") {
+              echo "<div class=\"add-comment\">
+                      <form action=\"\" onsubmit=\"return false;\">
+                        <div class=\"row\">
+                          <textarea name=\"comment-content\" placeholder=\"Viết bình luận ...\"></textarea>
+                          <select>
+                            <option selected disabled>Chọn số sao</option>
+                            <option>5</option>
+                            <option>4</option>
+                            <option>3</option>
+                            <option>2</option>
+                            <option>1</option>
+                          </select>
+                        </div>
+                        <button type=\"button\" class=\"btn-add-cmt\">Bình luận</button>
+                      </form>
+                    </div>";
+            } 
+          ?>
+          
         </div>
         
       </div>

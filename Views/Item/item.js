@@ -40,8 +40,8 @@ var minusBtn = right_content.getElementsByClassName("minus-qty-btn")[0];
 var plusBtn = right_content.getElementsByClassName("plus-qty-btn")[0];
 var qty = right_content.getElementsByTagName("input")[0];
 
-minusBtn.onclick = function(){minus(qty);};
-plusBtn.onclick = function(){plus(qty)};
+if(minusBtn) minusBtn.onclick = function(){minus(qty);};
+if(plusBtn) plusBtn.onclick = function(){plus(qty)};
 
 
 function filterComment(c) {
@@ -90,6 +90,20 @@ function removeClass(element, name) {
     }
   }
   element.className = arr1.join(" ");
+}
+
+document.getElementsByClassName("add-comment")[0].getElementsByTagName("button")[0].onclick = function(){
+  var text = document.getElementsByClassName("add-comment")[0].getElementsByTagName("textarea");
+  var selection = document.getElementsByClassName("add-comment")[0].getElementsByTagName("select");
+  var item = document.getElementsByClassName("right-content")[0].getElementsByClassName("title-item")[0].innerHTML;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    document.getElementsByClassName("add-comment")[0].getElementsByTagName("form")[0].reset();
+    
+  };
+  xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + item, true);
+  xmlhttp.send();
 }
 
 // Get the modal

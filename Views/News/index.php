@@ -66,7 +66,7 @@
 						<p class=\"text-muted\">
 							" . $new_news["shortcontent"] ."
 						</p>";
-						if($data["user"] == "customer"){
+						if($data["user"] != "manager"){
 							echo "<a href=\"?url=Home/News_detail/". (count($data["news"])) . "\">
 								<button type=\"button\" class=\"btn btn-warning mt-3\" >Đọc thêm</button>
 							</a>";
