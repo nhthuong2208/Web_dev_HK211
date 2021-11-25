@@ -31,7 +31,6 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;1,200;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/721412f694.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
@@ -52,101 +51,58 @@
           <div class="col-12 col-md-6 white nonepad">
             <h3>Các sản phẩm của bạn</h3>
             <div class="row nonemg">
-              <div class="col-12">
-                <div class="row node nonemg">
-                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                    </div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div class="col-12">
-                                <h5>Áo trơn</h5>
+              <?php 
+              $count = 0;
+              $total = 0;
+                    if(empty($data["product_in_cart"])) echo "empty";
+                    else{
+                      foreach($data["product_in_cart"] as $row){
+                        $count += 1;
+                        $total += (int)$row["price"]*$row["num"];
+                        echo "<div class=\"col-12\">
+                        <div class=\"row node nonemg\"><span hidden>" . $row["oid"] . "</span>
+                            <div class=\"col-4 d-flex flex-wrap align-content-center justify-content-center\">
+                                <img src=\"" . $row["img"] . "\" alt=\"item\">
                             </div>
-
-                            <div class="col-12">Size: <span>S</span></div>
-                            <div class="col-12">Số lượng: <span>2</span></div>
-                            <div class="col-12">Tổng cộng: <span>200.000(VND)</span></div>
+                            <div class=\"col-8\">
+                                <div class=\"row\">
+                                    <div class=\"col-12\">
+                                        <h5>" . $row["name"] . "</h5>
+                                    </div>
+        
+                                    <div class=\"col-12\">Size: <span>" . $row["size"] . "</span></div>
+                                    <div class=\"col-12\">Số lượng: <span>" . $row["num"] . "</span></div>
+                                    <div class=\"col-12\">Tổng cộng: <span class=\"price\">" . $row["price"]*$row["num"] . "(đ)</span></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row node nonemg">
-                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                    </div>
-                    <div class="col-8">
-                        <div class="row">
-                          <div class="col-12">
-                              <h5>Áo trơn</h5>
-                          </div>
-
-                            <div class="col-12">Size: <span>S</span></div>
-                            <div class="col-12">Số lượng: <span>2</span></div>
-                            <div class="col-12">Tổng cộng: <span>200.000(VND)</span></div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row node nonemg">
-                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                    </div>
-                    <div class="col-8">
-                        <div class="row">
-                          <div class="col-12">
-                              <h5>Áo trơn</h5>
-                          </div>
-
-                            <div class="col-12">Size: <span>S</span></div>
-                            <div class="col-12">Số lượng: <span>2</span></div>
-                            <div class="col-12">Tổng cộng: <span>200.000(VND)</span></div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row node nonemg">
-                    <div class="col-4 d-flex flex-wrap align-content-center justify-content-center">
-                        <img src="./Views/images/ao.jpg" alt="ao 1">
-                    </div>
-                    <div class="col-8">
-                        <div class="row">
-                          <div class="col-12">
-                              <h5>Áo trơn</h5>
-                          </div>
-
-                            <div class="col-12">Size: <span>S</span></div>
-                            <div class="col-12">Số lượng: <span>2</span></div>
-                            <div class="col-12">Tổng cộng: <span>200.000(VND)</span></div>
-                        </div>
-                    </div>
-                </div>
-              </div>
+                      </div>";
+                      }
+                    }
+              ?>
             </div>
           </div>
           <div class="col-12 col-md-6 col-xl-4 white nonepad body_2">
               <h3>Phương thức thanh toán</h3>
               <div class="row d-flex justify-content-center nonemg">
-                <div class="col-12 d-flex justify-content-center cart">
-                  <div class="row d-flex justify-content-center">
-                    <div class="col-1"><input type="radio" name="cart" id="credit"></div>
-                    <div class="col-6"><label for="credit"><h5>Credit Card</h5></label></div>
-                    <div class="col-5"><label for="credit"><img src="./Views/images/visa.png" alt="Visa picture" ></label></div>
+                <div class="col-12 cart_node">
+                  <div class="row">
+                    <div class="col-2"><input type="radio" name="cart_node" id="credit"></div>
+                    <div class="col-5"><label for="credit"><h5>Credit Card</h5></label></div>
+                    <div class="col-5 d-flex justify-content-end"><label for="credit"><img src="./Views/images/visa.png" alt="Visa picture" ></label></div>
                   </div>
                 </div>
-                <div class="col-12 cart">
+                <div class="col-12 cart_node">
                   <div class="row">
-                    <div class="col-1"><input type="radio" name="cart" id="momo"></div>
-                    <div class="col-6"><label for="momo"><h5>MoMo</h5></label></div>
+                    <div class="col-2"><input type="radio" name="cart_node" id="momo"></div>
+                    <div class="col-5"><label for="momo"><h5>MoMo</h5></label></div>
                     <div class="col-5 d-flex justify-content-end"><label for="momo"><img src="./Views/images/MoMo Logo.png" alt="MoMo picture" ></label></div>
                   </div>
                 </div>
-                <div class="col-12 cart">
+                <div class="col-12 cart_node">
                   <div class="row">
-                    <div class="col-1"><input type="radio" name="cart" id="paypal"></div>
-                    <div class="col-6"><label for="paypal"><h5>Paypal</h5></label></div>
+                    <div class="col-2"><input type="radio" name="cart_node" id="paypal"></div>
+                    <div class="col-5"><label for="paypal"><h5>Paypal</h5></label></div>
                     <div class="col-5 d-flex justify-content-end"><label for="paypal"><img src="./Views/images/paypal.png" alt="paypal picture" ></label></div>
                   </div>
                 </div>
@@ -156,29 +112,29 @@
                 <h4>Tổng kết hóa đơn</h4>
                 <div class="col-12">
                   <div class="d-flex justify-content-between">
-                    <h6>Tổng phụ (4 sản phẩm)</h6><span>800.000(VND)</span>
+                    <h6>Tổng phụ (<?php echo $count;?> sản phẩm)</h6><span><?php echo $total ?></span>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="d-flex justify-content-between">
-                    <h6>Phí ship</h6><span>23.000(VND)</span>
+                    <h6>Phí ship</h6><span>23,000(đ)</span>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="d-flex justify-content-between">
-                    <h6>Giảm giá</h6><span>5.000(VND)</span>
+                    <h6>Giảm giá</h6><span>5,000(đ)</span>
                   </div>
                 </div>
                 
                 <div class="col-12">
                   <div class="d-flex justify-content-between line-top">
-                    <h6>Tổng cộng </h6><span>800.000(VND)</span>
+                    <h6>Tổng cộng </h6><span></span>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="d-flex flex-wrap justify-content-end">
-                    <button id="myBtn" type="button" class="btn btn-primary"><a href="?url=Home/Cart/" style="color: white">Hủy đơn</a></button>
-                    <button type="button" class="btn btn-primary"><a href="?url=Home/Home_page/" style="color: white;">Thanh toán</a></button>
+                    <button id="myBtn" type="button" class="btn btn-primary"><a href="?url=/Home/Cart/">Hủy đơn</a></button>
+                    <button type="button" class="btn btn-primary">Thanh toán</button>
                   </div>
                 </div>
               </div>

@@ -11,7 +11,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../images/Logo BK_vien trang.png"
+      href="./Views/images/Logo BK_vien trang.png"
     />
 
     <!-- link icon -->
@@ -46,7 +46,7 @@
     
     <!--Nav-->
     <div class="navbar-holder sticky-top"></div>
-    <script src="../Views/Navbar/navbarScript.js" index='5' type="text/javascript"></script>
+    <script src="./Views/Navbar/navbarScript.js" index='5' type="text/javascript"></script>
     <!--Nav-->
 
     <!--Body-->
@@ -56,102 +56,78 @@
                 <div class="row justify-content-center margin-none">
                     <div class="col-12 mb-4 mt-4 border_bot">
                         <div class="row align-item-center align-content-center margin-none">
-                            <div class="col-4 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                            <div class="col-8 d-flex mt-2"><h4>Phạm Minh Hiếu</h4></div>
+                            <div class="col-4 d-flex justify-content-center"><img src="<?php foreach($data["user"] as $row) echo $row["img"];?>" alt="profile"></div>
+                            <div class="col-8 d-flex mt-2"><h4><?php foreach($data["user"] as $row) echo $row["name"];?></h4></div>
                         </div>
                     </div>
                     <div class="col-12 p-1 m-1 myactive border_bot">
-                        <div class="row margin-none">
+                        <div class="row margin-none point">
                             <div class="col-2"><i class="fas fa-info-circle"></i></div>
-                            <div class="col-10 paddingr-none"><h5>Thông tin cá nhân</h5></div>
+                            <div class="col-10 paddingr-none click"><h5>Thông tin cá nhân</h5></div>
                         </div>
                     </div>
                     <div class="col-12 p-1 m-1 border_bot">
-                        <div class="row margin-none">
+                        <div class="row margin-none point">
                             <div class="col-2"><i class="fas fa-shopping-cart"></i></div>
-                            <div class="col-10 paddingr-none"><h5>Lịch sử giao dịch</h5></div>
+                            <div class="col-10 paddingr-none click"><h5>Lịch sử giao dịch</h5></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-8 col-xl-8 pb-5">
-                <div class="row">
+                <div class="row click">
                     <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
                     <div class="col-12 border_bot mt-5 mb-3 ">
                         <div class="row justify-content-center">
                             <div class="col-5 col-md-3">Họ tên:</div>
-                            <div class="col-7 col-md-8">Phạm Minh Hiếu</div>
+                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["name"];?></div>
                             <div class="col-5 col-md-3">Tên đăng nhập:</div>
-                            <div class="col-7 col-md-8">hieu.phamgc</div>
-                            <div class="col-5 col-md-3">Email:</div>
-                            <div class="col-7 col-md-8">hieu.phamgc@gmail.com</div>
+                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["username"];?></div>
+                            <div class="col-5 col-md-3">CMND/CCCD:</div>
+                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["cmnd"];?></div>
                             <div class="col-5 col-md-3">Số điện thoại:</div>
-                            <div class="col-7 col-md-8">0973409127</div>
+                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["phone"];?></div>
                             <div class="col-5 col-md-3">Địa chỉ:</div>
-                            <div class="col-7 col-md-8">165 Trương Định, khu phố 2, phường 5, tx Gò Công, tỉnh Tiền Giang</div>
+                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["add"];?></div>
                         </div>
                     </div>
                     <div class="col-6 mt-3"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button></div>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center click">
                     <div class="col-12 mt-4 border_bot"><h1>Đơn hàng đã đặt</h1></div>
                     <div class="col-12 mt-3 d-flex flex-wrap">
-                        <div class="row justify-content-center node">
-                            <div class="col-12 border_bot"><div class="d-flex justify-content-between"><h4>Mã hóa đơn: #123</h4><h4>Đã giao</h4></div></div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-3 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                                    <div class="col-9">
-                                        <div class="row">
-                                            <div class="col-12"><h5>Tên sản phẩm</h5></div>
-                                            <div class="col-12">Số lượng: 2</div>
-                                            <div class="col-12">Tổng tiền: 1000000(VND)</div>
+                        <?php 
+                        if(!empty($data["idcart"])){
+                            foreach($data["idcart"] as $row_cart){
+                                $total = 0;
+                                $h4 = "";
+                                if((int)$row_cart["state"] == 0) $h4 = "Chưa thanh toán";
+                                else $h4 = $row_cart["time"];
+                                echo "<div class=\"row justify-content-between node\">
+                                <div class=\"col-12 border_bot\"><div class=\"d-flex justify-content-between\"><h4>Mã hóa đơn: #" . $row_cart["id"] . "</h4><h4>" . $h4 . "</h4></div></div>";
+                                
+                                foreach($data["product_in_cart"] as $row_pro){
+                                    $row = mysqli_fetch_array($row_pro);
+                                    $total += (int)$row["price"]*(int)$row["num"];
+
+                                    echo "<div class=\"col-12 col-md-6\">
+                                        <div class=\"row\">
+                                            <div class=\"col-5 d-flex justify-content-center\"><img src=\"" . $row["img"] . "\" alt=\"item\"></div>
+                                            <div class=\"col-7\">
+                                                <div class=\"row\">
+                                                    <div class=\"col-12\"><h5>" . $row["name"] . "</h5></div>
+                                                    <div class=\"col-12\">Số lượng: " . $row["num"] . "</div>
+                                                    <div class=\"col-12 price\">Tổng tiền: " . $row["num"] * $row["price"] . "</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="row ">
-                                    <div class="col-3 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                                    <div class="col-9">
-                                        <div class="row">
-                                            <div class="col-12"><h5>Tên sản phẩm</h5></div>
-                                            <div class="col-12">Số lượng: 2</div>
-                                            <div class="col-12">Tổng tiền: 1000000(VND)</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">Tổng cộng: 2000000(VND)</div>
-                        </div>
-                        <div class="row justify-content-center node">
-                            <div class="col-12 border_bot"><div class="d-flex justify-content-between"><h4>Mã hóa đơn: #123</h4><h4>Đã giao</h4></div></div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-3 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                                    <div class="col-9">
-                                        <div class="row flex-column justify-content-between">
-                                            <div class="col-12"><h5>Tên sản phẩm</h5></div>
-                                            <div class="col-12">Số lượng: 2</div>
-                                            <div class="col-12">Tổng tiền: 1000000(VND)</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="row ">
-                                    <div class="col-3 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                                    <div class="col-9">
-                                        <div class="row">
-                                            <div class="col-12"><h5>Tên sản phẩm</h5></div>
-                                            <div class="col-12">Số lượng: 2</div>
-                                            <div class="col-12">Tổng tiền: 1000000(VND)</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">Tổng cộng: 2000000(VND)</div>
-                        </div>  
+                                    </div>";
+                                }
+                                echo "<div class=\"col-12 price\">Tổng cộng: " . $total ."</div>
+                                </div>";
+                            }
+                        }
+                        ?> 
                     </div>
                 </div>
             </div>
@@ -161,7 +137,8 @@
 
     <!--Footer-->
       <div class="footer-holder"></div>
-      <script src="../Views/Navbar/footerScript.js"></script>
+      <script src="./Views/footer/footerScript.js"></script>
+      <script src="./Views/Memberpage/myscript.js"></script>
     <!--Footer-->
   </body>
 </html>

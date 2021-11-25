@@ -84,6 +84,12 @@
           <div class="col-xl-7">
             <div class="right-content">
               <?php
+              
+              $sum = 0;
+              $sum_1 = 0;
+              $sum_2 = 0;
+              $sum_3 = 0;
+              $sum_4 = 0;
                 if(empty($data["product_id"])) echo "empty product";
                 else {
                   echo "<h2 class=\"title-item\">" . $row_product["name"] . "</h2>
@@ -91,11 +97,6 @@
                   if(empty($data["comment"])) {
                     echo "Chưa có đánh giá";
                   } else {
-                    $sum = 0;
-                    $sum_1 = 0;
-                    $sum_2 = 0;
-                    $sum_3 = 0;
-                    $sum_4 = 0;
                     foreach($data["comment"] as $cmt) {
                       $sum += $cmt["star"];
                       if ($cmt["star"] == "1") {

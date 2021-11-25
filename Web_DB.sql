@@ -27,6 +27,7 @@ CREATE TABLE `ACCOUNT` (
   `ADDRESS` TEXT,
   `USERNAME` VARCHAR(50),
   `PWD` VARCHAR(50),
+  `IMG_URL`  VARCHAR(250),
   `RANK` INT
 );
 CREATE TABLE `CART`(
@@ -125,9 +126,9 @@ INSERT INTO `product`(`product`.`ID`, `product`.`NAME`, `product`.`PRICE`, `prod
 (4, "Bucket Hat", 150000, "https://mcdn2.coolmate.me/uploads/November2021/b6_73.jpg", 20, "Nếu bạn đã sở hữu những chiếc mũ lưỡi trai thuần nam tính hoặc những dáng mũ fedora lịch lãm, kiểu dáng mũ cao bồi cách điệu bụi bặm, và đang muốn tìm cho mình một chiếc mũ mang đến vẻ trẻ trung, năng động thì Bucket Hat chính là câu trả lời của bạn đây. Care & Share ra mắt phiên bản mũ Bucket Hat cùng với nhiều thiết kế ấn tượng nhưng không hề mất đi vẻ nam tính, đơn giản của bạn khi mang chiếc mũ này nhé!", "Accessories", 1);
 
 -- account
-INSERT INTO `account`(`account`.`CMND`, `account`.`FNAME`, `account`.`PHONE`, `account`.`ADDRESS`, `account`.`USERNAME`, `account`.`PWD`, `account`.`RANK`)VALUES
-("312451293", "Phạm Minh Hiếu", "0973409127", "tx Gò Công, Tiền Giang", "hieu.phamgc", "helloworld", 100),
-("312451746", "Nguyễn Hoài Thương", "0869125690", "tx Gò Công, Tiền Giang", "nhthuong", "helloworld", 100);
+INSERT INTO `account`(`account`.`CMND`, `account`.`FNAME`, `account`.`PHONE`, `account`.`ADDRESS`, `account`.`USERNAME`, `account`.`PWD`, `account`.`IMG_URL`, `account`.`RANK`)VALUES
+("312451293", "Phạm Minh Hiếu", "0973409127", "tx Gò Công, Tiền Giang", "hieu.phamgc", "helloworld", "./Views/images/profile.png", 100),
+("312451746", "Nguyễn Hoài Thương", "0869125690", "tx Gò Công, Tiền Giang", "nhthuong", "helloworld", "./Views/images/profile.png", 100);
 
 -- comment
 INSERT INTO `comment`(`comment`.`PID`, `comment`.`UID`, `comment`.`STAR`, `comment`.`CONTENT`, `comment`.`TIME`) VALUES
@@ -154,7 +155,10 @@ INSERT INTO `cycle`(`cycle`.`ID`, `cycle`.`CYCLE`) VALUES
 (2, "30 ngày"),
 (3, "45 ngày");
 -- cart
-INSERT INTO `cart`(`cart`.`UID`, `cart`.`TIME`) VALUES(1, "2021/11/24");
+INSERT INTO `cart`(`cart`.`UID`, `cart`.`TIME`) VALUES
+(1, "2021/11/24"),
+(1, "2021/11/25"), 
+(1, "2021/11/25");
 -- product_in_cart
 INSERT INTO `product_in_cart` (`product_in_cart`.`PID`, `product_in_cart`.`OID`) VALUES
 (1, 1),

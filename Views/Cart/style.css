@@ -50,6 +50,9 @@ select{
     border-top: 2px solid black;
     overflow: auto;
 }
+.container-fuild > .row > .col-12 > .row > .col-xxl-11:nth-child(2){
+    min-height: 250px;
+}
 .container-fuild > .row > .col-12 > .row > .col-xxl-11:nth-child(2)::-webkit-scrollbar{
     width: 10px;
 }

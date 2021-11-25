@@ -75,32 +75,37 @@
             </div>
             <div class="col-12 col-lg-8 col-xl-8 pb-5">
                 <div class="row">
-                    <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
-                    <div class="col-12 border_bot mt-5 mb-3 ">
-                        <div class="row justify-content-center">
-                            <div class="col-5 col-md-3">Họ tên:</div>
-                            <div class="col-7 col-md-8">Phạm Minh Hiếu</div>
-                            <div class="col-5 col-md-3">Tên đăng nhập:</div>
-                            <div class="col-7 col-md-8">hieu.phamgc</div>
-                            <div class="col-5 col-md-3">Email:</div>
-                            <div class="col-7 col-md-8">hieu.phamgc@gmail.com</div>
-                            <div class="col-5 col-md-3">Số điện thoại:</div>
-                            <div class="col-7 col-md-8">0973409127</div>
-                            <div class="col-5 col-md-3">Địa chỉ:</div>
-                            <div class="col-7 col-md-8">165 Trương Định, khu phố 2, phường 5, tx Gò Công, tỉnh Tiền Giang</div>
+                    <form action="?url=Home/updateprofile" method="post">
+                        <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
+                        <div class="col-12 border_bot mt-3 mb-3 ">
+                            <div class="row justify-content-center">
+                                <div class="col-12 d-flex justify-content-center mb-3"><label for="file_pic" style="cursor: pointer;"><img src="./profile.jpg" alt="profile"></label><input type="file" id="file_pic" hidden></div>
+                                <div class="col-5 col-md-3">Họ tên:</div>
+                                <div class="col-7 col-md-8"><input type="text" name="fname" value="Phạm Minh Hiếu"></div>
+                                <div class="col-5 col-md-3">Tên đăng nhập:</div>
+                                <div class="col-7 col-md-8"><input type="text"  name="username" value="Phạm Minh Hiếu"></div>
+                                <div class="col-5 col-md-3">Mật khẩu:</div>
+                                <div class="col-7 col-md-8"><input type="password"  name="pwd" value="Phạm Minh Hiếu"></div>
+                                <div class="col-5 col-md-3">CMND/CCCD:</div>
+                                <div class="col-7 col-md-8"><input type="text"  name="cmnd" value="Phạm Minh Hiếu"></div>
+                                <div class="col-5 col-md-3">Số điện thoại:</div>
+                                <div class="col-7 col-md-8"><input type="text"  name="phone" value="Phạm Minh Hiếu"></div>
+                                <div class="col-5 col-md-3">Địa chỉ:</div>
+                                <div class="col-7 col-md-8"><input type="text"  name="address" value="tx Gò Công, Tiền Giang"></div>
+                            </div>
                         </div>
-                    </div>
                     <div class="col-6 mt-3"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button></div>
+                    </form>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-12 mt-4 border_bot"><h1>Đơn hàng đã đặt</h1></div>
                     <div class="col-12 mt-3 d-flex flex-wrap">
                         <div class="row justify-content-center node">
                             <div class="col-12 border_bot"><div class="d-flex justify-content-between"><h4>Mã hóa đơn: #123</h4><h4>Đã giao</h4></div></div>
-                            <div class="col-12">
+                            <div class="col-12 col-md-6">
                                 <div class="row">
-                                    <div class="col-3 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                                    <div class="col-9">
+                                    <div class="col-5 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
+                                    <div class="col-7">
                                         <div class="row">
                                             <div class="col-12"><h5>Tên sản phẩm</h5></div>
                                             <div class="col-12">Số lượng: 2</div>
@@ -109,10 +114,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 col-md-6">
                                 <div class="row ">
-                                    <div class="col-3 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
-                                    <div class="col-9">
+                                    <div class="col-5 d-flex justify-content-center"><img src="./profile.jpg" alt="profile"></div>
+                                    <div class="col-7">
                                         <div class="row">
                                             <div class="col-12"><h5>Tên sản phẩm</h5></div>
                                             <div class="col-12">Số lượng: 2</div>

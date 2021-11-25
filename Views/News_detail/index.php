@@ -156,7 +156,7 @@
 								</div>	
 							</div>";
 
-							if($data["user"] == "customer"){
+							if($data["user"] != "customer"){
 								echo "<div class=\"text-end\">
 									<input type=\"text\" value=\"" .($id - 1). "\" name =\"car_id\" hidden>
 									<button type=\"button\" class=\"btn  btn-block\" data-bs-toggle=\"modal\"

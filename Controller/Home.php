@@ -13,7 +13,6 @@ class Home extends Controller{
             ]);
         }
         function About_us($user){
-            echo $user;
             $this->view("About_US", []);
         }
         function Products($user){
@@ -25,9 +24,16 @@ class Home extends Controller{
         }
         function Item($user, $pid){
             $cus = $this->model($user);
+            $comment = $cus->get_item_comment($pid[2]);
+            $cmt_info = array();
+            foreach($comment as $cmt){
+                array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $cus->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
+            }
             $this->view("Item", [
-                "product_id" => $cus->get_product_at_id($pid),
-                "sub_img" => $cus->get_sub_img($pid)
+                "product_id" => $cus->get_product_at_id($pid[2]),
+                "sub_img" => $cus->get_sub_img($pid[2]),
+                "cate_product" => $cus->get_product_same_cate($pid[2]),
+                "comment" => $cmt_info
             ]);
         }
         function Contact_us($user){
@@ -49,8 +55,34 @@ class Home extends Controller{
                     "shortcontent" => $snews["short_content"]]));
             }
             $this->view("News", [
-                "news" => $news_list
+                "news" => $news_list,
+                "user" => $user
             ]);
+        }
+        function News_detail($user, $params){
+            $cus = $this->model($user);
+            $news = $cus->get_news();
+            $news_list = array();
+            foreach($news as $snews){
+                array_push($news_list, ([
+                    "id" => $snews["id"],
+                    "cid" => $snews["cid"],
+                    "key" => $snews["key"], 
+                    "time" => $snews["time"],
+                    "title" => $snews["title"],
+                    "content" => $snews["content"],
+                    "imgurl" => $snews["img_url"],
+                    "shortcontent" => $snews["short_content"],
+                    "comment" => $cus->get_comment_news($snews["id"])]));
+            }   
+            $this->view("News_detail", [
+                "news" => $news_list,
+                "user" => $user,
+                "params"=> $params[2]
+            ]);
+        }
+        function delete_news($id){
+            $this->model("customer")->delete_news($id);
         }
         function Cost_table($user){
             $cus = $this->model($user);
@@ -66,12 +98,10 @@ class Home extends Controller{
         }
         function Cart($user){
             if($user == "member"){
-                $mem = $this->model("member");
-                $id = (int)mysqli_fetch_array($mem->get_id_user("hieu.phamgc", "helloworld"), MYSQLI_NUM)[0];
+                $mem = $this->model($user);
                 $this->view("Cart", [
-                    "product_in_cart" => $mem-> get_product_in_cart((int)$id),
-                    "user" => mysqli_fetch_array($mem->get_user((int)$id)),
-                    "id" => $id
+                    "product_in_cart" => $mem-> get_product_in_cart($_SESSION["id"]),
+                    "user" => mysqli_fetch_array($mem->get_user($_SESSION["id"]))
                 ]);
             }
             else{
@@ -83,12 +113,9 @@ class Home extends Controller{
         }
         function Payment($user){
             if($user == "member"){
-                $mem = $this->model("member");
-                $id = (int)mysqli_fetch_array($mem->get_id_user("hieu.phamgc", "helloworld"), MYSQLI_NUM)[0];
+                $mem = $this->model($user);
                 $this->view("Payment", [
-                    "product_in_cart" => $mem-> get_product_in_cart((int)$id),
-                    "user" => mysqli_fetch_array($mem->get_user((int)$id)),
-                    "id" => $id
+                    "product_in_cart" => $mem-> get_product_in_cart($_SESSION["id"])
                 ]);
             }
             else{
@@ -123,6 +150,38 @@ class Home extends Controller{
                     if(!isset($array[4])) $array[4] = "Home_page";
                     echo "?url=/Home/" . $array[4] . "/"; // ?url=h/f/user/pwd => 
                 }
+            }
+        }
+        function update_product_in_cart($user, $array){
+            $action = $this->model($user);
+            for($i = 0; $i < (int)$array[2]; $i++){
+                $action->update_product_in_cart((int)$array[2 + 3*$i + 1], (int)$array[2 + 3*$i +2], $array[2 + 3*$i + 3]);
+            }
+            echo "?url=/Home/Payment/";
+        }
+        function update_cart($user, $array){
+            $action = $this->model($user);
+            for($i = 0; $i < (int)$array[2]; $i++){
+                if(!($action->update_cart($array[2 + $i + 1]))) echo "null";
+            }
+            echo "?url=/Home/Home_page/";
+        }
+        function member_page($user){
+            if($user == "member"){
+                $mem = $this->model($user);
+                $cartid = $mem->get_cart($_SESSION["id"]);
+                $product_in_cart = array();
+                foreach($cartid as $id){
+                    array_push($product_in_cart, $mem->get_product_in_cart_mem((int)$id));
+                }
+                $this->view("Memberpage", [
+                    "user" => $mem->get_user($_SESSION["id"]),
+                    "idcart" => $cartid,
+                    "product_in_cart" => $product_in_cart
+                ]);
+            }
+            else{
+                $this->Login($user, "member_page");
             }
         }
 }
