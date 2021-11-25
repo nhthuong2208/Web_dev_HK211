@@ -189,7 +189,7 @@
           </div>
           <div class="comment-rating" id="rate-cmt">
             <div class="row">
-              <div class="col-lg-3 star-numbers">
+              <div class="col-lg-2 star-numbers">
                 <?php
                   if(empty($data["comment"])) {
                     echo "Chưa có đánh giá";
@@ -198,17 +198,13 @@
                     $sum .
                     "<span>
                       <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
-                      <i class=\"fas fa-star\"></i>
                     </span>
                   </div>
                   <div class=\"according-to\">Theo " . count($data["comment"]) .  " đánh giá</div>";
                   }
                 ?>
               </div>
-              <div class="col-lg-9">
+              <div class="col-lg-10">
                 <p>Lọc đánh giá</p>
                 <div class="filter-rating">
                   <span id="filter-rating-btn">

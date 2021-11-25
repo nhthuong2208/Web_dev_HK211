@@ -450,7 +450,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .product-item .bottom .comment-rating .filter-rating {
     flex-direction: column;
   }
