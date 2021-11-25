@@ -137,8 +137,13 @@
 		<?php
 			if(empty($data["news"])) echo "empty combo";
 			else {
+				$news = $data["news"][0];
 				$id = intval($data["params"]);
-				$news = $data["news"][$id-1];
+				foreach($data["news"] as $row){
+					if ($row["id"] == $id){
+						$news = $row;
+					}
+				}
 				$content = str_replace("\n\n\n", "<div class=\"w-50 mx-auto mt-3 mb-5\">
 															<img src=\"" . $news["imgurl"] . "\" class=\"rounded img-fluid\"> 
 															</div>", $news["content"]);
@@ -156,9 +161,9 @@
 								</div>	
 							</div>";
 
-							if($data["user"] != "customer"){
+							if($data["user"] == "manager"){
 								echo "<div class=\"text-end\">
-									<input type=\"text\" value=\"" .($id - 1). "\" name =\"car_id\" hidden>
+									<input type=\"text\" value=\"" .($id). "\" name =\"car_id\" hidden>
 									<button type=\"button\" class=\"btn  btn-block\" data-bs-toggle=\"modal\"
 										data-bs-target=\"#myModal_del\">
 										<i class=\"fas fa-trash\"></i> Xóa
@@ -238,7 +243,8 @@
 					echo "<div class=\"card-body\">
 						<div class=\"\">
 							<div>";
-							for ($x = count($data["news"]) - 1; $x >= count($data["news"])-3; $x--){
+
+							for ($x = count($data["news"]) - 1; ($x >= count($data["news"])-3 && $x >= 0); $x--){
 								$row = $data["news"][$x];
 								echo "			
 								<div class=\"row\">						

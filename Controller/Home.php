@@ -81,9 +81,22 @@ class Home extends Controller{
                 "params"=> $params[2]
             ]);
         }
-        function delete_news($id){
-            $this->model("customer")->delete_news($id);
+
+        function Post_news($user){
+            $this->view("Post_news", []);
         }
+
+        function delete_news($user, $id){
+            echo (int)$id[2];
+            $this->model("manager")->delete_news((int)$id[2]);
+        }
+
+        function insert_news($user, $array){
+            echo var_dump($array);
+
+            $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
+        }
+
         function Cost_table($user){
             $cus = $this->model($user);
             $combo = $cus->get_combo();
