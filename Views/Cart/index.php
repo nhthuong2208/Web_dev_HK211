@@ -55,91 +55,95 @@
                     <div class="col-12 col-xxl-11 d-flex flex-wrap justify-content-center">
                         <h2>Giỏ hàng</h2>
                     </div>
-                    <div class="col-12 col-xxl-11">
-                        <div class="row nonemg d-flex flex-wrap">
-                            <?php   
-                                    $count = 0;
-                                    if(empty($data["product_in_cart"])) echo "product_in_cart empty";
-                                    else{
-                                        foreach($data["product_in_cart"] as $row){
-                                            $count += 1;
-                                            echo    "<div class=\"col-12 col-md-6 col-xl-4 col-xxl-4\">
-                                                        <div class=\"row node nonemg\">
-                                                            <div class=\"col-4 d-flex flex-wrap align-content-center justify-content-center\">
-                                                                <img src=\"" . $row["img"] . "\" alt=\"item\">
-                                                            </div>
-                                                            <div class=\"demo\" hindden>" . $row["id"] . "</div>
-                                                            <div class=\"col-7\">
-                                                                <div class=\"row\">
-                                                                    <div class=\"col-12\">
-                                                                        <h5>" . $row["name"] . "</h5>
-                                                                    </div>
-                            
-                                                                    <div class=\"col-12\">
-                                                                        <div class=\"row\">
-                                                                            <div class=\"col-6\">Size: </div>
-                                                                            <div class=\"col-6\"><select>
-                                                                                    <option value=\"S\" selected>S</option>
-                                                                                    <option value=\"M\">M</option>
-                                                                                    <option value=\"L\">L</option>
-                                                                                    <option value=\"X\">X</option>
-                                                                                    <option value=\"XL\">XL</option>
-                                                                                    <option value=\"XXL\">XXL</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                        
-                                                                    <div class=\"col-12\">
-                                                                        <div class=\"row\">
-                                                                            <div class=\"col-6\">Giá: </div>
-                                                                            <div class=\"col-6 price\">" . $row["price"] . "(VND)</div>
-                                                                        </div>
-                                                                    </div>
-                            
-                                                                    <div class=\"col-12\">
-                                                                        <div class=\"row d-flex flex-wrap align-content-center justify-content-center\">
-                                                                            <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center click\" onclick=\"minusnode(this);\"><i class=\"fas fa-minus\"></i></div>
-                                                                            <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center\"><div class=\"value_click\">" . $row["num"] ."</div></div>
-                                                                            <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center click\" onclick=\"plusnode(this);\"><i class=\"fas fa-plus\"></i></div>
-                                                                        </div>
-                                                                    </div>
-                            
-                                                                    <div class=\"col-12\">
-                                                                        <div class=\"row\">
-                                                                            <div class=\"col-6\">Tổng cộng: </div>
-                                                                            <div class=\"col-6 total\">" . (int)$row["price"] * (int)$row["num"] . "(VND)</div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                    
-                                                            <div class=\"col-1\" onclick=\"remove_product_incart(this)\">
-                                                                <i class=\"fas fa-times\"></i>    
-                                                            </div>
-                                    
+                    <?php
+                    if(!empty($data["product_in_cart"])){
+                            echo "<div class=\"col-12 col-xxl-11\">
+                                <div class=\"row nonemg d-flex flex-wrap\">";
+                            $count = 0;
+                            foreach($data["product_in_cart"] as $row){
+                                $count += 1;
+                                echo    "<div class=\"col-12 col-md-6 col-xl-4 col-xxl-4\">
+                                            <div class=\"row node nonemg\">
+                                                <div class=\"col-4 d-flex flex-wrap align-content-center justify-content-center\">
+                                                    <img src=\"" . $row["img"] . "\" alt=\"item\">
+                                                </div>
+                                                <div class=\"demo\" hindden>" . $row["id"] . "</div>
+                                                <div class=\"col-7\">
+                                                    <div class=\"row\">
+                                                        <div class=\"col-12\">
+                                                            <h5>" . $row["name"] . "</h5>
                                                         </div>
-                                                    </div>";
-                                                        
-                                        }
-                                    }
-                            ?>
+                
+                                                        <div class=\"col-12\">
+                                                            <div class=\"row\">
+                                                                <div class=\"col-6\">Size: </div>
+                                                                <div class=\"col-6\"><select>
+                                                                        <option value=\"S\" selected>S</option>
+                                                                        <option value=\"M\">M</option>
+                                                                        <option value=\"L\">L</option>
+                                                                        <option value=\"X\">X</option>
+                                                                        <option value=\"XL\">XL</option>
+                                                                        <option value=\"XXL\">XXL</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+            
+                                                        <div class=\"col-12\">
+                                                            <div class=\"row\">
+                                                                <div class=\"col-6\">Giá: </div>
+                                                                <div class=\"col-6 price\">" . $row["price"] . "(đ)</div>
+                                                            </div>
+                                                        </div>
+                
+                                                        <div class=\"col-12\">
+                                                            <div class=\"row d-flex flex-wrap align-content-center justify-content-center\">
+                                                                <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center click\" onclick=\"minusnode(this);\"><i class=\"fas fa-minus\"></i></div>
+                                                                <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center\"><div class=\"value_click\">" . $row["num"] ."</div></div>
+                                                                <div class=\"col-2 d-flex flex-wrap align-content-center justify-content-center click\" onclick=\"plusnode(this);\"><i class=\"fas fa-plus\"></i></div>
+                                                            </div>
+                                                        </div>
+                
+                                                        <div class=\"col-12\">
+                                                            <div class=\"row\">
+                                                                <div class=\"col-6\">Tổng cộng: </div>
+                                                                <div class=\"col-6 total\">" . (int)$row["price"] * (int)$row["num"] . "(đ)</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                                <div class=\"col-1\" onclick=\"remove_product_incart(this)\">
+                                                    <i class=\"fas fa-times\"></i>    
+                                                </div>
+                        
+                                            </div>
+                                        </div>";
+                                            
+                            }
+                        echo "
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="row nonemg d-flex flex-row-reverse">
-                    <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xxl-4">
-                        <h3>Tổng thanh toán (<?php echo $count; ?> sản phẩm)</h3>
-                        <h5>1.600.000(vnd)</h5>
-                        <div class="d-flex flex-wrap justify-content-center">
-                            <button id="myBtn" type="button" class="btn btn-primary">Địa chỉ giao hàng</button>
-                            <button type="button" class="btn btn-primary"><a href="?url=Home/Payment/">Thanh toán</a></button>
+            <div class=\"col-12\">
+                <div class=\"row nonemg d-flex flex-row-reverse\">
+                    <div class=\"col-12 col-sm-8 col-md-6 col-lg-5 col-xxl-4\">
+                        <h3>Tổng thanh toán (".  $count ." sản phẩm)</h3>
+                        <h5></h5>
+                        <div class=\"d-flex flex-wrap justify-content-center\">
+                            <button id=\"myBtn\" type=\"button\" class=\"btn btn-primary\">Địa chỉ giao hàng</button>
+                            <button type=\"button\" class=\"btn btn-primary\">Thanh toán</button>
                         </div>
                     </div>
                 </div>
             </div>
+            ";
+            }
+            else{
+                echo "<h1>Không có sản phẩm</h1>";
+            }
+            ?>
         </div>
     </div>
     <div id="myModal" class="modal">
@@ -169,7 +173,7 @@
                                 <div class=\"col-8\"><input type=\"text\" name=\"address\"  value=\"". $data["user"]["add"] . "\"></div>
                                 </div>
                             </div>
-                            <div hidden id=\"id\">" . $data["id"] . "</div>
+                            <div hidden id=\"id\">" . $_SESSION["id"] . "</div>
                             <button type=\"button\" class=\"btn btn-primary\">Hoàn tất</button>";
                     ?>
                     

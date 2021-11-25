@@ -10,7 +10,9 @@ function plus(element){
     else  element.innerText = a;
 }
 function display_total(element1, element2, element3){
-    element3.innerText = enformat(String(Number(deformat(element1.innerText.split("(")[0])) * Number(element2.innerText))) + "(VND)";
+    var num = Number(deformat(element3.innerText.split("(")[0]));
+    element3.innerText = enformat(String(Number(deformat(element1.innerText.split("(")[0])) * Number(element2.innerText))) + "(đ)";
+    list.getElementsByTagName("h5")[0].innerText = enformat(String(Number(deformat(list.getElementsByTagName("h5")[0].innerText.split("(")[0])) - num + Number(deformat(element3.innerText.split("(")[0])))) + "(đ)";
 }
 function enformat(element){
   let nodestr = "";
@@ -47,30 +49,49 @@ function remove_product_incart(element){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
     console.log(this.responseText);
-    if(this.responseText == "ok"){
-        window.location.href = "?url=Home/Login/";
+    if (this.readyState == 4 && this.status == 200) {
+      console.log( Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])));
+      list.getElementsByTagName("h5")[0].innerText = enformat(String(Number(deformat(list.getElementsByTagName("h5")[0].innerText.split("(")[0])) - Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])))) + "(đ)";
+      element.parentNode.parentNode.remove();
     }
-    element.parentNode.parentNode.remove();
   };
   xmlhttp.open("GET", "?url=Home/delete_product_incart/" + id + "/", true);
   xmlhttp.send();
 }
 
 var node = document.getElementsByClassName("node");
+var totalh5 = 0;
 for(var i = 0; i < node.length ; i++){
   node[i].parentNode.value = node[i].getElementsByClassName("demo")[0].innerText;
   node[i].getElementsByClassName("demo")[0].remove();
   var price = node[i].getElementsByClassName("price")[0];
-  var total = node[i].getElementsByClassName("total")[0];
-
-  price.innerText = enformat(price.innerText.split("(")[0]) + "(VND)";
-  total.innerText = enformat(total.innerText.split("(")[0]) + "(VND)";
-}
+  var total = node[i].getElementsByClassName("total")[0]; 
+  totalh5 += Number(total.innerText.split("(")[0]);
+  price.innerText = enformat(price.innerText.split("(")[0]) + "(đ)";
+  total.innerText = enformat(total.innerText.split("(")[0]) + "(đ)";
+} 
 
 
 var list = document.getElementsByClassName("container-fuild")[0].children[0].children[1];
+list.getElementsByTagName("h5")[0].innerText = enformat(String(totalh5)) + "(đ)";
 console.log(list);
+document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
+  var children = document.getElementsByClassName("node");
+  var string = children.length;
+  for(var i = 0; i < children.length; i++){
+        string += "/" + children[i].parentNode.value + "/" + children[i].getElementsByClassName("value_click")[0].innerText + "/" + children[i].getElementsByTagName("select")[0].value;
+  }
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    if (this.readyState == 4 && this.status == 200) {
+        window.location.href = this.responseText;
+    }
+  };
+  xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);
+  xmlhttp.send();
 
+};
 /***********************************************************/
 
 var modal = document.getElementById("myModal");
@@ -90,7 +111,6 @@ window.onclick = function(event) {
   }
 };
 var id = document.getElementById("id");
-console.log(id);
 button.value = id.innerText;
 id.remove();
 

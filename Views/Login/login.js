@@ -82,8 +82,6 @@ button.onclick = function(){
 		else{
 			alert("nhập lại đi mày"); // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
 		}
-			//window.location.href = this.responseText;
-			//
 	};
 	xmlhttp.open("GET", "?url=Home/check_login/" + input[0].value + "/" + input[1].value + "/" + history_str + "/", true);
 	xmlhttp.send();
