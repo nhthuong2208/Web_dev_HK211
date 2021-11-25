@@ -105,7 +105,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="demo" hidden><?php echo $data["key"]; ?></div>
+	<div class="demo" hidden><?php if(is_array($data["key"])) echo $data["key"][2];
+									else  echo $data["key"]; ?></div>
 	<div class="footer-holder"></div>
 	<script src="./Views/footer/footerScript.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>

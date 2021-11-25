@@ -46,31 +46,59 @@ for (let i = 0; i < tabs.length; i++) {
     this.className += " active-filter";
   });
 }
-
+/*
 // modal add item
-
-// Get the modal
 var modal = document.getElementById("addItem-modal");
 
-// Get the button that opens the modal
 var btn = document.getElementById("add-itemBtn");
 
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close-modal-add")[0];
 
-// When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
-
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
-
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+}*/
+
+//---------------------------------------------------------------------------------------------------------
+function minus(element){
+  var input = element.parentNode.parentNode.getElementsByTagName("input")[0]
+  input.value = Number(input.value) - 1;
+  if(input.value <= 0) input.value = 0;
+}
+function plus(element){
+  var input = element.parentNode.parentNode.getElementsByTagName("input")[0]
+  input.value = Number(input.value) + 1;
+}
+
+
+var user = document.getElementsByClassName("container-fluid")[0].getElementsByTagName("span")[0].innerText;
+document.getElementsByClassName("container-fluid")[0].getElementsByTagName("span")[0].remove();
+console.log(user);
+for (let index = 0; index < document.getElementsByClassName("addToCart").length; index++) {
+  document.getElementsByClassName("addToCart")[index].value = document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].innerText;
+  document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].remove();
+}
+
+function add_Product(element){
+  if(user == "customer"){
+    window.location.href = "?url=Home/Login/Products/";
+  }
+  else{
+    var day_str = new Date();
+    var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.onreadystatechange = function(){
+      if (this.readyState == 4 && this.status == 200){
+        console.log(this.responseText);
+      }
+	  };
+    xmlhttp.open("GET", "?url=Home/create_cart/" + day_str.getFullYear() + "-" + String(day_str.getMonth() + 1) + "-" + String(day_str.getDate()) + "/" + element.value + "/" + element.parentNode.parentNode.getElementsByTagName("input")[0].value + "/", true);
+    xmlhttp.send();
   }
 }

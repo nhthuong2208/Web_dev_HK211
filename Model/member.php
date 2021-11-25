@@ -100,5 +100,19 @@ class member extends customer{
                     WHERE `account`.`ID` = " . $id ;
         return mysqli_query($this->connect, $query);
     }
+    public function get_cart_for_session(){
+        $query =    "SELECT MAX(`cart`.`ID`) AS `id` FROM `cart`" ;
+        return mysqli_query($this->connect, $query);
+    }
+    public function create_cart($id, $time){
+        $query =    "INSERT INTO `cart` (`cart`.`UID`, `cart`.`TIME`)
+                    VALUES(" . $id . ", \"" . $time . "\");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function create_product_incart($pid, $oid, $quantity){
+        $query =    "INSERT INTO `product_in_cart`(`product_in_cart`.`PID`, `product_in_cart`.`OID`, `product_in_cart`.`QUANTITY`)
+                    VALUES (" . $pid . ", " . $oid . ", " . $quantity . ");";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>
