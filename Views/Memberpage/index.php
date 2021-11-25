@@ -7,7 +7,7 @@
     <meta name="description" content="Member page">
     <meta name="author" content="Phạm Minh Hiếu">
 
-    <title>Thông tin khác hàng</title>
+    <title>Thông tin khách hàng</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-8 col-xl-8 pb-5">
-                <div class="row click">
+                <div class="row click"><span hidden><?php foreach($data["user"] as $row) echo $row["pwd"];?></span>
                     <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
                     <div class="col-12 border_bot mt-5 mb-3 ">
                         <div class="row justify-content-center">

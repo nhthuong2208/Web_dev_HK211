@@ -35,7 +35,8 @@ class member extends customer{
                             `account`.`ADDRESS` AS `add`, 
                             `account`.`USERNAME` AS `username`, 
                             `account`.`IMG_URL` AS `img`, 
-                            `account`.`CMND` AS `cmnd`
+                            `account`.`CMND` AS `cmnd`, 
+                            `account`.`PWD` AS `pwd`
                     FROM    `account`
                     WHERE   `account`.`ID` = " . $id;
         return mysqli_query($this->connect, $query);
@@ -75,6 +76,29 @@ class member extends customer{
                     WHERE `cart`.`UID` = " . $id ."
                     GROUP BY `cart`.`ID`";
         return  mysqli_query($this->connect, $query);
+    }
+    public function update_profile($id, $fname, $user, $pwd, $cmnd, $phone, $add, $path){
+        $query =    "UPDATE `account`
+                    SET `account`.`CMND` = \"" . $cmnd . "\",
+                        `account`.`FNAME` = \"" . $fname . "\",
+                        `account`.`PHONE` = \"" . $phone . "\",
+                        `account`.`ADDRESS` = \"" . $add . "\",
+                        `account`.`USERNAME` = \"" . $user . "\",
+                        `account`.`PWD` = \"" . $pwd . "\",
+                        `account`.`IMG_URL` = \"" . $path . "\"
+                    WHERE `account`.`ID` = " . $id ;
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_profile_nope_img($id, $fname, $user, $pwd, $cmnd, $phone, $add){
+        $query =    "UPDATE `account`
+                    SET `account`.`CMND` = \"" . $cmnd . "\",
+                        `account`.`FNAME` = \"" . $fname . "\",
+                        `account`.`PHONE` = \"" . $phone . "\",
+                        `account`.`ADDRESS` = \"" . $add . "\",
+                        `account`.`USERNAME` = \"" . $user . "\",
+                        `account`.`PWD` = \"" . $pwd . "\"
+                    WHERE `account`.`ID` = " . $id ;
+        return mysqli_query($this->connect, $query);
     }
 }
 ?>
