@@ -179,13 +179,15 @@
               <?php
                     if(empty($data["featured"])) echo "featured empty";
                     else{
-                      if($data["user"] == "customer")
+                      if($data["user"] != "manager"){
+                        echo "<span hidden>" . $data["user"] . "</span>";
                         foreach($data["featured"] as $row){ // "
-      
+                          
                           echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                          echo "<div class=\"addToCart\"><i class=\"fas fa-shopping-cart\"></i></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                          echo "<div class=\"addToCart\" onclick=\"add_Product(this);\"><i class=\"fas fa-shopping-cart\"></i><span hidden>" . $row["id"] . "</span></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
                           echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "</span></div></div></div></div>";
                         }
+                      }
                       else if($data["user"] == "manager"){
                         foreach($data["featured"] as $row){ // manager
       

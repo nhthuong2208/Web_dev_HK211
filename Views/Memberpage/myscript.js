@@ -47,27 +47,37 @@ for(var i = 0; i < click[3].getElementsByClassName("node").length; i++){
         price[index].innerText = price[index].innerText.split(" ")[0] + " " + price[index].innerText.split(" ")[0] + " " + enformat(price[index].innerText.split(" ")[2]) + "(đ)";
     }
 }
+var pwd = click[2].getElementsByTagName("span")[0].innerText;
+click[2].getElementsByTagName("span")[0].remove();
 
 document.getElementsByTagName("button")[3].onclick = function(){
     if(document.getElementsByTagName("button")[3].innerText == "Thiết lập tài khoản"){
         document.getElementsByTagName("button")[3].innerText = "Xác nhận";
         var form = document.getElementsByTagName("button")[3].parentNode.parentNode;
-        form.innerHTML = "<form action=\"?url=Home/updateprofile\" method=\"post\">" + form.innerHTML + "</form>";
+        form.innerHTML = "<form action=\"?url=Home/update_profile\" method=\"POST\" enctype=\"multipart/form-data\" onsubmit=\"return false\">" + form.innerHTML + "</form>";
         var linkimg = click[0].parentNode.parentNode.parentNode.getElementsByTagName("img")[0].getAttribute("src");
+        document.getElementsByTagName("button")[3].parentNode.parentNode.getElementsByClassName("col-12")[1].attributes[0].value = 'col-12 border_bot mt-3 mb-3 ';
         var profile = document.getElementsByTagName("button")[3].parentNode.parentNode.getElementsByClassName("row")[0];
-        
-        profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-3\"><label for=\"file_pic\" style=\"cursor: pointer;\"><img src=\"" + linkimg + "\" alt=\"profile\"></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" hidden></div>";
+        var fname = profile.getElementsByClassName("col-7")[0].innerText;
+        var user = profile.getElementsByClassName("col-7")[1].innerText;
+        var cmnd = profile.getElementsByClassName("col-7")[2].innerText;
+        var phone = profile.getElementsByClassName("col-7")[3].innerText;
+        var add = profile.getElementsByClassName("col-7")[4].innerText;
+        profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-5\"><label for=\"file_pic\" style=\"cursor: pointer;\"><img src=\"" + linkimg + "\" alt=\"profile\" class=\"profile\"></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" hidden></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Họ tên:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\" name=\"fname\" value=\"Phạm Minh Hiếu\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\" name=\"fname\" value=\"" + fname + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Tên đăng nhập:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"username\" value=\"Phạm Minh Hiếu\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"username\" value=\"" + user + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Mật khẩu:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"password\"  name=\"pwd\" value=\"Phạm Minh Hiếu\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"password\" name=\"pwd\" value=\"" + pwd + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">CMND/CCCD:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"cmnd\" value=\"Phạm Minh Hiếu\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"cmnd\" value=\"" + cmnd + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Số điện thoại:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"phone\" value=\"Phạm Minh Hiếu\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"phone\" value=\"" + phone + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Địa chỉ:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"address\" value=\"tx Gò Công, Tiền Giang\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"address\" value=\"" + add + "\"></div>";
+        document.getElementsByTagName("button")[3].onclick = function(){
+            document.getElementsByTagName("button")[3].parentNode.parentNode.submit();
+        }
     }
 };

@@ -86,7 +86,7 @@
       </div>
       
       <!-- Main content -->
-      <div class="container-fluid">
+      <div class="container-fluid"><span hidden><?php echo $data["user"]; ?></span>
         <div class="list-product">
           <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
               <?php
@@ -96,9 +96,9 @@
                       echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"><a href=\"?url=Home/Item/" . $row["id"] . "/\"><img src=\"" . $row["img"] .
                       "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a><div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
                       "</h5><p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p><div class=\"d-flex justify-content-between\">
-                      <div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\"></i></button></div>
-                      <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\"></i></div>
-                      </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary\">Add to cart</button></div></div></div></div></div>";
+                      <div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\" onclick=\"minus(this);\"></i></button></div>
+                      <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\" onclick=\"plus(this);\"></i></div>
+                      </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary addToCart\" onclick=\"add_Product(this);\"><span hidden>" . $row["id"] . "</span>Add to cart</button></div></div></div></div></div>";
                     }
                   }
               ?>

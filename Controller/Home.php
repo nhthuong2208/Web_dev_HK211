@@ -1,9 +1,6 @@
 <?php
-// http://localhost/live/Home/Show/1/2
 
 class Home extends Controller{
-
-        // Must have SayHi()
         function Home_page($user){
             $cus = $this->model($user);
             $this->view("Home_page", [
@@ -19,7 +16,8 @@ class Home extends Controller{
             $cus = $this->model($user);
             $this->view("Products", [
                 "cate" => $cus->get_product_cates(),
-                "product" => $cus->get_products()
+                "product" => $cus->get_products(),
+                "user" => $user
             ]);
         }
         function Item($user, $pid){
@@ -187,6 +185,31 @@ class Home extends Controller{
         }
         function add_item_comment($user, $array){
             $this->model($user)->add_item_comment($array[2], $array[3], $array[4], $_SESSION["id"]);
+        }
+        function update_profile($user){
+            if( isset($_POST["fname"]) && isset($_POST["username"]) && isset($_POST["pwd"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
+            {
+                if(isset($_FILES["file_pic"])){
+                    if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
+                        move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
+                    $this->model($user)->update_profile($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"], './Views/images/' . $_FILES['file_pic']['name']);
+                }
+                else{
+                    $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
+                }
+            }
+            $this->member_page($user);
+            
+        }
+        function create_cart($user, $array){
+            if(!isset($_SESSION["id_cart"]) || !isset($_SESSION["cart_date"]) || $_SESSION["cart_date"] != $array[2]){
+                $_SESSION["cart_date"] = $array[2];
+                if($this->model($user)->create_cart($_SESSION["id"], $_SESSION["cart_date"])){
+                    $_SESSION["cart_date"] = $array[2];
+                    $_SESSION["id_cart"] = mysqli_fetch_array($this->model($user)->get_cart_for_session())["id"];
+                }
+            }
+            echo $this->model($user)->create_product_incart($array[3], $_SESSION["id_cart"], $array[4]);
         }
 }
 ?>
