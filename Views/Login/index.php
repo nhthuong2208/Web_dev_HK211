@@ -33,7 +33,6 @@
 <body>
 	<div class="navbar-holder sticky-top"></div>
 	<script src="./Views/Navbar/navbarScript.js"></script>
-
 	<div class="login mb-5" style="min-height: 60vh;">
 		<div class="row justify-content-md-center h-100">
 			<div class="card-wrapper col-md-4">
@@ -106,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="demo" hidden><?php echo $data["key"]; ?></div>
 	<div class="footer-holder"></div>
 	<script src="./Views/footer/footerScript.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>

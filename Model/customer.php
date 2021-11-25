@@ -4,10 +4,12 @@ class customer extends DB{
         $query = "SELECT `product`.`IMG_URL` AS \"img\", `product`.`CATEGORY` AS \"cate\" FROM `product` WHERE `product`.`TOP_PRODUCT` = 1;";
         return mysqli_query($this->connect, $query);
     }
+
     public function get_product_cates(){
         $query = "SELECT `product`.`CATEGORY` AS \"cate\" FROM `product` GROUP BY `product`.`CATEGORY` ORDER BY `product`.`ID`;";
         return mysqli_query($this->connect, $query);
     }
+
     public function get_products(){
         $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product`;";
         return mysqli_query($this->connect, $query);
@@ -35,6 +37,7 @@ class customer extends DB{
                     (\"" . $fname . "\", \"" . $email . "\", \"" . $phone . "\", \"" . $subject . "\", \"" . $content . "\");";
         return mysqli_query($this->connect, $query); //insert delete update => true false -> 
     }
+
     public function get_product_at_id($pid) {
         $query = "SELECT `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` WHERE `product`.`ID` = " . (int)$pid . ";";
         return mysqli_query($this->connect, $query);
@@ -80,6 +83,13 @@ class customer extends DB{
                          `comment_news`.`TIME` as `time`
                 FROM `comment_news`, `account`
                 WHERE `comment_news`.`CID`=`account`.`ID` and `comment_news`.`NID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    
+    public function get_id_user($username, $pwd){
+        $query =    "SELECT `account`.`ID` AS `id` FROM `account`
+                    WHERE `account`.`USERNAME` = \"" . $username . "\"
+                            AND `account`.`PWD` = \"" . $pwd ."\";";
         return mysqli_query($this->connect, $query);
     }
 }

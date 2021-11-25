@@ -1,12 +1,6 @@
 <?php
 require_once "./Model/customer.php";
 class member extends customer{
-    public function get_id_user($username, $pwd){
-        $query =    "SELECT `account`.`ID` AS `id` FROM `account`
-                    WHERE `account`.`USERNAME` = \"" . $username . "\"
-                            AND `account`.`PWD` = \"" . $pwd ."\";";
-        return mysqli_query($this->connect, $query);
-    }
     public function get_product_in_cart($id){
         $query =    "SELECT `product`.`ID` AS `id`,
                             `product`.`NAME` AS `name`, 

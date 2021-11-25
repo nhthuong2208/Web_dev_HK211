@@ -62,3 +62,29 @@ $(function() {
 		form.addClass('was-validated');
 	});
 });
+
+var history_str = document.getElementsByClassName("demo")[0].innerHTML;
+document.getElementsByClassName("demo")[0].remove();
+
+var button = document.getElementsByTagName("button")[3];
+console.log(history_str);
+
+button.onclick = function(){
+	var input =  button.parentNode.parentNode.getElementsByTagName("input");
+	console.log("?url=Home/check_login/" + input[0].value + "/" + input[1].value + "/");
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function(){
+		if(this.responseText != "null"){
+			button.parentNode.parentNode.action = this.responseText;
+			button.parentNode.parentNode.submit();
+			//console.log(this.responseText);
+		}
+		else{
+			alert("nhập lại đi mày"); // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
+		}
+			//window.location.href = this.responseText;
+			//
+	};
+	xmlhttp.open("GET", "?url=Home/check_login/" + input[0].value + "/" + input[1].value + "/" + history_str + "/", true);
+	xmlhttp.send();
+};
