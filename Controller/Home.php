@@ -184,13 +184,10 @@ class Home extends Controller{
                 $cartid = $mem->get_cart($_SESSION["id"]);
                 $product_in_cart = array();
                 foreach($cartid as $id){
-                    array_push($product_in_cart, $mem->get_product_in_cart_mem((int)$id));
+                    array_push($product_in_cart,(["cartid" => $id, "product" =>  $mem->get_product_in_cart_mem((int)$id["id"])]));
                 }
-                $a = mysqli_fetch_array($product_in_cart[0]);
-                echo var_dump($a);
                 $this->view("Memberpage", [
                     "user" => $mem->get_user($_SESSION["id"]),
-                    "idcart" => $cartid,
                     "product_in_cart" => $product_in_cart
                 ]);
             }
@@ -216,7 +213,7 @@ class Home extends Controller{
                 if(isset($_FILES["file_pic"])){
                     if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
                         move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
-                    $this->model($user)->update_pic('./Views/images/' . $_FILES['file_pic']['name']);
+                    $this->model($user)->update_pic($_SESSION["id"], './Views/images/' . $_FILES['file_pic']['name']);
                 }
                 $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
             }

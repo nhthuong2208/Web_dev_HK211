@@ -108,7 +108,7 @@ class member extends customer{
                     VALUES (" . $pid . ", " . $oid . ", " . $quantity . ");";
         return mysqli_query($this->connect, $query);
     }
-    public function update_pic($path){
+    public function update_pic($id ,$path){
         $query =    "UPDATE `account`
                     SET `account`.`IMG_URL` = \"" . $path . "\"
                     WHERE `account`.`ID` = " . $id ;
