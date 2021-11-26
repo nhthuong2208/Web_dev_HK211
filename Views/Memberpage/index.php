@@ -98,16 +98,17 @@
                     <div class="col-12 mt-3 d-flex flex-wrap">
                         <?php 
                         if(!empty($data["idcart"])){
-                            foreach($data["idcart"] as $row_cart){
+                            for($i = 0; $i < count($data["idcart"]); $i++){
+                                $row_cart = mysqli_fetch_array($data["idcart"][$i]);
                                 $total = 0;
                                 $h4 = "";
                                 if((int)$row_cart["state"] == 0) $h4 = "Chưa thanh toán";
                                 else $h4 = $row_cart["time"];
                                 echo "<div class=\"row justify-content-between node\">
                                 <div class=\"col-12 border_bot\"><div class=\"d-flex justify-content-between\"><h4>Mã hóa đơn: #" . $row_cart["id"] . "</h4><h4>" . $h4 . "</h4></div></div>";
-                                
-                                foreach($data["product_in_cart"] as $row_pro){
-                                    $row = mysqli_fetch_array($row_pro);
+                                $row = mysqli_fetch_array($data["product_in_cart"][$i]);
+                                echo var_dump($row);
+                                for($j = 0; $j < count($row); $j++){
                                     $total += (int)$row["price"]*(int)$row["num"];
 
                                     echo "<div class=\"col-12 col-md-6\">

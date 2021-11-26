@@ -186,6 +186,8 @@ class Home extends Controller{
                 foreach($cartid as $id){
                     array_push($product_in_cart, $mem->get_product_in_cart_mem((int)$id));
                 }
+                $a = mysqli_fetch_array($product_in_cart[0]);
+                echo var_dump($a);
                 $this->view("Memberpage", [
                     "user" => $mem->get_user($_SESSION["id"]),
                     "idcart" => $cartid,
