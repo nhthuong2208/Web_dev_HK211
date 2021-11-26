@@ -109,7 +109,7 @@
                         $sum_4 += 1;
                       }
                     }
-                    $sum = $sum / count($data["comment"]);
+                    $sum = round($sum / count($data["comment"]), 1);
                     echo $sum . "/5 <i class=\"fas fa-star\"></i> <a href=\"#rate-cmt\"><span>(Xem " . count($data["comment"]) . " đánh giá)</span></a>";
                   }
                   echo "
@@ -346,6 +346,7 @@
               }
             ?>
           </div>
+          <span class="get-item-id" hidden><?php echo $row_product["id"];?></span>
           <?php
             if($data["user"] == "member") {
               echo "<div class=\"add-comment\">

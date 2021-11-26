@@ -62,27 +62,100 @@
           ?>
         </div>
   
-        <div class="form-sort">
-          <form action="">
-            <div class="item">
-              <label for="sort-by">Sort By</label>
-              <select name="sort-by" id="sort-by">
-                <option value="title" selected="selected">Name</option>
-                <option value="number">Price</option>
-                <option value="search_api_relevance">Relevance</option>
-                <option value="created">Newness</option>
-              </select>
-            </div>
-            <div class="item">
-              <label for="order-by">Order</label>
-              <select name="order-by" id="sort-by">
-                <option value="ASC" selected="selected">ASC</option>
-                <option value="DESC">DESC</option>
-              </select>
-            </div>
-            <a href="">Apply</a>
-          </form>
-        </div>
+        
+          <?php
+            if($data["user"] == "customer"){
+              echo "<div class=\"form-sort\">
+              <form action=\"\">
+              <div class=\"item\">
+                <label for=\"sort-by\">Sort By</label>
+                <select name=\"sort-by\" id=\"sort-by\">
+                  <option value=\"title\" selected=\"selected\">Name</option>
+                  <option value=\"number\">Price</option>
+                  <option value=\"search_api_relevance\">Relevance</option>
+                  <option value=\"created\">Newness</option>
+                </select>
+              </div>
+              <div class=\"item\">
+                <label for=\"order-by\">Order</label>
+                <select name=\"order-by\" id=\"sort-by\">
+                  <option value=\"ASC\" selected=\"selected\">ASC</option>
+                  <option value=\"DESC\">DESC</option>
+                </select>
+              </div>
+              <a href=\"\">Apply</a>
+            </form>
+            </div>";
+            } else if($data["user"] == "member") {
+              echo "<div class=\"form-sort\">
+                    <button type=\"button\" id=\"add-itemBtn\">Thêm sản phẩm</button></div>
+                    <div id=\"addItem-modal\" class=\"add-item-modal\">
+                    <div class=\"addItem-modal-content\">
+                      <div class=\"addItem-modal-header\">
+                        <span class=\"close-modal-add\">&times;</span>
+                        <h2>Thêm sản phẩm</h2>
+                      </div>
+                      <div class=\"addItem-modal-body\">
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\" for=\"id\">
+                            Id:
+                          </label>
+                          <div class=\"col-lg-8\"><input type=\"number\" name=\"id\" placeholder=\"Nhập id sản phẩm\"></div>
+                        </div>
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\" for=\"name\">
+                            Tên sản phẩm:
+                          </label>
+                          <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" placeholder=\"Nhập tên sản phẩm\"></div>
+                        </div>
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\" for=\"price\">
+                            Giá:
+                          </label>
+                          <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của sản phẩm\"></div>
+                        </div>
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\" for=\"image-url\">
+                            Ảnh sản phẩm:
+                          </label>
+                          <div class=\"col-lg-8\"><input type=\"text\" name=\"image-url\" placeholder=\"Nhập link ảnh sản phẩm\"></div>
+                        </div>
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\" for=\"description\">
+                            Mô tả:
+                          </label>
+                          <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                        </div>
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\" for=\"remain\">
+                            Số lượng tồn kho:
+                          </label>
+                          <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" placeholder=\"Nhập số lượng sản phẩm\"></div>
+                        </div>
+                        <div class=\"row\">
+                          <label class=\"col-lg-4\">
+                            Loại:
+                          </label>
+                          <div class=\"col-lg-8\">
+                            <select>
+                              <option selected disabled>Chọn loại</option>
+                              <option value=\"shirt\">Áo</option>
+                              <option value=\"trousers\">Quần</option>
+                              <option value=\"accessories\">Phụ kiện</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class=\"btn-conf-add\">
+                          <button type=\"button\">Thêm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    ";
+            }
+          ?>
+          
+        
       </div>
       
       <!-- Main content -->
@@ -94,11 +167,24 @@
                   else{
                     foreach($data["product"] as $row){
                       echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"><a href=\"?url=Home/Item/" . $row["id"] . "/\"><img src=\"" . $row["img"] .
-                      "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a><div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
-                      "</h5><p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p><div class=\"d-flex justify-content-between\">
-                      <div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\" onclick=\"minus(this);\"></i></button></div>
-                      <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\" onclick=\"plus(this);\"></i></div>
-                      </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary addToCart\" onclick=\"add_Product(this);\"><span hidden>" . $row["id"] . "</span>Add to cart</button></div></div></div></div></div>";
+                      "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a>
+                      <div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
+                      "</h5>
+                      <p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p>
+                      <div class=\"d-flex justify-content-between\">";
+                      if($data["user"] == "customer"){
+                        echo "<div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\" onclick=\"minus(this);\"></i></button></div>
+                        <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\" onclick=\"plus(this);\"></i></div>
+                        </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary addToCart\" onclick=\"add_Product(this);\"><span hidden>" . $row["id"] . "</span>Add to cart</button></div></div></div></div></div>";
+                      } else if($data["user"] == "member"){
+                        echo "<div style=\"text-align: left;\" class=\"quantity-section\">
+                        <button type=\"button\" class=\"btn btn-primary\">
+                        Xóa
+                        </button>
+                        </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary\">
+                        Chỉnh sửa
+                        </button></div></div></div></div></div>";
+                      }
                     }
                   }
               ?>

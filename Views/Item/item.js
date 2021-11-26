@@ -95,14 +95,15 @@ function removeClass(element, name) {
 document.getElementsByClassName("add-comment")[0].getElementsByTagName("button")[0].onclick = function(){
   var text = document.getElementsByClassName("add-comment")[0].getElementsByTagName("textarea");
   var selection = document.getElementsByClassName("add-comment")[0].getElementsByTagName("select");
-  var item = document.getElementsByClassName("right-content")[0].getElementsByClassName("title-item")[0].innerHTML;
+  var pid = document.getElementsByClassName("get-item-id")[0].innerHTML;
+  document.getElementsByClassName("get-item-id")[0].remove();
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
     console.log(this.responseText);
     document.getElementsByClassName("add-comment")[0].getElementsByTagName("form")[0].reset();
     
   };
-  xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + item, true);
+  xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + pid, true);
   xmlhttp.send();
 }
 
