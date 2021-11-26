@@ -26,7 +26,8 @@ class member extends customer{
                     FROM `cart`, `product_in_cart`, `product`, `account`
                     WHERE `cart`.`ID` = `product_in_cart`.`OID`
                         AND `product`.`ID` = `product_in_cart`.`PID`
-                        AND `account`.`ID` = " . $id . ";";
+                        AND `cart`.`UID` = `account`.`ID`
+                        AND `cart`.`ID` = " . $id . ";";
         return mysqli_query($this->connect, $query);
     }
     public function get_user($id){
@@ -49,6 +50,11 @@ class member extends customer{
     }
     public function delete_product_incart($id){
         $query =    "DELETE FROM `product_in_cart` WHERE `product_in_cart`.`ID` = " . $id .";";
+        mysqli_query($this->connect, $query);
+        $query =    "DELETE FROM `cart` 
+                    WHERE `cart`.`ID` NOT IN (  SELECT `cart`.`ID` FROM `product_in_cart`, `cart`
+                                                WHERE `product_in_cart`.`OID` = `cart`.`ID`
+                                                GROUP BY `cart`.`ID`)";
         return mysqli_query($this->connect, $query);
     }
     public function update_product_in_cart($id, $quantity, $size){
@@ -56,9 +62,9 @@ class member extends customer{
             $this->delete_product_incart($id);
         }
         else{
-            $query = "UPDATE `product_in_cart`
-            SET `product_in_cart`.`QUANTITY` = " . $quantity . ", `product_in_cart`.`SIZE` = \"" . $size ."\"
-            WHERE `product_in_cart`.`ID` = " . $id;
+            $query =    "UPDATE `product_in_cart`
+                        SET `product_in_cart`.`QUANTITY` = " . $quantity . ", `product_in_cart`.`SIZE` = \"" . $size ."\"
+                        WHERE `product_in_cart`.`ID` = " . $id;
             return  mysqli_query($this->connect, $query);
         }
     }
@@ -76,18 +82,6 @@ class member extends customer{
                     WHERE `cart`.`UID` = " . $id ."
                     GROUP BY `cart`.`ID`";
         return  mysqli_query($this->connect, $query);
-    }
-    public function update_profile($id, $fname, $user, $pwd, $cmnd, $phone, $add, $path){
-        $query =    "UPDATE `account`
-                    SET `account`.`CMND` = \"" . $cmnd . "\",
-                        `account`.`FNAME` = \"" . $fname . "\",
-                        `account`.`PHONE` = \"" . $phone . "\",
-                        `account`.`ADDRESS` = \"" . $add . "\",
-                        `account`.`USERNAME` = \"" . $user . "\",
-                        `account`.`PWD` = \"" . $pwd . "\",
-                        `account`.`IMG_URL` = \"" . $path . "\"
-                    WHERE `account`.`ID` = " . $id ;
-        return mysqli_query($this->connect, $query);
     }
     public function update_profile_nope_img($id, $fname, $user, $pwd, $cmnd, $phone, $add){
         $query =    "UPDATE `account`
@@ -112,6 +106,12 @@ class member extends customer{
     public function create_product_incart($pid, $oid, $quantity){
         $query =    "INSERT INTO `product_in_cart`(`product_in_cart`.`PID`, `product_in_cart`.`OID`, `product_in_cart`.`QUANTITY`)
                     VALUES (" . $pid . ", " . $oid . ", " . $quantity . ");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_pic($id ,$path){
+        $query =    "UPDATE `account`
+                    SET `account`.`IMG_URL` = \"" . $path . "\"
+                    WHERE `account`.`ID` = " . $id ;
         return mysqli_query($this->connect, $query);
     }
 }
