@@ -50,10 +50,37 @@
         <div class="row nonemg d-flex justify-content-center">
           <div class="col-12 col-md-6 white nonepad">
             <h3>Các sản phẩm của bạn</h3>
-            <div class="row nonemg">
-              <?php 
+            <div class="row nonemg text-center">
+              <?php
               $count = 0;
               $total = 0;
+              $check = 0;
+                if(!empty($data["order_combo"])){
+                    foreach($data["order_combo"] as $row){
+                      $count += 1;
+                      $total += (int)$row["price"];
+                        echo "<div class=\"col-12 mb-4\">
+                        <section>
+                            <div class=\"card\">
+                                <div class=\"card-header text-center py-1\">
+                                    <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
+                                    </div>		
+                                    <div class=\"card-body\">
+                                        <h3 class=\"text-warning mb-2\">" . $row["price"] . "/tháng</h3>
+                                        <h6>Mỗi hộp bao gồm: </h6>
+                                        <ol class=\"list-group list-group-numbered\">";
+                                        foreach($row["product"] as $product){
+                                            echo "<li class=\"list-group-item\">" . $product["name"] . "</li>";
+                                        }
+                        echo        "</ol>
+                                    </div>
+                                    <div class=\"card-footer d-flex justify-content-between py-3\">
+                                    <h4>Chu kì: " . $row["cycle"] . "</h4><h4>Size: " . $row["size"] . "</h4>";
+                      echo "</div></div></section></div>";
+                    }
+                }
+                else{
+                  $check = 1;
                     if(empty($data["product_in_cart"])) echo "empty";
                     else{
                       foreach($data["product_in_cart"] as $row){
@@ -79,6 +106,7 @@
                       </div>";
                       }
                     }
+                }
               ?>
             </div>
           </div>
@@ -133,7 +161,14 @@
                 </div>
                 <div class="col-12">
                   <div class="d-flex flex-wrap justify-content-end">
-                    <button id="myBtn" type="button" class="btn btn-primary"><a href="?url=/Home/Cart/">Hủy đơn</a></button>
+                    <?php 
+                        if($check == 0){
+                          echo "<button id=\"myBtn\" type=\"button\" class=\"btn btn-primary\">Hủy đơn</button>";
+                        }
+                        else{
+                          echo "<button id=\"myBtn\" type=\"button\" class=\"btn btn-primary\"><a href=\"?url=/Home/Cart/\">Hủy đơn</a></button>";
+                        }
+                    ?>
                     <button type="button" class="btn btn-primary">Thanh toán</button>
                   </div>
                 </div>
@@ -174,7 +209,13 @@
     <div class="footer-holder"></div>
     <script src="./Views/footer/footerScript.js"></script>
     <!--Footer-->
-  
-  <script src="./Views/Payment/myScript.js"></script>
+  <?php
+      if($check == 0){
+        echo "<script src=\"./Views/Payment/payment.js\"></script>";
+      }
+      else{
+        echo "<script src=\"./Views/Payment/myScript.js\"></script>";
+      }
+  ?>
   </body>
 </html>

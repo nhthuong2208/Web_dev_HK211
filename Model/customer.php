@@ -32,6 +32,10 @@ class customer extends DB{
         $query =    "SELECT `cycle`.`CYCLE` AS `cycle` FROM `cycle`;";
         return mysqli_query($this->connect, $query);
     }
+    public function get_cycle_id($id){
+        $query =    "SELECT `cycle`.`CYCLE` AS `cycle` FROM `cycle` WHERE `cycle`.`ID` = " . $id .";";
+        return mysqli_query($this->connect, $query);
+    }
     function insert_message($fname, $email, $phone, $subject, $content){
         $query =    "INSERT INTO `message`(`message`.`FNAME`, `message`.`EMAIL`, `message`.`PHONE`, `message`.`SUBJECT`, `message`.`CONTENT`) VALUES
                     (\"" . $fname . "\", \"" . $email . "\", \"" . $phone . "\", \"" . $subject . "\", \"" . $content . "\");";

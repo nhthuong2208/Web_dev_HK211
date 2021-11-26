@@ -35,9 +35,6 @@ document.getElementsByClassName("total")[0].getElementsByClassName("col-12")[3].
 document.getElementsByClassName("total")[0].getElementsByClassName("col-12")[0].getElementsByTagName("span")[0].innerText = enformat(document.getElementsByClassName("total")[0].getElementsByClassName("col-12")[0].getElementsByTagName("span")[0].innerText) + "(đ)";
 
 
-
-
-
 // ----------------------------------------------------------
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("credit");

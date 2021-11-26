@@ -38,7 +38,7 @@ click[1].onclick = function(){
 };
 for(var i = 0; i < click[3].getElementsByClassName("node").length; i++){
     var price = click[3].getElementsByClassName("node")[i].getElementsByClassName("price");
-    var check = click[3].getElementsByClassName("node")[i].getElementsByTagName("h4")[1];
+    var check = click[3].getElementsByClassName("node")[i].getElementsByTagName("h5")[0];
     if(check.innerText != "Chưa thanh toán"){
         if((Date.now() - new Date(check.innerText))/86400000 > 15) check.innerText = "Đã giao";
         else check.innerText = "Đang giao";
@@ -97,3 +97,14 @@ document.getElementsByTagName("button")[3].onclick = function(){
         }
     }
 };
+
+
+
+
+var cart = document.getElementsByClassName("card");
+for (let index = 0; index < cart.length; index++) {
+    var check = cart[index].getElementsByTagName("h5")[3];
+    if((Date.now() - new Date(check.innerText))/86400000 > 15) check.innerText = "Đã giao";
+    else check.innerText = "Đang giao";
+    cart[index].getElementsByTagName("h3")[0].innerText = enformat(cart[index].getElementsByTagName("h3")[0].innerText.split("/")[0]) + "(đ)/" + cart[index].getElementsByTagName("h3")[0].innerText.split("/")[1];
+}

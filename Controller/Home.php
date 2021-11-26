@@ -80,32 +80,29 @@ class Home extends Controller{
                 "params"=> $params[2]
             ]);
         }
-
         function Post_news($user){
             $this->view("Post_news", []);
         }
-
         function delete_news($user, $id){
             echo (int)$id[2];
             $this->model("manager")->delete_news((int)$id[2]);
         }
-
         function insert_news($user, $array){
             echo var_dump($array);
 
             $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
         }
-
         function Cost_table($user){
             $cus = $this->model($user);
             $combo = $cus->get_combo();
             $product_in_combo = array();
             foreach($combo as $cb){
-                array_push($product_in_combo, (["name" => $cb["cbname"], "price" => $cb["cost"], "product" => $cus->get_product_in_combo($cb["id"])]));
+                array_push($product_in_combo, (["id" => $cb["id"], "name" => $cb["cbname"], "price" => $cb["cost"], "product" => $cus->get_product_in_combo($cb["id"])]));
             }
             $this->view("Cost_table", [
                 "combo" => $product_in_combo,
-                "cycle" => $cus->get_cycle()
+                "cycle" => $cus->get_cycle(),
+                "user" => $user
             ]);
         }
         function Cart($user){
@@ -126,12 +123,18 @@ class Home extends Controller{
         function Payment($user){
             if($user == "member"){
                 $mem = $this->model($user);
+                $combo =  $mem->get_order_combo($_SESSION["id"]);
+                $product_in_combo = array();
+                foreach($combo as $cb){
+                    array_push($product_in_combo, (["name" => $cb["name"], "price" => $cb["price"], "size" => $cb["size"], "cycle" => mysqli_fetch_array($mem->get_cycle_id($cb["cycle"]))["cycle"], "product" => $mem->get_product_in_combo($cb["cbid"])]));
+                }
                 $this->view("Payment", [
-                    "product_in_cart" => $mem-> get_product_in_cart($_SESSION["id"])
+                    "product_in_cart" => $mem-> get_product_in_cart($_SESSION["id"]),
+                    "order_combo" => $product_in_combo
                 ]);
             }
             else{
-                $this->Login($user);
+                $this->Login($user, "Payment");
             }
         }
         function forgot($user){
@@ -152,6 +155,8 @@ class Home extends Controller{
         function check_login($user, $array){
             if($array[2] == "admin" &&  $array[3] == "admin"){ // bình luận trang tin tức / bình luần trang item // add to cart
                 $_SESSION["user"] = "manager";
+                if(!isset($array[4])) $array[4] = "Home_page";
+                echo "?url=/Home/" . $array[4] . "/";
             }
             else{ 
                 $id = mysqli_fetch_array($this->model($user)->get_id_user($array[2],  $array[3]), MYSQLI_NUM);
@@ -160,7 +165,7 @@ class Home extends Controller{
                     $_SESSION["id"] = (int)$id[0];
                     $_SESSION["user"] = "member";
                     if(!isset($array[4])) $array[4] = "Home_page";
-                    echo "?url=/Home/" . $array[4] . "/"; // ?url=h/f/user/pwd => 
+                    echo "?url=/Home/" . $array[4] . "/";
                 }
             }
         }
@@ -186,9 +191,15 @@ class Home extends Controller{
                 foreach($cartid as $id){
                     array_push($product_in_cart,(["cartid" => $id, "product" =>  $mem->get_product_in_cart_mem((int)$id["id"])]));
                 }
+                $combo =  $mem->get_order_combo_mem($_SESSION["id"]);
+                $product_in_combo = array();
+                foreach($combo as $cb){
+                    array_push($product_in_combo, (["time" => $cb["time"], "name" => $cb["name"], "price" => $cb["price"], "size" => $cb["size"], "cycle" => mysqli_fetch_array($mem->get_cycle_id($cb["cycle"]))["cycle"], "product" => $mem->get_product_in_combo($cb["cbid"])]));
+                }
                 $this->view("Memberpage", [
                     "user" => $mem->get_user($_SESSION["id"]),
-                    "product_in_cart" => $product_in_cart
+                    "product_in_cart" => $product_in_cart,
+                    "order_combo" => $product_in_combo
                 ]);
             }
             else{
@@ -197,20 +208,11 @@ class Home extends Controller{
         }
         function add_item_comment($user, $array){
             $this->model($user)->add_item_comment($array[2], $array[3], $array[4], $_SESSION["id"]);
-        }
-        function update_pic($user){
-            if(isset($_FILES["file_pic"])){
-                if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
-                    move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
-                $this->model($user)->update_pic('./Views/images/' . $_FILES['file_pic']['name']);
-                echo "pic";
-            }
-            else echo "nope";
-        }
+        }   
         function update_profile($user){
             if( isset($_POST["fname"]) && isset($_POST["username"]) && isset($_POST["pwd"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
             {
-                if(isset($_FILES["file_pic"])){
+                if(isset($_FILES["file_pic"])&& $_FILES["file_pic"]['name'] != ""){
                     if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
                         move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
                     $this->model($user)->update_pic($_SESSION["id"], './Views/images/' . $_FILES['file_pic']['name']);
@@ -229,6 +231,19 @@ class Home extends Controller{
                 }
             }
             echo $this->model($user)->create_product_incart($array[3], $_SESSION["id_cart"], $array[4]);
+        }
+        function create_order_combo($user, $array){
+            $this->model($user)->delete_order_combo_cbid($_SESSION["id"], $array[3]);
+            if($this->model($user)->create_order_combo($_SESSION["id"], $array[2], $array[3], $array[4], $array[5])) echo "?url=Home/Payment/";
+            else echo "null";
+        }
+        function update_order_combo($user){
+            if($this->model($user)->update_order_combo($_SESSION["id"])) echo "?url=Home/member_page/";
+            else echo "null";
+        }
+        function delete_order_combo($user){
+            if($this->model($user)->delete_order_combo($_SESSION["id"])) echo "?url=Home/Cost_table/";
+            else echo "null";
         }
 }
 ?>

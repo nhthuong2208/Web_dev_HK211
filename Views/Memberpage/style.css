@@ -108,6 +108,9 @@ img{
 .paddingr-none{
     padding-right: 0!important;
 }
+.center_my{
+    margin: 0 auto !important;
+}
 @media screen and (max-width: 992px) {
     .container-fuild > .row{
         flex-flow: column;

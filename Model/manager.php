@@ -1,11 +1,7 @@
 <?php
-class manager extends DB{
-
-    public function SinhVien(){
-        $qr = "SELECT * FROM sinhvien";
-        return mysqli_query($this->con, $qr);
-    }
-    public function get_news(){
+require_once "./Model/customer.php";
+class manager extends customer{
+    public function get_news(){ 
         $query =    "SELECT `news`.`ID` as `id`,
                             `news`.`CID` as `cid`, 
                             `news`.`KEY` as `key`, 
