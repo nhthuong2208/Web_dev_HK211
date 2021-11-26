@@ -80,8 +80,48 @@ class Home extends Controller{
                 "params"=> $params[2]
             ]);
         }
-        function Post_news($user){
-            $this->view("Post_news", []);
+
+        function Post_news($user, $params){
+            if((int)$params[2] !== -1){
+                $cus = $this->model($user);
+                $news = $cus->get_news_by_nid((int)$params[2]);
+                $news_list = array();
+                foreach($news as $snews){
+                    array_push($news_list, ([
+                        "id" => $snews["id"],
+                        "cid" => $snews["cid"],
+                        "key" => $snews["key"], 
+                        "time" => $snews["time"],
+                        "title" => $snews["title"],
+                        "content" => $snews["content"],
+                        "imgurl" => $snews["img_url"],
+                        "shortcontent" => $snews["short_content"]]));
+                }   
+                $this->view("Post_news", [
+                    "news" => $news_list,
+                    "user" => $user,
+                    "params"=> $params[2]
+                ]);
+            }
+            else {
+                $cus = $this->model($user);
+                $news_list = array();
+                array_push($news_list, ([
+                    "id" => "",
+                    "cid" => "",
+                    "key" => "", 
+                    "time" => "",
+                    "title" => "",
+                    "content" => "",
+                    "imgurl" => "",
+                    "shortcontent" => "" ]));
+                $this->view("Post_news", [
+                    "news" => $news_list,
+                    "user" => $user,
+                    "params"=> $params[2]
+                ]);
+                $this->view("Post_news", []);
+            }
         }
         function delete_news($user, $id){
             echo (int)$id[2];
@@ -92,6 +132,10 @@ class Home extends Controller{
 
             $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
         }
+        function add_comment_news($user, $array){
+            $this->model($user)->add_comment_news($array[2], $array[3], $_SESSION["id"]);
+        }
+
         function Cost_table($user){
             $cus = $this->model($user);
             $combo = $cus->get_combo();

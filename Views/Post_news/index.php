@@ -49,53 +49,54 @@
       <h3 class = "mt-3 mb-2 text-warning">Quản lí tin tức</h3>
     </div>
     <form method="post" action="">  
-    <div class="row">      
-        <div class="col-md-9">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="text-warning">Thêm tin tức</h5>
+    <div class="row">    
+      <?php 
+        $news = $data["news"][0];
+        echo "<div class=\"col-md-9\">
+          <div class=\"card\">
+            <div class=\"card-header\">
+              <h5 class=\"text-warning\">Thêm tin tức</h5>
             </div>
-          
-            <div class="card-body">        
-                <div class="content-element">
-                  <div class="form-group">
-                      <label class="form-label">Tiêu đề</label>
-                      <input type="text" name="post_title" id="post_title" class="form-control" placeholder="Tiêu đề" value="">
+            <div class=\"card-body\">        
+                <div class=\"content-element\">
+                  <div class=\"form-group\">
+                      <label class=\"form-label\">Tiêu đề</label>
+                      <input type=\"text\" name=\"post_title\" id=\"post_title\" class=\"form-control\" placeholder=\"Tiêu đề\" value= \" ". $news["title"]. "\">
                   </div>
-                  <div class="form-group">
-                      <label class="form-label">Đường dẫn ảnh</label>
-                      <input type="text" name="post_url" id="post_title" class="form-control" placeholder="Đường dẫn" value="">
+                  <div class=\"form-group\">
+                      <label class=\"form-label\">Đường dẫn ảnh</label>
+                      <input type=\"text\" name=\"post_url\" id=\"post_title\" class=\"form-control\" placeholder=\"Đường dẫn\" value= \" ". $news["imgurl"]. "\">
                   </div>
       
-                  <div class="form-group mt-3">
-                      <label class="form-label">Nội dung bài viết</label>
-                      <textarea class="form-control" rows = "10" id="post_content" name="post_content"></textarea>
+                  <div class=\"form-group mt-3\">
+                      <label class=\"form-label\">Nội dung bài viết</label>
+                      <textarea class=\"form-control\" rows = \"10\" id=\"post_content\" name=\"post_content\">". $news["content"] ."</textarea>
                   </div>
                 </div>
             </div>          
           </div>        
         </div> 
 
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-header text-warning">
+        <div class=\"col-md-3\">
+          <div class=\"card\">
+            <div class=\"card-header text-warning\">
               <h5>Thông tin chung </h5>
             </div>
 
-            <div id="post-info" class="collapse show">
-                <div class="card-body">
-                    <div class="post-info-item">
-                        <label class="form-label" for="keyword">Từ khóa:</label>
-                        <input type="text" name="post_key" id="post_key" class="form-control" placeholder="Từ khóa" value="">
+            <div id=\"post-info\" class=\"collapse show\">
+                <div class=\"card-body\">
+                    <div class=\"post-info-item\">
+                        <label class=\"form-label\" for=\"keyword\">Từ khóa:</label>
+                        <input type=\"text\" name=\"post_key\" id=\"post_key\" class=\"form-control\" placeholder=\"Từ khóa\" value= \" ". $news["key"]. "\">
                     </div>
 
-                    <div class="post-info-item mt-4">
-                      <label class="form-label">Nội dung ngắn gọn</label>
-                      <textarea class="form-control" rows = "5" id="post_short_content" name="post_short_content"></textarea>
+                    <div class=\"post-info-item mt-4\">
+                      <label class=\"form-label\">Nội dung ngắn gọn</label>
+                      <textarea class=\"form-control\" rows = \"5\" id=\"post_short_content\" name=\"post_short_content\">". $news["shortcontent"] ."</textarea>
                     </div>
-                    <div class="mt-5 text-between">
-                        <div href="?url=Home/News/">
-                            <button type="button" class="btn-sm btn btn-warning">
+                    <div class=\"mt-5 text-between\">
+                        <div href=\"?url=Home/News/\">
+                            <button type=\"button\" class=\"btn-sm btn btn-warning\">
                                 <span>Hoàn tất</span> 
                             </button>
                         </div>
@@ -103,7 +104,8 @@
                 </div>
             </div>
           </div>
-        </div>
+        </div>";
+      ?>
       </div>
     </form>
   </div>

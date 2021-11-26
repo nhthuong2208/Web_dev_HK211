@@ -72,7 +72,7 @@
 							</a>";
 						}
 						else if($data["user"] == "manager"){
-							echo "<a href=\"?url=Home/Post_news/" . "\">
+							echo "<a href=\"?url=Home/Post_news/" . (-1) . "\">
 								<button type=\"button\" class=\"btn btn-warning mt-3\">Thêm tin mới</button>
 							</a>
 							";
