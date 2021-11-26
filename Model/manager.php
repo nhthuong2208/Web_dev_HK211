@@ -1,5 +1,6 @@
 <?php
-class manager extends DB{
+require_once("customer.php");
+class manager extends customer{
 
     public function SinhVien(){
         $qr = "SELECT * FROM sinhvien";
@@ -36,6 +37,21 @@ class manager extends DB{
                 WHERE `comment_news`.`CID`=`account`.`ID` and `comment_news`.`NID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
-
+    function add_comment_news($content, $nid, $cid){
+        $query = "INSERT INTO `comment_news` (`nid`, `cid`, `content`, `time`) VALUE `(`$nid`, `$cid`, `$content`, `date('Y/m/d')`)";
+        return mysqli_query($this->connect, $query);
+    }
+    function get_news_by_nid($nid){
+        $query = "SELECT `news`.`ID` as `id`,
+                            `news`.`CID` as `cid`, 
+                            `news`.`KEY` as `key`, 
+                            `news`.`TIME` as `time`,
+                            `news`.`TITLE` as `title`,  
+                            `news`.`CONTENT` as `content`, 
+                            `news`.`IMG_URL` as `img_url`, 
+                            `news`.`SHORT_CONTENT` as `short_content`
+                FROM `news`  WHERE `news`.`ID`= ". $nid .";";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

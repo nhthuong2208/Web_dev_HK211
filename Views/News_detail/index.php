@@ -77,14 +77,16 @@
 
 							if($data["user"] == "manager"){
 								echo "<div class=\"text-end\">
-									<input type=\"text\" value=\"" .($id). "\" name =\"car_id\" hidden>
+									<input type=\"text\" value=\"" .($news["id"]). "\" name =\"new_id\" hidden>
 									<button type=\"button\" class=\"btn  btn-block\" data-bs-toggle=\"modal\"
 										data-bs-target=\"#myModal_del\">
 										<i class=\"fas fa-trash\"></i> Xóa
 									</button>
+									<a href=\"?url=Home/Post_news/". ($news["id"]) . "\">
 									<button type=\"button\" class=\"btn btn-block\" data-bs-toggle=\"modal\"
 										data-bs-target=\"#myModal\">
 										<i class=\"fas fa-edit\"></i> Chỉnh sửa </button>
+									</a>
 								</div>
 
 								<div class=\"modal fade\" id=\"myModal_del\">
@@ -124,32 +126,43 @@
 								<div>
 									<h5 class=\"text-warning\">Bình luận bài viết</h5>
 								</div>
-								<div class=\"card\">";
+								<div class=\"card\">
+								<div class=\"card-body\">";
 								foreach($news["comment"] as $comment){
 									echo "
-										<div class=\"card-body\">
-											<div class=\"row\">
-												<div class=\"col-6\">
-													<i class=\"fas fa-user-circle\"></i>
-													<span>". $comment["name"]." </span> 
-												</div>
-												<div class=\"col-6 text-end\">
-													<p>". $comment["time"]." </p>
-												</div>
+										<div class=\"row\">
+											<div class=\"col-6\">
+												<i class=\"fas fa-user-circle\"></i>
+												<span>". $comment["name"]." </span> 
 											</div>
-											<div class=\"script-cmt\">
-												<p>". $comment["content"]." </p>
+											<div class=\"col-6 text-end\">
+												<p>". $comment["time"]." </p>
 											</div>
-											<hr>
 										</div>
+										<div class=\"script-cmt\">
+											<p>". $comment["content"]." </p>
+										</div>
+										<hr>
 									";
 								}
 							echo "</div>
 							</div>
-						</div>
-                	</div>";
+							</div>
+						</div>";
+						if($data["user"] != "customer") {
+							echo "<div class=\"add-comment\">
+									<form action=\"\" onsubmit=\"return false;\">
+									  <div class=\"mb-3\">
+									  	<input type=\"text\" value=\"" .($id). "\" name =\"news_id\" hidden>
+										<textarea class=\"form-control\" name=\"comment-content\" placeholder=\"Viết bình luận ...\"></textarea>
+									  </div>
+									  <button type=\"button\"  class=\"btn-sm btn btn-warning\">Bình luận</button>
+									</form>
+								  </div>";
+						} 
+						echo "</div>
 					
-					echo "<div class=\"col-md-3\" >
+					<div class=\"col-md-3\" >
 						<div class=\"card\">
 							<div class=\"card-header\">
 								<h5 class=\"text-center\">Tin mới</h5>
