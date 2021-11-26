@@ -72,7 +72,7 @@
 							</a>";
 						}
 						else if($data["user"] == "manager"){
-							echo "<a href=\"?url=Home/News_detail/\">
+							echo "<a href=\"?url=Home/Post_news/" . "\">
 								<button type=\"button\" class=\"btn btn-warning mt-3\">Thêm tin mới</button>
 							</a>
 							";

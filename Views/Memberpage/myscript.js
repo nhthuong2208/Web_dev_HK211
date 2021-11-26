@@ -50,6 +50,22 @@ for(var i = 0; i < click[3].getElementsByClassName("node").length; i++){
 var pwd = click[2].getElementsByTagName("span")[0].innerText;
 click[2].getElementsByTagName("span")[0].remove();
 
+function upload_pic(element){
+    var fileSelected = element.files;
+    if (fileSelected.length > 0) {
+        var fileToLoad = fileSelected[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoaderEvent) {
+            var srcData = fileLoaderEvent.target.result;
+            var newImage = document.createElement('img');
+            newImage.src = srcData;
+            element.parentNode.children[0].innerHTML = newImage.outerHTML;
+        }
+        fileReader.readAsDataURL(fileToLoad);
+    }
+}
+
+
 document.getElementsByTagName("button")[3].onclick = function(){
     if(document.getElementsByTagName("button")[3].innerText == "Thiết lập tài khoản"){
         document.getElementsByTagName("button")[3].innerText = "Xác nhận";
@@ -63,7 +79,7 @@ document.getElementsByTagName("button")[3].onclick = function(){
         var cmnd = profile.getElementsByClassName("col-7")[2].innerText;
         var phone = profile.getElementsByClassName("col-7")[3].innerText;
         var add = profile.getElementsByClassName("col-7")[4].innerText;
-        profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-5\"><label for=\"file_pic\" style=\"cursor: pointer;\"><img src=\"" + linkimg + "\" alt=\"profile\" class=\"profile\"></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" hidden></div>";
+        profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-5\"><label for=\"file_pic\" style=\"cursor: pointer;\"><img src=\"" + linkimg + "\" alt=\"profile\" class=\"profile\"></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" onchange=\"upload_pic(this)\"hidden></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Họ tên:</div>";
         profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\" name=\"fname\" value=\"" + fname + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Tên đăng nhập:</div>";

@@ -97,27 +97,25 @@
                     <div class="col-12 mt-4 border_bot"><h1>Đơn hàng đã đặt</h1></div>
                     <div class="col-12 mt-3 d-flex flex-wrap">
                         <?php 
-                        if(!empty($data["idcart"])){
-                            foreach($data["idcart"] as $row_cart){
+                        if(!empty($data["product_in_cart"])){
+                            foreach($data["product_in_cart"] as $row){
                                 $total = 0;
                                 $h4 = "";
-                                if((int)$row_cart["state"] == 0) $h4 = "Chưa thanh toán";
-                                else $h4 = $row_cart["time"];
+                                if((int)$row["cartid"]["state"] == 0) $h4 = "Chưa thanh toán";
+                                else $h4 = $row["cartid"]["time"];
                                 echo "<div class=\"row justify-content-between node\">
-                                <div class=\"col-12 border_bot\"><div class=\"d-flex justify-content-between\"><h4>Mã hóa đơn: #" . $row_cart["id"] . "</h4><h4>" . $h4 . "</h4></div></div>";
-                                
-                                foreach($data["product_in_cart"] as $row_pro){
-                                    $row = mysqli_fetch_array($row_pro);
-                                    $total += (int)$row["price"]*(int)$row["num"];
+                                <div class=\"col-12 border_bot\"><div class=\"d-flex justify-content-between\"><h4>Mã hóa đơn: #" . $row["cartid"]["id"] . "</h4><h4>" . $h4 . "</h4></div></div>";
+                                foreach($row["product"] as $product){
+                                    $total += (int)$product["price"]*(int)$product["num"];
 
                                     echo "<div class=\"col-12 col-md-6\">
                                         <div class=\"row\">
-                                            <div class=\"col-5 d-flex justify-content-center\"><img src=\"" . $row["img"] . "\" alt=\"item\"></div>
+                                            <div class=\"col-5 d-flex justify-content-center\"><img src=\"" . $product["img"] . "\" alt=\"item\"></div>
                                             <div class=\"col-7\">
                                                 <div class=\"row\">
-                                                    <div class=\"col-12\"><h5>" . $row["name"] . "</h5></div>
-                                                    <div class=\"col-12\">Số lượng: " . $row["num"] . "</div>
-                                                    <div class=\"col-12 price\">Tổng tiền: " . $row["num"] * $row["price"] . "</div>
+                                                    <div class=\"col-12\"><h5>" . $product["name"] . "</h5></div>
+                                                    <div class=\"col-12\">Số lượng: " . $product["num"] . "</div>
+                                                    <div class=\"col-12 price\">Tổng tiền: " . $product["num"] * $product["price"] . "</div>
                                                 </div>
                                             </div>
                                         </div>

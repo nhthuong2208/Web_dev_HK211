@@ -320,6 +320,7 @@
           <span class="last">Last »</span>
         </ul>
       </div>
+      <div id="notice"></div>
       <div class="footer-holder"></div>
       <script src="../Views/footer/footerScript.js"></script>
     </div>
