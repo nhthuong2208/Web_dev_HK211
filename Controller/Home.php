@@ -145,6 +145,16 @@ class Home extends Controller{
         function add_comment_news($user, $array){
             $this->model($user)->add_comment_news($array[2], $array[3], $_SESSION["id"]);
         }
+        function img_update($user){
+            if(isset($_FILES["file_pic"])&& $_FILES["file_pic"]['name'] != ""){
+                if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
+                    move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
+                $this->model($user)->update_pic($_SESSION["id"], './Views/images/' . $_FILES['file_pic']['name']);
+            }
+            $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
+            $this->member_page($user);
+            
+        }
 
         function Cost_table($user){
             $cus = $this->model($user);

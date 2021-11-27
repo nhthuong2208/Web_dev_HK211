@@ -32,10 +32,6 @@ class manager extends customer{
                 WHERE `comment_news`.`CID`=`account`.`ID` and `comment_news`.`NID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
-    function add_comment_news($content, $nid, $cid){
-        $query = "INSERT INTO `comment_news` (`nid`, `cid`, `content`, `time`) VALUE `(`$nid`, `$cid`, `$content`, `date('Y/m/d')`)";
-        return mysqli_query($this->connect, $query);
-    }
     function get_news_by_nid($nid){
         $query = "SELECT `news`.`ID` as `id`,
                             `news`.`CID` as `cid`, 

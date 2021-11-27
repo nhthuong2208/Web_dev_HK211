@@ -171,5 +171,12 @@ class member extends customer{
 
         return mysqli_query($this->connect, $query);
     }
+    function add_comment_news($content, $nid, $cid){
+        echo ($content);
+        echo ($nid);
+        echo ($cid);
+        $query = "INSERT INTO `comment_news` (`nid`, `cid`, `content`, `time`) VALUE (" . $nid . ", " . $cid . ", \"" . $content . "\", \"" . date("Y/m/d") . "\")";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>
