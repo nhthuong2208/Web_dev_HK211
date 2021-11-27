@@ -48,5 +48,22 @@ class manager extends customer{
                 FROM `news`  WHERE `news`.`ID`= ". $nid .";";
         return mysqli_query($this->connect, $query);
     }
+    public function get_message(){
+        $query =    "SELECT    `message`.`FNAME` AS `name`, 
+                                `message`.`EMAIL` AS `email`, 
+                                `message`.`PHONE` AS `phone`, 
+                                `message`.`SUBJECT` AS `sub`, 
+                                `message`.`CONTENT` AS `content`, 
+                                `message`.`CHECK` AS `check`, 
+                                `message`.`ID` AS `id`
+                    FROM `message`";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_message($id){
+        $query =    "UPDATE `message`
+                    SET `message`.`CHECK` = 1
+                    WHERE `message`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

@@ -58,7 +58,7 @@
         </div> 
         <div class="col-12 nonepadding">
           <div class="row justify-content-center flex-wrap align-content-center paddingTD-100">
-            <div class="col-sm-6 col-md-5 col-lg-5 col-xl-4 col-xxl-3">
+            <div class="col-sm-12 col-md-5 col-lg-5 col-xl-4 col-xxl-3">
               <div class="row flex-wrap align-content-center justify-content-center">
                 <div class="col-11 col-sm-10 col-md-12 padding-10 white myshadow border-10">
                   <div class="row align-content-center align-items-center">
@@ -102,7 +102,7 @@
                 <div class="col-11 col-sm-10 col-md-12 padding-10 white myshadow border-10">
                   <div class="row align-content-center align-items-center">
                     <div class="col-3">
-                      <p class="circle"><a href="https://goo.gl/maps/y9Ft1okpSkiZA1zr8"><i class="fas fa-map-marker-alt"></i></a></p>
+                      <p class="circle"><a href="https://goo.gl/maps/y9Ft1okpSkiZA1zr8" target="_blank"><i class="fas fa-map-marker-alt"></i></a></p>
                     </div>
                     <div class="col-9">
                       <div class="d-flex flex-column ">
@@ -114,29 +114,87 @@
                 </div>
               </div>
             </div>
-            <div class="col-11 col-sm-6 col-md-6 col-lg-6 col-xl-5 white border-10 myshadow padding-20">
-              <h4 class="mgl-12">Send Messege</h4>
-              <form action="" onsubmit="return false;">
-                <div class="row">
-                  <div class="col-xxl-6">
-                    <input type="text" name="name" placeholder="   Your name">
-                  </div>
-                  <div class="col-xxl-6">
-                    <input type="text" name="address" placeholder="  Email address">
-                  </div>
-                  <div class="col-xxl-6">
-                    <input type="text" name="phone" placeholder="  Phone number">
-                  </div>
-                  <div class="col-xxl-6">
-                    <input type="text" name="subject" placeholder="  Subject">
-                  </div>
-                  <div class="col-12">
-                    <textarea name="content" placeholder="   Messege"></textarea>
-                  </div>
-                </div>
-                <button type="button" class="btn btn-primary active mgl-12">Send Messege</button>
-              </form>
-            </div>
+            <?php
+                if($data["user"] != "manager"){
+                    echo "
+                    <div class=\"col-11 col-sm-6 col-md-6 col-lg-6 col-xl-5 white border-10 myshadow padding-20\">
+                      <h4 class=\"mgl-12\">Send Messege</h4>
+                      <form action=\"\" onsubmit=\"return false;\">
+                        <div class=\"row\">
+                          <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"name\" placeholder=\"   Your name\" required>
+                          </div>
+                          <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"address\" placeholder=\"  Email address\" required>
+                          </div>
+                          <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"phone\" placeholder=\"  Phone number\" required>
+                          </div>
+                          <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"subject\" placeholder=\"  Subject\" required>
+                          </div>
+                          <div class=\"col-12\">
+                            <textarea name=\"content\" placeholder=\"   Messege\" required></textarea>
+                          </div>
+                        </div>
+                        <button type=\"button\" class=\"btn btn-primary active mgl-12\">Send Messege</button>
+                      </form>
+                    </div>";
+                }
+                else{
+                  echo "<div class=\"col-12 col-sm-12 col-md-6 col-lg-6 col-xl-7 white border-10 myshadow padding-20\">
+                  <div class=\"row\">";
+                    if(!empty($data["message"])){
+                      foreach($data["message"] as $row){
+                        $string = "Đã phản hồi";
+                        if($row["check"] == 0) $string = "Chưa phản hồi";
+                        echo "<div class=\"col-12 mt-3 mydotted\">
+                      <div class=\"row\">
+                        <div class=\"col-12\">
+                          <div class=\"row justify-content-between\">
+                            <h4 class=\"col-6\">Thư số: #" . $row["id"] ."</h4>
+                            <h6 class=\"col-6\">". $string ."</h6>
+                          </div>
+                        </div>
+                        <div class=\"col-xxl-6 mymargin\">
+                          <div class=\"row mydotted-5\">
+                            <div class=\"col-5\"><h5>Người gửi:</h5></div>
+                            <div class=\"col-7\"><h5>" . $row["name"] . "</h5></div>
+                          </div>
+                        </div>
+                        <div class=\"col-xxl-6 mymargin\">
+                          <div class=\"row mydotted-5\">
+                            <div class=\"col-3\"><h5>Email:</h5></div>
+                            <div class=\"col-9\"><h5>" . $row["email"] . "</h5></div>
+                          </div>
+                        </div>
+                        <div class=\"col-xxl-6 mymargin\">
+                          <div class=\"row mydotted-5\">
+                            <div class=\"col-5\"><h5>SĐT:</h5></div>
+                            <div class=\"col-7\"><h5>" . $row["phone"] . "</h5></div>
+                          </div>
+                        </div>
+                        <div class=\"col-xxl-6 mymargin\">
+                          <div class=\"row mydotted-5\">
+                            <div class=\"col-3\"><h5>Tiêu đề:</h5></div>
+                            <div class=\"col-9\"><h5>" . $row["sub"] . "</h5></div>
+                          </div>
+                        </div>
+                        <div class=\"col-12 mymargin\">
+                          Nội dung: 
+                          <h5 class=\"mymargin mydotted\">" . $row["content"] . "</h5>
+                        </div>
+                      </div>
+                      <button type=\"button\" class=\"btn btn-primary active mgl-12\" onclick=\"inform(this)\">Phản hồi tin nhắn</button>
+                        </div>";
+                      }
+                    }
+                    else{
+                      echo "<h5>Không có tin nhắn nào</h5>";
+                    }
+                  echo "</div></div>";
+                }
+            ?>
           </div>
         </div>
         <div class="col-12">
@@ -159,7 +217,41 @@
         require_once "./Views/footer/index.php";
       ?>
     <!--Footer-->
-  
-  <script src="../Views/Contact_US/myScript.js"></script>
+  <?php
+      if($data["user"] == "manager"){
+        echo "<div id=\"myModal\" class=\"modal\">
+                <div class=\"modal-content\">
+                    <div class=\"modal-header\">
+                        <h2>Thư phản hồi</h2>
+                        <span class=\"close\">&times;</span>
+                    </div>
+                    <div class=\"modal-body\">
+                        <div class=\"row\">
+                        <div class=\"col-12\">
+                          <div class=\"row\">
+                            <div class=\"col-4\">Gửi đến:  </div>
+                            <div class=\"col-8\"><input type=\"text\" name=\"name\" value=\"\" disabled></div>
+                            </div>
+                                      </div>
+                          <div class=\"col-12\">
+                          <div class=\"row\">
+                              <div class=\"col-4\">Tiêu đề: </div>
+                              <div class=\"col-8\"><input type=\"text\" name=\"numberphone\"  value=\"\"></div>
+                              </div>
+                          </div>
+                          <div class=\"col-12\">
+                              <div class=\"row\">
+                                  <div class=\"col-4\">Nội dung: </div>
+                                  <div class=\"col-8\"><textarea name=\"content\" value=\"\" required></textarea></div>
+                                  </div>
+                              </div>
+                        <button type=\"button\" class=\"btn btn-primary\" onclick=\"sendMessage(this)\">Gửi thư</button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+      }
+  ?>
+  <script src="../Views/Contact_US/<?php if($data["user"] != "manager") echo "myScript"; else echo "manager_message" ?>.js"></script>
   </body>
 </html>

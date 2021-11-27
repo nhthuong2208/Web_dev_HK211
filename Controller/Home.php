@@ -36,7 +36,17 @@ class Home extends Controller{
             ]);
         }
         function Contact_us($user){
-            $this->view("Contact_US", []);
+            if($user == "manager"){
+                $this->view("Contact_US", [
+                    "user" => $user,
+                    "message" => $this->model($user)->get_message()
+                ]);
+            }
+            else{
+                $this->view("Contact_US", [
+                    "user" => $user
+                ]);
+            }
         }
         function News($user){
             $cus = $this->model($user);
@@ -287,6 +297,15 @@ class Home extends Controller{
         }
         function delete_order_combo($user){
             if($this->model($user)->delete_order_combo($_SESSION["id"])) echo "?url=Home/Cost_table/";
+            else echo "null";
+        }
+        function sendmessage($user, $array){
+            $to = explode("-", $array[2])[1];
+            $subject = explode("-", $array[3])[1];
+            $message = explode("-", $array[4])[1];
+            if(mail($to, $subject, $message)){
+                $this->model($user)->update_message((int)$array[5]);
+            }
             else echo "null";
         }
 }

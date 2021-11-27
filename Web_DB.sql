@@ -95,7 +95,8 @@ CREATE TABLE `MESSAGE`(
     `EMAIL` VARCHAR(250),
     `PHONE` VARCHAR(10),
     `SUBJECT` VARCHAR(250),
-    `CONTENT` TEXT
+    `CONTENT` TEXT,
+    `CHECK` TINYINT DEFAULT 0
 );
 CREATE TABLE `ORDER_COMBO`(
     `ID` INT PRIMARY KEY AUTO_INCREMENT,
@@ -196,3 +197,6 @@ INSERT INTO `news`(`news`.`ID`, `news`.`CID`, `news`.`KEY`, `news`.`TIME`, `news
 INSERT INTO `comment_news`(`comment_news`.`ID`, `comment_news`.`NID`, `comment_news`.`CID`, `comment_news`.`CONTENT`, `comment_news`.`TIME`) VALUES
 (1, 1, 1, "Bài viết tuyệt vời!", "2021-10-20");
 
+-- message
+INSERT INTO `message` (`message`.`FNAME`, `message`.`EMAIL`, `message`.`PHONE`, `message`.`SUBJECT`, `message`.`CONTENT`) VALUES
+("Phạm Minh Hiếu", "phamminhhieu1594@gmail.com", "0973409127", "last test", "Shop xịn nha bạn!!");
