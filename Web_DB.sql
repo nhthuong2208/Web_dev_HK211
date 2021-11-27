@@ -12,7 +12,6 @@ CREATE TABLE `PRODUCT`(
   `CATEGORY` VARCHAR(100),
   `TOP_PRODUCT` INT
 );
-
 CREATE TABLE `SUB_IMG_URL` (
     `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
     `PID` BIGINT NOT NULL,
@@ -55,7 +54,6 @@ CREATE TABLE `COMMENT`(
     `TIME` DATE,
     FOREIGN KEY (`UID`) REFERENCES `ACCOUNT`(`ID`) 
 );
-
 CREATE TABLE `NEWS`(
     `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
     `CID` BIGINT,
@@ -66,7 +64,6 @@ CREATE TABLE `NEWS`(
     `IMG_URL` VARCHAR(50),
     `SHORT_CONTENT` VARCHAR(300)
 );
-
 CREATE TABLE `COMMENT_NEWS`(
     `ID` BIGINT PRIMARY KEY AUTO_INCREMENT,
     `NID` BIGINT NOT NULL,
@@ -76,8 +73,7 @@ CREATE TABLE `COMMENT_NEWS`(
     FOREIGN KEY (`CID`) REFERENCES `ACCOUNT`(`ID`),
     FOREIGN KEY (`NID`) REFERENCES `NEWS`(`ID`) 
 );
-
-CREATE TABLE `cycle`( 
+CREATE TABLE `CYCLE`( 
     `ID` int PRIMARY KEY, 
     `CYCLE` VARCHAR(10) 
 );
@@ -99,7 +95,8 @@ CREATE TABLE `MESSAGE`(
     `EMAIL` VARCHAR(250),
     `PHONE` VARCHAR(10),
     `SUBJECT` VARCHAR(250),
-    `CONTENT` TEXT
+    `CONTENT` TEXT,
+    `CHECK` TINYINT DEFAULT 0
 );
 CREATE TABLE `ORDER_COMBO`(
     `ID` INT PRIMARY KEY AUTO_INCREMENT,
@@ -108,6 +105,7 @@ CREATE TABLE `ORDER_COMBO`(
     `TIME` DATE,
     `CYCLE` INT,
     `SIZE` VARCHAR(10),
+    `STATE` tinyint DEFAULT 0,
     FOREIGN KEY (`CBID`) REFERENCES `COMBO`(`ID`),
     FOREIGN KEY (`UID`) REFERENCES `ACCOUNT`(`ID`),
     FOREIGN KEY (`CYCLE`) REFERENCES `cycle`(`ID`)
@@ -164,6 +162,9 @@ INSERT INTO `product_in_cart` (`product_in_cart`.`PID`, `product_in_cart`.`OID`)
 (1, 1),
 (2, 1),
 (3, 1);
+-- order combo
+INSERT INTO `order_combo`(`order_combo`.`UID`, `order_combo`.`CBID`, `order_combo`.`TIME`, `order_combo`.`CYCLE`, `order_combo`.`SIZE`)
+VALUES(1, 1, "2021/11/26", 1, "XXL");
 
 -- sub_img_url
 INSERT INTO `sub_img_url`(`sub_img_url`.`ID`, `sub_img_url`.`PID`, `sub_img_url`.`IMG_URL`) VALUES
@@ -196,3 +197,6 @@ INSERT INTO `news`(`news`.`ID`, `news`.`CID`, `news`.`KEY`, `news`.`TIME`, `news
 INSERT INTO `comment_news`(`comment_news`.`ID`, `comment_news`.`NID`, `comment_news`.`CID`, `comment_news`.`CONTENT`, `comment_news`.`TIME`) VALUES
 (1, 1, 1, "Bài viết tuyệt vời!", "2021-10-20");
 
+-- message
+INSERT INTO `message` (`message`.`FNAME`, `message`.`EMAIL`, `message`.`PHONE`, `message`.`SUBJECT`, `message`.`CONTENT`) VALUES
+("Phạm Minh Hiếu", "phamminhhieu1594@gmail.com", "0973409127", "last test", "Shop xịn nha bạn!!");

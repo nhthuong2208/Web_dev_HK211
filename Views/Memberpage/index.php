@@ -99,12 +99,13 @@
                         <?php 
                         if(!empty($data["product_in_cart"])){
                             foreach($data["product_in_cart"] as $row){
+                                if(empty(mysqli_fetch_array($row["product"]))) continue;
                                 $total = 0;
                                 $h4 = "";
                                 if((int)$row["cartid"]["state"] == 0) $h4 = "Chưa thanh toán";
                                 else $h4 = $row["cartid"]["time"];
                                 echo "<div class=\"row justify-content-between node\">
-                                <div class=\"col-12 border_bot\"><div class=\"d-flex justify-content-between\"><h4>Mã hóa đơn: #" . $row["cartid"]["id"] . "</h4><h4>" . $h4 . "</h4></div></div>";
+                                <div class=\"col-12 border_bot\"><div class=\"d-flex justify-content-between\"><h4>Mã hóa đơn: #" . $row["cartid"]["id"] . "</h4><h5>" . $h4 . "</h5></div></div>";
                                 foreach($row["product"] as $product){
                                     $total += (int)$product["price"]*(int)$product["num"];
 
@@ -115,6 +116,7 @@
                                                 <div class=\"row\">
                                                     <div class=\"col-12\"><h5>" . $product["name"] . "</h5></div>
                                                     <div class=\"col-12\">Số lượng: " . $product["num"] . "</div>
+                                                    <div class=\"col-12\">Size: " . $product["size"] . "</div>
                                                     <div class=\"col-12 price\">Tổng tiền: " . $product["num"] * $product["price"] . "</div>
                                                 </div>
                                             </div>
@@ -124,6 +126,33 @@
                                 echo "<div class=\"col-12 price\">Tổng cộng: " . $total ."</div>
                                 </div>";
                             }
+                        }
+                        if(!empty($data["order_combo"])){
+                            echo "<div class=\"col-12 d-flex justify-content-center\"><div class=\"row nonemg text-center center_my\">";
+                            foreach($data["order_combo"] as $row){
+                                echo "<div class=\"col-sm-6 col-lg-6 mb-4\">
+                                <section>
+                                    <div class=\"card\">
+                                        <div class=\"card-header text-center py-1\">
+                                            <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
+                                            </div>		
+                                            <div class=\"card-body\">
+                                                <h3 class=\"text-warning mb-2\">" . $row["price"] . "/tháng</h3>
+                                                <h6>Mỗi hộp bao gồm: </h6>
+                                                <ol class=\"list-group list-group-numbered\">";
+                                                foreach($row["product"] as $product){
+                                                    echo "<li class=\"list-group-item\">" . $product["name"] . "</li>";
+                                                }
+                                echo        "</ol>
+                                            <div class=\"d-flex justify-content-between py-3\">
+                                            <h5>Chu kì: " . $row["cycle"] . "</h5><h5>Size: " . $row["size"] . "</h5>
+                                            </div>
+                                            </div>
+                                            <div class=\"card-footer d-flex justify-content-end py-3\">
+                                            <h5 class=\"mb-0 fw-bold\">" . $row["time"] . "</h5>";
+                              echo "</div></div></section></div>";
+                            }
+                            echo "</div></div></div>";
                         }
                         ?> 
                     </div>

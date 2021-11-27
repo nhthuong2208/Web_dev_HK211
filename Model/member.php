@@ -69,10 +69,19 @@ class member extends customer{
         }
     }
     public function update_cart($id){
+        $query =    "UPDATE `product`
+                    SET `product`.`NUMBER` = `product`.`NUMBER` - (SELECT `ABC`.`num` FROM
+                        (SELECT `product_in_cart`.`QUANTITY` AS `num`, `product_in_cart`.`PID` AS `pid` FROM  `product_in_cart`, `product`, `cart`
+                        WHERE `product_in_cart`.`PID` = `product`.`ID` AND `product_in_cart`.`OID` = `cart`.`ID` AND `cart`.`ID` = " . $id . ") AS `ABC` WHERE `ABC`.`pid` = `product`.`ID`)
+                    WHERE `product`.`ID` IN  (SELECT `ABC`.`pid` FROM
+                        (SELECT `product_in_cart`.`QUANTITY` AS `num`, `product_in_cart`.`PID` AS `pid` FROM  `product_in_cart`, `product`, `cart`
+                        WHERE `product_in_cart`.`PID` = `product`.`ID` AND `product_in_cart`.`OID` = `cart`.`ID` AND `cart`.`ID` = " . $id . ") AS `ABC`);";
+        
+        mysqli_query($this->connect, $query);
         $query =    "UPDATE `cart`
                     SET `cart`.`STATE` = 1
                     WHERE `cart`.`ID` = " . $id;
-        return  mysqli_query($this->connect, $query);
+        return mysqli_query($this->connect, $query);
     } 
     public function get_cart($id){
         $query =    "SELECT     `cart`.`ID` AS `id`,   
@@ -112,6 +121,54 @@ class member extends customer{
         $query =    "UPDATE `account`
                     SET `account`.`IMG_URL` = \"" . $path . "\"
                     WHERE `account`.`ID` = " . $id ;
+        return mysqli_query($this->connect, $query);
+    }
+    public function create_order_combo($uid, $time, $cbid, $cycle, $size){
+        $query =    "INSERT INTO `order_combo`(`order_combo`.`UID`, `order_combo`.`CBID`, `order_combo`.`TIME`, `order_combo`.`CYCLE`, `order_combo`.`SIZE`)
+                    VALUES(" . $uid . ", " . $cbid . ", \"" . $time . "\", " . $cycle . ", \"" . $size . "\");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_order_combo($id){
+        $query =    "SELECT `order_combo`.`ID` AS `id`, 
+                            `order_combo`.`TIME` AS `time`, 
+                            `order_combo`.`CBID` AS `cbid`, 
+                            `order_combo`.`CYCLE` AS `cycle`, 
+                            `order_combo`.`SIZE` AS `size`, 
+                            `combo`.`NAME` AS `name`, 
+                            `combo`.`COST` AS `price`
+                    FROM `order_combo`, `combo`
+                    WHERE   `order_combo`.`STATE` = 0
+                            AND `order_combo`.`CBID` = `combo`.`ID`
+                            AND `order_combo`.`UID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_order_combo($id){
+        $query =    "UPDATE `order_combo`
+                    SET `order_combo`.`STATE` = 1
+                    WHERE `order_combo`.`UID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function delete_order_combo($id){
+        $query =    "DELETE FROM `order_combo` WHERE `order_combo`.`STATE` = 0 AND `order_combo`.`UID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_order_combo_mem($id){
+        $query =    "SELECT `order_combo`.`ID` AS `id`, 
+                            `order_combo`.`TIME` AS `time`, 
+                            `order_combo`.`CBID` AS `cbid`, 
+                            `order_combo`.`CYCLE` AS `cycle`, 
+                            `order_combo`.`SIZE` AS `size`, 
+                            `combo`.`NAME` AS `name`, 
+                            `combo`.`COST` AS `price`
+                    FROM `order_combo`, `combo`
+                    WHERE   `order_combo`.`STATE` = 1
+                            AND `order_combo`.`CBID` = `combo`.`ID`
+                            AND `order_combo`.`UID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    function delete_order_combo_cbid($id, $cbid){
+        $query =    "DELETE FROM `order_combo` WHERE `order_combo`.`UID` = " . $id . " AND `order_combo`.`CBID` = " . $cbid . " AND `order_combo`.`STATE` = 0";
+
         return mysqli_query($this->connect, $query);
     }
 }

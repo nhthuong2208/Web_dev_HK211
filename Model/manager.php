@@ -1,8 +1,7 @@
 <?php
-require_once("customer.php");
+require_once "./Model/customer.php";
 class manager extends customer{
-
-    public function get_news(){
+    public function get_news(){ 
         $query =    "SELECT `news`.`ID` as `id`,
                             `news`.`CID` as `cid`, 
                             `news`.`KEY` as `key`, 
@@ -68,6 +67,39 @@ class manager extends customer{
         $query = "DELETE FROM `product_in_combo` WHERE `product_in_combo`.`PID` = " . $pid . ";";
         mysqli_query($this->connect, $query);
         $query = "DELETE FROM `product` WHERE `product`.`ID` = " . $pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    function add_comment_news($content, $nid, $cid){
+        $query = "INSERT INTO `comment_news` (`nid`, `cid`, `content`, `time`) VALUE `(`$nid`, `$cid`, `$content`, `date('Y/m/d')`)";
+        return mysqli_query($this->connect, $query);
+    }
+    function get_news_by_nid($nid){
+        $query = "SELECT `news`.`ID` as `id`,
+                            `news`.`CID` as `cid`, 
+                            `news`.`KEY` as `key`, 
+                            `news`.`TIME` as `time`,
+                            `news`.`TITLE` as `title`,  
+                            `news`.`CONTENT` as `content`, 
+                            `news`.`IMG_URL` as `img_url`, 
+                            `news`.`SHORT_CONTENT` as `short_content`
+                FROM `news`  WHERE `news`.`ID`= ". $nid .";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_message(){
+        $query =    "SELECT    `message`.`FNAME` AS `name`, 
+                                `message`.`EMAIL` AS `email`, 
+                                `message`.`PHONE` AS `phone`, 
+                                `message`.`SUBJECT` AS `sub`, 
+                                `message`.`CONTENT` AS `content`, 
+                                `message`.`CHECK` AS `check`, 
+                                `message`.`ID` AS `id`
+                    FROM `message`";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_message($id){
+        $query =    "UPDATE `message`
+                    SET `message`.`CHECK` = 1
+                    WHERE `message`.`ID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
 }

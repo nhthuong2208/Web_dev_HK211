@@ -79,7 +79,7 @@
                     foreach($data["combo"] as $row){
                         echo "<div class=\"col-md-4 mb-4\">
                         <section>
-                            <div class=\"card\">
+                            <div class=\"card\"><span hidden>" .  $row["id"] . "</span>
                                 <div class=\"card-header text-center py-1\">
                                     <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
                                     </div>		
@@ -102,29 +102,31 @@
                                             <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3\" autocomplete=\"off\">
                                             <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">L</label>
                 
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">XL</label>
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio4\" autocomplete=\"off\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio4\">XL</label>
                 
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">XXL</label>
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio5\" autocomplete=\"off\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio5\">XXL</label>
                                           </div>
                                     </div>
                                     <div class=\"card-footer d-flex justify-content-between py-3\">
                                     <select class=\"form-select-sm\" aria-label=\"Small select\">
-                                        <option selected=\"\">Chọn chu kì gửi</option>";
+                                        <option selected=\"0\">Chọn chu kì gửi</option>";
                         $i = 1;
                         foreach($data["cycle"] as $row1){
                             echo "<option value=\"". $i . "\">Gửi mỗi ". $row1["cycle"] . "</option>";
                             $i += 1;
                         }
 
-                    echo "</select><button type=\"button\" class=\"btn btn-success btn-block\">Thanh toán</button></div></div></section></div>";
+                    echo "</select><button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">Thanh toán</button></div></div></section></div>";
                     }
                 }
         ?>
-        <div class="footer-holder"></div>
-        <script src="../Views/footer/footerScript.js"></script>
+        <div class="demo" hidden><?php if(!empty($data["user"])) echo $data["user"]; ?></div>
 </div>
 
+<div class="footer-holder"></div>
+        <script src="../Views/footer/footerScript.js"></script>
+        <script src="../Views/Cost_table/myscript.js"></script>
 </body>
 </html>
