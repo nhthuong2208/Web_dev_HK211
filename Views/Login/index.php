@@ -31,8 +31,9 @@
 </head>
 
 <body>
-	<div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
 	<script src="./Views/Navbar/navbarScript.js"></script>
+
 	<div class="login mb-5" style="min-height: 60vh;">
 		<div class="row justify-content-md-center h-100">
 			<div class="card-wrapper col-md-4">
@@ -107,8 +108,10 @@
 	</div>
 	<div class="demo" hidden><?php if(is_array($data["key"])) echo $data["key"][2];
 									else  echo $data["key"]; ?></div>
-	<div class="footer-holder"></div>
-	<script src="./Views/footer/footerScript.js"></script>
+	<!--div class="footer-holder"></div>
+	<script src="./Views/footer/footerScript.js"></script-->
+	
+    <?php require_once "./Views/footer/index.php ";?>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 	<script src="./Views/Login/login.js"></script>
 </body>

@@ -42,7 +42,7 @@
 </head>
 
 <body>
-<div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
 <script src="../Views/Navbar/navbarScript.js" index='4'></script>
   <div class="container mt-5 mb-5" style="max-width: 1100px;">
     <div class="mt-3 mb-4 text-center">

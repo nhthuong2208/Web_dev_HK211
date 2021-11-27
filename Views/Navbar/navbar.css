@@ -259,7 +259,18 @@ footer .social i {
 }
 
 /*----------------------------------------------------*/
-.cart *, .login-button *{
+.cart *, .login-button  button *{
   text-decoration: none;
   color: white;
+}
+.login-button .dropdown-menu.show{
+  width: 200px;
+  height: 100px;
+}
+.login-button .dropdown-menu a{
+  color: black !important;
+}
+
+.login-button .dropdown-menu .dropdown-item.active{
+  background-color: #f3c584;
 }

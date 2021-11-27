@@ -42,7 +42,7 @@
 </head>
 
 <body>
-	<div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
 	<script src="../Views/Navbar/navbarScript.js"></script>
 	<div class="login" style="margin-bottom: 180px !important;min-height: 50vh">
 		<div class="container">
@@ -75,8 +75,10 @@
 			</div>
 		</div>
 	</div>	
-	<div class="footer-holder"></div>
-	<script src="../Views/footer/footerScript.js"></script>
+	<!--div class="footer-holder"></div>
+	<script src="../Views/footer/footerScript.js"></script-->
+	
+    <?php require_once "./Views/footer/index.php ";?>
 	<script src="../Views/Login/login.js"></script>
 </body>
 </html>

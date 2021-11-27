@@ -45,7 +45,7 @@
     <div class="company-product">
 
       <!-- Navigation -->
-      <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
       <script src="../Views/Navbar/navbarScript.js" index='2'></script>
       
       <!-- Filter bar and sort -->
@@ -358,8 +358,9 @@
         </ul>
       </div>
       <div id="notice"></div>
-      <div class="footer-holder"></div>
-      <script src="../Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="../Views/footer/footerScript.js"></script-->
+    <?php require_once "./Views/footer/index.php ";?>
     </div>
     <script src="./Views/Products/product.js"></script>
   </body>

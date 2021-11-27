@@ -381,5 +381,9 @@ class Home extends Controller{
             }
             else echo "null";
         }
+        function logout($user){
+            session_unset();
+            $this->Login($user, "Home_page");
+        }
 }
 ?>

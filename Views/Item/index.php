@@ -44,7 +44,7 @@
   </head>
   <body>
     <div class="product-item">
-      <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
       <script src="../Views/Navbar/navbarScript.js"></script>
 
       <div class="container-fluid">
@@ -393,9 +393,11 @@
         
       </div>
 
-      <div class="footer-holder"></div>
-      <script src="./Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="./Views/footer/footerScript.js"></script-->
+    <?php require_once "./Views/footer/index.php ";?>
     </div>
+    
     <script src="./Views/Item/item.js"></script>
   </body>
 </html>
