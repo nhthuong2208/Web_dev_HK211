@@ -1,10 +1,7 @@
 <?php
-class manager extends DB{
+require_once("customer.php");
+class manager extends customer{
 
-    public function SinhVien(){
-        $qr = "SELECT * FROM sinhvien";
-        return mysqli_query($this->con, $qr);
-    }
     public function get_news(){
         $query =    "SELECT `news`.`ID` as `id`,
                             `news`.`CID` as `cid`, 
@@ -36,6 +33,42 @@ class manager extends DB{
                 WHERE `comment_news`.`CID`=`account`.`ID` and `comment_news`.`NID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
-
+    public function add_new_item($name, $price, $desc, $remain, $cate, $path){
+        $query = "INSERT INTO `product`(`product`.`NAME`, `product`.`PRICE`, `product`.`IMG_URL`, `product`.`NUMBER`, `product`.`DECS`, `product`.`CATEGORY`, `product`.`TOP_PRODUCT`)
+                  VALUE (\"" . $name . "\", " . (int)$price . ", \"" . $path . "\", " . $remain . ", \"" . $desc . "\", \"" . $cate . "\", 0);";
+        mysqli_query($this->connect, $query);
+        return mysqli_insert_id($this->connect);
+    }
+    public function add_sub_img($pid, $path){
+        $query = "INSERT INTO `sub_img_url`(`sub_img_url`.`PID`, `sub_img_url`.`IMG_URL`)
+                  VALUE (" . (int)$pid . ", \"" . $path . "\");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_item_nope_img($pid, $name, $price, $desc, $remain, $cate, $top_product){
+        $query = "UPDATE `product` SET `product`.`NAME` = \"" . $name . "\", `product`.`PRICE` = " . (int)$price . ", `product`.`NUMBER` = " . (int)$remain . ", `product`.`DECS` = \"" . $desc . "\", `product`.`CATEGORY` = \"" . $cate . "\", `product`.`TOP_PRODUCT` = " . (int)$top_product . " WHERE `product`.`ID` = " . (int)$pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_item_img($pid, $path){
+        $query = "UPDATE `product` SET `product`.`IMG_URL` = \"" . $path . "\" WHERE `product`.`ID` = " . (int)$pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_sub_img_id($pid){
+        $query = "SELECT `sub_img_url`.`ID` AS `id`, `sub_img_url`.`IMG_URL` AS `img` FROM `sub_img_url` WHERE `sub_img_url`.`PID` = " . (int)$pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_sub_img($sub_id, $path){
+        $query = "UPDATE `sub_img_url` SET `sub_img_url`.`IMG_URL` = \"" . $path . "\" WHERE `sub_img_url`.`ID` = ". (int)$sub_id . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function delete_item($pid){
+        $query = "DELETE FROM `sub_img_url` WHERE `sub_img_url`.`PID` = " . $pid . ";";
+        mysqli_query($this->connect, $query);
+        $query = "DELETE FROM `product_in_cart` WHERE `product_in_cart`.`PID` = " . $pid . ";";
+        mysqli_query($this->connect, $query);
+        $query = "DELETE FROM `product_in_combo` WHERE `product_in_combo`.`PID` = " . $pid . ";";
+        mysqli_query($this->connect, $query);
+        $query = "DELETE FROM `product` WHERE `product`.`ID` = " . $pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

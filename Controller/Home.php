@@ -152,6 +152,8 @@ class Home extends Controller{
         function check_login($user, $array){
             if($array[2] == "admin" &&  $array[3] == "admin"){ // bình luận trang tin tức / bình luần trang item // add to cart
                 $_SESSION["user"] = "manager";
+                if(!isset($array[4])) $array[4] = "Home_page";
+                echo "?url=/Home/" . $array[4] . "/"; // ?url=h/f/user/pwd =>  
             }
             else{ 
                 $id = mysqli_fetch_array($this->model($user)->get_id_user($array[2],  $array[3]), MYSQLI_NUM);
@@ -229,6 +231,79 @@ class Home extends Controller{
                 }
             }
             echo $this->model($user)->create_product_incart($array[3], $_SESSION["id_cart"], $array[4]);
+        }
+        function add_new_item($user){
+            if(isset($_POST["iname"]) && isset($_POST["price"]) && isset($_FILES["image-url"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
+            {
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][0])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][0], './Views/images/' . $_FILES['image-url']['name'][0]);
+                }
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][1])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][1], './Views/images/' . $_FILES['image-url']['name'][1]);
+                }  
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][2])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][2], './Views/images/' . $_FILES['image-url']['name'][2]);
+                }    
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][3])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][3], './Views/images/' . $_FILES['image-url']['name'][3]);
+                }
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][4])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][4], './Views/images/' . $_FILES['image-url']['name'][4]);
+                }
+                $pid = $this->model($user)->add_new_item($_POST["iname"], $_POST["price"], $_POST["description"], $_POST["remain"], $_POST["category"], './Views/images/' . $_FILES['image-url']['name'][0]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][1]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][2]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][3]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][4]);
+            }
+            $this->Products($user);
+        }
+        function update_item($user, $pid){
+            if(isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
+            {
+                $sub_id = mysqli_fetch_all($this->model($user)->get_sub_img_id($pid[2]), MYSQLI_ASSOC);
+                if(isset($_FILES["e-image-url"])){
+                    if($_FILES['e-image-url']['name'][0] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][0])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][0], './Views/images/' . $_FILES['e-image-url']['name'][0]);
+                        }
+                        $this->model($user)->update_item_img($pid[2], './Views/images/' . $_FILES['e-image-url']['name'][0]);
+                    }
+                    if($_FILES['e-image-url']['name'][1] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][1])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][1], './Views/images/' . $_FILES['e-image-url']['name'][1]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[0]["id"], './Views/images/' . $_FILES['e-image-url']['name'][1]);
+                    }
+                    if($_FILES['e-image-url']['name'][2] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][2])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][2], './Views/images/' . $_FILES['e-image-url']['name'][2]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[1]["id"], './Views/images/' . $_FILES['e-image-url']['name'][2]);
+                    }
+                    if($_FILES['e-image-url']['name'][3] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][3])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][3], './Views/images/' . $_FILES['e-image-url']['name'][3]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[2]["id"], './Views/images/' . $_FILES['e-image-url']['name'][3]);
+                    }
+                    if($_FILES['e-image-url']['name'][4] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][4])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][4], './Views/images/' . $_FILES['e-image-url']['name'][4]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[3]["id"], './Views/images/' . $_FILES['e-image-url']['name'][4]);
+                    }
+                }
+                $this->model($user)->update_item_nope_img($pid[2], $_POST["name"], $_POST["price"], $_POST["description"], $_POST["remain"], $_POST["category"], $_POST["featured_product"]);  
+            }
+            $this->Item($user, $pid);
+        }
+        function delete_item($user, $array){
+            if($this->model($user)->delete_item((int)$array[2])){
+                echo "OK";
+            } else {
+                echo "Nope";
+            }
         }
 }
 ?>

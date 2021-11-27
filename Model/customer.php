@@ -39,7 +39,7 @@ class customer extends DB{
     }
 
     public function get_product_at_id($pid) {
-        $query = "SELECT `product`.`ID` AS `id`, `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` WHERE `product`.`ID` = " . (int)$pid . ";";
+        $query = "SELECT `product`.`ID` AS `id`, `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`NUMBER` AS \"num\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\", `product`.`TOP_PRODUCT` as \"top_item\" FROM `product` WHERE `product`.`ID` = " . (int)$pid . ";";
         return mysqli_query($this->connect, $query);
     }
     public function get_sub_img($pid) {

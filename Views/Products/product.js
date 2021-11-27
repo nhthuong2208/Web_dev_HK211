@@ -46,25 +46,6 @@ for (let i = 0; i < tabs.length; i++) {
     this.className += " active-filter";
   });
 }
-/*
-// modal add item
-var modal = document.getElementById("addItem-modal");
-
-var btn = document.getElementById("add-itemBtn");
-
-var span = document.getElementsByClassName("close-modal-add")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}*/
 
 //---------------------------------------------------------------------------------------------------------
 function minus(element){
@@ -80,7 +61,7 @@ function plus(element){
 
 var user = document.getElementsByClassName("container-fluid")[0].getElementsByTagName("span")[0].innerText;
 document.getElementsByClassName("container-fluid")[0].getElementsByTagName("span")[0].remove();
-console.log(user);
+
 for (let index = 0; index < document.getElementsByClassName("addToCart").length; index++) {
   document.getElementsByClassName("addToCart")[index].value = document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].innerText;
   document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].remove();
@@ -102,5 +83,71 @@ function add_Product(element){
 	  };
     xmlhttp.open("GET", "?url=Home/create_cart/" + day_str.getFullYear() + "-" + String(day_str.getMonth() + 1) + "-" + String(day_str.getDate()) + "/" + element.value + "/" + element.parentNode.parentNode.getElementsByTagName("input")[0].value + "/", true);
     xmlhttp.send();
+  }
+}
+
+function upload_pic(element){
+  var fileSelected = element.files;
+  if (fileSelected.length > 0) {
+      var fileToLoad = fileSelected[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function(fileLoaderEvent) {
+          var srcData = fileLoaderEvent.target.result;
+          var newImage = document.createElement('img');
+          newImage.src = srcData;
+          newImage.style = "width: 50%; margin-bottom: 1rem;";
+          element.parentNode.parentNode.children[1].appendChild(newImage);
+      }
+      fileReader.readAsDataURL(fileToLoad);
+  }
+}
+
+function add_notice(string){
+  if(string == "OK") return '<div class="alert alert-success" role="alert"><strong>Xóa thành công!</strong></div>';
+  return '<div class="alert alert-danger" role="alert"><strong>Xóa thất bại!</strong></div>';
+}
+
+function remove_item(pid, element){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    if(this.responseText == "OK"){
+      element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementsByClassName("alert")[0].style.display = "block";
+      setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+    } else if(this.responseText == "Nope"){
+      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementsByClassName("alert")[0].style.display = "block";
+      setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+    }
+    
+  }
+  xmlhttp.open("GET", "?url=Home/delete_item/" + pid + "/", true);
+  xmlhttp.send();
+}
+
+// modal add item
+var modal = document.getElementById("addItem-modal");
+
+var btn = document.getElementById("add-itemBtn");
+
+var span = document.getElementsByClassName("close-modal-add")[0];
+
+if(btn){
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+}
+if(modal){
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+}
+if(span){
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
 }

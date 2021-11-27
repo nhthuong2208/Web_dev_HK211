@@ -91,20 +91,33 @@ function removeClass(element, name) {
   }
   element.className = arr1.join(" ");
 }
+if (!document.getElementById("edit-itemBtn")){
+  document.getElementsByClassName("add-comment")[0].getElementsByTagName("button")[0].onclick = function(){
+    var text = document.getElementsByClassName("add-comment")[0].getElementsByTagName("textarea");
+    var selection = document.getElementsByClassName("add-comment")[0].getElementsByTagName("select");
+    var pid = document.getElementsByClassName("get-item-id")[0].innerHTML;
+    document.getElementsByClassName("get-item-id")[0].remove();
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+      console.log(this.responseText);
+      document.getElementsByClassName("add-comment")[0].getElementsByTagName("form")[0].reset();
+    };
+    xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + pid, true);
+    xmlhttp.send();
+  }
+}
 
-document.getElementsByClassName("add-comment")[0].getElementsByTagName("button")[0].onclick = function(){
-  var text = document.getElementsByClassName("add-comment")[0].getElementsByTagName("textarea");
-  var selection = document.getElementsByClassName("add-comment")[0].getElementsByTagName("select");
-  var pid = document.getElementsByClassName("get-item-id")[0].innerHTML;
-  document.getElementsByClassName("get-item-id")[0].remove();
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function(){
-    console.log(this.responseText);
-    document.getElementsByClassName("add-comment")[0].getElementsByTagName("form")[0].reset();
-    
-  };
-  xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + pid, true);
-  xmlhttp.send();
+function upload_pic(element){
+  var fileSelected = element.files;
+  if (fileSelected.length > 0) {
+      var fileToLoad = fileSelected[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function(fileLoaderEvent) {
+          var srcData = fileLoaderEvent.target.result;
+          element.parentNode.children[0].src = srcData;
+      }
+      fileReader.readAsDataURL(fileToLoad);
+  }
 }
 
 // Get the modal

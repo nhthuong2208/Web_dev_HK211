@@ -115,7 +115,7 @@
                   echo "
                   </p>
                   <p class=\"item-price\">" . $row_product["price"] . "đ</p>";
-                  if($data["user"] == "customer"){
+                  if($data["user"] == "customer" || $data["user"] == "member"){
                   echo "<div class=\"select-quantity\">
                     Chọn số lượng
                     <div style=\"text-align: left;\" class=\"quantity-section\">
@@ -132,7 +132,7 @@
                           <p>" . $row_product["decs"] . "</p>
                         </div>";
                 }
-                  else if($data["user"] == "member"){
+                  else if($data["user"] == "manager"){
                     echo "<div class=\"descript-item\">
                           <h3>Chi tiết sản phẩm</h3>
                           <p>" . $row_product["decs"] . "</p>
@@ -146,58 +146,79 @@
                           <h2>Chỉnh sửa sản phẩm</h2>
                         </div>
                         <div class=\"editItem-modal-body\">
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"id\">
-                              Id:
-                            </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"id\" placeholder=\"Nhập id sản phẩm\"></div>
-                          </div>
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"name\">
-                              Tên sản phẩm:
-                            </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" placeholder=\"Nhập tên sản phẩm\"></div>
-                          </div>
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"price\">
-                              Giá:
-                            </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của sản phẩm\"></div>
-                          </div>
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"image-url\">
-                              Ảnh sản phẩm:
-                            </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"image-url\" placeholder=\"Nhập link ảnh sản phẩm\"></div>
-                          </div>
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"description\">
-                              Mô tả:
-                            </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></div>
-                          </div>
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"remain\">
-                              Số lượng tồn kho:
-                            </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" placeholder=\"Nhập số lượng sản phẩm\"></div>
-                          </div>
-                          <div class=\"row\">
-                            <label class=\"col-lg-4\">
-                              Loại:
-                            </label>
-                            <div class=\"col-lg-8\">
-                              <select>
-                                <option selected disabled>Chọn loại</option>
-                                <option value=\"shirt\">Áo</option>
-                                <option value=\"trousers\">Quần</option>
-                                <option value=\"accessories\">Phụ kiện</option>
-                              </select>
+                          <form action=\"?url=Home/update_item/" . $row_product["id"] . "/\" method=\"POST\" enctype=\"multipart/form-data\">
+                            <div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"name\">
+                                Tên sản phẩm:
+                              </label>
+                              <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" value=\"" . $row_product["name"] . "\" placeholder=\"Nhập tên sản phẩm\"></div>
                             </div>
-                          </div>
-                          <div class=\"btn-conf-edit\">
-                            <button type=\"button\">Xác nhận</button>
-                          </div>
+                            <div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"price\">
+                                Giá:
+                              </label>
+                              <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" value=\"" . $row_product["price"] . "\" placeholder=\"Nhập giá của sản phẩm\"></div>
+                            </div>
+                            <div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"e-image-url\">
+                                Ảnh sản phẩm:
+                              </label>
+                              <div class=\"col-lg-8\"><img src=\"" . $row_product["img"] . "\" alt=\"main_img\" style=\"width: 50%; margin-bottom: 1rem;\"><input type=\"file\" id=\"e-image-url\" name=\"e-image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                            </div>";
+                            $count = 1;
+                            foreach($data["sub_img"] as $row){
+                              echo"<div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"e-image-url-" . $count . "\">
+                                Ảnh phụ thứ " . $count . ":
+                              </label>
+                              <div class=\"col-lg-8\"><img src=\"" . $row["img"] . "\" alt=\"main_img\" style=\"width: 50%; margin-bottom: 1rem;\"><input type=\"file\" id=\"e-image-url-" . $count . "\" name=\"e-image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                            </div>";
+                              $count += 1;
+                            }
+                            echo "<div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"description\">
+                                Mô tả:
+                              </label>
+                              <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" value=\"" . $row_product["decs"] . "\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                            </div>
+                            <div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"remain\">
+                                Số lượng tồn kho:
+                              </label>
+                              <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" value=\"" . $row_product["num"] . "\" placeholder=\"Nhập số lượng sản phẩm\"></div>
+                            </div>
+                            <div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"featured_product\">
+                                Top sản phẩm:
+                              </label>
+                              <div class=\"col-lg-8\">
+                                <select id=\"featured_product\" name=\"featured_product\">
+                                  <option value=\"0\""; if ($row_product["top_item"] == 0) echo "selected"; 
+                                  echo">0</option>
+                                  <option value=\"1\""; if ($row_product["top_item"] == 1) echo "selected"; 
+                                  echo">1</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class=\"row\">
+                              <label class=\"col-lg-4\" for=\"category\">
+                                Loại:
+                              </label>
+                              <div class=\"col-lg-8\">
+                                <select id=\"category\" name=\"category\">
+                                  <option value=\"Shirt\""; if ($row_product["cate"] == "Shirt") echo "selected"; 
+                                  echo">Áo</option>
+                                  <option value=\"Trousers\""; if ($row_product["cate"] == "Trousers") echo "selected"; 
+                                  echo">Quần</option>
+                                  <option value=\"Accessories\""; if ($row_product["cate"] == "Accessories") echo "selected"; 
+                                  echo">Phụ kiện</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class=\"btn-conf-edit\">
+                              <button type=\"submit\">Xác nhận</button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>";
