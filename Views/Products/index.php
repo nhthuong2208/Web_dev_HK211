@@ -45,11 +45,12 @@
     <div class="company-product">
 
       <!-- Navigation -->
-      <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
       <script src="../Views/Navbar/navbarScript.js" index='2'></script>
       
       <!-- Filter bar and sort -->
       <div class="header-product">
+        <div id="notice"></div>
         <div id="myBtnContainer" class="filterBar">
           <div class="tab-filter active-filter" onclick="filterSelection('all')"> All</div>
           <?php
@@ -62,27 +63,117 @@
           ?>
         </div>
   
-        <div class="form-sort">
-          <form action="">
-            <div class="item">
-              <label for="sort-by">Sort By</label>
-              <select name="sort-by" id="sort-by">
-                <option value="title" selected="selected">Name</option>
-                <option value="number">Price</option>
-                <option value="search_api_relevance">Relevance</option>
-                <option value="created">Newness</option>
-              </select>
-            </div>
-            <div class="item">
-              <label for="order-by">Order</label>
-              <select name="order-by" id="sort-by">
-                <option value="ASC" selected="selected">ASC</option>
-                <option value="DESC">DESC</option>
-              </select>
-            </div>
-            <a href="">Apply</a>
-          </form>
-        </div>
+        
+          <?php
+            if($data["user"] == "customer" || $data["user"] == "member"){
+              echo "<div class=\"form-sort\">
+              <form action=\"\">
+              <div class=\"item\">
+                <label for=\"sort-by\">Sort By</label>
+                <select name=\"sort-by\" id=\"sort-by\">
+                  <option value=\"title\" selected=\"selected\">Name</option>
+                  <option value=\"number\">Price</option>
+                  <option value=\"search_api_relevance\">Relevance</option>
+                  <option value=\"created\">Newness</option>
+                </select>
+              </div>
+              <div class=\"item\">
+                <label for=\"order-by\">Order</label>
+                <select name=\"order-by\" id=\"sort-by\">
+                  <option value=\"ASC\" selected=\"selected\">ASC</option>
+                  <option value=\"DESC\">DESC</option>
+                </select>
+              </div>
+              <a href=\"\">Apply</a>
+            </form>
+            </div>";
+            } else if($data["user"] == "manager") {
+              echo "<div class=\"form-sort\">
+                    <button type=\"button\" id=\"add-itemBtn\"><i class=\"fas fa-plus\"></i> Thêm sản phẩm</button></div>
+                    <div id=\"addItem-modal\" class=\"add-item-modal\">
+                    <div class=\"addItem-modal-content\">
+                      <div class=\"addItem-modal-header\">
+                        <span class=\"close-modal-add\">&times;</span>
+                        <h2>Thêm sản phẩm</h2>
+                      </div>
+                      <div class=\"addItem-modal-body\">
+                        <form action=\"?url=Home/add_new_item\" method=\"POST\" enctype=\"multipart/form-data\">
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"iname\">
+                              Tên sản phẩm:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"iname\" placeholder=\"Nhập tên sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"price\">
+                              Giá:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"image-url\">
+                              Ảnh sản phẩm:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"image-url-1\">
+                              Ảnh phụ thứ 1:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-1\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"image-url-2\">
+                              Ảnh phụ thứ 2:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-2\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"image-url-3\">
+                              Ảnh phụ thứ 3:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-3\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"image-url-4\">
+                              Ảnh phụ thứ 4:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-4\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"description\">
+                              Mô tả:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"remain\">
+                              Số lượng tồn kho:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" placeholder=\"Nhập số lượng sản phẩm\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"category\">
+                              Loại:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"category\" name=\"category\">
+                                <option selected disabled>Chọn loại</option>
+                                <option value=\"Shirt\">Áo</option>
+                                <option value=\"Trousers\">Quần</option>
+                                <option value=\"Accessories\">Phụ kiện</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class=\"btn-conf-add\">
+                            <button type=\"submit\">Thêm</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>";
+            }
+          ?>
       </div>
       
       <!-- Main content -->
@@ -92,13 +183,45 @@
               <?php
                   if(empty($data["product"])) echo "empty product";
                   else{
+                    $count = 0;
                     foreach($data["product"] as $row){
                       echo "<div class=\"col filterDiv " . $row["cate"] . "\"><div class=\"card\"><a href=\"?url=Home/Item/" . $row["id"] . "/\"><img src=\"" . $row["img"] .
-                      "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a><div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
-                      "</h5><p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p><div class=\"d-flex justify-content-between\">
-                      <div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\" onclick=\"minus(this);\"></i></button></div>
-                      <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\" onclick=\"plus(this);\"></i></div>
-                      </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary addToCart\" onclick=\"add_Product(this);\"><span hidden>" . $row["id"] . "</span>Add to cart</button></div></div></div></div></div>";
+                      "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a>
+                      <div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
+                      "</h5>
+                      <p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p>
+                      <div class=\"d-flex justify-content-between\">";
+                      if($data["user"] == "customer" || $data["user"] == "member"){
+                        echo "<div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\" onclick=\"minus(this);\"></i></button></div>
+                        <input type=\"text\" class=\"qty-buy\" value=\"1\" disabled><div class=\"minus-qty-btn\"><i class=\"fas fa-plus-circle\" onclick=\"plus(this);\"></i></div>
+                        </div><div style=\"text-align: right\"><button type=\"button\" class=\"btn btn-primary addToCart\" onclick=\"add_Product(this);\"><span hidden>" . $row["id"] . "</span>Add to cart</button></div></div></div></div></div>";
+                      } else if($data["user"] == "manager"){
+                        echo "<div style=\"text-align: left;\" class=\"quantity-section\">
+                        <button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal-" .$count . "\"><i class=\"far fa-trash-alt\"></i>
+                         Xóa
+                        </button>
+                        <div class=\"modal fade\" id=\"exampleModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel-" .$count . "\" aria-hidden=\"true\">
+                          <div class=\"modal-dialog modal-dialog-centered\">
+                            <div class=\"modal-content\">
+                              <div class=\"modal-header\">
+                                <h5 class=\"modal-title\" id=\"exampleModalLabel-" .$count . "\">Bạn muốn xóa sản phẩm này</h5>
+                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                              </div>
+                              <div class=\"modal-body\">
+                                
+                              </div>
+                              <div class=\"modal-footer\">
+                                <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
+                                <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"remove_item(" . (int)$row["id"] . ", this)\">Xác nhận</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div><div style=\"text-align: right\"><a href=\"?url=Home/Item/" . $row["id"] . "/\"><button type=\"button\" class=\"btn btn-primary\"><i class=\"far fa-edit\"></i>
+                         Chỉnh sửa
+                        </button></a></div></div></div></div></div>";
+                      }
+                      $count += 1;
                     }
                   }
               ?>
@@ -235,8 +358,9 @@
         </ul>
       </div>
       <div id="notice"></div>
-      <div class="footer-holder"></div>
-      <script src="../Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="../Views/footer/footerScript.js"></script-->
+    <?php require_once "./Views/footer/index.php ";?>
     </div>
     <script src="./Views/Products/product.js"></script>
   </body>

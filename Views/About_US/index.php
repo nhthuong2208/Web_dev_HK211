@@ -15,7 +15,7 @@
 
 	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-	<link type="text/css" rel="stylesheet" href="./Views/About US/style.css">
+	<link type="text/css" rel="stylesheet" href="./Views/About_US/style.css">
 	<link href="./Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-<div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
 <script src="./Views/Navbar/navbarScript.js" index='1'></script>
 <div class="container my-5">
 	<section class="pb-4 mt-3 mb-5">
@@ -138,8 +138,10 @@
 	</section>
 </div>
 
-<div class="footer-holder"></div>
-<script src="./Views/footer/footerScript.js"></script>
+<!--div class="footer-holder"></div>
+<script src="./Views/footer/footerScript.js"></script-->
+
+<?php require_once "./Views/footer/index.php ";?>
 
 </body>
 </html>

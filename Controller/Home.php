@@ -112,6 +112,7 @@ class Home extends Controller{
                     "user" => $user,
                     "params"=> $params[2]
                 ]);
+                $this->view("Post_news", []);
             }
             else {
                 $cus = $this->model($user);
@@ -137,23 +138,38 @@ class Home extends Controller{
             echo (int)$id[2];
             $this->model("manager")->delete_news((int)$id[2]);
         }
-        function insert_news($user, $array){
-            echo var_dump($array);
+        // function insert_news($user, $array){
+        //     echo var_dump($array);
 
-            $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
-        }
+        //     $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
+        // }
         function add_comment_news($user, $array){
             $this->model($user)->add_comment_news($array[2], $array[3], $_SESSION["id"]);
         }
-        function img_update($user){
-            if(isset($_FILES["file_pic"])&& $_FILES["file_pic"]['name'] != ""){
-                if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
-                    move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
-                $this->model($user)->update_pic($_SESSION["id"], './Views/images/' . $_FILES['file_pic']['name']);
+
+        function insert_news($user){
+            echo ("0");
+            if(isset($_POST["key"]) && isset($_POST["title"]) && isset($_POST["url"]) && isset($_POST["content"]) && isset($_POST["shortcontent"]))
+            {
+                echo ("1");
+                if(isset($_FILES["e-image-url"])){
+                    if($_FILES['e-image-url']['name'][0] != ""){
+                        echo ("2");
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][0])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][0], './Views/images/' . $_FILES['e-image-url']['name'][0]);
+                        }
+                        if((int)$_POST["url"] != -1){
+                            $this->model($user)->update_news((int)$_POST["url"], $_POST["key"], $_POST["title"], $_POST["content"], './Views/images/' . $_FILES['e-image-url']['name'][0], $_POST["shortcontent"]);
+                        }
+                        else{
+                            $this->model($user)->insert_news($_POST["key"], $_POST["title"], $_POST["content"], './Views/images/' . $_FILES['e-image-url']['name'][0], $_POST["shortcontent"]);
+                        }
+                        
+                    }
+                    
+                }
             }
-            $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
-            $this->member_page($user);
-            
+            // $this->News($user);
         }
 
         function Cost_table($user){
@@ -296,6 +312,79 @@ class Home extends Controller{
             }
             echo $this->model($user)->create_product_incart($array[3], $_SESSION["id_cart"], $array[4]);
         }
+        function add_new_item($user){
+            if(isset($_POST["iname"]) && isset($_POST["price"]) && isset($_FILES["image-url"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
+            {
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][0])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][0], './Views/images/' . $_FILES['image-url']['name'][0]);
+                }
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][1])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][1], './Views/images/' . $_FILES['image-url']['name'][1]);
+                }  
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][2])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][2], './Views/images/' . $_FILES['image-url']['name'][2]);
+                }    
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][3])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][3], './Views/images/' . $_FILES['image-url']['name'][3]);
+                }
+                if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][4])){
+                    move_uploaded_file($_FILES['image-url']['tmp_name'][4], './Views/images/' . $_FILES['image-url']['name'][4]);
+                }
+                $pid = $this->model($user)->add_new_item($_POST["iname"], $_POST["price"], $_POST["description"], $_POST["remain"], $_POST["category"], './Views/images/' . $_FILES['image-url']['name'][0]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][1]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][2]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][3]);
+                $this->model($user)->add_sub_img($pid, './Views/images/' . $_FILES['image-url']['name'][4]);
+            }
+            $this->Products($user);
+        }
+        function update_item($user, $pid){
+            if(isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
+            {
+                $sub_id = mysqli_fetch_all($this->model($user)->get_sub_img_id($pid[2]), MYSQLI_ASSOC);
+                if(isset($_FILES["e-image-url"])){
+                    if($_FILES['e-image-url']['name'][0] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][0])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][0], './Views/images/' . $_FILES['e-image-url']['name'][0]);
+                        }
+                        $this->model($user)->update_item_img($pid[2], './Views/images/' . $_FILES['e-image-url']['name'][0]);
+                    }
+                    if($_FILES['e-image-url']['name'][1] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][1])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][1], './Views/images/' . $_FILES['e-image-url']['name'][1]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[0]["id"], './Views/images/' . $_FILES['e-image-url']['name'][1]);
+                    }
+                    if($_FILES['e-image-url']['name'][2] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][2])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][2], './Views/images/' . $_FILES['e-image-url']['name'][2]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[1]["id"], './Views/images/' . $_FILES['e-image-url']['name'][2]);
+                    }
+                    if($_FILES['e-image-url']['name'][3] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][3])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][3], './Views/images/' . $_FILES['e-image-url']['name'][3]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[2]["id"], './Views/images/' . $_FILES['e-image-url']['name'][3]);
+                    }
+                    if($_FILES['e-image-url']['name'][4] != ""){
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][4])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][4], './Views/images/' . $_FILES['e-image-url']['name'][4]);
+                        }
+                        $this->model($user)->update_sub_img($sub_id[3]["id"], './Views/images/' . $_FILES['e-image-url']['name'][4]);
+                    }
+                }
+                $this->model($user)->update_item_nope_img($pid[2], $_POST["name"], $_POST["price"], $_POST["description"], $_POST["remain"], $_POST["category"], $_POST["featured_product"]);  
+            }
+            $this->Item($user, $pid);
+        }
+        function delete_item($user, $array){
+            if($this->model($user)->delete_item((int)$array[2])){
+                echo "OK";
+            } else {
+                echo "Nope";
+            }
+        }
         function create_order_combo($user, $array){
             $this->model($user)->delete_order_combo_cbid($_SESSION["id"], $array[3]);
             if($this->model($user)->create_order_combo($_SESSION["id"], $array[2], $array[3], $array[4], $array[5])) echo "?url=Home/Payment/";
@@ -317,6 +406,10 @@ class Home extends Controller{
                 $this->model($user)->update_message((int)$array[5]);
             }
             else echo "null";
+        }
+        function logout($user){
+            session_unset();
+            $this->Login($user, "Home_page");
         }
 }
 ?>

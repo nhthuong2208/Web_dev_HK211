@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
   document.querySelector('.navbar-holder').innerHTML = `
   <div id="navbar">
     <nav>
@@ -37,6 +37,7 @@
   </div>
   `
 })();
+*/
 
 let index = parseInt(document.currentScript.getAttribute('index'));
 if(!isNaN(index)){document.querySelectorAll('.nav-links')[0].children[index].classList.add('active');}
@@ -79,3 +80,11 @@ const navSlide = () => {
 
 navSlide();
 
+function change_show(element){
+  if(element.parentNode.getElementsByTagName("ul")[0].className == "dropdown-menu"){
+    element.parentNode.getElementsByTagName("ul")[0].className = "dropdown-menu show";
+  }
+  else{
+    element.parentNode.getElementsByTagName("ul")[0].className = "dropdown-menu";
+  }
+}

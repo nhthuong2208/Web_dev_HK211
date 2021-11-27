@@ -6,6 +6,7 @@
   left: 0;
   top: 0;
   padding-top: 5rem;
+  padding-bottom: 5rem;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -102,6 +103,7 @@
 
 .company-product .card .card-body {
   padding-left: 0;
+  padding-right: 0;
   margin-bottom: 1rem;
 }
 
@@ -112,7 +114,7 @@
   justify-content: space-between;
 }
 
-.company-product .header-product form {
+.company-product .header-product .form-sort form {
   display: flex;
   margin-right: 3rem;
   margin-top: 0.5rem;

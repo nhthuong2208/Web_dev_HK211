@@ -43,7 +43,7 @@ class customer extends DB{
     }
 
     public function get_product_at_id($pid) {
-        $query = "SELECT `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` WHERE `product`.`ID` = " . (int)$pid . ";";
+        $query = "SELECT `product`.`ID` AS `id`, `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`NUMBER` AS \"num\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\", `product`.`TOP_PRODUCT` as \"top_item\" FROM `product` WHERE `product`.`ID` = " . (int)$pid . ";";
         return mysqli_query($this->connect, $query);
     }
     public function get_sub_img($pid) {
@@ -96,11 +96,9 @@ class customer extends DB{
                             AND `account`.`PWD` = \"" . $pwd ."\";";
         return mysqli_query($this->connect, $query);
     }
-    function add_item_comment($content, $rating, $item_name, $uid){
-        $sql = "SELECT `product`.ID AS `id` FROM `product` WHERE `product`.NAME = \"" . $item_name . "\";";
-        $pid = mysqli_fetch_array(mysqli_query($this->connect, $sql));
+    function add_item_comment($content, $rating, $pid, $uid){
         $query = "INSERT INTO `comment`(`comment`.PID, `comment`.UID, `comment`.STAR, `comment`.CONTENT, `comment`.TIME) VALUE
-                  (" . $pid["id"] . ", " . $uid . ", " . (int)$rating . ", \"" . $content . "\", \"" . date("Y/m/d") . "\")";
+                  (" . $pid . ", " . $uid . ", " . (int)$rating . ", \"" . $content . "\", \"" . date("Y/m/d") . "\")";
         return mysqli_query($this->connect, $query);
     }
 }
