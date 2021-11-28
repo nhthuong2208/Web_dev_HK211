@@ -161,7 +161,7 @@
                             </div>
                             <div class=\"row\">
                               <label class=\"col-lg-4\" for=\"e-image-url\">
-                                Ảnh sản phẩm:
+                              <i class=\"far fa-image\"></i> Ảnh sản phẩm: 
                               </label>
                               <div class=\"col-lg-8\"><img src=\"" . $row_product["img"] . "\" alt=\"main_img\" style=\"width: 50%; margin-bottom: 1rem;\"><input type=\"file\" id=\"e-image-url\" name=\"e-image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                             </div>";
@@ -169,7 +169,7 @@
                             foreach($data["sub_img"] as $row){
                               echo"<div class=\"row\">
                               <label class=\"col-lg-4\" for=\"e-image-url-" . $count . "\">
-                                Ảnh phụ thứ " . $count . ":
+                              <i class=\"far fa-image\"></i> Ảnh phụ thứ " . $count . ": 
                               </label>
                               <div class=\"col-lg-8\"><img src=\"" . $row["img"] . "\" alt=\"main_img\" style=\"width: 50%; margin-bottom: 1rem;\"><input type=\"file\" id=\"e-image-url-" . $count . "\" name=\"e-image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                             </div>";

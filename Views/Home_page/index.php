@@ -82,57 +82,52 @@
                 />
                 <div class="content">
                   <h1>
-                    Super market vegbox
+                    Sản phẩm đa dạng
                     <br />
-                    start from
+                    giá từ
                     <span>$9</span>
                   </h1>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Corrupti ad natus facilis magni corporis alias.
+                    Cửa hàng cung cấp các loại sản phẩm đa dạng, với nhiều mẫu mã và phù hợp với giới trẻ
                   </p>
 
-                  <a href="../Products/product.html">Shop Now</a>
+                  <a href="?url=Home/Products/">Shop Now</a>
                 </div>
               </div>
 
               <div class="swiper-slide">
                 <img
-                  src="https://mcdn.coolmate.me/uploads/February2019/433a822f711424934e9ab183eec0a3a4.jpg"
+                  src="./Views/images/Presentation2.png"
                   alt="hero image"
                 />
                 <div class="content">
                   <h1>
-                    You first Order
+                    Hỗ trợ đặt combo
                     <br />
                     <span>20% off</span>
-                    at Juice
+                    tại cửa hàng
                   </h1>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Corrupti ad natus facilis magni corporis alias.
+                    Cung cấp các gói chứa đầy đủ một bộ sưu tập phù hợp với từng sở thích, tính cách
                   </p>
-                  <a href="../Products/product.html">Shop Now</a>
+                  <a href="?url=Home/Products/">Shop Now</a>
                 </div>
               </div>
 
               <div class="swiper-slide">
                 <img
-                  src="https://mcdn.coolmate.me/uploads/April2019/VTP_1_44.JPG"
+                  src="./Views/images/Presentation1.png"
                   alt="hero image"
                 />
                 <div class="content">
                   <h1>
-                    You first Order
-                    <br />
-                    <span>20% off</span>
-                    at Juice
+                    Đăng ký ngay
+                    
                   </h1>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Corrupti ad natus facilis magni corporis alias.
+                    Nhanh tay đăng ký tài khoản để nhận được nhiều ưu đãi hấp dẫn cũng như những trải nghiệm thú vị nhé!
                   </p>
-                  <a href="../Products/product.html">Shop Now</a>
+                  <a href="?url=Home/Products/">Shop Now</a>
                 </div>
               </div>
             </div>
@@ -155,10 +150,18 @@
         <div class="container">
           <div class="collection-layout">
           <?php
+          $shirt = false;
+          $pant = false;
+          $ass = false;
             foreach($data["collection"] as $row)
             {
-              echo "<div class=\"shop-item\">";
-              echo "<img src=\"" . $row["img"] . "\"alt=\"image\"/><div class=\"collection-content\"><h3>" . $row["cate"] . "</h3><a href=\"?url=Home/Products\">SHOP NOW</a></div></div>";
+              if(($row["cate"] == "Shirt" && !$shirt) || ($row["cate"] == "Trousers" && !$pant) || ($row["cate"] == "Accessories" && !$ass)){
+                if($row["cate"] == "Shirt") {$shirt = true;}
+                if($row["cate"] == "Trousers") {$pant = true;}
+                if($row["cate"] == "Accessories") {$ass = true;}
+                echo "<div class=\"shop-item\">";
+                echo "<img src=\"" . $row["img"] . "\"alt=\"image\"/><div class=\"collection-content\"><h3>" . $row["cate"] . "</h3><a href=\"?url=Home/Products\">SHOP NOW</a></div></div>";
+              }
             }
           ?>
           </div>
@@ -167,6 +170,37 @@
 
       <div class="feature-news">
         <h2>--- Attractive News ---</h2>
+        <div class="container">
+        <?php
+          echo "<div class=\"attractive-new\">";
+                  for ($x = count($data["news"]) - 1; ($x >= count($data["news"])-3 && $x >= 0); $x--){
+                    $row = $data["news"][$x];
+                    echo "
+                    <div class=\"card\">	
+                      <div class=\"card-body\">
+                        <div class=\"row\">						
+                          <div class=\"bg-image bg-white col-md-12\">
+                            <img src=\""  . $row["imgurl"] . "\" class=\"img-fluid rounded\">
+                          </div>
+                          <div class=\"row mb-3 col-md-12 mt-3\">
+                            <div style=\"font-size:15px;\">"
+                            . $row["key"] .
+                            "</div>
+                            <div style=\"font-size:15px;\">
+                              <u class=\"text-decoration-none\">" . $row["time"] . "</u>
+                            </div>
+                          </div>
+                          <a href=\"?url=Home/News_detail/". $row["id"] . "\" class=\"text-dark text-decoration-none mb-3 mt-1\">
+                            <div style=\"font-size:25px; font-weight:500;\">" . $row["title"] . "</div>
+                          </a>
+                        </div>	
+                      </div>
+                    </div>							
+                    ";
+                  }
+          echo "</div>";
+        ?>
+        </div>
       </div>
 
       <!-- Featured -->
@@ -182,18 +216,20 @@
                       if($data["user"] != "manager"){
                         echo "<span hidden>" . $data["user"] . "</span>";
                         foreach($data["featured"] as $row){ // "
-                          
-                          echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                          echo "<div class=\"addToCart\" onclick=\"add_Product(this);\"><i class=\"fas fa-shopping-cart\"></i><span hidden>" . $row["id"] . "</span></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
-                          echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "</span></div></div></div></div>";
+                          if($row["top_seller"] == 1){
+                            echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
+                            echo "<div class=\"addToCart\" onclick=\"add_Product(this);\"><i class=\"fas fa-shopping-cart\"></i><span hidden>" . $row["id"] . "</span></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                            echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "đ</span></div></div></div></div>";
+                          }
                         }
                       }
                       else if($data["user"] == "manager"){
                         foreach($data["featured"] as $row){ // manager
-      
-                          echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                          echo "<div class=\"addToCart\"><i class=\"fas fa-shopping-cart\"></i></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
-                          echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "</span></div></div></div></div>";
+                          if($row["top_seller"] == 1){
+                            echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
+                            echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                            echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "đ</span></div></div></div></div>";
+                          }
                         }
                       }
                     }

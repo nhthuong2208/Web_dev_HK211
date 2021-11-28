@@ -45,6 +45,12 @@
   padding: 10px 16px;
 }
 
+.addItem-modal-body i {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #ffa62b;
+}
+
 .addItem-modal-body input, .addItem-modal-body textarea, .addItem-modal-body select{
   padding: 0.5rem;
   width: 100%;
@@ -52,6 +58,10 @@
   border-radius: 0.2rem;
   outline: none;
   margin-bottom: 0.5rem;
+}
+
+.addItem-modal-body select{
+  width: 10rem !important;
 }
 
 .addItem-modal-body .btn-conf-add {
