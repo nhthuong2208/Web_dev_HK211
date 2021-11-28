@@ -38,42 +38,48 @@
 <div>
     <?php require_once("./Views/Navbar/index.php"); ?>
     <script src="./Views/Navbar/navbarScript.js" index='3'></script>
-	<section class="pb-4 mb-5">
-		<div class="hero">
-			<div class="row1">
-				<div class="swiper-container slider-1">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="./Views/images/h1.jpg" alt="" />
-							<div class="content">
-							<h1>Tủ đồ định kì
-								<br/>
-								chỉ từ
-								<span>199.000/tháng</span>
-							</h1>
-							<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti ad natus facilis magni corporis alias.</p>
-				
-							<a href="../Products/product.html">Shop Now</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-			<!-- Carousel Navigation -->
-			<div class="arrows d-flex">
-				<div class="swiper-prev d-flex">
-				  <i class="bx bx-chevrons-left swiper-icon"></i>
-				</div>
-				<div class="swiper-next d-flex">
-				  <i class="bx bx-chevrons-right swiper-icon"></i>
-				</div>
-			</div>
-		</div>
-	</section>
+    <?php 
+        if($data["user"] == "customer" || $data["user"] == "member"){
+            echo "<section class=\"pb-4 mb-5\">
+            <div class=\"hero\">
+                <div class=\"row1\">
+                    <div class=\"swiper-container slider-1\">
+                        <div class=\"swiper-wrapper\">
+                            <div class=\"swiper-slide\">
+                                <img src=\"./Views/images/h1.jpg\" alt=\"\" />
+                                <div class=\"content\">
+                                <h1>Tủ đồ định kì
+                                    <br/>
+                                    chỉ từ
+                                    <span>199.000/tháng</span>
+                                </h1>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti ad natus facilis magni corporis alias.</p>
+                    
+                                <a href=\"?url/Home/Products/\">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Carousel Navigation -->
+                <div class=\"arrows d-flex\">
+                    <div class=\"swiper-prev d-flex\">
+                      <i class=\"bx bx-chevrons-left swiper-icon\"></i>
+                    </div>
+                    <div class=\"swiper-next d-flex\">
+                      <i class=\"bx bx-chevrons-right swiper-icon\"></i>
+                    </div>
+                </div>
+            </div>
+        </section>";
+        }
+    ?>
+	
 	<div class="row container-fluid px-3 px-sm-5 my-5 text-center">
-		<h3 class="mb-5">Chọn gói</h3>
-        <?php
+        <?php 
+            if($data["user"] == "customer" || $data["user"] == "member"){
+                echo "<h3 class=\"mb-5\">Chọn gói</h3>";
                 if(empty($data["combo"])) echo "empty combo";
                 else{//wwhile
                     foreach($data["combo"] as $row){
@@ -121,7 +127,146 @@
                     echo "</select><button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">Thanh toán</button></div></div></section></div>";
                     }
                 }
+            }
+            else if($data["user"] == "manager"){
+                echo "<h3 class=\"mb-5\">Quản lý các gói</h3>";
+                echo "<div class=\"add-combo-btn\" style=\"text-align: left; margin-bottom: 2rem;\"><button type=\"button\" class=\"btn btn-success\" id=\"addCombo-btn\" style=\"width: 8rem;\"><i class=\"fas fa-plus\"></i> Thêm gói</button>
+                <button id=\"add_cycle_Btn\" type=\"button\" class=\"btn btn-success\" style=\"width: 10rem; margin-left: 2rem;\"><i class=\"fas fa-plus\"></i> Thêm chu kì</button>
+                </div>";
+                echo "<form id=\"add_cycle\"action=\"?url=Home/add_cycle\" method=\"POST\">
+                            <div class=\"row\">
+                                <label class=\"col-lg-2\" for=\"cycle-time\">
+                                    Thời gian chu kì:
+                                </label>
+                                <div class=\"col-lg-6\"><input type=\"number\" name=\"cycle-time\" placeholder=\"Nhập thời gian chu kì\"></div>
+                            </div>
+                            <div class=\"btn-conf-add\">
+                                <button type=\"submit\">Thêm</button>
+                            </div>
+                  </form>";
+                if(empty($data["combo"])) echo "empty combo";
+                else{//wwhile
+                    foreach($data["combo"] as $row){
+                        echo "<div class=\"col-md-4 mb-4\">
+                        <section>
+                            <div class=\"card\"><span hidden>" .  $row["id"] . "</span>
+                                <div class=\"card-header text-center py-1\">
+                                    <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
+                                    </div>		
+                                    <div class=\"card-body\">
+                                        <h3 class=\"text-warning mb-2\">" . $row["price"] . "/tháng</h3>
+                                        <h6>Mỗi hộp bao gồm: </h6>
+                                        <ol class=\"list-group list-group-numbered\">";
+                                        foreach($row["product"] as $product){
+                                            echo "<li class=\"list-group-item\">" . $product["name"] . "</li>";
+                                        }
+                        echo        "</ol>
+                                        <p>Chọn kích cỡ</p>
+                                        <div class=\"btn-group\" role=\"group\" aria-label=\"Basic radio toggle button group\">
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio1\" autocomplete=\"off\" checked=\"\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio1\">S</label>
+                                          
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio2\" autocomplete=\"off\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio2\">M</label>
+                                          
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3\" autocomplete=\"off\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">L</label>
+                
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio4\" autocomplete=\"off\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio4\">XL</label>
+                
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio5\" autocomplete=\"off\">
+                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio5\">XXL</label>
+                                          </div>
+                                    </div>
+                                    <div class=\"card-footer d-flex justify-content-between py-3\">
+                                    <select class=\"form-select-sm\" aria-label=\"Small select\">
+                                        <option selected=\"0\">Chọn chu kì gửi</option>";
+                        $i = 1;
+                        foreach($data["cycle"] as $row1){
+                            echo "<option value=\"". $i . "\">Gửi mỗi ". $row1["cycle"] . "</option>";
+                            $i += 1;
+                        }
+
+                    echo "</select><button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">Chỉnh sửa</button></div></div></section></div>";
+                    }
+                }
+                echo "<div id=\"addCombo-modal\" class=\"add-combo-modal\">
+                    <div class=\"addCombo-modal-content\">
+                      <div class=\"addCombo-modal-header\">
+                        <span class=\"close-modal-addc\">&times;</span>
+                        <h2>Thêm gói mới</h2>
+                      </div>
+                      <div class=\"addCombo-modal-body\">
+                        <form action=\"?url=Home/add_new_combo\" method=\"POST\">
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"cname\">
+                              Tên combo:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"price\">
+                              Giá:
+                            </label>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"c-shirt\">
+                              Áo:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"c-shirt\" name=\"c-shirt\">
+                                <option selected disabled>Chọn áo cho combo</option>";
+                                foreach($data["product"] as $row){
+                                    if($row["cate"] == "Shirt"){
+                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                    }
+                                }
+                            echo "</select>
+                            </div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"c-pants\">
+                              Quần:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"c-pants\" name=\"c-pants\">
+                                <option selected disabled>Chọn quần cho combo</option>";
+                                foreach($data["product"] as $row){
+                                    if($row["cate"] == "Trousers"){
+                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                    }
+                                }
+                            echo "  </select>
+                            </div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"c-ass\">
+                              Phụ kiện:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"c-ass\" name=\"c-ass\">
+                                <option selected disabled>Chọn phụ kiện cho combo</option>";
+                                foreach($data["product"] as $row){
+                                    if($row["cate"] == "Accessories"){
+                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                    }
+                                }
+                             echo " </select>
+                            </div>
+                          </div>
+                          <div class=\"btn-conf-add\">
+                            <button type=\"submit\">Thêm Combo</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>";
+                  
+            }
         ?>
+        
         <div class="demo" hidden><?php if(!empty($data["user"])) echo $data["user"]; ?></div>
 </div>
 

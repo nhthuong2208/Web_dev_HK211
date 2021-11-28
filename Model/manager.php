@@ -43,6 +43,16 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     public function add_new_item($name, $price, $desc, $remain, $cate, $path){
+        $name_mod = explode("\"", $name);
+        $desc_mod = explode("\"", $desc); 
+        $name = $name_mod[0];
+        $desc = $desc_mod[0];
+        for($i = 1; $i < count($name_mod); $i++){
+            $name = $name . "\\\"" . $name_mod[$i];
+        }
+        for($i = 1; $i < count($desc_mod); $i++){
+            $desc = $desc . "\\\"" . $desc_mod[$i];
+        }
         $query = "INSERT INTO `product`(`product`.`NAME`, `product`.`PRICE`, `product`.`IMG_URL`, `product`.`NUMBER`, `product`.`DECS`, `product`.`CATEGORY`, `product`.`TOP_PRODUCT`)
                   VALUE (\"" . $name . "\", " . (int)$price . ", \"" . $path . "\", " . $remain . ", \"" . $desc . "\", \"" . $cate . "\", 0);";
         mysqli_query($this->connect, $query);
@@ -54,6 +64,16 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     public function update_item_nope_img($pid, $name, $price, $desc, $remain, $cate, $top_product){
+        $desc_mod = explode("\"", $desc);
+        $name_mod = explode("\"", $name);
+        $desc = $desc_mod[0];
+        $name = $name_mod[0];
+        for($i = 1; $i < count($desc_mod); $i++){
+            $desc = $desc . "\\\"" . $desc_mod[$i];
+        }
+        for($i = 1; $i < count($name_mod); $i++){
+            $name = $name . "\\\"" . $name_mod[$i];
+        }
         $query = "UPDATE `product` SET `product`.`NAME` = \"" . $name . "\", `product`.`PRICE` = " . (int)$price . ", `product`.`NUMBER` = " . (int)$remain . ", `product`.`DECS` = \"" . $desc . "\", `product`.`CATEGORY` = \"" . $cate . "\", `product`.`TOP_PRODUCT` = " . (int)$top_product . " WHERE `product`.`ID` = " . (int)$pid . ";";
         return mysqli_query($this->connect, $query);
     }
@@ -77,6 +97,10 @@ class manager extends customer{
         $query = "DELETE FROM `product_in_combo` WHERE `product_in_combo`.`PID` = " . $pid . ";";
         mysqli_query($this->connect, $query);
         $query = "DELETE FROM `product` WHERE `product`.`ID` = " . $pid . ";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function delete_comment($cid){
+        $query = "DELETE FROM `comment` WHERE `comment`.`ID` = " . $cid . ";";
         return mysqli_query($this->connect, $query);
     }
     function add_comment_news($content, $nid, $cid){
@@ -110,6 +134,24 @@ class manager extends customer{
         $query =    "UPDATE `message`
                     SET `message`.`CHECK` = 1
                     WHERE `message`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function add_new_combo($name, $price){
+        $query = "INSERT INTO `combo` (`combo`.`NAME`, `combo`.`COST`) VALUE (\"" . $name . "\", " . (int)$price . ");";
+        mysqli_query($this->connect, $query);
+        return mysqli_insert_id($this->connect);
+    }
+    public function add_product_in_combo($cbid, $shirt, $pant, $ass){
+        $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$shirt . ");";
+        mysqli_query($this->connect, $query);
+        $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$pant . ");";
+        mysqli_query($this->connect, $query);
+        $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$ass . ");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function add_cycle($time){
+        $time = $time . " ngày";
+        $query = "INSERT INTO `cycle` (`cycle`.`CYCLE`) VALUE (\"" . $time . "\");";
         return mysqli_query($this->connect, $query);
     }
 }

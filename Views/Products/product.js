@@ -41,7 +41,6 @@ let tabs = btnContainer.getElementsByClassName("tab-filter");
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function() {
     let current = btnContainer.getElementsByClassName("active-filter");
-    console.log(current)
     current[0].className = current[0].className.replace(" active-filter", "");
     this.className += " active-filter";
   });
@@ -103,8 +102,8 @@ function upload_pic(element){
 }
 
 function add_notice(string){
-  if(string == "OK") return '<div class="alert alert-success" role="alert"><strong>Xóa thành công!</strong></div>';
-  return '<div class="alert alert-danger" role="alert"><strong>Xóa thất bại!</strong></div>';
+  if(string == "OK") return '<div class="alert success" role="alert"><strong>Xóa thành công!</strong></div>';
+  return '<div class="alert fail" role="alert"><strong>Xóa thất bại!</strong></div>';
 }
 
 function remove_item(pid, element){

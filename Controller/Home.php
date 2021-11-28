@@ -6,23 +6,23 @@ class Home extends Controller{
             $this->view("Home_page", [
                 "user" => $user,
                 "collection" => $cus->get_swiper_slide_collection(), //$data["collection"] = $cus->get_swiper_slide_collection() 
-                "featured" => $cus->get_products()
+                "featured" => $cus->get_products("", "")
             ]);
         }
         function About_us($user){
             $this->view("About_US", []);
         }
-        function Products($user){
+        function Products($user, $sort_1="", $sort_2=""){
             $cus = $this->model($user);
             $this->view("Products", [
                 "cate" => $cus->get_product_cates(),
-                "product" => $cus->get_products(),
+                "product" => $cus->get_products($sort_1, $sort_2),
                 "user" => $user
             ]);
         }
         function Item($user, $pid){
             $cus = $this->model($user);
-            $comment = $cus->get_item_comment($pid[2]);
+            $comment = $cus->get_item_comment($pid[2], "");
             $cmt_info = array();
             foreach($comment as $cmt){
                 array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $cus->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
@@ -180,6 +180,7 @@ class Home extends Controller{
                 array_push($product_in_combo, (["id" => $cb["id"], "name" => $cb["cbname"], "price" => $cb["cost"], "product" => $cus->get_product_in_combo($cb["id"])]));
             }
             $this->view("Cost_table", [
+                "product" => $cus->get_products("", ""),
                 "combo" => $product_in_combo,
                 "cycle" => $cus->get_cycle(),
                 "user" => $user
@@ -315,6 +316,7 @@ class Home extends Controller{
         function add_new_item($user){
             if(isset($_POST["iname"]) && isset($_POST["price"]) && isset($_FILES["image-url"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
             {
+                echo var_dump($_POST["iname"]);
                 if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][0])){
                     move_uploaded_file($_FILES['image-url']['tmp_name'][0], './Views/images/' . $_FILES['image-url']['name'][0]);
                 }
@@ -407,9 +409,102 @@ class Home extends Controller{
             }
             else echo "null";
         }
+        function delete_comment($user, $array){
+            if($this->model($user)->delete_comment((int)$array[2])){
+                echo "OK";
+            } else {
+                echo "Nope";
+            }
+        }
+        function sort_product($user){
+            if(isset($_POST["sort-by"]) && isset($_POST["order-by"])){
+                $sort_1 = $_POST["sort-by"];
+                $sort_2 = $_POST["order-by"];
+                $this->Products($user, $sort_1, $sort_2);
+            }
+        }
+        function sort_comment($user, $array){
+            $result = $this->model($user)->get_item_comment((int)$array[2], $array[3]);
+            $cmt_info = array();
+            foreach($result as $cmt){
+                array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $this->model($user)->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
+            }
+            echo "<div class=\"no-filter-cmt\"></div>";
+            if(empty($cmt_info)) echo "<div class=\"card\">
+                                                  <div class=\"card-body\" id=\"if-no-cmt\">No comment</div></div>";
+              else {
+                $count = 0;
+                foreach ($cmt_info as $row) {
+                  echo "<div class=\"card filterCmt " . $row["star"] . "-star-num\">
+                  <div class=\"card-body\">
+                    <div class=\"header-cmt\">
+                      <div>
+                        <i class=\"fas fa-user-circle\"></i>";
+                        foreach($row["uname"] as $name) {
+                          echo "<span> " . $name["uname"] . "</span>";
+                        }
+                        echo "
+                        <div class=\"star-cus-rate\">";
+                          for($i = 0; $i < $row["star"]; $i++) {
+                            echo "<i class=\"fas fa-star\"></i>";
+                          }
+                          for($i = 0; $i < 5 - $row["star"]; $i++) {
+                            echo "<i class=\"far fa-star\"></i>";
+                          }
+                        echo "  
+                        </div>
+                      </div>
+                      <div>
+                        <p>" . $row["time"] . "</p>
+                      </div>
+                    </div>
+                    <div class=\"comment-content\">
+                      <div class=\"script-cmt\">
+                        <p>" . $row["content"] . "</p>
+                      </div>";
+                    if($user == "manager"){
+                      echo "<div><i class=\"fas fa-trash-alt\" data-bs-toggle=\"modal\" data-bs-target=\"#delcmtModal-" .$count . "\"></i></div>";
+                      echo "<div class=\"modal fade\" id=\"delcmtModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"delcmtModalLabel-" .$count . "\" aria-hidden=\"true\">
+                        <div class=\"modal-dialog modal-dialog-centered\">
+                          <div class=\"modal-content\">
+                            <div class=\"modal-header\">
+                              <h5 class=\"modal-title\" id=\"delcmtModalLabel-" .$count . "\">Bạn muốn xóa bình luận này</h5>
+                              <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                            </div>
+                            <div class=\"modal-body\">
+                              
+                            </div>
+                            <div class=\"modal-footer\">
+                              <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
+                              <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"delete_comment(" . $row["id"] . ", this)\">Xác nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>";
+                      $count += 1;
+                    }
+                echo "</div>
+                    </div>
+                </div>";
+                }
+              }
+        }
         function logout($user){
             session_unset();
             $this->Login($user, "Home_page");
         }
-}
+        function add_new_combo($user){
+            if(isset($_POST["cname"]) && isset($_POST["price"]) && isset($_POST["c-shirt"]) && isset($_POST["c-pants"]) && isset($_POST["c-ass"])){
+                $result = $this->model($user)->add_new_combo($_POST["cname"], $_POST["price"]);
+                $this->model($user)->add_product_in_combo($result, $_POST["c-shirt"], $_POST["c-pants"], $_POST["c-ass"]);
+            }
+            $this->Cost_table($user);
+        }
+        function add_cycle($user){
+            if(isset($_POST["cycle-time"])){
+                $this->model($user)->add_cycle($_POST["cycle-time"]);
+            }
+            $this->Cost_table($user);
+        }
+    }
 ?>
