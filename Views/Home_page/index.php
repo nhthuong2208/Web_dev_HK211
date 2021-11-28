@@ -91,7 +91,7 @@
                     Cửa hàng cung cấp các loại sản phẩm đa dạng, với nhiều mẫu mã và phù hợp với giới trẻ
                   </p>
 
-                  <a href="?url=Home/Products/">Shop Now</a>
+                  <a href="?url=Home/Products/">Mua ngay</a>
                 </div>
               </div>
 
@@ -110,7 +110,7 @@
                   <p>
                     Cung cấp các gói chứa đầy đủ một bộ sưu tập phù hợp với từng sở thích, tính cách
                   </p>
-                  <a href="?url=Home/Products/">Shop Now</a>
+                  <a href="?url=Home/Products/">Mua ngay</a>
                 </div>
               </div>
 
@@ -127,7 +127,7 @@
                   <p>
                     Nhanh tay đăng ký tài khoản để nhận được nhiều ưu đãi hấp dẫn cũng như những trải nghiệm thú vị nhé!
                   </p>
-                  <a href="?url=Home/Products/">Shop Now</a>
+                  <a href="?url=Home/Products/">Mua ngay</a>
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@
       </div>
 
       <div class="shop-collection">
-        <h2>--- Shop Collections ---</h2>
+        <h2>--- Các sản phẩm của Shop ---</h2>
         <div class="container">
           <div class="collection-layout">
           <?php
@@ -160,7 +160,7 @@
                 if($row["cate"] == "Trousers") {$pant = true;}
                 if($row["cate"] == "Accessories") {$ass = true;}
                 echo "<div class=\"shop-item\">";
-                echo "<img src=\"" . $row["img"] . "\"alt=\"image\"/><div class=\"collection-content\"><h3>" . $row["cate"] . "</h3><a href=\"?url=Home/Products\">SHOP NOW</a></div></div>";
+                echo "<img src=\"" . $row["img"] . "\"alt=\"image\"/><div class=\"collection-content\"><h3>" . $row["cate"] . "</h3><a href=\"?url=Home/Products\">MUA NGAY</a></div></div>";
               }
             }
           ?>
@@ -169,7 +169,7 @@
       </div>
 
       <div class="feature-news">
-        <h2>--- Attractive News ---</h2>
+        <h2>--- Tin tức nổi bật ---</h2>
         <div class="container">
         <?php
           echo "<div class=\"attractive-new\">";
@@ -205,7 +205,7 @@
 
       <!-- Featured -->
       <div class="featured">
-        <h2>--- Featured Products ---</h2>
+        <h2>--- Sản phẩm được ưa chuộng ---</h2>
 
         <div class="row1 container">
           <div class="swiper-container slider-2">
