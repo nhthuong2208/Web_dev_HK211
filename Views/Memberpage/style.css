@@ -7,6 +7,17 @@
 input{
     width: 100%;
 }
+.mybutton_click{
+    background-color: #ffa62b;;
+    color: white;
+    cursor: pointer;
+    font-size: medium;
+    border: 2px solid #ffa62b;
+    border-radius: 10px;
+    padding: 3px;
+    margin-top: 10px;
+    max-width: fit-content;
+}
 img{
     max-width: 100%;
     max-width: 200px;

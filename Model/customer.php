@@ -125,5 +125,32 @@ class customer extends DB{
                   (" . $pid . ", " . $uid . ", " . (int)$rating . ", \"" . $content . "\", \"" . date("Y/m/d") . "\")";
         return mysqli_query($this->connect, $query);
     }
+    public function change_passwork($mail){
+        $query =    "SELECT `account`.`EMAIL` AS `mail` FROM `account` WHERE `account`.`EMAIL` = \"" . $mail . "\";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function change_passwork_mail($mail, $pwd){
+        $query =    "UPDATE `account`
+                    SET `account`.`PWD` = \"" . $pwd . "\"
+                    WHERE `account`.`EMAIL` = \"" . $mail . "\"";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_sum_cart($id){
+        $query =    "SELECT SUM(`product_in_cart`.`QUANTITY`*`product`.`PRICE`) 
+                    FROM `product`, `product_in_cart`, `cart`, `account`
+                    WHERE   `product_in_cart`.`PID` = `product`.`ID`
+                        AND `product_in_cart`.`OID` = `cart`.`ID`
+                        AND `cart`.`UID` = `account`.`ID`
+                        AND `cart`.`STATE` = 1
+                        AND `account`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_sum_order_Combo($id){
+        $query =    "SELECT SUM(`combo`.`COST`) FROM `combo`, `order_combo`, `account`
+                    WHERE `order_combo`.`CBID` = `combo`.`ID`
+                        AND `order_combo`.`UID` = `account`.`ID`
+                        AND `account`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

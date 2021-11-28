@@ -70,7 +70,6 @@
     <?php require_once("./Views/Navbar/index.php"); ?>
     <script src="./Views/Navbar/navbarScript.js" index='0'></script>
 
-
     <div class="homepage">
       <div class="hero">
         <div class="row1">

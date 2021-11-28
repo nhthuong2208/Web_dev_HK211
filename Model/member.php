@@ -37,7 +37,8 @@ class member extends customer{
                             `account`.`USERNAME` AS `username`, 
                             `account`.`IMG_URL` AS `img`, 
                             `account`.`CMND` AS `cmnd`, 
-                            `account`.`PWD` AS `pwd`
+                            `account`.`PWD` AS `pwd`, 
+                            `account`.`EMAIL` AS `mail`
                     FROM    `account`
                     WHERE   `account`.`ID` = " . $id;
         return mysqli_query($this->connect, $query);
@@ -92,14 +93,15 @@ class member extends customer{
                     GROUP BY `cart`.`ID`";
         return  mysqli_query($this->connect, $query);
     }
-    public function update_profile_nope_img($id, $fname, $user, $pwd, $cmnd, $phone, $add){
+    public function update_profile_nope_img($id, $fname, $user, $pwd, $cmnd, $phone, $add, $mail){
         $query =    "UPDATE `account`
                     SET `account`.`CMND` = \"" . $cmnd . "\",
                         `account`.`FNAME` = \"" . $fname . "\",
                         `account`.`PHONE` = \"" . $phone . "\",
                         `account`.`ADDRESS` = \"" . $add . "\",
                         `account`.`USERNAME` = \"" . $user . "\",
-                        `account`.`PWD` = \"" . $pwd . "\"
+                        `account`.`PWD` = \"" . $pwd . "\",
+                        `account`.`EMAIL` = \"" . $mail . "\"
                     WHERE `account`.`ID` = " . $id ;
         return mysqli_query($this->connect, $query);
     }
@@ -176,6 +178,30 @@ class member extends customer{
         echo ($nid);
         echo ($cid);
         $query = "INSERT INTO `comment_news` (`nid`, `cid`, `content`, `time`) VALUE (" . $nid . ", " . $cid . ", \"" . $content . "\", \"" . date("Y/m/d") . "\")";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_sum_cart($id){
+        $query =    "SELECT SUM(`product_in_cart`.`QUANTITY`*`product`.`PRICE`)  as `sum`
+                    FROM `product`, `product_in_cart`, `cart`, `account`
+                    WHERE   `product_in_cart`.`PID` = `product`.`ID`
+                        AND `product_in_cart`.`OID` = `cart`.`ID`
+                        AND `cart`.`UID` = `account`.`ID`
+                        AND `cart`.`STATE` = 1
+                        AND `account`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_sum_order_Combo($id){
+        $query =    "SELECT SUM(`combo`.`COST`)  as `sum`
+                    FROM `combo`, `order_combo`, `account`
+                    WHERE `order_combo`.`CBID` = `combo`.`ID`
+                        AND `order_combo`.`UID` = `account`.`ID`
+                        AND `account`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function update_Rank($id, $rank){
+        $query =    "UPDATE `account`
+                    SET `account`.`RANK` = " . $rank . "
+                    WHERE `account`.`ID` = " . $id ;
         return mysqli_query($this->connect, $query);
     }
 }

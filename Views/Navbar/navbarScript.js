@@ -81,10 +81,12 @@ const navSlide = () => {
 navSlide();
 
 function change_show(element){
-  if(element.parentNode.getElementsByTagName("ul")[0].className == "dropdown-menu"){
-    element.parentNode.getElementsByTagName("ul")[0].className = "dropdown-menu show";
-  }
-  else{
-    element.parentNode.getElementsByTagName("ul")[0].className = "dropdown-menu";
+  if(!isNaN(index) && index == 0){
+    if(element.parentNode.getElementsByTagName("ul")[0].className == "dropdown-menu"){
+      element.parentNode.getElementsByTagName("ul")[0].className = "dropdown-menu show";
+    }
+    else{
+      element.parentNode.getElementsByTagName("ul")[0].className = "dropdown-menu";
+    }
   }
 }

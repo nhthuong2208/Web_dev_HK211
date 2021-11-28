@@ -44,7 +44,7 @@
     
     <!--Nav-->
     <?php require_once("./Views/Navbar/index.php"); ?>
-    <script src="../Views/Navbar/navbarScript.js" type="text/javascript" id></script>
+    <script src="../Views/Navbar/navbarScript.js" type="text/javascript"></script>
     <!--Nav-->
 
     <!--Body-->
