@@ -73,12 +73,14 @@ button.onclick = function(){
 	var input =  button.parentNode.parentNode.getElementsByTagName("input");
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function(){
-		if(this.responseText != "null"){
-			button.parentNode.parentNode.action = this.responseText;
-			button.parentNode.parentNode.submit();
-		}
-		else{
-			alert("Username hoặc password bạn không chính xác!!"); // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
+		
+		if (this.readyState == 4 && this.status == 200){
+			if(this.responseText != "null"){
+				window.location.href = this.responseText;
+			}
+			else{
+				alert("Username hoặc password bạn không chính xác!!"); // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
+			}
 		}
 	};
 	xmlhttp.open("GET", "?url=Home/check_login/" + input[0].value + "/" + input[1].value + "/" + history_str + "/", true);

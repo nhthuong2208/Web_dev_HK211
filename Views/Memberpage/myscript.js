@@ -64,8 +64,17 @@ function upload_pic(element){
         fileReader.readAsDataURL(fileToLoad);
     }
 }
-
-
+function add_notice(alert, string){
+    return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
+  }
+function myFunction(index){
+    var input = document.getElementsByClassName("col-12 border_bot mt-3 mb-3 ")[0].getElementsByTagName("input")[index];
+    if (input.type === "password") {
+        input.type = "text";
+      } else {
+        input.type = "password";
+      }
+}
 document.getElementsByTagName("button")[3].onclick = function(){
     if(document.getElementsByTagName("button")[3].innerText == "Thiết lập tài khoản"){
         document.getElementsByTagName("button")[3].innerText = "Xác nhận";
@@ -75,17 +84,22 @@ document.getElementsByTagName("button")[3].onclick = function(){
         document.getElementsByTagName("button")[3].parentNode.parentNode.getElementsByClassName("col-12")[1].attributes[0].value = 'col-12 border_bot mt-3 mb-3 ';
         var profile = document.getElementsByTagName("button")[3].parentNode.parentNode.getElementsByClassName("row")[0];
         var fname = profile.getElementsByClassName("col-7")[0].innerText;
-        var user = profile.getElementsByClassName("col-7")[1].innerText;
-        var cmnd = profile.getElementsByClassName("col-7")[2].innerText;
-        var phone = profile.getElementsByClassName("col-7")[3].innerText;
-        var add = profile.getElementsByClassName("col-7")[4].innerText;
+        var mail = profile.getElementsByClassName("col-7")[1].innerText;
+        var user = profile.getElementsByClassName("col-7")[2].innerText;
+        var cmnd = profile.getElementsByClassName("col-7")[3].innerText;
+        var phone = profile.getElementsByClassName("col-7")[4].innerText;
+        var add = profile.getElementsByClassName("col-7")[5].innerText;
         profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-5\"><label for=\"file_pic\" style=\"cursor: pointer;\"><img src=\"" + linkimg + "\" alt=\"profile\" class=\"profile\"></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" onchange=\"upload_pic(this)\"hidden></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Họ tên:</div>";
         profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\" name=\"fname\" value=\"" + fname + "\"></div>";
+        profile.innerHTML += "<div class=\"col-5 col-md-3\">Email:</div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"email\"  name=\"mail\" value=\"" + mail + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Tên đăng nhập:</div>";
         profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"username\" value=\"" + user + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Mật khẩu:</div>";
-        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"password\" name=\"pwd\" value=\"" + pwd + "\"></div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"password\" name=\"pwd\" value=\"" + pwd + "\"><div class=\"mybutton_click\" onclick=\"myFunction(4)\">Hiện</div></div>";
+        profile.innerHTML += "<div class=\"col-5 col-md-3\">Xác nhận:</div>";
+        profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"password\" name=\"re_pwd\" value=\"\" ><div class=\"mybutton_click\" onclick=\"myFunction(5)\">Hiện</div></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">CMND/CCCD:</div>";
         profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"cmnd\" value=\"" + cmnd + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Số điện thoại:</div>";
@@ -93,6 +107,20 @@ document.getElementsByTagName("button")[3].onclick = function(){
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Địa chỉ:</div>";
         profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\"  name=\"address\" value=\"" + add + "\"></div>";
         document.getElementsByTagName("button")[3].onclick = function(){
+            var form = document.getElementsByClassName("col-12 border_bot mt-3 mb-3 ")[0];
+            for(var i = 1; i < form.getElementsByTagName("input").length; i++){
+                if(form.getElementsByTagName("input")[i].value == ""){
+                    document.getElementById("notice").innerHTML = add_notice("alert-danger", "Hãy điền thông tin còn thiếu" + form.getElementsByTagName("input")[i].value + i);
+                    document.getElementsByClassName("alert")[0].style.display = "block";
+                    setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+                     return;
+                }
+            }
+            if(form.getElementsByTagName("input")[4].value != form.getElementsByTagName("input")[5].value){
+                document.getElementById("notice").innerHTML = add_notice("alert-danger", "Mật khẩu xác minh bị sai");
+                document.getElementsByClassName("alert")[0].style.display = "block";
+                setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+            }
             document.getElementsByTagName("button")[3].parentNode.parentNode.submit();
         }
     }

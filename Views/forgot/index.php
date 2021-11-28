@@ -14,6 +14,7 @@
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="./Views/Login/login.css">
+	<link rel="stylesheet" type="text/css" href="./Views/forgot/style.css">
 	<link href="./Views/Navbar/navbar.css" rel="stylesheet" type="text/css" />
     <link rel="import" href="../Navbar/navbar.html" />
 	<link
@@ -51,7 +52,7 @@
 					<div class="card fat p-1">
 						<div class="card-body">
 							<h3 class="card-title mb-4">Quên mật khẩu</h3>
-							<form method="POST" class="my-login-validation" novalidate="">
+							<form method="POST" class="my-login-validation" novalidate="" onsubmit="return false">
 								<div class="form-group">
 									<label for="email">E-Mail</label>
 									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
@@ -74,11 +75,11 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<!--div class="footer-holder"></div>
 	<script src="../Views/footer/footerScript.js"></script-->
 	
     <?php require_once "./Views/footer/index.php ";?>
-	<script src="../Views/Login/login.js"></script>
+	<script src="../Views/forgot/forgot.js"></script>
 </body>
 </html>

@@ -46,11 +46,14 @@
     
     <!--Nav-->
     <?php require_once("./Views/Navbar/index.php"); ?>
-    <script src="./Views/Navbar/navbarScript.js" index='0'></script>
+    <script src="./Views/Navbar/navbarScript.js"></script>
     <!--Nav-->
 
     <!--Body-->
     <div class="container-fuild">
+        <?php 
+            if($data["state"] == "member"):
+        ?>
         <div class="row margin-none justify-content-center align-content-stretch">
             <div class="col-sm-12 col-lg-4 max-width-400 padding-none">
                 <div class="row justify-content-center margin-none">
@@ -81,6 +84,8 @@
                         <div class="row justify-content-center">
                             <div class="col-5 col-md-3">Họ tên:</div>
                             <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["name"];?></div>
+                            <div class="col-5 col-md-3">Email:</div>
+                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["mail"];?></div>
                             <div class="col-5 col-md-3">Tên đăng nhập:</div>
                             <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["username"];?></div>
                             <div class="col-5 col-md-3">CMND/CCCD:</div>
@@ -128,10 +133,9 @@
                             }
                         }
                         if(!empty($data["order_combo"])){
-                            echo "<div class=\"col-12 d-flex justify-content-center\"><div class=\"row nonemg text-center center_my\">";
+                            echo "<div class=\"row \"><div class=\"row justify-content-center nonemg text-center center_my\">";
                             foreach($data["order_combo"] as $row){
-                                echo "<div class=\"col-sm-6 col-lg-6 mb-4\">
-                                <section>
+                                echo "<div class=\"col-6 mb-4\">
                                     <div class=\"card\">
                                         <div class=\"card-header text-center py-1\">
                                             <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
@@ -150,7 +154,7 @@
                                             </div>
                                             <div class=\"card-footer d-flex justify-content-end py-3\">
                                             <h5 class=\"mb-0 fw-bold\">" . $row["time"] . "</h5>";
-                              echo "</div></div></section></div>";
+                              echo "</div></div></div>";
                             }
                             echo "</div></div></div>";
                         }
@@ -159,12 +163,9 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <!--Body-->
-
-    <!--Footer-->
-      <!--div class="footer-holder"></div>
-      <script src="./Views/footer/footerScript.js"></script-->
       
     <?php require_once "./Views/footer/index.php ";?>
       <script src="./Views/Memberpage/myscript.js"></script>

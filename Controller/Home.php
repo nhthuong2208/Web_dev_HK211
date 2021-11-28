@@ -198,7 +198,8 @@ class Home extends Controller{
             }
         }
         function Login($user, $array=""){
-            $this->view("Login", ["key" => $array]);
+            if(!isset($_SESSION["user"]) || $_SESSION["user"] == "customer")
+                $this->view("Login", ["key" => $array]);
         }
         function Payment($user){
             if($user == "member"){
@@ -247,6 +248,7 @@ class Home extends Controller{
                     if(!isset($array[4])) $array[4] = "Home_page";
                     echo "?url=/Home/" . $array[4] . "/";
                 }
+                //echo $_SESSION["user"];
             }
         }
         function update_product_in_cart($user, $array){
@@ -279,7 +281,14 @@ class Home extends Controller{
                 $this->view("Memberpage", [
                     "user" => $mem->get_user($_SESSION["id"]),
                     "product_in_cart" => $product_in_cart,
-                    "order_combo" => $product_in_combo
+                    "order_combo" => $product_in_combo,
+                    "state" => $user
+                ]);
+            }
+            else if($user == "manager"){
+                $this->view("Memberpage", [
+                    "state" => $user,
+                    "member" => $this->model($user)->get_all_user_info()
                 ]);
             }
             else{
@@ -290,14 +299,14 @@ class Home extends Controller{
             $this->model($user)->add_item_comment($array[2], $array[3], $array[4], $_SESSION["id"]);
         }   
         function update_profile($user){
-            if( isset($_POST["fname"]) && isset($_POST["username"]) && isset($_POST["pwd"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
+            if( isset($_POST["fname"]) && isset($_POST["mail"]) && isset($_POST["username"]) && isset($_POST["pwd"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
             {
                 if(isset($_FILES["file_pic"])&& $_FILES["file_pic"]['name'] != ""){
                     if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
                         move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
                     $this->model($user)->update_pic($_SESSION["id"], './Views/images/' . $_FILES['file_pic']['name']);
                 }
-                $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"]);
+                $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"], $_POST["mail"]);
             }
             $this->member_page($user);
             
@@ -408,8 +417,30 @@ class Home extends Controller{
             else echo "null";
         }
         function logout($user){
-            session_unset();
-            $this->Login($user, "Home_page");
+            if($user == "member"){
+                $cart = mysqli_fetch_array($this->model($user)->get_sum_cart($_SESSION["id"]))["sum"];
+                $combo = mysqli_fetch_array($this->model($user)->get_sum_order_Combo($_SESSION["id"]))["sum"];
+                $total = 0;
+                if($cart != NULL) $total += (int)$cart;
+                if($combo != NULL) $total += (int)$combo;
+                $this->model($user)->update_Rank($_SESSION["id"], $total);
+            }
+            session_unset(); 
+           $this->Home_page("customer");
+        }
+        function change_passwork($user, $array){
+            $to = mysqli_fetch_array($this->model($user)->change_passwork($array[2]))["mail"];
+            echo $to;
+            if( $to != ""){
+                $subject = "CHANGE PASSWORD";
+                $message = "Chào bạn, \nMật khẩu mới của bạn sẽ là: 123456hello\n";
+                if(mail($to, $subject, $message)){
+                    $this->model($user)->change_passwork_mail($to, "123456hello");
+                    echo "OK";
+                }
+                else echo "null";
+            }
+            else echo "null";
         }
 }
 ?>

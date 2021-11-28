@@ -25,6 +25,7 @@ CREATE TABLE `ACCOUNT` (
   `PHONE` VARCHAR(10),
   `ADDRESS` TEXT,
   `USERNAME` VARCHAR(50),
+  `EMAIL`  VARCHAR(250),
   `PWD` VARCHAR(50),
   `IMG_URL`  VARCHAR(250),
   `RANK` INT
@@ -124,9 +125,9 @@ INSERT INTO `product`(`product`.`ID`, `product`.`NAME`, `product`.`PRICE`, `prod
 (4, "Bucket Hat", 150000, "https://mcdn2.coolmate.me/uploads/November2021/b6_73.jpg", 20, "Nếu bạn đã sở hữu những chiếc mũ lưỡi trai thuần nam tính hoặc những dáng mũ fedora lịch lãm, kiểu dáng mũ cao bồi cách điệu bụi bặm, và đang muốn tìm cho mình một chiếc mũ mang đến vẻ trẻ trung, năng động thì Bucket Hat chính là câu trả lời của bạn đây. Care & Share ra mắt phiên bản mũ Bucket Hat cùng với nhiều thiết kế ấn tượng nhưng không hề mất đi vẻ nam tính, đơn giản của bạn khi mang chiếc mũ này nhé!", "Accessories", 1);
 
 -- account
-INSERT INTO `account`(`account`.`CMND`, `account`.`FNAME`, `account`.`PHONE`, `account`.`ADDRESS`, `account`.`USERNAME`, `account`.`PWD`, `account`.`IMG_URL`, `account`.`RANK`)VALUES
-("312451293", "Phạm Minh Hiếu", "0973409127", "tx Gò Công, Tiền Giang", "hieu.phamgc", "helloworld", "./Views/images/profile.png", 100),
-("312451746", "Nguyễn Hoài Thương", "0869125690", "tx Gò Công, Tiền Giang", "nhthuong", "helloworld", "./Views/images/profile.png", 100);
+INSERT INTO `account`(`account`.`CMND`, `account`.`FNAME`, `account`.`PHONE`, `account`.`ADDRESS`, `account`.`USERNAME`, `account`.`PWD`, `account`.`IMG_URL`, `account`.`RANK`, `account`.`EMAIL`)VALUES
+("312451293", "Phạm Minh Hiếu", "0973409127", "tx Gò Công, Tiền Giang", "hieu.phamgc", "helloworld", "./Views/images/profile.png", 100, "phamminhhieu1594@gmail.com"),
+("312451746", "Nguyễn Hoài Thương", "0869125690", "tx Gò Công, Tiền Giang", "nhthuong", "helloworld", "./Views/images/profile.png", 100, "thuongok@gmail.com");
 
 -- comment
 INSERT INTO `comment`(`comment`.`PID`, `comment`.`UID`, `comment`.`STAR`, `comment`.`CONTENT`, `comment`.`TIME`) VALUES
@@ -163,9 +164,6 @@ INSERT INTO `product_in_cart` (`product_in_cart`.`PID`, `product_in_cart`.`OID`)
 (2, 1),
 (3, 1);
 -- order combo
-INSERT INTO `order_combo`(`order_combo`.`UID`, `order_combo`.`CBID`, `order_combo`.`TIME`, `order_combo`.`CYCLE`, `order_combo`.`SIZE`)
-VALUES(1, 1, "2021/11/26", 1, "XXL");
-
 -- sub_img_url
 INSERT INTO `sub_img_url`(`sub_img_url`.`ID`, `sub_img_url`.`PID`, `sub_img_url`.`IMG_URL`) VALUES
 (1, 1, "https://mcdn2.coolmate.me/uploads/November2021/1-2_17.jpg"),

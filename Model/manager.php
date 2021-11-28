@@ -112,5 +112,18 @@ class manager extends customer{
                     WHERE `message`.`ID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
+    public function get_all_user_info(){
+        $query =    "SELECT `account`.`ID` AS `id`, 
+                            `account`.`ID` AS `id`, 
+                            `account`.`FNAME` AS `name`, 
+                            `account`.`CMND` AS `cmnd`, 
+                            `account`.`PHONE` AS `phone`, 
+                            `account`.`ADDRESS` AS `add`,
+                            `account`.`EMAIL` AS `mail`,
+                            `account`.`IMG_URL` AS `img`, 
+                            `account`.`RANK` AS `rank` 
+                    FROM `account`";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>
