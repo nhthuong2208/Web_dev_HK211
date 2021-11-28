@@ -163,19 +163,19 @@
                         echo        "</ol>
                                         <p>Chọn kích cỡ</p>
                                         <div class=\"btn-group\" role=\"group\" aria-label=\"Basic radio toggle button group\">
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio1\" autocomplete=\"off\" checked=\"\">
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\"  autocomplete=\"off\" checked=\"\">
                                             <label class=\"btn btn-outline-secondary\" for=\"btnRadio1\">S</label>
                                           
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio2\" autocomplete=\"off\">
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\"  autocomplete=\"off\">
                                             <label class=\"btn btn-outline-secondary\" for=\"btnRadio2\">M</label>
                                           
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3\" autocomplete=\"off\">
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" autocomplete=\"off\">
                                             <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">L</label>
                 
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio4\" autocomplete=\"off\">
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" autocomplete=\"off\">
                                             <label class=\"btn btn-outline-secondary\" for=\"btnRadio4\">XL</label>
                 
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio5\" autocomplete=\"off\">
+                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\"  autocomplete=\"off\">
                                             <label class=\"btn btn-outline-secondary\" for=\"btnRadio5\">XXL</label>
                                           </div>
                                     </div>
@@ -187,10 +187,130 @@
                             echo "<option value=\"". $i . "\">Gửi mỗi ". $row1["cycle"] . "</option>";
                             $i += 1;
                         }
-
-                    echo "</select><button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">Chỉnh sửa</button></div></div></section></div>";
+                    
+                    if($data["user"] == "member"){
+                      echo "</select>
+                              <button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">
+                                Chỉnh sửa
+                              </button>
+                            </div>
+                          </div>
+                        </section></div>";
+                    } 
+                    else {
+                      echo "</select>
+                            <div ><button type=\"button\" class=\"btn btn-primary\" id=\"deleteCombo-btn\"\"><i class=\"fas fa-trash\"></i> Xóa</button></div>
+                            <div ><button type=\"button\" class=\"btn btn-success\" id=\"updateCombo-btn\"\"><i class=\"fas fa-edit\"></i> Chỉnh sửa</button></div>
+                            </div>
+                          </div>
+                        </section></div>";
+                    }
+                    echo "<div id=\"updateCombo-modal\" class=\"add-combo-modal\">
+                    <div class=\"addCombo-modal-content\">
+                      <div class=\"addCombo-modal-header\">
+                        <span class=\"close-modal-addc-update\">&times;</span>
+                        <h2>Thêm gói mới</h2>
+                      </div>
+                      <div class=\"addCombo-modal-body\">
+                        <form action=\"?url=Home/update_new_combo\" method=\"POST\">
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"cid\">
+                              Tên combo:
+                            </label>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["id"] . "\" type=\"text\" name=\"cid\" placeholder=\"Nhập tên combo\" hidden></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"cname\">
+                              Tên combo: 
+                            </label>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["name"] . "\" type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"price\">
+                              Giá:
+                            </label>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["price"] . "\" type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\"></div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"c-shirt\">
+                              Áo:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"c-shirt\" name=\"c-shirt\">
+                                <option selected disabled>Chọn áo cho combo</option>";
+                                foreach($data["product"] as $row){
+                                    if($row["cate"] == "Shirt"){
+                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                    }
+                                }
+                            echo "</select>
+                            </div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"c-pants\">
+                              Quần:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"c-pants\" name=\"c-pants\">
+                                <option selected disabled>Chọn quần cho combo</option>";
+                                foreach($data["product"] as $row){
+                                    if($row["cate"] == "Trousers"){
+                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                    }
+                                }
+                            echo "  </select>
+                            </div>
+                          </div>
+                          <div class=\"row\">
+                            <label class=\"col-lg-4\" for=\"c-ass\">
+                              Phụ kiện:
+                            </label>
+                            <div class=\"col-lg-8\">
+                              <select id=\"c-ass\" name=\"c-ass\">
+                                <option selected disabled>Chọn phụ kiện cho combo</option>";
+                                foreach($data["product"] as $row){
+                                    if($row["cate"] == "Accessories"){
+                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                    }
+                                }
+                             echo " </select>
+                            </div>
+                          </div>
+                          <div class=\"btn-conf-add\">
+                            <button type=\"submit\">Hoàn tất chỉnh sửa</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>";  
+                  
+                  echo "<div class=\"modal fade\" id=\"exampleModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel-" .$count . "\" aria-hidden=\"true\">
+                  <div class=\"modal-dialog modal-dialog-centered\">
+                    <div class=\"modal-content\">
+                      <div class=\"modal-header\">
+                        <h5 class=\"modal-title\" id=\"exampleModalLabel-" .$count . "\">Bạn muốn xóa sản phẩm này</h5>
+                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                      </div>
+                      <div class=\"modal-body\">
+                        
+                      </div>
+                      <div class=\"modal-footer\">
+                        <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
+                        <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"remove_item(" . (int)$row["id"] . ", this)\">Xác nhận</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>";          
+                  
                     }
                 }
+
+                
+
+
+
+
+
                 echo "<div id=\"addCombo-modal\" class=\"add-combo-modal\">
                     <div class=\"addCombo-modal-content\">
                       <div class=\"addCombo-modal-header\">
