@@ -180,6 +180,7 @@ class Home extends Controller{
                 array_push($product_in_combo, (["id" => $cb["id"], "name" => $cb["cbname"], "price" => $cb["cost"], "product" => $cus->get_product_in_combo($cb["id"])]));
             }
             $this->view("Cost_table", [
+                "product" => $cus->get_products("", ""),
                 "combo" => $product_in_combo,
                 "cycle" => $cus->get_cycle(),
                 "user" => $user
@@ -491,6 +492,19 @@ class Home extends Controller{
         function logout($user){
             session_unset();
             $this->Login($user, "Home_page");
+        }
+        function add_new_combo($user){
+            if(isset($_POST["cname"]) && isset($_POST["price"]) && isset($_POST["c-shirt"]) && isset($_POST["c-pants"]) && isset($_POST["c-ass"])){
+                $result = $this->model($user)->add_new_combo($_POST["cname"], $_POST["price"]);
+                $this->model($user)->add_product_in_combo($result, $_POST["c-shirt"], $_POST["c-pants"], $_POST["c-ass"]);
+            }
+            $this->Cost_table($user);
+        }
+        function add_cycle($user){
+            if(isset($_POST["cycle-time"])){
+                $this->model($user)->add_cycle($_POST["cycle-time"]);
+            }
+            $this->Cost_table($user);
         }
     }
 ?>

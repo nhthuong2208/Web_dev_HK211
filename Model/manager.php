@@ -136,5 +136,23 @@ class manager extends customer{
                     WHERE `message`.`ID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
+    public function add_new_combo($name, $price){
+        $query = "INSERT INTO `combo` (`combo`.`NAME`, `combo`.`COST`) VALUE (\"" . $name . "\", " . (int)$price . ");";
+        mysqli_query($this->connect, $query);
+        return mysqli_insert_id($this->connect);
+    }
+    public function add_product_in_combo($cbid, $shirt, $pant, $ass){
+        $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$shirt . ");";
+        mysqli_query($this->connect, $query);
+        $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$pant . ");";
+        mysqli_query($this->connect, $query);
+        $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$ass . ");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function add_cycle($time){
+        $time = $time . " ngày";
+        $query = "INSERT INTO `cycle` (`cycle`.`CYCLE`) VALUE (\"" . $time . "\");";
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>
