@@ -45,8 +45,8 @@
   <body>
     
     <!--Nav-->
-    <div class="navbar-holder sticky-top"></div>
-    <script src="./Views/Navbar/navbarScript.js" index='5' type="text/javascript"></script>
+    <?php require_once("./Views/Navbar/index.php"); ?>
+    <script src="./Views/Navbar/navbarScript.js" index='0'></script>
     <!--Nav-->
 
     <!--Body-->
@@ -163,8 +163,10 @@
     <!--Body-->
 
     <!--Footer-->
-      <div class="footer-holder"></div>
-      <script src="./Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="./Views/footer/footerScript.js"></script-->
+      
+    <?php require_once "./Views/footer/index.php ";?>
       <script src="./Views/Memberpage/myscript.js"></script>
     <!--Footer-->
   </body>

@@ -42,7 +42,7 @@
 </head>
 
 <body>
-<div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
 <script src="../Views/Navbar/navbarScript.js" index='4'></script>
 
 <div class="container my-5">
@@ -67,7 +67,7 @@
 							" . $new_news["shortcontent"] ."
 						</p>";
 						if($data["user"] != "manager"){
-							echo "<a href=\"?url=Home/News_detail/". (count($data["news"])) . "\">
+							echo "<a href=\"?url=Home/News_detail/". (count($data["news"])-1) . "\">
 								<button type=\"button\" class=\"btn btn-warning mt-3\" >Đọc thêm</button>
 							</a>";
 						}
@@ -115,7 +115,9 @@
 	</section>   
 </div>
 
-<div class="footer-holder"></div>
-<script src="../Views/footer/footerScript.js"></script>
+<!--div class="footer-holder"></div>
+<script src="../Views/footer/footerScript.js"></script-->
+
+<?php require_once "./Views/footer/index.php ";?>
 </body>
 </html>

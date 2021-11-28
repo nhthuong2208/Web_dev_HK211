@@ -33,7 +33,7 @@
   </head>
 
   <body>
-    <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
     <script src="./Views/Navbar/navbarScript.js"></script>
     <div class="login mb-5" style="min-height: 66vh;">
       <div class="row justify-content-md-center h-100">
@@ -126,8 +126,9 @@
       </div>
     </div>
 
-    <div class="footer-holder"></div>
-    <script src="../Views/footer/footerScript.js"></script>
+    <!--div class="footer-holder"></div>
+    <script src="../Views/footer/footerScript.js"></script-->
+    <?php require_once "./Views/footer/index.php ";?>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

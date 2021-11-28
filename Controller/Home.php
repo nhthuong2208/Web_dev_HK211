@@ -21,12 +21,8 @@ class Home extends Controller{
             ]);
         }
         function Item($user, $pid){
-            $sort = "";
-            if(count($pid) > 1){
-                $sort = $pid[3];
-            }
             $cus = $this->model($user);
-            $comment = $cus->get_item_comment($pid[2], $sort);
+            $comment = $cus->get_item_comment($pid[2], "");
             $cmt_info = array();
             foreach($comment as $cmt){
                 array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $cus->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
@@ -116,6 +112,7 @@ class Home extends Controller{
                     "user" => $user,
                     "params"=> $params[2]
                 ]);
+                $this->view("Post_news", []);
             }
             else {
                 $cus = $this->model($user);
@@ -141,13 +138,38 @@ class Home extends Controller{
             echo (int)$id[2];
             $this->model("manager")->delete_news((int)$id[2]);
         }
-        function insert_news($user, $array){
-            echo var_dump($array);
+        // function insert_news($user, $array){
+        //     echo var_dump($array);
 
-            $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
-        }
+        //     $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
+        // }
         function add_comment_news($user, $array){
             $this->model($user)->add_comment_news($array[2], $array[3], $_SESSION["id"]);
+        }
+
+        function insert_news($user){
+            echo ("0");
+            if(isset($_POST["key"]) && isset($_POST["title"]) && isset($_POST["url"]) && isset($_POST["content"]) && isset($_POST["shortcontent"]))
+            {
+                echo ("1");
+                if(isset($_FILES["e-image-url"])){
+                    if($_FILES['e-image-url']['name'][0] != ""){
+                        echo ("2");
+                        if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][0])){
+                            move_uploaded_file($_FILES['e-image-url']['tmp_name'][0], './Views/images/' . $_FILES['e-image-url']['name'][0]);
+                        }
+                        if((int)$_POST["url"] != -1){
+                            $this->model($user)->update_news((int)$_POST["url"], $_POST["key"], $_POST["title"], $_POST["content"], './Views/images/' . $_FILES['e-image-url']['name'][0], $_POST["shortcontent"]);
+                        }
+                        else{
+                            $this->model($user)->insert_news($_POST["key"], $_POST["title"], $_POST["content"], './Views/images/' . $_FILES['e-image-url']['name'][0], $_POST["shortcontent"]);
+                        }
+                        
+                    }
+                    
+                }
+            }
+            // $this->News($user);
         }
 
         function Cost_table($user){
@@ -293,6 +315,7 @@ class Home extends Controller{
         function add_new_item($user){
             if(isset($_POST["iname"]) && isset($_POST["price"]) && isset($_FILES["image-url"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
             {
+                echo var_dump($_POST["iname"]);
                 if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][0])){
                     move_uploaded_file($_FILES['image-url']['tmp_name'][0], './Views/images/' . $_FILES['image-url']['name'][0]);
                 }
@@ -400,7 +423,74 @@ class Home extends Controller{
             }
         }
         function sort_comment($user, $array){
-            $this->Item($user, $array);
+            $result = $this->model($user)->get_item_comment((int)$array[2], $array[3]);
+            $cmt_info = array();
+            foreach($result as $cmt){
+                array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $this->model($user)->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
+            }
+            echo "<div class=\"no-filter-cmt\"></div>";
+            if(empty($cmt_info)) echo "<div class=\"card\">
+                                                  <div class=\"card-body\" id=\"if-no-cmt\">No comment</div></div>";
+              else {
+                $count = 0;
+                foreach ($cmt_info as $row) {
+                  echo "<div class=\"card filterCmt " . $row["star"] . "-star-num\">
+                  <div class=\"card-body\">
+                    <div class=\"header-cmt\">
+                      <div>
+                        <i class=\"fas fa-user-circle\"></i>";
+                        foreach($row["uname"] as $name) {
+                          echo "<span> " . $name["uname"] . "</span>";
+                        }
+                        echo "
+                        <div class=\"star-cus-rate\">";
+                          for($i = 0; $i < $row["star"]; $i++) {
+                            echo "<i class=\"fas fa-star\"></i>";
+                          }
+                          for($i = 0; $i < 5 - $row["star"]; $i++) {
+                            echo "<i class=\"far fa-star\"></i>";
+                          }
+                        echo "  
+                        </div>
+                      </div>
+                      <div>
+                        <p>" . $row["time"] . "</p>
+                      </div>
+                    </div>
+                    <div class=\"comment-content\">
+                      <div class=\"script-cmt\">
+                        <p>" . $row["content"] . "</p>
+                      </div>";
+                    if($user == "manager"){
+                      echo "<div><i class=\"fas fa-trash-alt\" data-bs-toggle=\"modal\" data-bs-target=\"#delcmtModal-" .$count . "\"></i></div>";
+                      echo "<div class=\"modal fade\" id=\"delcmtModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"delcmtModalLabel-" .$count . "\" aria-hidden=\"true\">
+                        <div class=\"modal-dialog modal-dialog-centered\">
+                          <div class=\"modal-content\">
+                            <div class=\"modal-header\">
+                              <h5 class=\"modal-title\" id=\"delcmtModalLabel-" .$count . "\">Bạn muốn xóa bình luận này</h5>
+                              <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                            </div>
+                            <div class=\"modal-body\">
+                              
+                            </div>
+                            <div class=\"modal-footer\">
+                              <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
+                              <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"delete_comment(" . $row["id"] . ", this)\">Xác nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>";
+                      $count += 1;
+                    }
+                echo "</div>
+                    </div>
+                </div>";
+                }
+              }
         }
-}
+        function logout($user){
+            session_unset();
+            $this->Login($user, "Home_page");
+        }
+    }
 ?>

@@ -20,8 +20,18 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     function insert_news($key, $title, $content, $img_url, $short_content){
+        echo ("7");
         $query =    "INSERT INTO `news`(`news`.`key` , `news`.`time`, `news`.`title`, `news`.`content`, `news`.`img_url`, `news`.`short_content`)
                      VALUES (\"" . $key . "\", \"" . date("Y/m/d") . "\", \"" . $title . "\", \"" . $content . "\", \"" . $img_url . "\", \"" . $short_content . "\");";
+        mysqli_query($this->connect, $query);
+        echo mysqli_error($this->connect);
+        return mysqli_query($this->connect, $query); 
+    }
+    function update_news($id, $key, $title, $content, $img_url, $short_content){
+        echo ("8");
+        $query = "UPDATE `news` SET `news`.`key` = \"" . $key . "\", `news`.`title` = \"" . $title . "\", `news`.`content` = \"" . $content . "\",  `news`.`img_url` = \"" . $img_url . "\", `news`.`short_content` = \"" . $short_content . "\" WHERE `news`.`ID` = " . (int)$id . ";";
+        mysqli_query($this->connect, $query);
+        echo mysqli_error($this->connect);
         return mysqli_query($this->connect, $query); 
     }
     public function get_comment_news($id){
@@ -33,6 +43,16 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     public function add_new_item($name, $price, $desc, $remain, $cate, $path){
+        $name_mod = explode("\"", $name);
+        $desc_mod = explode("\"", $desc); 
+        $name = $name_mod[0];
+        $desc = $desc_mod[0];
+        for($i = 1; $i < count($name_mod); $i++){
+            $name = $name . "\\\"" . $name_mod[$i];
+        }
+        for($i = 1; $i < count($desc_mod); $i++){
+            $desc = $desc . "\\\"" . $desc_mod[$i];
+        }
         $query = "INSERT INTO `product`(`product`.`NAME`, `product`.`PRICE`, `product`.`IMG_URL`, `product`.`NUMBER`, `product`.`DECS`, `product`.`CATEGORY`, `product`.`TOP_PRODUCT`)
                   VALUE (\"" . $name . "\", " . (int)$price . ", \"" . $path . "\", " . $remain . ", \"" . $desc . "\", \"" . $cate . "\", 0);";
         mysqli_query($this->connect, $query);
@@ -44,6 +64,16 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     public function update_item_nope_img($pid, $name, $price, $desc, $remain, $cate, $top_product){
+        $desc_mod = explode("\"", $desc);
+        $name_mod = explode("\"", $name);
+        $desc = $desc_mod[0];
+        $name = $name_mod[0];
+        for($i = 1; $i < count($desc_mod); $i++){
+            $desc = $desc . "\\\"" . $desc_mod[$i];
+        }
+        for($i = 1; $i < count($name_mod); $i++){
+            $name = $name . "\\\"" . $name_mod[$i];
+        }
         $query = "UPDATE `product` SET `product`.`NAME` = \"" . $name . "\", `product`.`PRICE` = " . (int)$price . ", `product`.`NUMBER` = " . (int)$remain . ", `product`.`DECS` = \"" . $desc . "\", `product`.`CATEGORY` = \"" . $cate . "\", `product`.`TOP_PRODUCT` = " . (int)$top_product . " WHERE `product`.`ID` = " . (int)$pid . ";";
         return mysqli_query($this->connect, $query);
     }

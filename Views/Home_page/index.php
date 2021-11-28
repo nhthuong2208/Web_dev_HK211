@@ -66,7 +66,8 @@
   </head>
   <body>
     <!-- Navigation -->
-    <div class="navbar-holder sticky-top"></div>
+    <!--div class="navbar-holder sticky-top"></div-->
+    <?php require_once("./Views/Navbar/index.php"); ?>
     <script src="./Views/Navbar/navbarScript.js" index='0'></script>
 
 

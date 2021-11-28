@@ -2,7 +2,7 @@
 .add-item-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 1000; /* Sit on top */
   left: 0;
   top: 0;
   padding-top: 5rem;
@@ -45,7 +45,7 @@
   padding: 10px 16px;
 }
 
-.addItem-modal-body input, .addItem-modal-body select{
+.addItem-modal-body input, .addItem-modal-body textarea, .addItem-modal-body select{
   padding: 0.5rem;
   width: 100%;
   border: 1px solid #ffa62b;

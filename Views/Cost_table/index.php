@@ -36,7 +36,7 @@
 <body>
     
 <div>
-    <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
     <script src="./Views/Navbar/navbarScript.js" index='3'></script>
 	<section class="pb-4 mb-5">
 		<div class="hero">
@@ -125,8 +125,10 @@
         <div class="demo" hidden><?php if(!empty($data["user"])) echo $data["user"]; ?></div>
 </div>
 
-<div class="footer-holder"></div>
-        <script src="../Views/footer/footerScript.js"></script>
+<!--div class="footer-holder"></div>
+        <script src="../Views/footer/footerScript.js"></script-->
+        
+    <?php require_once "./Views/footer/index.php ";?>
         <script src="../Views/Cost_table/myscript.js"></script>
 </body>
 </html>

@@ -45,7 +45,7 @@
   <body>
     
     <!--Nav-->
-    <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
     <script src="./Views/Navbar/navbarScript.js" index='5' type="text/javascript"></script>
     <!--Nav-->
 

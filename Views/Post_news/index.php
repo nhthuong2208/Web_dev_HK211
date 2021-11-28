@@ -42,70 +42,78 @@
 </head>
 
 <body>
-<div class="navbar-holder sticky-top"></div>
-<script src="../Views/Navbar/navbarScript.js" index='4'></script>
+    <?php require_once("./Views/Navbar/index.php"); ?>
+    <script src="../Views/Navbar/navbarScript.js" index='4'></script>
   <div class="container mt-5 mb-5" style="max-width: 1100px;">
     <div class="mt-3 mb-4 text-center">
       <h3 class = "mt-3 mb-2 text-warning">Quản lí tin tức</h3>
     </div>
-    <form method="post" action="">  
+    <form action="?url=Home/insert_news/" method="POST" enctype="multipart/form-data">  
     <div class="row">    
-      <?php 
-        $news = $data["news"][0];
-        echo "<div class=\"col-md-9\">
-          <div class=\"card\">
-            <div class=\"card-header\">
-              <h5 class=\"text-warning\">Thêm tin tức</h5>
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="text-warning">Thêm tin tức</h5>
             </div>
-            <div class=\"card-body\">        
-                <div class=\"content-element\">
-                  <div class=\"form-group\">
-                      <label class=\"form-label\">Tiêu đề</label>
-                      <input type=\"text\" name=\"post_title\" id=\"post_title\" class=\"form-control\" placeholder=\"Tiêu đề\" value= \" ". $news["title"]. "\">
+            <div class="card-body">        
+                <div class="content-element">
+                  <div class="form-group">
+                      <label class="form-label">Tiêu đề</label>
+                      <input 
+                        type="text" name="title" id="title" class="form-control" placeholder="Tiêu đề" 
+                        value= "<?php $news = $data["news"][0]; echo $news["title"]?>">
                   </div>
-                  <div class=\"form-group\">
-                      <label class=\"form-label\">Đường dẫn ảnh</label>
-                      <input type=\"text\" name=\"post_url\" id=\"post_title\" class=\"form-control\" placeholder=\"Đường dẫn\" value= \" ". $news["imgurl"]. "\">
+                  <div class="text-center mt-3">
+                    <label class="col-lg-4" for="e-image-url">
+                      Ảnh sản phẩm:
+                    </label>
+                    <div class="col-lg-8">
+                      <img src="<?php $news = $data["news"][0]; echo $news["imgurl"]?>" alt="main_img" style="width: 50%; margin-bottom: 1rem;">
+                      <input type="file" id="e-image-url" name="e-image-url[]" onchange="upload_pic(this)" hidden>
+                    </div>
                   </div>
-      
-                  <div class=\"form-group mt-3\">
-                      <label class=\"form-label\">Nội dung bài viết</label>
-                      <textarea class=\"form-control\" rows = \"10\" id=\"post_content\" name=\"post_content\">". $news["content"] ."</textarea>
+
+                  <input type="text" name="url" id="url" class="form-control" placeholder="Đường dẫn" value= "<?php $news = $data["news"][0]; echo $news["id"]?>">
+  
+                  <div class="form-group mt-3">
+                      <label class="form-label">Nội dung bài viết</label>
+                      <textarea class="form-control" rows = "10" id="content" name="content"><?php $news = $data["news"][0]; echo $news["content"]?></textarea>
                   </div>
                 </div>
             </div>          
           </div>        
         </div> 
 
-        <div class=\"col-md-3\">
-          <div class=\"card\">
-            <div class=\"card-header text-warning\">
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-header text-warning">
               <h5>Thông tin chung </h5>
             </div>
 
-            <div id=\"post-info\" class=\"collapse show\">
-                <div class=\"card-body\">
-                    <div class=\"post-info-item\">
-                        <label class=\"form-label\" for=\"keyword\">Từ khóa:</label>
-                        <input type=\"text\" name=\"post_key\" id=\"post_key\" class=\"form-control\" placeholder=\"Từ khóa\" value= \" ". $news["key"]. "\">
+            <div id="post-info" class="collapse show">
+                <div class="card-body">
+                    <div class="post-info-item">
+                        <label class="form-label" for="keyword">Từ khóa:</label>
+                        <input type="text" name="key" id="key" class="form-control" placeholder="Từ khóa" value= "<?php $news = $data["news"][0]; echo $news["key"]?>">
                     </div>
 
-                    <div class=\"post-info-item mt-4\">
-                      <label class=\"form-label\">Nội dung ngắn gọn</label>
-                      <textarea class=\"form-control\" rows = \"5\" id=\"post_short_content\" name=\"post_short_content\">". $news["shortcontent"] ."</textarea>
+                    <div class="post-info-item mt-4">
+                      <label class="form-label">Nội dung ngắn gọn</label>
+                      <textarea class="form-control" rows = "5" id="shortcontent" name="shortcontent"> 
+                          <?php $news = $data["news"][0]; echo $news["shortcontent"]?>
+                      </textarea>
                     </div>
-                    <div class=\"mt-5 text-between\">
-                        <div href=\"?url=Home/News/\">
-                            <button type=\"button\" class=\"btn-sm btn btn-warning\">
-                                <span>Hoàn tất</span> 
+                    <div class="mt-5 text-between">
+                        <div href="?url=Home/News/">
+                            <button type="submit" class="btn-sm btn btn-warning">
+                                Hoàn tất
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
           </div>
-        </div>";
-      ?>
+        </div>;
       </div>
     </form>
   </div>

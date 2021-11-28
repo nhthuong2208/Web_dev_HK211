@@ -44,10 +44,10 @@
   </head>
   <body>
     <div class="product-item">
-      <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
       <script src="../Views/Navbar/navbarScript.js"></script>
 
-      <div class="container-fluid">
+      <div class="container-fluid"><span hidden><?php echo $data["user"]; ?></span>
         <div class="row">
           <div class="col-xl-5 col-lg-12">
             <div class="product-image">
@@ -125,7 +125,7 @@
                     </div>
                   </div>
                   <div class=\"addtocart-btn\">
-                    <button type=\"button\" class=\"btn btn-primary\">Add to cart <i class=\"fas fa-shopping-cart\"></i></button>
+                    <button type=\"button\" class=\"btn btn-primary\" onclick=\"add_Product(this);\" value=\"" . $row_product["id"] . "\">Add to cart <i class=\"fas fa-shopping-cart\"></i></button>
                   </div>";
                   echo "<div class=\"descript-item\">
                           <h3>Chi tiết sản phẩm</h3>
@@ -138,7 +138,7 @@
                           <p>" . $row_product["decs"] . "</p>
                         </div>";
                     echo "<button type=\"button\" id=\"edit-itemBtn\">Chỉnh sửa</button>
-              
+                    <span hidden id=\"get_name_val\">" . $row_product["name"] . "</span>
                     <div id=\"editItem-modal\" class=\"edit-item-modal\">
                       <div class=\"editItem-modal-content\">
                         <div class=\"editItem-modal-header\">
@@ -151,7 +151,7 @@
                               <label class=\"col-lg-4\" for=\"name\">
                                 Tên sản phẩm:
                               </label>
-                              <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" value=\"" . $row_product["name"] . "\" placeholder=\"Nhập tên sản phẩm\"></div>
+                              <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" value=\"\" placeholder=\"Nhập tên sản phẩm\"></div>
                             </div>
                             <div class=\"row\">
                               <label class=\"col-lg-4\" for=\"price\">
@@ -179,7 +179,7 @@
                               <label class=\"col-lg-4\" for=\"description\">
                                 Mô tả:
                               </label>
-                              <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" value=\"" . $row_product["decs"] . "\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                              <div class=\"col-lg-8\"><textarea rows=\"10\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\">" . $row_product["decs"] . "</textarea></div>
                             </div>
                             <div class=\"row\">
                               <label class=\"col-lg-4\" for=\"remain\">
@@ -412,9 +412,11 @@
         
       </div>
 
-      <div class="footer-holder"></div>
-      <script src="./Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="./Views/footer/footerScript.js"></script-->
+    <?php require_once "./Views/footer/index.php ";?>
     </div>
+    
     <script src="./Views/Item/item.js"></script>
   </body>
 </html>

@@ -41,7 +41,6 @@ let tabs = btnContainer.getElementsByClassName("tab-filter");
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function() {
     let current = btnContainer.getElementsByClassName("active-filter");
-    console.log(current)
     current[0].className = current[0].className.replace(" active-filter", "");
     this.className += " active-filter";
   });
@@ -103,8 +102,8 @@ function upload_pic(element){
 }
 
 function add_notice(string){
-  if(string == "OK") return '<div class="alert alert-success" role="alert"><strong>Xóa thành công!</strong></div>';
-  return '<div class="alert alert-danger" role="alert"><strong>Xóa thất bại!</strong></div>';
+  if(string == "OK") return '<div class="alert success" role="alert"><strong>Xóa thành công!</strong></div>';
+  return '<div class="alert fail" role="alert"><strong>Xóa thất bại!</strong></div>';
 }
 
 function remove_item(pid, element){
@@ -126,19 +125,6 @@ function remove_item(pid, element){
   xmlhttp.open("GET", "?url=Home/delete_item/" + pid + "/", true);
   xmlhttp.send();
 }
-
-// document.getElementsByClassName("form-sort")[0].getElementsByClassName("sort-btn")[0].onclick = function(){
-//   var sort_value = document.getElementById("sort-by").value;
-//   var order_value = document.getElementById("order-by").value;
-//   if(sort_value == "price"){
-//     document.getElementById("sort-by").children[0].removeAttribute("selected");
-//     document.getElementById("sort-by").children[1].setAttribute("selected", "selected");
-//   }
-//   if(order_value == "DESC"){
-//     document.getElementById("order-by").children[0].removeAttribute("selected");
-//     document.getElementById("order-by").children[1].setAttribute("selected", "selected");
-//   }
-// }
 
 // modal add item
 var modal = document.getElementById("addItem-modal");

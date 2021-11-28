@@ -45,12 +45,11 @@
     <div class="company-product">
 
       <!-- Navigation -->
-      <div class="navbar-holder sticky-top"></div>
+    <?php require_once("./Views/Navbar/index.php"); ?>
       <script src="../Views/Navbar/navbarScript.js" index='2'></script>
       
       <!-- Filter bar and sort -->
       <div class="header-product">
-        <div id="notice"></div>
         <div id="myBtnContainer" class="filterBar">
           <div class="tab-filter active-filter" onclick="filterSelection('all')"> All</div>
           <?php
@@ -142,7 +141,7 @@
                             <label class=\"col-lg-4\" for=\"description\">
                               Mô tả:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                            <div class=\"col-lg-8\"><textarea name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></textarea></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"remain\">
@@ -346,7 +345,7 @@
 
           </div>
         </div>
-
+        <div id="notice"></div>
         <!-- PAGINATION -->
         <ul class="pagination">
           <span>1</span>
@@ -356,8 +355,9 @@
         </ul>
       </div>
       <div id="notice"></div>
-      <div class="footer-holder"></div>
-      <script src="../Views/footer/footerScript.js"></script>
+      <!--div class="footer-holder"></div>
+      <script src="../Views/footer/footerScript.js"></script-->
+    <?php require_once "./Views/footer/index.php ";?>
     </div>
     <script src="./Views/Products/product.js"></script>
   </body>
