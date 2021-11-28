@@ -67,24 +67,22 @@
           <?php
             if($data["user"] == "customer" || $data["user"] == "member"){
               echo "<div class=\"form-sort\">
-              <form action=\"\">
-              <div class=\"item\">
-                <label for=\"sort-by\">Sort By</label>
-                <select name=\"sort-by\" id=\"sort-by\">
-                  <option value=\"title\" selected=\"selected\">Name</option>
-                  <option value=\"number\">Price</option>
-                  <option value=\"search_api_relevance\">Relevance</option>
-                  <option value=\"created\">Newness</option>
-                </select>
-              </div>
-              <div class=\"item\">
-                <label for=\"order-by\">Order</label>
-                <select name=\"order-by\" id=\"sort-by\">
-                  <option value=\"ASC\" selected=\"selected\">ASC</option>
-                  <option value=\"DESC\">DESC</option>
-                </select>
-              </div>
-              <a href=\"\">Apply</a>
+              <form action=\"?url=Home/sort_product\" method=\"POST\">
+                <div class=\"item\">
+                  <label for=\"sort-by\">Sort By</label>
+                  <select name=\"sort-by\" id=\"sort-by\">
+                    <option value=\"pname\">Name</option>
+                    <option value=\"price\">Price</option>
+                  </select>
+                </div>
+                <div class=\"item\">
+                  <label for=\"order-by\">Order</label>
+                  <select name=\"order-by\" id=\"order-by\">
+                    <option value=\"ASC\">ASC</option>
+                    <option value=\"DESC\">DESC</option>
+                  </select>
+                </div>
+                <button class=\"sort-btn\" type=\"submit\">Apply</button>
             </form>
             </div>";
             } else if($data["user"] == "manager") {

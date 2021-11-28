@@ -99,7 +99,7 @@ if (!document.getElementById("edit-itemBtn")){
     document.getElementsByClassName("get-item-id")[0].remove();
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
-      console.log(this.responseText);
+      window.location.reload();
       document.getElementsByClassName("add-comment")[0].getElementsByTagName("form")[0].reset();
     };
     xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + pid, true);
@@ -120,6 +120,30 @@ function upload_pic(element){
   }
 }
 
+function delete_comment(cid, element){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    if(this.responseText == "OK"){
+      window.location.reload();
+      //element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+    } else if(this.responseText == "Nope"){
+      console.log(this.responseText);
+    }
+  }
+  xmlhttp.open("GET", "?url=Home/delete_comment/" + cid + "/", true);
+  xmlhttp.send();
+}
+
+function sort_comment(pid){
+  var sort_value = document.getElementById("sort-with").value;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    document.getElementsByTagName("body").innerHTML = this.responseText;
+  }
+  xmlhttp.open("GET", "?url=Home/sort_comment/" + pid + "/" + sort_value + "/", true);
+  xmlhttp.send();
+}
+
 // Get the modal
 var modal = document.getElementById("editItem-modal");
 
@@ -130,13 +154,17 @@ var btn = document.getElementById("edit-itemBtn");
 var span = document.getElementsByClassName("close-modal-edit")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
+if(btn){
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+if(span){
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
 }
 
 // When the user clicks anywhere outside of the modal, close it

@@ -6,23 +6,27 @@ class Home extends Controller{
             $this->view("Home_page", [
                 "user" => $user,
                 "collection" => $cus->get_swiper_slide_collection(), //$data["collection"] = $cus->get_swiper_slide_collection() 
-                "featured" => $cus->get_products()
+                "featured" => $cus->get_products("", "")
             ]);
         }
         function About_us($user){
             $this->view("About_US", []);
         }
-        function Products($user){
+        function Products($user, $sort_1="", $sort_2=""){
             $cus = $this->model($user);
             $this->view("Products", [
                 "cate" => $cus->get_product_cates(),
-                "product" => $cus->get_products(),
+                "product" => $cus->get_products($sort_1, $sort_2),
                 "user" => $user
             ]);
         }
         function Item($user, $pid){
+            $sort = "";
+            if(count($pid) > 1){
+                $sort = $pid[3];
+            }
             $cus = $this->model($user);
-            $comment = $cus->get_item_comment($pid[2]);
+            $comment = $cus->get_item_comment($pid[2], $sort);
             $cmt_info = array();
             foreach($comment as $cmt){
                 array_push($cmt_info, (["id" => $cmt["id"], "pid" => $cmt["pid"], "uid" => $cmt["uid"], "uname" => $cus->get_cmt_user_name($cmt["uid"]), "star" => $cmt["star"], "content" => $cmt["content"], "time" => $cmt["time"]]));
@@ -380,6 +384,23 @@ class Home extends Controller{
                 $this->model($user)->update_message((int)$array[5]);
             }
             else echo "null";
+        }
+        function delete_comment($user, $array){
+            if($this->model($user)->delete_comment((int)$array[2])){
+                echo "OK";
+            } else {
+                echo "Nope";
+            }
+        }
+        function sort_product($user){
+            if(isset($_POST["sort-by"]) && isset($_POST["order-by"])){
+                $sort_1 = $_POST["sort-by"];
+                $sort_2 = $_POST["order-by"];
+                $this->Products($user, $sort_1, $sort_2);
+            }
+        }
+        function sort_comment($user, $array){
+            $this->Item($user, $array);
         }
 }
 ?>

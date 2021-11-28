@@ -69,6 +69,10 @@ class manager extends customer{
         $query = "DELETE FROM `product` WHERE `product`.`ID` = " . $pid . ";";
         return mysqli_query($this->connect, $query);
     }
+    public function delete_comment($cid){
+        $query = "DELETE FROM `comment` WHERE `comment`.`ID` = " . $cid . ";";
+        return mysqli_query($this->connect, $query);
+    }
     function add_comment_news($content, $nid, $cid){
         $query = "INSERT INTO `comment_news` (`nid`, `cid`, `content`, `time`) VALUE `(`$nid`, `$cid`, `$content`, `date('Y/m/d')`)";
         return mysqli_query($this->connect, $query);

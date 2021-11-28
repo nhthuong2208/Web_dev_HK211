@@ -127,6 +127,19 @@ function remove_item(pid, element){
   xmlhttp.send();
 }
 
+// document.getElementsByClassName("form-sort")[0].getElementsByClassName("sort-btn")[0].onclick = function(){
+//   var sort_value = document.getElementById("sort-by").value;
+//   var order_value = document.getElementById("order-by").value;
+//   if(sort_value == "price"){
+//     document.getElementById("sort-by").children[0].removeAttribute("selected");
+//     document.getElementById("sort-by").children[1].setAttribute("selected", "selected");
+//   }
+//   if(order_value == "DESC"){
+//     document.getElementById("order-by").children[0].removeAttribute("selected");
+//     document.getElementById("order-by").children[1].setAttribute("selected", "selected");
+//   }
+// }
+
 // modal add item
 var modal = document.getElementById("addItem-modal");
 
