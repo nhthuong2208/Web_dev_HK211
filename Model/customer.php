@@ -10,8 +10,24 @@ class customer extends DB{
         return mysqli_query($this->connect, $query);
     }
 
-    public function get_products(){
-        $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product`;";
+    public function get_products($sort_1, $sort_2){
+        $query = "";
+        if($sort_1 == "" && $sort_2 == ""){
+            $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product`;";
+        }
+        else if($sort_1 == "pname" && $sort_2 == "ASC"){
+            $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` ORDER BY `product`.`NAME` ASC;";
+        }
+        else if($sort_1 == "pname" && $sort_2 == "DESC"){
+            $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` ORDER BY `product`.`NAME` DESC;";
+        }
+        else if($sort_1 == "price" && $sort_2 == "ASC"){
+            $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` ORDER BY `product`.`PRICE` ASC;";
+        }
+        else if($sort_1 == "price" && $sort_2 == "DESC"){
+            $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` ORDER BY `product`.`PRICE` DESC;";
+        }
+        
         return mysqli_query($this->connect, $query);
     } 
     public function get_combo(){
@@ -57,8 +73,16 @@ class customer extends DB{
         $query = "SELECT `product`.`ID` AS \"id\", `product`.`IMG_URL` AS \"img\", `product`.`NAME` \"name\", `product`.`PRICE` AS \"price\", `product`.`DECS` AS \"decs\", `product`.`CATEGORY` as \"cate\" FROM `product` WHERE `product`.`CATEGORY` = \"" . $cate . "\";";
         return mysqli_query($this->connect, $query);
     }
-    public function get_item_comment($pid) {
-        $query = "SELECT `comment`.ID AS \"id\", `comment`.PID AS \"pid\", `comment`.UID AS \"uid\", `comment`.STAR AS \"star\", `comment`.CONTENT AS \"content\", `comment`.TIME AS \"time\" FROM `comment` WHERE `comment`.`PID` = " . (int)$pid . ";";
+    public function get_item_comment($pid, $sort) {
+        $query = "";
+        if($sort == ""){
+            $query = "SELECT `comment`.ID AS \"id\", `comment`.PID AS \"pid\", `comment`.UID AS \"uid\", `comment`.STAR AS \"star\", `comment`.CONTENT AS \"content\", `comment`.TIME AS \"time\" FROM `comment` WHERE `comment`.`PID` = " . (int)$pid . ";";
+        } else if($sort == "high-first"){
+            $query = "SELECT `comment`.ID AS \"id\", `comment`.PID AS \"pid\", `comment`.UID AS \"uid\", `comment`.STAR AS \"star\", `comment`.CONTENT AS \"content\", `comment`.TIME AS \"time\" FROM `comment` WHERE `comment`.`PID` = " . (int)$pid . " ORDER BY `comment`.STAR DESC;";
+        } else if($sort == "low-first"){
+            $query = "SELECT `comment`.ID AS \"id\", `comment`.PID AS \"pid\", `comment`.UID AS \"uid\", `comment`.STAR AS \"star\", `comment`.CONTENT AS \"content\", `comment`.TIME AS \"time\" FROM `comment` WHERE `comment`.`PID` = " . (int)$pid . " ORDER BY `comment`.STAR ASC;";
+        }
+        
         return mysqli_query($this->connect, $query);
     }
     public function get_cmt_user_name($uid) {

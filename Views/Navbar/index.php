@@ -1,4 +1,4 @@
-<div id="navbar">
+<div id="navbar" class="sticky-top">
     <nav>
       <h1><a href="#">Assignment</a></h1>
 

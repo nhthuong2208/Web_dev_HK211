@@ -1,4 +1,97 @@
-* Hero */
+/* Style add item modal */
+.add-combo-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.close-modal-addc {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  align-items: baseline;
+}
+
+.close-modal-addc:hover,
+.close-modal-addc:focus {
+  color: #ffa62b;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Modal Header */
+.addCombo-modal-header {
+  padding: 3px 16px;
+  background-color: #16697a;
+  color: white;
+}
+
+.addCombo-modal-header h2 {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+/* Modal Body */
+.addCombo-modal-body {
+  padding: 10px 16px;
+}
+
+.addCombo-modal-body input, .addCombo-modal-body textarea, .addCombo-modal-body select{
+  padding: 0.5rem;
+  width: 100%;
+  border: 1px solid #ffa62b;
+  border-radius: 0.2rem;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.addCombo-modal-body .btn-conf-add {
+  text-align: center;
+}
+
+.addCombo-modal-body button {
+  padding: 0.5rem 1rem;
+  background-color: #ffa62b;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+
+.addCombo-modal-body button:hover {
+  background-color: #16697a;
+  transition: all .3s ease-in-out;
+}
+
+/* Modal Content */
+.addCombo-modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/*****************************************/
+
+/* Hero */
 .hero {
   height: 100vh;
   position: relative;
@@ -154,4 +247,48 @@ button:focus {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     outline-width: 0
+}
+
+.add-combo-btn button{
+  background-color: #ffa62b;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.add-combo-btn button:hover{
+  background-color: #16697a;
+  border: none;
+}
+
+#add_cycle {
+  display: none;
+}
+
+#add_cycle input {
+  padding: 0.5rem;
+  width: 70%;
+  border: 1px solid #ffa62b;
+  border-radius: 0.2rem;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+#add_cycle button {
+  padding: 0.5rem 2rem;
+  background-color: #ffa62b;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+#add_cycle button:hover {
+  background-color: #16697a;
+  transition: all .3s ease-in-out;
+}
+
+#add_cycle .btn-conf-add {
+  text-align: left;
+  margin-left: 5rem;
 }

@@ -91,7 +91,7 @@ function removeClass(element, name) {
   }
   element.className = arr1.join(" ");
 }
-if (!document.getElementById("edit-itemBtn")){
+if (!document.getElementById("edit-itemBtn") && document.getElementsByClassName("add-comment")[0]){
   document.getElementsByClassName("add-comment")[0].getElementsByTagName("button")[0].onclick = function(){
     var text = document.getElementsByClassName("add-comment")[0].getElementsByTagName("textarea");
     var selection = document.getElementsByClassName("add-comment")[0].getElementsByTagName("select");
@@ -99,7 +99,7 @@ if (!document.getElementById("edit-itemBtn")){
     document.getElementsByClassName("get-item-id")[0].remove();
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
-      console.log(this.responseText);
+      window.location.reload();
       document.getElementsByClassName("add-comment")[0].getElementsByTagName("form")[0].reset();
     };
     xmlhttp.open("POST", "?url=Home/add_item_comment/" + text[0].value + "/" + selection[0].value + "/" + pid, true);
@@ -120,6 +120,57 @@ function upload_pic(element){
   }
 }
 
+function delete_comment(cid, element){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    if(this.responseText == "OK"){
+      window.location.reload();
+      //element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+    } else if(this.responseText == "Nope"){
+      console.log(this.responseText);
+    }
+  }
+  xmlhttp.open("GET", "?url=Home/delete_comment/" + cid + "/", true);
+  xmlhttp.send();
+}
+
+function sort_comment(pid){
+  var sort_value = document.getElementById("sort-with").value;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    document.getElementsByClassName("comment-script")[0].innerHTML = this.responseText;
+    filterComment("all");
+  }
+  xmlhttp.open("GET", "?url=Home/sort_comment/" + pid + "/" + sort_value + "/", true);
+  xmlhttp.send();
+}
+
+var user = document.getElementsByClassName("container-fluid")[0].getElementsByTagName("span")[0].innerText;
+document.getElementsByClassName("container-fluid")[0].getElementsByTagName("span")[0].remove();
+
+function add_Product(element){
+  if(user == "customer"){
+    window.location.href = "?url=Home/Login/Products/";
+  }
+  else{
+    var pid = document.getElementsByClassName("addtocart-btn")[0].getElementsByTagName("button")[0].value;
+    var day_str = new Date();
+    var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.onreadystatechange = function(){
+      if (this.readyState == 4 && this.status == 200){
+        console.log(this.responseText);
+      }
+	  };
+    xmlhttp.open("GET", "?url=Home/create_cart/" + day_str.getFullYear() + "-" + String(day_str.getMonth() + 1) + "-" + String(day_str.getDate()) + "/" + pid + "/" + element.parentNode.parentNode.getElementsByTagName("input")[0].value + "/", true);
+    xmlhttp.send();
+  }
+}
+
+if(document.getElementById("edit-itemBtn")){
+  var ival = document.getElementById("get_name_val").innerText;
+  document.getElementsByClassName("editItem-modal-body")[0].getElementsByTagName("input")[0].value = ival;
+}
+
 // Get the modal
 var modal = document.getElementById("editItem-modal");
 
@@ -130,13 +181,17 @@ var btn = document.getElementById("edit-itemBtn");
 var span = document.getElementsByClassName("close-modal-edit")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
+if(btn){
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+if(span){
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
 }
 
 // When the user clicks anywhere outside of the modal, close it

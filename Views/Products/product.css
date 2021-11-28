@@ -2,7 +2,7 @@
 .add-item-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 1000; /* Sit on top */
   left: 0;
   top: 0;
   padding-top: 5rem;
@@ -45,7 +45,7 @@
   padding: 10px 16px;
 }
 
-.addItem-modal-body input, .addItem-modal-body select{
+.addItem-modal-body input, .addItem-modal-body textarea, .addItem-modal-body select{
   padding: 0.5rem;
   width: 100%;
   border: 1px solid #ffa62b;
@@ -132,18 +132,18 @@
   outline: none;
 }
 
-.company-product .header-product form a {
+.company-product .header-product .form-sort .sort-btn {
+  margin-top: 0;
   display: inline-block;
   padding: 0.5rem 2rem;
   border-radius: 4rem;
   background-color: #ffa62b;
   color: #fff;
   transition: all 300ms ease-in-out;
-  text-decoration: none;
   align-items: baseline;
 }
 
-.company-product .header-product form a:hover {
+.company-product .header-product form button:hover {
   background-color: #16697a;
 }
 /*****************************************/

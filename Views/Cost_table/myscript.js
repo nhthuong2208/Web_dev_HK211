@@ -41,3 +41,40 @@ function add_combo(element){
         xmlhttp.send();
       }
 }
+
+document.getElementById("add_cycle_Btn").onclick = function(){
+  var form = document.getElementById("add_cycle");
+  if(form.style.display == ""){
+    form.style.display = "block";
+  } else if(form.style.display == "block"){
+    form.style.display = "none";
+  } else if(form.style.display == "none"){
+    form.style.display = "block";
+  }
+}
+
+
+// modal add item
+var modal = document.getElementById("addCombo-modal");
+
+var btn = document.getElementById("addCombo-btn");
+
+var span = document.getElementsByClassName("close-modal-addc")[0];
+
+if(btn){
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+}
+if(modal){
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+}
+if(span){
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}

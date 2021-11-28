@@ -47,7 +47,7 @@
     <?php require_once("./Views/Navbar/index.php"); ?>
       <script src="../Views/Navbar/navbarScript.js"></script>
 
-      <div class="container-fluid">
+      <div class="container-fluid"><span hidden><?php echo $data["user"]; ?></span>
         <div class="row">
           <div class="col-xl-5 col-lg-12">
             <div class="product-image">
@@ -125,7 +125,7 @@
                     </div>
                   </div>
                   <div class=\"addtocart-btn\">
-                    <button type=\"button\" class=\"btn btn-primary\">Add to cart <i class=\"fas fa-shopping-cart\"></i></button>
+                    <button type=\"button\" class=\"btn btn-primary\" onclick=\"add_Product(this);\" value=\"" . $row_product["id"] . "\">Add to cart <i class=\"fas fa-shopping-cart\"></i></button>
                   </div>";
                   echo "<div class=\"descript-item\">
                           <h3>Chi tiết sản phẩm</h3>
@@ -138,7 +138,7 @@
                           <p>" . $row_product["decs"] . "</p>
                         </div>";
                     echo "<button type=\"button\" id=\"edit-itemBtn\">Chỉnh sửa</button>
-              
+                    <span hidden id=\"get_name_val\">" . $row_product["name"] . "</span>
                     <div id=\"editItem-modal\" class=\"edit-item-modal\">
                       <div class=\"editItem-modal-content\">
                         <div class=\"editItem-modal-header\">
@@ -151,7 +151,7 @@
                               <label class=\"col-lg-4\" for=\"name\">
                                 Tên sản phẩm:
                               </label>
-                              <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" value=\"" . $row_product["name"] . "\" placeholder=\"Nhập tên sản phẩm\"></div>
+                              <div class=\"col-lg-8\"><input type=\"text\" name=\"name\" value=\"\" placeholder=\"Nhập tên sản phẩm\"></div>
                             </div>
                             <div class=\"row\">
                               <label class=\"col-lg-4\" for=\"price\">
@@ -179,7 +179,7 @@
                               <label class=\"col-lg-4\" for=\"description\">
                                 Mô tả:
                               </label>
-                              <div class=\"col-lg-8\"><input type=\"text\" name=\"description\" value=\"" . $row_product["decs"] . "\" placeholder=\"Nhập mô tả sản phẩm\"></div>
+                              <div class=\"col-lg-8\"><textarea rows=\"10\" name=\"description\" placeholder=\"Nhập mô tả sản phẩm\">" . $row_product["decs"] . "</textarea></div>
                             </div>
                             <div class=\"row\">
                               <label class=\"col-lg-4\" for=\"remain\">
@@ -311,7 +311,7 @@
                     <button type="button" class="button-filter btn btn-primary" onclick="filterComment('1-star-num')">1 <span><i class="fas fa-star"></i></span> (<?php echo $sum_1 ?>)</button>
                   </span>
                   <div>
-                    <select name="sort-with" id="sort-with">
+                    <select name="sort-with" id="sort-with"<?php echo "onchange=\"sort_comment(" . $row_product["id"] . ")\""?>>
                       <option value="show" selected="selected" disabled>Hiển thị</option>
                       <option value="high-first">Đánh giá cao nhất trước</option>
                       <option value="low-first">Đánh giá thấp nhất trước</option>
@@ -329,6 +329,7 @@
               if(empty($data["comment"])) echo "<div class=\"card\">
                                                   <div class=\"card-body\" id=\"if-no-cmt\">No comment</div></div>";
               else {
+                $count = 0;
                 foreach ($data["comment"] as $row) {
                   echo "<div class=\"card filterCmt " . $row["star"] . "-star-num\">
                   <div class=\"card-body\">
@@ -358,7 +359,25 @@
                         <p>" . $row["content"] . "</p>
                       </div>";
                     if($data["user"] == "manager"){
-                      echo "<div><i class=\"fas fa-trash-alt\"></i></div>";
+                      echo "<div><i class=\"fas fa-trash-alt\" data-bs-toggle=\"modal\" data-bs-target=\"#delcmtModal-" .$count . "\"></i></div>";
+                      echo "<div class=\"modal fade\" id=\"delcmtModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"delcmtModalLabel-" .$count . "\" aria-hidden=\"true\">
+                        <div class=\"modal-dialog modal-dialog-centered\">
+                          <div class=\"modal-content\">
+                            <div class=\"modal-header\">
+                              <h5 class=\"modal-title\" id=\"delcmtModalLabel-" .$count . "\">Bạn muốn xóa bình luận này</h5>
+                              <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                            </div>
+                            <div class=\"modal-body\">
+                              
+                            </div>
+                            <div class=\"modal-footer\">
+                              <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
+                              <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"delete_comment(" . $row["id"] . ", this)\">Xác nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>";
+                      $count += 1;
                     }
                 echo "</div>
                     </div>
