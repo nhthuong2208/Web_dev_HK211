@@ -1,6 +1,6 @@
 /* Hero */
 .hero {
-  height: 100vh;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -19,7 +19,7 @@
 
 .hero .row1 img {
   height: 100%;
-  max-height: 60vh;
+  max-height: 100vh;
   width: 100%;
   object-fit: cover;
 }
@@ -35,7 +35,7 @@
   line-height: 1.2;
   font-size: 4rem;
   font-weight: 600;
-  color: #fff;
+  color: #94d2bd;
 }
 
 .hero .row1 .content span {
@@ -45,7 +45,7 @@
 .hero .row1 .content p {
   margin: 1rem 0 1rem;
   width: 70%;
-  color: #fff;
+  color: #bb3e03;
 }
 
 .hero .row1 .content a {
@@ -113,7 +113,7 @@
 
 .hero .arrows {
   position: absolute;
-  top: 50%;
+  top: 10%;
   transform: translateY(-50%);
   width: 100%;
   z-index: 10;
@@ -145,16 +145,23 @@
   right: 20px;
 }
 
-@media (max-width: 567px) {
+@media (max-width: 700px) {
   .hero .row1 .content {
-    left: 20px;
+    left: 15px;
   }
 
   .hero .row1 .content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+  .hero .row1 .content p {
+    font-size: 1rem;
   }
   .hero .row1 .content p {
     width: 80%;
+  }
+  .hero .row1 .content a {
+    margin-top: 1rem;
+    padding: 0.3rem 1rem;
   }
 }
 
@@ -247,6 +254,20 @@
   opacity: 1;
 }
 
+.feature-news .attractive-new {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feature-news .attractive-new .card {
+  width: fit-content;
+  margin-right: 1rem;
+}
+
+.feature-news .attractive-new .card:last-child{
+  margin-right: 0;
+}
+
 @media (max-width: 1200px) {
   .shop-collection .shop-item .collection-content h3 {
     border-radius: 4rem;
@@ -258,6 +279,13 @@
 @media (max-width: 996px) {
   .shop-collection .collection-layout {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .feature-news .attractive-new{
+    flex-direction: column;
+  }
+  .feature-news .attractive-new .card {
+    margin-right: 0rem;
+    margin-top: 1rem;
   }
 }
 

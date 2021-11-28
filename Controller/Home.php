@@ -3,8 +3,23 @@
 class Home extends Controller{
         function Home_page($user){
             $cus = $this->model($user);
+            $news = $cus->get_news();
+            $news_list = array();
+            foreach($news as $snews){
+                array_push($news_list, ([
+                    "id" => $snews["id"],
+                    "cid" => $snews["cid"],
+                    "key" => $snews["key"], 
+                    "time" => $snews["time"],
+                    "title" => $snews["title"],
+                    "content" => $snews["content"],
+                    "imgurl" => $snews["img_url"],
+                    "shortcontent" => $snews["short_content"],
+                    "comment" => $cus->get_comment_news($snews["id"])]));
+            }
             $this->view("Home_page", [
                 "user" => $user,
+                "news" => $news_list,
                 "collection" => $cus->get_swiper_slide_collection(), //$data["collection"] = $cus->get_swiper_slide_collection() 
                 "featured" => $cus->get_products("", "")
             ]);
@@ -318,7 +333,6 @@ class Home extends Controller{
         function add_new_item($user){
             if(isset($_POST["iname"]) && isset($_POST["price"]) && isset($_FILES["image-url"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
             {
-                echo var_dump($_POST["iname"]);
                 if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][0])){
                     move_uploaded_file($_FILES['image-url']['tmp_name'][0], './Views/images/' . $_FILES['image-url']['name'][0]);
                 }

@@ -54,7 +54,7 @@
     <div class="container-fuild">
       <div class="row">
         <div class="col-12 nonepadding head d-flex justify-content-center flex-wrap align-content-center">
-          <h1>Contact Informations</h1>
+          <h1>Thông tin liên hệ</h1>
         </div> 
         <div class="col-12 nonepadding">
           <div class="row justify-content-center flex-wrap align-content-center paddingTD-100">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-9">
                       <div class="d-flex flex-column ">
-                        <h4>Phone number</h4>
+                        <h4>Số điện thoại</h4>
                         <h6>+0973409127</h6>
                       </div>
                     </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-9">
                       <div class="d-flex flex-column ">
-                        <h4>Email Address</h4>
+                        <h4>Địa chỉ Email</h4>
                         <h6>hieu.phamgc@gmail.com</h6>
                       </div>
                     </div>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-9">
                       <div class="d-flex flex-column ">
-                        <h4>Fax Address</h4>
+                        <h4>Địa chỉ Fax</h4>
                         <h6>+0733843999</h6>
                       </div>
                     </div>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-9">
                       <div class="d-flex flex-column ">
-                        <h4>Location</h4>
+                        <h4>Địa chỉ</h4>
                         <h6>Lý Thường Kiệt, p14, quận 10, Tp.HCM</h6>
                       </div>
                     </div>
@@ -200,7 +200,7 @@
         <div class="col-12">
           <div class="row justify-content-center padding-20">
               <div class="col-12 col-xxl-7">
-                <h3 class="padding-20">Find Us on Google Maps</h3>
+                <h3 class="padding-20">Tìm chúng tôi trên Google Maps</h3>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15698.832298759462!2d106.68722035!3d10.36521035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1636531160983!5m2!1svi!2s" allowfullscreen="" loading="lazy"></iframe>
               </div>
           </div>

@@ -109,31 +109,31 @@
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url\">
-                              Ảnh sản phẩm:
+                            <i class=\"far fa-image\"></i> Ảnh sản phẩm: 
                             </label>
                             <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url-1\">
-                              Ảnh phụ thứ 1:
+                            <i class=\"far fa-image\"></i> Ảnh phụ thứ 1: 
                             </label>
                             <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-1\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url-2\">
-                              Ảnh phụ thứ 2:
+                            <i class=\"far fa-image\"></i> Ảnh phụ thứ 2: 
                             </label>
                             <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-2\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url-3\">
-                              Ảnh phụ thứ 3:
+                            <i class=\"far fa-image\"></i> Ảnh phụ thứ 3: 
                             </label>
                             <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-3\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url-4\">
-                              Ảnh phụ thứ 4:
+                            <i class=\"far fa-image\"></i> Ảnh phụ thứ 4: 
                             </label>
                             <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url-4\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                           </div>
@@ -345,7 +345,6 @@
 
           </div>
         </div>
-        <div id="notice"></div>
         <!-- PAGINATION -->
         <ul class="pagination">
           <span>1</span>

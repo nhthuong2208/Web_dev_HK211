@@ -1,6 +1,6 @@
 <div id="navbar" class="sticky-top">
     <nav>
-      <h1><a href="#">Assignment</a></h1>
+      <h1><i class="fab fa-shopify"></i><a href="?url=Home/Home_page/">HTD Ltd.</a></h1>
 
       <div class="burger">  
         <div class="line1"></div>
@@ -9,12 +9,12 @@
       </div>
 
       <ul class="nav-links">
-        <li><a href="?url=Home/Home_page/">Home</a></li>
-        <li><a href="?url=Home/About_us/">About Us</a></li>
-        <li><a href="?url=Home/Products/">Products</a></li>
-        <li><a href="?url=Home/Cost_table/">Cost Table</a></li>
-        <li><a href="?url=Home/News/">News</a></li>
-        <li><a href="?url=Home/Contact_us/">Contact</a></li>
+        <li><a href="?url=Home/Home_page/">Trang chủ</a></li>
+        <li><a href="?url=Home/About_us/">Về chúng tôi</a></li>
+        <li><a href="?url=Home/Products/">Sản phẩm</a></li>
+        <li><a href="?url=Home/Cost_table/">Bảng giá</a></li>
+        <li><a href="?url=Home/News/">Tin tức</a></li>
+        <li><a href="?url=Home/Contact_us/">Liên hệ</a></li>
       </ul>
 
       <form class="form">
