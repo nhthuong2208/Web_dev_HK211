@@ -61,13 +61,15 @@
 					</div>
 			
 					<div class=\"col-md-5 mb-4\">
+						<a class=\"text-decoration-none\" href=\"?url=Home/News_detail/". $new_news["id"] ."\">
 						<span class=\"badge bg-danger px-2 py-1 shadow-1-strong mb-3\">Tin mới</span>
 						<h4><strong>" . $new_news["title"] . "</strong></h4>
 						<p class=\"text-muted\">
 							" . $new_news["shortcontent"] ."
-						</p>";
+						</p>
+						</a>";
 						if($data["user"] != "manager"){
-							echo "<a href=\"?url=Home/News_detail/". (count($data["news"])-1) . "\">
+							echo "<a href=\"?url=Home/News_detail/". $new_news["id"] . "\">
 								<button type=\"button\" class=\"btn btn-warning mt-3\" >Đọc thêm</button>
 							</a>";
 						}
@@ -90,6 +92,7 @@
 					foreach($data["news"] as $row){
 						echo "<div class=\"col-lg-4 mb-5\">
 							<div>
+								<a href=\"?url=Home/News_detail/". $row["id"] . "\" class=\"text-dark text-decoration-none\">
 								<div class=\"bg-image shadow-lg bg-white\">
 									<img src=\""  . $row["imgurl"] . "\" class=\"img-fluid rounded\">
 								</div>
@@ -101,7 +104,7 @@
 										<u class=\"text-decoration-none\">" . $row["time"] . "</u>
 									</div>
 								</div>
-								<a href=\"?url=Home/News_detail/". $row["id"] . "\" class=\"text-dark text-decoration-none\">
+								
 									<h5>" . $row["title"] . "</h5>
 									<p>" . $row["shortcontent"] . "</p>
 								</a>

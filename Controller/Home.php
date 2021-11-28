@@ -136,25 +136,18 @@ class Home extends Controller{
         }
         function delete_news($user, $id){
             echo (int)$id[2];
-            $this->model("manager")->delete_news((int)$id[2]);
+            $this->model($user)->delete_news((int)$id[2]);
         }
-        // function insert_news($user, $array){
-        //     echo var_dump($array);
 
-        //     $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
-        // }
         function add_comment_news($user, $array){
             $this->model($user)->add_comment_news($array[2], $array[3], $_SESSION["id"]);
         }
 
         function insert_news($user){
-            echo ("0");
             if(isset($_POST["key"]) && isset($_POST["title"]) && isset($_POST["url"]) && isset($_POST["content"]) && isset($_POST["shortcontent"]))
             {
-                echo ("1");
                 if(isset($_FILES["e-image-url"])){
                     if($_FILES['e-image-url']['name'][0] != ""){
-                        echo ("2");
                         if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][0])){
                             move_uploaded_file($_FILES['e-image-url']['tmp_name'][0], './Views/images/' . $_FILES['e-image-url']['name'][0]);
                         }
@@ -169,7 +162,7 @@ class Home extends Controller{
                     
                 }
             }
-            // $this->News($user);
+            $this->News($user);
         }
 
         function Cost_table($user){
