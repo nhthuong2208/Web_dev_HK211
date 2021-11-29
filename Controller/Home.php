@@ -237,10 +237,12 @@ class Home extends Controller{
             $this->model($user)->insert_message($array[2], $array[3], $array[4], $array[5], $array[6]);
         }
         function update_user($user, $array){
-            $this->model($user)->update_user($array[2], $array[3], $array[4], $array[5]);
+            if($this->model($user)->update_user($array[2], $array[3], $array[4], $array[5])) echo "ok";
+            else echo "null";
         }
         function delete_product_incart($user, $array){
-            $this->model($user)->delete_product_incart((int)$array[2]);
+            if($this->model($user)->delete_product_incart((int)$array[2])) echo "ok";
+            else echo "null";
         }
         function check_login($user, $array){
             if($array[2] == "admin" &&  $array[3] == "admin"){ // bình luận trang tin tức / bình luần trang item // add to cart
@@ -267,10 +269,11 @@ class Home extends Controller{
             }
             echo "?url=/Home/Payment/";
         }
-        function update_cart($user, $array){
+        function update_cart_combo($user, $array){
             $action = $this->model($user);
             for($i = 0; $i < (int)$array[2]; $i++){
                 if(!($action->update_cart($array[2 + $i + 1]))) echo "null";
+                $this->model($user)->update_order_combo($_SESSION["id"]);
             }
             echo "?url=/Home/Home_page/";
         }
@@ -328,6 +331,7 @@ class Home extends Controller{
                     $_SESSION["id_cart"] = mysqli_fetch_array($this->model($user)->get_cart_for_session())["id"];
                 }
             }
+            echo $_SESSION["id_cart"];
             echo $this->model($user)->create_product_incart($array[3], $_SESSION["id_cart"], $array[4]);
         }
         function add_new_item($user){
@@ -413,7 +417,7 @@ class Home extends Controller{
             else echo "null";
         }
         function delete_order_combo($user){
-            if($this->model($user)->delete_order_combo($_SESSION["id"])) echo "?url=Home/Cost_table/";
+            if($this->model($user)->delete_order_combo($_SESSION["id"])) echo "?url=/Home/Cost_table/";
             else echo "null";
         }
         function sendmessage($user, $array){
@@ -513,6 +517,7 @@ class Home extends Controller{
                 if($cart != NULL) $total += (int)$cart;
                 if($combo != NULL) $total += (int)$combo;
                 $this->model($user)->update_Rank($_SESSION["id"], $total);
+                $this->model($user)->clear_cart();
             }
             session_unset(); 
            $this->Home_page("customer");
@@ -597,6 +602,18 @@ class Home extends Controller{
                 else echo "null";
             }
             else echo "null";
+        }
+        function create_account($user, $array){
+            if(mysqli_fetch_array($this->model($user)->check_account_ban($array[3]))["id"] == NULL){
+                if(mysqli_fetch_array($this->model($user)->check_account_inside($array[3], $array[4]))["id"] == NULL){
+                    if($this->model($user)->create_account($array[2], $array[3], $array[4], $array[5], $array[6])){
+                        echo "ok";
+                    }
+                    else echo "null3";
+                }
+                else echo "null2";
+            }
+            else echo "null1";
         }
     }
 ?>

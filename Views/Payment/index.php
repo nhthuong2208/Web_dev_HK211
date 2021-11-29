@@ -56,6 +56,7 @@
               $total = 0;
               $check = 0;
                 if(!empty($data["order_combo"])){
+
                     foreach($data["order_combo"] as $row){
                       $count += 1;
                       $total += (int)$row["price"];
@@ -79,10 +80,8 @@
                       echo "</div></div></section></div>";
                     }
                 }
-                else{
-                  $check = 1;
-                    if(empty($data["product_in_cart"])) echo "empty";
-                    else{
+                    if(!empty($data["product_in_cart"]))
+                    {
                       foreach($data["product_in_cart"] as $row){
                         $count += 1;
                         $total += (int)$row["price"]*$row["num"];
@@ -104,7 +103,6 @@
                             </div>
                         </div>
                       </div>";
-                      }
                     }
                 }
               ?>
@@ -162,12 +160,7 @@
                 <div class="col-12">
                   <div class="d-flex flex-wrap justify-content-end">
                     <?php 
-                        if($check == 0){
                           echo "<button id=\"myBtn\" type=\"button\" class=\"btn btn-primary\">Hủy đơn</button>";
-                        }
-                        else{
-                          echo "<button id=\"myBtn\" type=\"button\" class=\"btn btn-primary\"><a href=\"?url=/Home/Cart/\">Hủy đơn</a></button>";
-                        }
                     ?>
                     <button type="button" class="btn btn-primary">Thanh toán</button>
                   </div>
@@ -212,12 +205,7 @@
     <?php require_once "./Views/footer/index.php ";?>
     <!--Footer-->
   <?php
-      if($check == 0){
-        echo "<script src=\"./Views/Payment/payment.js\"></script>";
-      }
-      else{
         echo "<script src=\"./Views/Payment/myScript.js\"></script>";
-      }
   ?>
   </body>
 </html>

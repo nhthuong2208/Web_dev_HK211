@@ -53,9 +53,8 @@ function enformat(element){
     xmlhttp.onreadystatechange = function(){
       if (this.readyState == 4 && this.status == 200){
           if(this.responseText != "null"){ 
-            alert('Bạn đã thanh toán xong!');
             window.location.href = this.responseText;
-        }
+          }
           else alert("Thêm thất bại");
       }
     };

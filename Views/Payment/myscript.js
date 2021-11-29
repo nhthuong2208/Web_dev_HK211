@@ -43,8 +43,31 @@ var button = document.getElementsByClassName("btn btn-primary");
 btn.onclick = function() {
   modal.style.display = "block";
 }
+button[2].onclick = function(){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    if (this.readyState == 4 && this.status == 200){
+        if(this.responseText != "null"){
+          document.getElementById("notice").innerHTML = add_notice("success", "Hủy đơn combo thành công" );
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+          var text = this.responseText;
+          setTimeout(function(){window.location.href = text;}, 1000);
+            //console.log(this.responseText);
+          }
+        else{
+          document.getElementById("notice").innerHTML = add_notice("fail", "Hủy đơn combo thất bại" );
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        }
+    }
+  };
+  xmlhttp.open("GET", "?url=Home/delete_order_combo/", true);
+  xmlhttp.send();
+}
+
 button[3].onclick = function(){
-  alert('Bạn đã thanh toán xong!');
   var string = list_oid.length;
   for(var i = 0; i < list_oid.length; i++){
     string += "/" + list_oid[i];
@@ -53,12 +76,25 @@ button[3].onclick = function(){
   xmlhttp.onreadystatechange = function(){
     console.log(this.responseText);
     if (this.readyState == 4 && this.status == 200){
-        if(this.responseText != "null") window.location.href = this.responseText;
-        else alert("Thêm thất bại");
+        if(this.responseText != "null"){
+          document.getElementById("notice").innerHTML = add_notice("success", "Thanh toán thành công" );
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+          setTimeout(function(){window.location.href = this.responseText}, 1500);
+        }
+        else{
+          document.getElementById("notice").innerHTML = add_notice("fail", "Thêm thất bại" );
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        }
     }
   };
-  xmlhttp.open("GET", "?url=Home/update_cart/" + string + "/", true);
+  xmlhttp.open("GET", "?url=Home/update_cart_combo/" + string + "/", true);
   xmlhttp.send();
+}
+
+function add_notice(alert, string){
+  return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
 }
 span.onclick = function() {
   modal.style.display = "none";

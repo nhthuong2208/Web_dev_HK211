@@ -152,5 +152,18 @@ class customer extends DB{
                         AND `account`.`ID` = " . $id;
         return mysqli_query($this->connect, $query);
     }
+    public function check_account_ban($cmnd){
+        $query =    "SELECT `ban_account`.`ID` as `id`   FROM `ban_account` WHERE `ban_account`.`CMND` = \"" . $cmnd . "\"";
+        return mysqli_query($this->connect, $query);
+    }
+    public function check_account_inside($cmnd, $mail){
+        $query =    "SELECT `account`.`ID` as `id` FROM `account` WHERE `account`.`EMAIL` = \"" . $mail ."\" OR `account`.`CMND` = \"" . $cmnd . "\";";
+        return mysqli_query($this->connect, $query);
+    }
+    public function create_account($fname, $cmnd, $mail, $user, $pwd){
+        $query =    "INSERT INTO `account` (`account`.`CMND`, `account`.`FNAME`, `account`.`USERNAME`, `account`.`EMAIL`, `account`.`PWD`, `account`.`IMG_URL`)
+                    VALUES (\"" . $cmnd . "\", \"" . $fname . "\", \"" . $user . "\", \"" . $mail . "\", \"" . $pwd . "\", \"./Views/images/np.png\")" ;
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

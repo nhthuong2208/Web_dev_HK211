@@ -40,7 +40,7 @@ function remove_account(element){
                 var list = document.getElementsByClassName("card card_node");
                 for (let index = 0; index < list.length; index++) {
                     if(list[index].getElementsByTagName("button")[0].value == element.value){
-                        list[index].remove();
+                        list[index].parentNode.remove();
                         break;
                     }
                 }
@@ -70,7 +70,7 @@ function ban_account(element){
                 for (let index = 0; index < list.length; index++) {
                     if(list[index].getElementsByTagName("button")[0].value == value){
                         console.log("hello");
-                        list[index].remove();
+                        list[index].parentNode.remove();
                         break;
                     }
                 }
