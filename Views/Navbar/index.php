@@ -33,7 +33,7 @@
             echo "<button class=\"btn btn-primary\" type=\"button\"><a href=\"?url=Home/Login/\"><i class=\"fas fa-sign-in-alt\"></i> Login</a></button>";
           }
           else if(isset($_SESSION["user"])){
-            if($_SESSION["user"] == "member"){
+            if($_SESSION["user"] != "custommer"){
                   echo "<div class=\"dropdown\">
                   <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-bs-toggle=\"dropdown\" onclick=\"change_show(this)\">
                   <i class=\"fas fa-user\"></i>
