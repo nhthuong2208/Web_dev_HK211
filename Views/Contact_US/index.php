@@ -148,45 +148,37 @@
                       foreach($data["message"] as $row){
                         $string = "Đã phản hồi";
                         if($row["check"] == 0) $string = "Chưa phản hồi";
-                        echo "<div class=\"col-12 mt-3 mydotted\">
-                      <div class=\"row\">
+
+                        echo "<div class=\"col-12 white border-10 myshadow padding-20 mydotted\">
                         <div class=\"col-12\">
-                          <div class=\"row justify-content-between\">
-                            <h4 class=\"col-6\">Thư số: #" . $row["id"] ."</h4>
-                            <h6 class=\"col-6\">". $string ."</h6>
+                        <div class=\"row justify-content-between\">
+                        <h4 class=\"col-6 name-contact-page\">Thư số: #" . $row["id"] ."</h4>
+                        <h6 class=\"col-6\">". $string ."</h6>
+                        </div>
+                        </div>
+                        <form action=\"\" id=\"form-contact\" onsubmit=\"return false;\">
+                          <div class=\"row\">
+                            <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"name\" value=\"" . $row["name"] . "\"disabled>
+                            </div>
+                            <div class=\"col-xxl-6\">
+                              <input type=\"text\" name=\"address\" value=\"" . $row["email"] . "\" disabled>
+                            </div>
+                            <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"phone\" value=\"". $row["phone"] ."\" disabled>
+                            </div>
+                            <div class=\"col-xxl-6\">
+                            <input type=\"text\" name=\"subject\" value=\"" . $row["sub"] . "\" disabled>
+                            </div>
+                            <div class=\"col-12\">
+                            <textarea name=\"content\" value=\"" . $row["content"] . "\" disabled></textarea>
+                            </div>
                           </div>
-                        </div>
-                        <div class=\"col-xxl-6 mymargin\">
-                          <div class=\"row mydotted-5\">
-                            <div class=\"col-5\"><h5>Người gửi:</h5></div>
-                            <div class=\"col-7\"><h5>" . $row["name"] . "</h5></div>
-                          </div>
-                        </div>
-                        <div class=\"col-xxl-6 mymargin\">
-                          <div class=\"row mydotted-5\">
-                            <div class=\"col-3\"><h5>Email:</h5></div>
-                            <div class=\"col-9\"><h5>" . $row["email"] . "</h5></div>
-                          </div>
-                        </div>
-                        <div class=\"col-xxl-6 mymargin\">
-                          <div class=\"row mydotted-5\">
-                            <div class=\"col-5\"><h5>SĐT:</h5></div>
-                            <div class=\"col-7\"><h5>" . $row["phone"] . "</h5></div>
-                          </div>
-                        </div>
-                        <div class=\"col-xxl-6 mymargin\">
-                          <div class=\"row mydotted-5\">
-                            <div class=\"col-3\"><h5>Tiêu đề:</h5></div>
-                            <div class=\"col-9\"><h5>" . $row["sub"] . "</h5></div>
-                          </div>
-                        </div>
-                        <div class=\"col-12 mymargin\">
-                          Nội dung: 
-                          <h5 class=\"mymargin mydotted\">" . $row["content"] . "</h5>
-                        </div>
-                      </div>
-                      <button type=\"button\" class=\"btn btn-primary active mgl-12\" onclick=\"inform(this)\">Phản hồi tin nhắn</button>
-                        </div>";
+                          <button type=\"button\" class=\"btn btn-primary active mgl-12\" onclick=\"inform(this);\">Phản hồi</button>
+                        </form>
+                      </div>";
+
+                        
                       }
                     }
                     else{

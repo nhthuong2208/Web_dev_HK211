@@ -240,7 +240,8 @@ class Home extends Controller{
             $this->view("register", []);
         }
         function insert_message($user, $array){
-            $this->model($user)->insert_message($array[2], $array[3], $array[4], $array[5], $array[6]);
+            if($this->model($user)->insert_message($array[2], $array[3], $array[4], $array[5], $array[6])) echo "ok";
+            else echo "null";
         }
         function update_user($user, $array){
             if($this->model($user)->update_user($array[2], $array[3], $array[4], $array[5])) echo "ok";

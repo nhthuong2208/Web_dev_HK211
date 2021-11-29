@@ -25,7 +25,7 @@
       </form>
 
       <div class="cart">
-        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="?url=Home/Cart/"><i class="fas fa-shopping-cart"></i> Giỏ</a></button>
+        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="<?php if($_SESSION["user"] != "manager") echo "?url=Home/Cart/"; else echo "#";?>"><i class="fas fa-shopping-cart"></i> Giỏ</a></button>
       </div>
 
       <div class="login-button">
@@ -33,7 +33,7 @@
             echo "<button class=\"btn btn-primary\" type=\"button\"><a href=\"?url=Home/Login/\"><i class=\"fas fa-sign-in-alt\"></i> Login</a></button>";
           }
           else if(isset($_SESSION["user"])){
-            if($_SESSION["user"] != "customer"){
+            if($_SESSION["user"] == "member"){
                   echo "<div class=\"dropdown\">
                   <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-bs-toggle=\"dropdown\" onclick=\"change_show(this)\">
                   <i class=\"fas fa-user\"></i>
@@ -44,6 +44,7 @@
                   </ul>
                 </div>";
             }
+
           }
         ?>   
       </div>
