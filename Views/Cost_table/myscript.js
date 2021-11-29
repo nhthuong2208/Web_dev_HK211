@@ -30,7 +30,6 @@ function add_combo(element){
           if (this.readyState == 4 && this.status == 200){
             if(this.responseText != "null"){
                   window.location.href = this.responseText;
-                //console.log(this.responseText);
             }
             else{
                 alert("Thanh toán thất bại!");

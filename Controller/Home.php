@@ -198,7 +198,7 @@ class Home extends Controller{
             if($user == "member"){
                 $mem = $this->model($user);
                 $this->view("Cart", [
-                    "product_in_cart" => $mem-> get_product_in_cart($_SESSION["id"]),
+                    "product_in_cart" => $mem->get_product_in_cart($_SESSION["id"]),
                     "user" => mysqli_fetch_array($mem->get_user($_SESSION["id"]))
                 ]);
             }

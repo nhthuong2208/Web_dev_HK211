@@ -13,6 +13,7 @@ class member extends customer{
                     WHERE `cart`.`ID` = `product_in_cart`.`OID`
                         AND `cart`.`STATE` = 0
                         AND `product`.`ID` = `product_in_cart`.`PID`
+                        AND `cart`.`UID` = " . $id . "
                         AND `account`.`ID` = " . $id . ";";
         return mysqli_query($this->connect, $query);
     }
