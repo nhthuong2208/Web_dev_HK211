@@ -555,7 +555,7 @@ class Home extends Controller{
         }
         function update_new_combo($user){
             if(isset($_POST["cid"]) && isset($_POST["cname"]) && isset($_POST["price"]) && isset($_POST["c-shirt"]) && isset($_POST["c-pants"]) && isset($_POST["c-ass"])){
-                $this->model($user)->update_new_combo($_POST["cid"], $_POST["cname"], $_POST["price"]);
+                $result = $this->model($user)->update_new_combo($_POST["cid"], $_POST["cname"], $_POST["price"]);
                 $this->model($user)->update_product_in_combo($_POST["cid"], $_POST["c-shirt"], $_POST["c-pants"], $_POST["c-ass"]);
             }
             $this->Cost_table($user);
