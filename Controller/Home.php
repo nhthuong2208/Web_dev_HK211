@@ -197,9 +197,15 @@ class Home extends Controller{
         function Cart($user){
             if($user == "member"){
                 $mem = $this->model($user);
+                $combo =  $mem->get_order_combo($_SESSION["id"]);
+                $product_in_combo = array();
+                foreach($combo as $cb){
+                    array_push($product_in_combo, (["id" => $cb["id"], "name" => $cb["name"], "price" => $cb["price"], "size" => $cb["size"], "cycle" => mysqli_fetch_array($mem->get_cycle_id($cb["cycle"]))["cycle"], "product" => $mem->get_product_in_combo($cb["cbid"])]));
+                }
                 $this->view("Cart", [
                     "product_in_cart" => $mem->get_product_in_cart($_SESSION["id"]),
-                    "user" => mysqli_fetch_array($mem->get_user($_SESSION["id"]))
+                    "user" => mysqli_fetch_array($mem->get_user($_SESSION["id"])),
+                    "order_combo" => $product_in_combo
                 ]);
             }
             else{
@@ -259,7 +265,6 @@ class Home extends Controller{
                     if(!isset($array[4])) $array[4] = "Home_page";
                     echo "?url=/Home/" . $array[4] . "/";
                 }
-                //echo $_SESSION["user"];
             }
         }
         function update_product_in_cart($user, $array){
@@ -268,6 +273,10 @@ class Home extends Controller{
                 $action->update_product_in_cart((int)$array[2 + 3*$i + 1], (int)$array[2 + 3*$i +2], $array[2 + 3*$i + 3]);
             }
             echo "?url=/Home/Payment/";
+        }
+        function delete_order_combo_name($user, $array){
+            if($this->model($user)->delete_order_combo_name($array[2])) echo "ok";
+            else echo "null";
         }
         function update_cart_combo($user, $array){
             $action = $this->model($user);
