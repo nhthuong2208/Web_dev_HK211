@@ -42,6 +42,29 @@ function add_combo(element){
       }
 }
 
+function add_notice(string){
+  if(string == "OK") return '<div class="alert success" role="alert"><strong>Xóa thành công!</strong></div>';
+  return '<div class="alert fail" role="alert"><strong>Xóa thất bại!</strong></div>';
+}
+
+function remove_combo(cid, element){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    if(this.responseText == "OK"){
+      element.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementsByClassName("alert")[0].style.display = "block";
+      setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+    } else if(this.responseText == "Nope"){
+      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementsByClassName("alert")[0].style.display = "block";
+      setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+    }
+  }
+  xmlhttp.open("GET", "?url=Home/delete_combo/" + cid + "/", true);
+  xmlhttp.send();
+}
+
 document.getElementById("add_cycle_Btn").onclick = function(){
   var form = document.getElementById("add_cycle");
   if(form.style.display == ""){
@@ -59,15 +82,15 @@ document.getElementById("add_cycle_Btn").onclick = function(){
 // modal add item
 var modal = document.getElementById("addCombo-modal");
 var modal_update = document.getElementById("updateCombo-modal");
-var modal_delete = document.getElementById("deleteCombo-modal");
+
 var btn = document.getElementById("addCombo-btn");
 var btn_update = document.getElementById("updateCombo-btn");
-var btn_delete = document.getElementById("deleteCombo-btn");
+
 
 
 var span = document.getElementsByClassName("close-modal-addc")[0];
 var span_update = document.getElementsByClassName("close-modal-addc-update")[0];
-var span_delete = document.getElementsByClassName("close-modal-addc-delete")[0];
+
 
 if(btn){
   btn.onclick = function() {
@@ -101,25 +124,6 @@ if(span_update){
   window.onclick = function(event) {
     if (event.target == modal_update) {
       modal_update.style.display = "none";
-    }
-  }
-}
-
-
-if(btn_delete){
-  btn_delete.onclick = function() {
-    modal_delete.style.display = "block";
-  }
-}
-if(modal_delete){
-  span_delete.onclick = function() {
-    modal_delete.style.display = "none";
-  }
-}
-if(span_delete){
-  window.onclick = function(event) {
-    if (event.target == modal_delete) {
-      modal_delete.style.display = "none";
     }
   }
 }

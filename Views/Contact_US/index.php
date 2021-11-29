@@ -11,7 +11,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../images/Logo BK_vien trang.png"
+      href="./Views/images/Logo BK_vien trang.png"
     />
 
     <!-- link icon -->

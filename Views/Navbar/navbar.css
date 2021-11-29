@@ -28,9 +28,9 @@ nav h1 a {
   color: #16697a;
 }
 
-  nav h1 a:hover {
-    color: #16697a;
-  }
+nav h1 a:hover {
+  color: #fff;
+}
 
 nav ul {
   list-style: none;

@@ -50,7 +50,7 @@
     <!--Nav-->
 
     <!--Body-->
-    <div class="container-fuild">
+    <div class="container-fuild member-info">
         <?php 
             if($data["state"] == "member"):
         ?>
@@ -133,9 +133,9 @@
                             }
                         }
                         if(!empty($data["order_combo"])){
-                            echo "<div class=\"row \"><div class=\"row justify-content-center nonemg text-center center_my\">";
+                            echo "<div class=\"row \"><div class=\"nonemg text-center center_my\">";
                             foreach($data["order_combo"] as $row){
-                                echo "<div class=\"col-6 mb-4\">
+                                echo "<div class=\"col-lg-12 mb-4\">
                                     <div class=\"card\">
                                         <div class=\"card-header text-center py-1\">
                                             <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>

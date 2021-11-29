@@ -8,7 +8,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../images/Logo BK_vien trang.png"
+      href="./Views/images/Logo BK_vien trang.png"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"

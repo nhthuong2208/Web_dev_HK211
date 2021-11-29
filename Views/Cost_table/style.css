@@ -14,7 +14,7 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.close-modal-addc {
+.close-modal-addc, .close-modal-addc-update {
   color: #fff;
   float: right;
   font-size: 28px;
@@ -23,7 +23,9 @@
 }
 
 .close-modal-addc:hover,
-.close-modal-addc:focus {
+.close-modal-addc:focus,
+.close-modal-addc-update:hover,
+.close-modal-addc-update:focus {
   color: #ffa62b;
   text-decoration: none;
   cursor: pointer;

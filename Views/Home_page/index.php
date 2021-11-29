@@ -8,7 +8,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../images/Logo BK_vien trang.png"
+      href="./Views/images/Logo BK_vien trang.png"
     />
 
     <link href="../Views/Home_page/home.css" rel="stylesheet" type="text/css" />

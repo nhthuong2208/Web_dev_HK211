@@ -1,6 +1,6 @@
 <div id="navbar" class="sticky-top">
     <nav>
-      <h1><i class="fab fa-shopify"></i><a href="?url=Home/Home_page/">HTD Ltd.</a></h1>
+      <h1><i class="fab fa-shopify"></i><a href="?url=Home/Home_page/">HTD</a></h1>
 
       <div class="burger">  
         <div class="line1"></div>
@@ -25,7 +25,7 @@
       </form>
 
       <div class="cart">
-        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="?url=Home/Cart/"><i class="fas fa-shopping-cart"></i> Cart</a></button>
+        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="?url=Home/Cart/"><i class="fas fa-shopping-cart"></i> Giỏ</a></button>
       </div>
 
       <div class="login-button">

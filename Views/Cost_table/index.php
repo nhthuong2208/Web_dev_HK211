@@ -8,7 +8,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../images/Logo BK_vien trang.png"
+      href="./Views/images/Logo BK_vien trang.png"
     />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -146,8 +146,9 @@
                   </form>";
                 if(empty($data["combo"])) echo "empty combo";
                 else{//wwhile
+                  $count = 1;
                     foreach($data["combo"] as $row){
-                        echo "<div class=\"col-md-4 mb-4\">
+                        echo "<div class=\"col-xxl-4 col-xl-6 col-lg-6 mb-4\">
                         <section>
                             <div class=\"card\"><span hidden>" .  $row["id"] . "</span>
                                 <div class=\"card-header text-center py-1\">
@@ -188,28 +189,47 @@
                             $i += 1;
                         }
                     
-                    if($data["user"] == "member"){
+                    // if($data["user"] == "member"){
+                    //   echo "</select>
+                    //           <button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">
+                    //             Chỉnh sửa
+                    //           </button>
+                    //         </div>
+                    //       </div>
+                    //     </section></div>";
+                    // } 
+                    // else {
                       echo "</select>
-                              <button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">
-                                Chỉnh sửa
-                              </button>
+                            <div ><button type=\"button\" class=\"btn btn-danger\" id=\"deleteCombo-btn\" data-bs-toggle=\"modal\" data-bs-target=\"#delcomboModal-" .$count . "\"><i class=\"fas fa-trash\"></i> Xóa</button></div>
+                            <div ><button type=\"button\" class=\"btn btn-success\" id=\"updateCombo-btn\"><i class=\"fas fa-edit\"></i> Chỉnh sửa</button></div>
                             </div>
                           </div>
-                        </section></div>";
-                    } 
-                    else {
-                      echo "</select>
-                            <div ><button type=\"button\" class=\"btn btn-primary\" id=\"deleteCombo-btn\"\"><i class=\"fas fa-trash\"></i> Xóa</button></div>
-                            <div ><button type=\"button\" class=\"btn btn-success\" id=\"updateCombo-btn\"\"><i class=\"fas fa-edit\"></i> Chỉnh sửa</button></div>
+                        </section>";
+                        echo "<div class=\"modal fade\" id=\"delcomboModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"delcomboModalLabel-" .$count . "\" aria-hidden=\"true\">
+                        <div class=\"modal-dialog modal-dialog-centered\">
+                          <div class=\"modal-content\">
+                            <div class=\"modal-header\">
+                              <h5 class=\"modal-title\" id=\"delcomboModalLabel-" .$count . "\">Bạn muốn xóa sản phẩm này</h5>
+                              <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                            </div>
+                            <div class=\"modal-body\">
+                              
+                            </div>
+                            <div class=\"modal-footer\">
+                              <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
+                              <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"remove_combo(" . (int)$row["id"] . ", this)\">Xác nhận</button>
                             </div>
                           </div>
-                        </section></div>";
+                        </div>
+                      </div>";  
+                      echo "</div>";  
+                      $count += 1;
                     }
                     echo "<div id=\"updateCombo-modal\" class=\"add-combo-modal\">
                     <div class=\"addCombo-modal-content\">
                       <div class=\"addCombo-modal-header\">
                         <span class=\"close-modal-addc-update\">&times;</span>
-                        <h2>Thêm gói mới</h2>
+                        <h2>Chỉnh sửa gói</h2>
                       </div>
                       <div class=\"addCombo-modal-body\">
                         <form action=\"?url=Home/update_new_combo\" method=\"POST\">
@@ -283,27 +303,10 @@
                       </div>
                     </div>
                   </div>";  
-                  
-                  echo "<div class=\"modal fade\" id=\"exampleModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel-" .$count . "\" aria-hidden=\"true\">
-                  <div class=\"modal-dialog modal-dialog-centered\">
-                    <div class=\"modal-content\">
-                      <div class=\"modal-header\">
-                        <h5 class=\"modal-title\" id=\"exampleModalLabel-" .$count . "\">Bạn muốn xóa sản phẩm này</h5>
-                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
-                      </div>
-                      <div class=\"modal-body\">
-                        
-                      </div>
-                      <div class=\"modal-footer\">
-                        <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
-                        <button type=\"button\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\" onclick=\"remove_item(" . (int)$row["id"] . ", this)\">Xác nhận</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>";          
+                            
                   
                     }
-                }
+                
 
                 
 

@@ -527,9 +527,9 @@ class Home extends Controller{
                     $this->model($user)->change_passwork_mail($to, "123456hello");
                     echo "OK";
                 }
-                else echo "null";
+                else{ echo "null";}
             }
-            else echo "null";
+            else{ echo "null";}
         }
         function add_new_combo($user){
             if(isset($_POST["cname"]) && isset($_POST["price"]) && isset($_POST["c-shirt"]) && isset($_POST["c-pants"]) && isset($_POST["c-ass"])){
@@ -539,9 +539,7 @@ class Home extends Controller{
             $this->Cost_table($user);
         }
         function update_new_combo($user){
-            echo ("1");
             if(isset($_POST["cid"]) && isset($_POST["cname"]) && isset($_POST["price"]) && isset($_POST["c-shirt"]) && isset($_POST["c-pants"]) && isset($_POST["c-ass"])){
-                echo ("2");
                 $this->model($user)->update_new_combo($_POST["cid"], $_POST["cname"], $_POST["price"]);
                 $this->model($user)->update_product_in_combo($_POST["cid"], $_POST["c-shirt"], $_POST["c-pants"], $_POST["c-ass"]);
             }
@@ -552,6 +550,13 @@ class Home extends Controller{
                 $this->model($user)->add_cycle($_POST["cycle-time"]);
             }
             $this->Cost_table($user);
+        }
+        function delete_combo($user, $array){
+            if($this->model($user)->delete_combo((int)$array[2])){
+                echo "OK";
+            } else {
+                echo "Nope";
+            }
         }
     }
 ?>

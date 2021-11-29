@@ -71,6 +71,9 @@ class manager extends customer{
         return mysqli_insert_id($this->connect);
     }
     public function add_sub_img($pid, $path){
+        if($path == ""){
+            $path = './Views/images/default_image.png';
+        }
         $query = "INSERT INTO `sub_img_url`(`sub_img_url`.`PID`, `sub_img_url`.`IMG_URL`)
                   VALUE (" . (int)$pid . ", \"" . $path . "\");";
         return mysqli_query($this->connect, $query);
@@ -203,6 +206,14 @@ class manager extends customer{
     public function add_cycle($time){
         $time = $time . " ngày";
         $query = "INSERT INTO `cycle` (`cycle`.`CYCLE`) VALUE (\"" . $time . "\");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function delete_combo($cid){
+        $query = "DELETE FROM `order_combo` WHERE `order_combo`.`CBID` = " . $cid . ";";
+        mysqli_query($this->connect, $query);
+        $query = "DELETE FROM `product_in_combo` WHERE `product_in_combo`.`CBID` = " . $cid . ";";
+        mysqli_query($this->connect, $query);
+        $query = "DELETE FROM `combo` WHERE `combo`.`ID` = " . $cid . ";";
         return mysqli_query($this->connect, $query);
     }
 }
