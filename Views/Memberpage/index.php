@@ -164,6 +164,9 @@
             </div>
         </div>
         <?php endif; ?>
+        <?php if($data["state"] == "manager"?>
+        
+        <?php endif;?>
     </div>
     <!--Body-->
       
