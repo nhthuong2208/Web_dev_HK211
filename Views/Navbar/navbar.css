@@ -248,6 +248,19 @@ footer {
   color: white;
 }
 
+footer a {
+  text-decoration: none;
+  color: #ffa62b;
+}
+
+footer a:hover{
+  color: #fff;
+}
+
+footer i {
+  color: #ffa62b;
+}
+
 footer .gg-map {
   width: 70%;
   height: 90%;

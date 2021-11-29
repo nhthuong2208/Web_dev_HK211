@@ -170,7 +170,8 @@
   margin-top: 5rem;
   margin-bottom: 2rem;
   text-align: center;
-  font-weight: normal;
+  font-weight: 500;
+  color: #ffa62b;
 }
 
 .shop-collection .collection-layout {
@@ -298,9 +299,10 @@
 /* Style attractive news */
 .feature-news h2 {
   text-align: center;
-  font-weight: normal;
+  font-weight: 500;
   margin-top: 5rem;
   margin-bottom: 2rem;
+  color: #ffa62b;
 }
 
 /* PRODUCTS */
@@ -310,9 +312,10 @@
 
 .featured h2 {
   text-align: center;
-  font-weight: normal;
+  font-weight: 500;
   margin-top: 5rem;
   margin-bottom: 2rem;
+  color: #ffa62b;
 }
 
 .featured .product {

@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-4 col-md-12 col-12">
-            <h1>Assignment</h1>
+            <h1><i class="fab fa-shopify"></i><a href="?url=Home/Home_page/"> HTD</a></h1>
             <p>Copyright 2021&copy Web Assignment</p>
             <p>Alright Reserved</p>
             <div class="d-flex social">
