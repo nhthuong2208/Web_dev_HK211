@@ -222,136 +222,16 @@
                     }
                   }
               ?>
-            <!--div class="col filterDiv accessories">
-              <div class="card">
-                <a href="?url=Home/Item/">
-                  <img
-                    src="https://media.coolmate.me/uploads/August2021/4-0_98.jpg"
-                    class="card-img-top"
-                    alt="card-grid-image"
-                  />
-                </a>
-                
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                  <div class="d-flex justify-content-between">
-                    <div style="text-align: left;" class="quantity-section">
-                      <div class="plus-qty-btn"><i class="fas fa-minus-circle"></i></button></div>
-                      <input type="text" class="qty-buy" value="1" disabled>
-                      <div class="minus-qty-btn"><i class="fas fa-plus-circle"></i></div>
-                    </div>
-                    <div style="text-align: right">
-                      <button type="button" class="btn btn-primary">
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col filterDiv shirt">
-              <div class="card">
-                <img
-                  src="https://media.coolmate.me/uploads/July2021/2_26.jpg"
-                  class="card-img-top"
-                  alt="card-grid-image"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                  <div class="d-flex justify-content-between">
-                    <div style="text-align: left;" class="quantity-section">
-                      <div class="plus-qty-btn"><i class="fas fa-minus-circle"></i></button></div>
-                      <input type="text" class="qty-buy" value="1" disabled>
-                      <div class="minus-qty-btn"><i class="fas fa-plus-circle"></i></div>
-                    </div>
-                    <div style="text-align: right">
-                      <button type="button" class="btn btn-primary">
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col filterDiv trousers">
-              <div class="card">
-                <img
-                  src="https://media.coolmate.me/uploads/September2021/a56_51.jpg"
-                  class="card-img-top"
-                  alt="card-grid-image"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                  <div class="d-flex justify-content-between">
-                    <div style="text-align: left;" class="quantity-section">
-                      <div class="plus-qty-btn"><i class="fas fa-minus-circle"></i></button></div>
-                      <input type="text" class="qty-buy" value="1" disabled>
-                      <div class="minus-qty-btn"><i class="fas fa-plus-circle"></i></div>
-                    </div>
-                    <div style="text-align: right">
-                      <button type="button" class="btn btn-primary">
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col filterDiv shirt">
-              <div class="card">
-                <img
-                  src="https://media.coolmate.me/uploads/October2021/Mau_1.1_(1).jpg"
-                  class="card-img-top"
-                  alt="card-grid-image"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </p>
-                  <div class="d-flex justify-content-between">
-                    <div style="text-align: left;" class="quantity-section">
-                      <div class="plus-qty-btn"><i class="fas fa-minus-circle"></i></button></div>
-                      <input type="text" class="qty-buy" value="1" disabled>
-                      <div class="minus-qty-btn"><i class="fas fa-plus-circle"></i></div>
-                    </div>
-                    <div style="text-align: right">
-                      <button type="button" class="btn btn-primary">
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div-->
 
           </div>
         </div>
-        <!-- PAGINATION -->
+        <!-- PAGINATION
         <ul class="pagination">
           <span>1</span>
           <span>2</span>
           <span class="icon">››</span>
           <span class="last">Last »</span>
-        </ul>
+        </ul> -->
       </div>
       <div id="notice"></div>
       <!--div class="footer-holder"></div>

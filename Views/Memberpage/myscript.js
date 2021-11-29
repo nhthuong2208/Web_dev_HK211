@@ -79,7 +79,7 @@ document.getElementsByTagName("button")[3].onclick = function(){
     if(document.getElementsByTagName("button")[3].innerText == "Thiết lập tài khoản"){
         document.getElementsByTagName("button")[3].innerText = "Xác nhận";
         var form = document.getElementsByTagName("button")[3].parentNode.parentNode;
-        form.innerHTML = "<form action=\"?url=Home/update_profile\" method=\"POST\" enctype=\"multipart/form-data\" onsubmit=\"return false\">" + form.innerHTML + "</form>";
+        form.innerHTML = "<form action=\"?url=Home/update_profile\" id=\"edit-profile\" method=\"POST\" enctype=\"multipart/form-data\" onsubmit=\"return false\">" + form.innerHTML + "</form>";
         var linkimg = click[0].parentNode.parentNode.parentNode.getElementsByTagName("img")[0].getAttribute("src");
         document.getElementsByTagName("button")[3].parentNode.parentNode.getElementsByClassName("col-12")[1].attributes[0].value = 'col-12 border_bot mt-3 mb-3 ';
         var profile = document.getElementsByTagName("button")[3].parentNode.parentNode.getElementsByClassName("row")[0];

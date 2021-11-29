@@ -263,3 +263,25 @@ input{
 .modal-footer button{
     max-width: 200px;
 }
+
+#edit-profile input {
+    padding: 0.5rem;
+    width: 100%;
+    border: 1px solid #f6dcb8;
+    border-radius: 0.2rem;
+    outline: none;
+    margin-bottom: 0.5rem;
+}
+
+.edit-profile-btn button {
+    padding: 0.5rem 1rem;
+    background-color: #ffa62b;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+}
+
+.edit-profile-btn button:hover {
+    background-color: #16697a;
+    transition: all .3s ease-in-out;
+}
