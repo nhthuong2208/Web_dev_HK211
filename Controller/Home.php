@@ -275,6 +275,7 @@ class Home extends Controller{
                 if(!($action->update_cart($array[2 + $i + 1]))) echo "null";
                 $this->model($user)->update_order_combo($_SESSION["id"]);
             }
+            $_SESSION["id_cart"] = null;
             echo "?url=/Home/Home_page/";
         }
         function member_page($user){
