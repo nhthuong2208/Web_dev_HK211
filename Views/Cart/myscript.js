@@ -104,7 +104,7 @@ document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
       if (this.readyState == 4 && this.status == 200) {
-          window.location.href = text;
+          window.location.href = this.responseText;
       }
     };
     xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);

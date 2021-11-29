@@ -77,7 +77,16 @@ function add_Product(element){
     var xmlhttp = new XMLHttpRequest();
 	  xmlhttp.onreadystatechange = function(){
       if (this.readyState == 4 && this.status == 200){
-        console.log(this.responseText);
+        if(this.responseText == "1"){
+          document.getElementById("notice").innerHTML = add_notice("success", "Thêm thành công");
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        }
+        else if(this.responseText == "0"){
+          document.getElementById("notice").innerHTML = add_notice("fail", "Thêm thất bại");
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        }
       }
 	  };
     xmlhttp.open("GET", "?url=Home/create_cart/" + day_str.getFullYear() + "-" + String(day_str.getMonth() + 1) + "-" + String(day_str.getDate()) + "/" + element.value + "/" + element.parentNode.parentNode.getElementsByTagName("input")[0].value + "/", true);
@@ -101,9 +110,8 @@ function upload_pic(element){
   }
 }
 
-function add_notice(string){
-  if(string == "OK") return '<div class="alert success" role="alert"><strong>Xóa thành công!</strong></div>';
-  return '<div class="alert fail" role="alert"><strong>Xóa thất bại!</strong></div>';
+function add_notice(alert, string){
+  return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
 }
 
 function remove_item(pid, element){
@@ -111,12 +119,12 @@ function remove_item(pid, element){
   xmlhttp.onreadystatechange = function(){
     if(this.responseText == "OK"){
       element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
-      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementById("notice").innerHTML = add_notice("success", "Xóa thành công");
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
     }
     else if(this.responseText == "Nope"){
-      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementById("notice").innerHTML = add_notice("fail", "Xóa thất bại");
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
     }

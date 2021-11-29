@@ -39,12 +39,12 @@
       <div class="row justify-content-md-center h-100">
         <div class="card-wrapper col-md-4">
           <div class="card fat p-1 bg-warning">
-            <div class="brand">
+            <div class="mybrand">
               <img class="w-100" src="./Views/images/np.png" alt="logo" />
             </div>
-            <div class="card-body mb-3 mt-3">
+            <div class="card-body mb-3 mt-3 d-flex flex-column justify-content-center">
               <div class="row col-md-12 text-light ms-0">
-                <h6>Đăng nhập nhanh qua mạng xã hội</h6>
+                <h6 style="align-text: center;">Đăng nhập nhanh qua mạng xã hội</h6>
               </div>
               <br />
               <div class="block mb-2">

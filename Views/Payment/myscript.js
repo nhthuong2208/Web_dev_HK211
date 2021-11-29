@@ -80,7 +80,8 @@ button[3].onclick = function(){
           document.getElementById("notice").innerHTML = add_notice("success", "Thanh toán thành công" );
           document.getElementsByClassName("alert")[0].style.display = "block";
           setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
-          setTimeout(function(){window.location.href = this.responseText}, 1500);
+          var text = this.responseText;
+          setTimeout(function(){window.location.href = text;}, 1500);
         }
         else{
           document.getElementById("notice").innerHTML = add_notice("fail", "Thêm thất bại" );

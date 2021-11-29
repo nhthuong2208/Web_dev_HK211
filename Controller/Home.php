@@ -331,7 +331,6 @@ class Home extends Controller{
                     $_SESSION["id_cart"] = mysqli_fetch_array($this->model($user)->get_cart_for_session())["id"];
                 }
             }
-            echo $_SESSION["id_cart"];
             echo $this->model($user)->create_product_incart($array[3], $_SESSION["id_cart"], $array[4]);
         }
         function add_new_item($user){
