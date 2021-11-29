@@ -538,6 +538,15 @@ class Home extends Controller{
             }
             $this->Cost_table($user);
         }
+        function update_new_combo($user){
+            echo ("1");
+            if(isset($_POST["cid"]) && isset($_POST["cname"]) && isset($_POST["price"]) && isset($_POST["c-shirt"]) && isset($_POST["c-pants"]) && isset($_POST["c-ass"])){
+                echo ("2");
+                $this->model($user)->update_new_combo($_POST["cid"], $_POST["cname"], $_POST["price"]);
+                $this->model($user)->update_product_in_combo($_POST["cid"], $_POST["c-shirt"], $_POST["c-pants"], $_POST["c-ass"]);
+            }
+            $this->Cost_table($user);
+        }
         function add_cycle($user){
             if(isset($_POST["cycle-time"])){
                 $this->model($user)->add_cycle($_POST["cycle-time"]);
