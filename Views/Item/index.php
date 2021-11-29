@@ -271,7 +271,7 @@
                         </a>
                         <div class=\"card-body\">
                           <h5 class=\"card-title\">" . $row["name"] . "</h5>
-                          <p class=\"card-text\">
+                          <p class=\"card-text related-item-price\">
                             " . $row["price"] . "
                           đ</p>
                         </div>

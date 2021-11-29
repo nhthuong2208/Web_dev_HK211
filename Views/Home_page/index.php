@@ -219,7 +219,7 @@
                           if($row["top_seller"] == 1){
                             echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
                             echo "<div class=\"addToCart\" onclick=\"add_Product(this);\"><i class=\"fas fa-shopping-cart\"></i><span hidden>" . $row["id"] . "</span></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
-                            echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "đ</span></div></div></div></div>";
+                            echo $row["name"] . "</a><div class=\"price\"><span class=\"feature-item-price\">" . $row["price"] . "đ</span></div></div></div></div>";
                           }
                         }
                       }
@@ -229,7 +229,7 @@
                             echo "<div class=\"swiper-slide\">
                                     <div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
                             echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/\"><span hidden>" . $row["id"] . "</span>";
-                            echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "đ</span></div></div></div></div>";
+                            echo $row["name"] . "</a><div class=\"price\"><span class=\"feature-item-price\">" . $row["price"] . "đ</span></div></div></div></div>";
                           }
                         }
                       }

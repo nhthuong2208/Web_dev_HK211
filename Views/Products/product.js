@@ -50,7 +50,7 @@ for (let i = 0; i < tabs.length; i++) {
 function minus(element){
   var input = element.parentNode.parentNode.getElementsByTagName("input")[0]
   input.value = Number(input.value) - 1;
-  if(input.value <= 0) input.value = 0;
+  if(input.value <= 1) input.value = 1;
 }
 function plus(element){
   var input = element.parentNode.parentNode.getElementsByTagName("input")[0]
@@ -132,6 +132,32 @@ function remove_item(pid, element){
   }
   xmlhttp.open("GET", "?url=Home/delete_item/" + pid + "/", true);
   xmlhttp.send();
+}
+
+function enformat(element){
+  let nodestr = "";
+    for(var j = element.length; j > 3; j -= 3){
+        nodestr = "," + element[j-3] + element[j-2] + element[j-1] + nodestr;
+    }
+    if (element .length % 3 == 0){
+        nodestr = element[0] + element[1] + element[2] + nodestr;
+    }
+    else if(element.length % 3 == 2){
+        nodestr = element[0] + element[1] + nodestr;
+    }
+    else nodestr = element[0] + nodestr;
+    return nodestr;
+}
+function deformat(element){
+  var list = element.split(",");
+  var string = ""
+  for(var i = 0; i < list.length; i++) string += list[i];
+  return string;
+}
+
+var encode_item_price = document.getElementsByClassName("each-item-price");
+for (var i = 0; i < encode_item_price.length; i++){
+  encode_item_price[i].innerText = enformat(String(Number(encode_item_price[i].innerText.split("đ")[0]))) + "đ";
 }
 
 // modal add item

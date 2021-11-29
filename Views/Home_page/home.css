@@ -340,7 +340,7 @@
 
 .featured .product .bottom a {
   margin-bottom: 1rem;
-  font-weight: inherit;
+  font-weight: 600;
   font-size: 1.2rem;
   text-decoration: none;
   color: #000;
@@ -351,9 +351,9 @@
 }
 
 .featured .product .bottom span {
-  color: #16697a;
+  color: #ffa62b;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .featured .product .addToCart {
