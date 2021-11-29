@@ -149,7 +149,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Thông tin các nhân</h2>
+                <h2>Thông tin cá nhân</h2>
                 <span class="close">&times;</span>
             </div>
             <div class="modal-body">

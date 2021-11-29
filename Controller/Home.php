@@ -544,5 +544,50 @@ class Home extends Controller{
             }
             $this->Cost_table($user);
         }
+        function get_user($user, $array){
+            $data = $this->model($user)->get_user((int)$array[2]);
+            if(!empty($data)){
+                foreach($data as $row){
+                    echo "</div class=\"row\">";
+                    echo "<div class=\"col-12\">
+                            <div class=\"row\">
+                                <div class=\"col-4\"><strong>Họ và tên:</strong></div>
+                                <div class=\"col-8\"><h5>" . $row["name"] .  "</h5></div>
+                            </div>
+                        </div>";
+                    echo "<div class=\"col-12\">
+                            <div class=\"row\">
+                                <div class=\"col-4\"><strong>CMND/CCCD:</strong></div>
+                                <div class=\"col-8\"><h5>" . $row["cmnd"] .  "</h5></div>
+                            </div>
+                        </div>";
+                    echo "<div class=\"col-12\">
+                            <div class=\"row\">
+                                <div class=\"col-4\"><strong>SĐT:</strong></div>
+                                <div class=\"col-8\"><h5>" . $row["phone"] .  "</h5></div>
+                            </div>
+                        </div>";
+                    echo "<div class=\"col-12\">
+                            <div class=\"row\">
+                                <div class=\"col-4\"><strong>Email:</strong></div>
+                                <div class=\"col-8\"><h5>" . $row["mail"] .  "</h5></div>
+                            </div>
+                        </div>";
+                    echo "</div>";
+                }
+            }
+            else echo "null";
+        }
+        function remove_user($user, $array){
+            if($this->model($user)->remove_user((int)$array[2])) echo "ok";
+            else echo "null";
+        }
+        function ban_user($user, $array){
+            if($this->model($user)->ban_user((int)$array[2])){
+                if($this->model($user)->remove_user($array[2])) echo "ok";
+                else echo "null";
+            }
+            else echo "null";
+        }
     }
 ?>

@@ -164,14 +164,46 @@
             </div>
         </div>
         <?php endif; ?>
-        <?php if($data["state"] == "manager"?>
-        
+        <?php if($data["state"] == "manager"):?>
+        <div class="row flex-wrap">
+            <h2>Danh sách thành viên</h2>
+            <?php if(!empty($data["member"])):?>
+                <?php foreach($data["member"] as $row): ?>
+            <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                <div class="card card_node">
+                <img class="card-img-top" src="<?php echo $row["img"]; ?>" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title"><?php echo $row["name"]; ?></h4>
+                    <p class="card-text"><?php if($row["rank"] / 1000000 > 20) echo "Thành viên Vàng"; else if($row["rank"] / 1000000 > 10) echo "Thành viên Bạc"; else if($row["rank"] / 1000000 > 5) echo "Thành viên Đồng"; else echo "Thành viên tiềm năng"; ?></p>
+                    <button type="button" class="btn btn-primary" onclick="see_profile(this)" value="<?php echo $row["id"]; ?>">Chi tiết</button>
+                </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php endif;?>
+        </div>
         <?php endif;?>
     </div>
     <!--Body-->
-      
+    <?php if($data["state"] == "manager") echo "<div id=\"myModal\" class=\"modal\">
+        <div class=\"modal-content\">
+            <div class=\"modal-header\">
+                <h2>Thông tin khách hàng</h2>
+                <span class=\"close\">&times;</span>
+            </div>
+            <div class=\"modal-body\">
+            </div>
+            <div class=\"modal-footer justify-content-end d-inline-flex\">
+            <button type=\"button\" class=\"btn btn-danger modal-button\" onclick=\"remove_account(this)\">Xóa tài khoản</button>
+            <button type=\"button\" class=\"btn btn-danger modal-button\" onclick=\"ban_account(this)\">Cấm tài khoản</button>
+        </div>
+        </div>
+    </div>";
+     ?>
     <?php require_once "./Views/footer/index.php ";?>
-      <script src="./Views/Memberpage/myscript.js"></script>
+    <?php if($data["state"] == "member") echo "<script src=\"./Views/Memberpage/myscript.js\"></script>"; 
+    else if($data["state"] == "manager") echo "<script src=\"./Views/Memberpage/manascript.js\"></script>";
+    ?>  
     <!--Footer-->
   </body>
 </html>

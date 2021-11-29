@@ -149,8 +149,7 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     public function get_all_user_info(){
-        $query =    "SELECT `account`.`ID` AS `id`, 
-                            `account`.`ID` AS `id`, 
+        $query =    "SELECT `account`.`ID` AS `id`,
                             `account`.`FNAME` AS `name`, 
                             `account`.`CMND` AS `cmnd`, 
                             `account`.`PHONE` AS `phone`, 
@@ -159,7 +158,7 @@ class manager extends customer{
                             `account`.`IMG_URL` AS `img`, 
                             `account`.`RANK` AS `rank` 
                     FROM `account`";
-         return mysqli_insert_id($this->connect);
+        return mysqli_query($this->connect, $query);
     }
     public function add_new_combo($name, $price){
         $query = "INSERT INTO `combo` (`combo`.`NAME`, `combo`.`COST`) VALUE (\"" . $name . "\", " . (int)$price . ");";
@@ -177,6 +176,42 @@ class manager extends customer{
     public function add_cycle($time){
         $time = $time . " ngày";
         $query = "INSERT INTO `cycle` (`cycle`.`CYCLE`) VALUE (\"" . $time . "\");";
+        return mysqli_query($this->connect, $query);
+    }
+    public function get_user($id){
+        $query =    "SELECT `account`.`FNAME` AS `name`,
+                            `account`.`PHONE` AS `phone`, 
+                            `account`.`ADDRESS` AS `add`, 
+                            `account`.`USERNAME` AS `username`, 
+                            `account`.`IMG_URL` AS `img`, 
+                            `account`.`CMND` AS `cmnd`, 
+                            `account`.`PWD` AS `pwd`, 
+                            `account`.`EMAIL` AS `mail`
+                    FROM    `account`
+                    WHERE   `account`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
+    public function remove_user($id){
+        $query =    "DELETE FROM `comment_news` WHERE `comment_news`.`CID` = " . $id;
+        echo $query;
+        mysqli_query($this->connect, $query);
+        $query =    "DELETE FROM `comment` WHERE `comment`.`UID` = " . $id;
+        mysqli_query($this->connect, $query);
+        $query =    "DELETE FROM `product_in_cart` WHERE `product_in_cart`.`OID` IN (SELECT `cart`.`ID` FROM `cart` WHERE `cart`.`UID` = " . $id . ")";
+        echo $query;
+        mysqli_query($this->connect, $query);
+        $query =    "DELETE FROM `cart` WHERE `cart`.`UID` = " . $id;
+        echo $query;
+        mysqli_query($this->connect, $query);
+        $query =    "DELETE FROM `order_combo` WHERE `order_combo`.`UID` = " . $id;
+        echo $query;
+        mysqli_query($this->connect, $query);
+        $query =    "DELETE FROM `account` WHERE `account`.`ID` = " . $id;
+        echo $query;
+        return mysqli_query($this->connect, $query);
+    }
+    public function ban_user($id){
+        $query =    "INSERT INTO `ban_account`(`ban_account`.`CMND`) VALUES ((SELECT `account`.`CMND` FROM `account` WHERE `account`.`ID` = " . $id ."));";
         return mysqli_query($this->connect, $query);
     }
 }

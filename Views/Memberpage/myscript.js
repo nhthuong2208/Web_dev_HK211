@@ -66,7 +66,7 @@ function upload_pic(element){
 }
 function add_notice(alert, string){
     return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
-  }
+}
 function myFunction(index){
     var input = document.getElementsByClassName("col-12 border_bot mt-3 mb-3 ")[0].getElementsByTagName("input")[index];
     if (input.type === "password") {
@@ -110,14 +110,14 @@ document.getElementsByTagName("button")[3].onclick = function(){
             var form = document.getElementsByClassName("col-12 border_bot mt-3 mb-3 ")[0];
             for(var i = 1; i < form.getElementsByTagName("input").length; i++){
                 if(form.getElementsByTagName("input")[i].value == ""){
-                    document.getElementById("notice").innerHTML = add_notice("alert-danger", "Hãy điền thông tin còn thiếu" + form.getElementsByTagName("input")[i].value + i);
+                    document.getElementById("notice").innerHTML = add_notice("fail", "Hãy điền thông tin còn thiếu" + form.getElementsByTagName("input")[i].value + i);
                     document.getElementsByClassName("alert")[0].style.display = "block";
                     setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
                      return;
                 }
             }
             if(form.getElementsByTagName("input")[4].value != form.getElementsByTagName("input")[5].value){
-                document.getElementById("notice").innerHTML = add_notice("alert-danger", "Mật khẩu xác minh bị sai");
+                document.getElementById("notice").innerHTML = add_notice("fail", "Mật khẩu xác minh bị sai");
                 document.getElementsByClassName("alert")[0].style.display = "block";
                 setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
             }
