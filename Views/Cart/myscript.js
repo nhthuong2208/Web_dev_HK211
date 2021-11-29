@@ -44,15 +44,24 @@ function plusnode(element){
   plus(row.getElementsByClassName("value_click")[0]);
   display_total(row.getElementsByClassName("price")[0], row.getElementsByClassName("value_click")[0], row.getElementsByClassName("total")[0]);
 }
+
 function remove_product_incart(element){
   var id = element.parentNode.parentNode.value;
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
-    console.log(this.responseText);
     if (this.readyState == 4 && this.status == 200) {
-      console.log( Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])));
-      list.getElementsByTagName("h5")[0].innerText = enformat(String(Number(deformat(list.getElementsByTagName("h5")[0].innerText.split("(")[0])) - Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])))) + "(đ)";
-      element.parentNode.parentNode.remove();
+      if(this.responseText == "ok"){
+        list.getElementsByTagName("h5")[0].innerText = enformat(String(Number(deformat(list.getElementsByTagName("h5")[0].innerText.split("(")[0])) - Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])))) + "(đ)";
+        element.parentNode.parentNode.remove();
+        document.getElementById("notice").innerHTML = add_notice("success", "Xóa sẳn phẩm thành công" );
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
+      else if(this.responseText == "null"){
+        document.getElementById("notice").innerHTML = add_notice("fail", "Xóa sẳn phẩm thất bại" );
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
     }
   };
   xmlhttp.open("GET", "?url=Home/delete_product_incart/" + id + "/", true);
@@ -76,6 +85,16 @@ var list = document.getElementsByClassName("container-fuild")[0].children[0].chi
 list.getElementsByTagName("h5")[0].innerText = enformat(String(totalh5)) + "(đ)";
 console.log(list);
 document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
+  var input = document.getElementById("myModal").getElementsByTagName("input");
+  
+  for (let index = 0; index < input.length; index++) {
+    if(input[index].value == ""){
+      document.getElementById("notice").innerHTML = add_notice("fail", "Thông tin của bạn bị trống" );
+      document.getElementsByClassName("alert")[0].style.display = "block";
+      setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      return;
+    }
+  }
   var children = document.getElementsByClassName("node");
   var string = children.length;
   if( children.length != 0){
@@ -85,7 +104,7 @@ document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
       if (this.readyState == 4 && this.status == 200) {
-          window.location.href = this.responseText;
+          window.location.href = text;
       }
     };
     xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);
@@ -117,11 +136,36 @@ var id = document.getElementById("id");
 button.value = id.innerText;
 id.remove();
 
+
+function add_notice(alert, string){
+  return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
+}
+
 button.onclick = function(){
   var input = button.parentNode.getElementsByTagName("input");
+  for (let index = 0; index < input.length; index++) {
+    if(input[index].value == ""){
+      document.getElementById("notice").innerHTML = add_notice("fail", "Thông tin của bạn bị trống" );
+      document.getElementsByClassName("alert")[0].style.display = "block";
+      setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      return;
+    }
+  }
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
-    modal.style.display = "none";
+    if(this.readyState == 4 && this.status == 200){
+      if(this.responseText == "ok"){
+        modal.style.display = "none";
+        document.getElementById("notice").innerHTML = add_notice("success", "Xác nhận thành công" );
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
+      else if(this.responseText == "null"){
+        document.getElementById("notice").innerHTML = add_notice("fail", "Xác nhận thất bại" );
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
+    }
   };
   xmlhttp.open("GET", "?url=Home/update_user/" + button.value + "/" + input[0].value + "/" + input[1].value + "/" + input[2].value + "/", true);
   xmlhttp.send();

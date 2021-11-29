@@ -72,18 +72,30 @@
           <div class="card fat p-1">
             <div class="card-body">
               <h3 class="card-title mb-4">Đăng kí tài khoản</h3>
-              <form method="POST" class="my-login-validation" novalidate="">
+              <form method="POST" class="my-login-validation" novalidate="" onsubmit="return false">
                 <div class="form-group">
-                  <label for="name">Tên đăng nhập</label>
+                  <label for="fname">Họ và tên</label>
                   <input
-                    id="name"
+                    id="fname"
                     type="text"
                     class="form-control mt-1"
-                    name="name"
+                    name="fname"
                     required
                     autofocus
                   />
-                  <div class="invalid-feedback">Tên đăng nhập trống!</div>
+                  <div class="invalid-feedback">Họ và tên trống!</div>
+                </div>
+
+                <div class="form-group mt-2">
+                  <label for="cmnd">CMND/CCCD</label>
+                  <input
+                    id="cmnd"
+                    type="text"
+                    class="form-control mt-1"
+                    name="cmnd"
+                    required
+                  />
+                  <div class="invalid-feedback">CMND/CCCD trống!</div>
                 </div>
 
                 <div class="form-group mt-2">
@@ -99,6 +111,19 @@
                 </div>
 
                 <div class="form-group mt-2">
+                  <label for="name">Tên đăng nhập</label>
+                  <input
+                    id="name"
+                    type="text"
+                    class="form-control mt-1"
+                    name="name"
+                    required
+                    autofocus
+                  />
+                  <div class="invalid-feedback">Tên đăng nhập trống!</div>
+                </div>
+
+                <div class="form-group mt-2">
                   <label for="password">Mật khẩu</label>
                   <input
                     id="password"
@@ -109,10 +134,23 @@
                     data-eye
                   />
                   <div class="invalid-feedback">Mật khẩu trống!</div>
+
+                </div><div class="form-group mt-2">
+                  <label for="re_password">Xác thực mật khẩu</label>
+                  <input
+                    id="re_password"
+                    type="password"
+                    class="form-control mt-1"
+                    name="re_password"
+                    required
+                    data-eye
+                  />
+                  <div class="invalid-feedback">Mật khẩu xác thực trống!</div>
+                  <div class="invalid-feedback">Mật khẩu không trùng khớp!</div>
                 </div>
 
                 <div class="card mt-3">
-                  <button type="submit" class="btn btn-warning btn-block w-100">
+                  <button type="submit" class="btn btn-warning btn-block w-100 mybtn">
                     Đăng kí
                   </button>
                 </div>
@@ -134,6 +172,6 @@
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
-    <script src="../Views/Login/login.js"></script>
+    <script src="../Views/register/register.js"></script>
   </body>
 </html>

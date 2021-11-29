@@ -2,7 +2,7 @@
 require_once "./Model/customer.php";
 class member extends customer{
     public function get_product_in_cart($id){
-        $query =    "SELECT `product`.`ID` AS `id`,
+        $query =    "SELECT `product_in_cart`.`ID` AS `id`,
                             `product`.`NAME` AS `name`, 
                             `product`.`PRICE` AS `price`,
                             `product`.`IMG_URL` AS `img`,
@@ -51,11 +51,6 @@ class member extends customer{
     }
     public function delete_product_incart($id){
         $query =    "DELETE FROM `product_in_cart` WHERE `product_in_cart`.`ID` = " . $id .";";
-        mysqli_query($this->connect, $query);
-        $query =    "DELETE FROM `cart` 
-                    WHERE `cart`.`ID` NOT IN (  SELECT `cart`.`ID` FROM `product_in_cart`, `cart`
-                                                WHERE `product_in_cart`.`OID` = `cart`.`ID`
-                                                GROUP BY `cart`.`ID`)";
         return mysqli_query($this->connect, $query);
     }
     public function update_product_in_cart($id, $quantity, $size){
@@ -199,6 +194,13 @@ class member extends customer{
         $query =    "UPDATE `account`
                     SET `account`.`RANK` = " . $rank . "
                     WHERE `account`.`ID` = " . $id ;
+        return mysqli_query($this->connect, $query);
+    }
+    public function clear_cart(){
+        $query =    "DELETE FROM `cart` 
+                    WHERE `cart`.`ID` NOT IN (  SELECT `cart`.`ID` FROM `product_in_cart`, `cart`
+                                                WHERE `product_in_cart`.`OID` = `cart`.`ID`
+                                                GROUP BY `cart`.`ID`)";
         return mysqli_query($this->connect, $query);
     }
 }

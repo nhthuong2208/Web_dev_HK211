@@ -114,7 +114,8 @@ function remove_item(pid, element){
       document.getElementById("notice").innerHTML = add_notice(this.responseText);
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
-    } else if(this.responseText == "Nope"){
+    }
+    else if(this.responseText == "Nope"){
       document.getElementById("notice").innerHTML = add_notice(this.responseText);
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
