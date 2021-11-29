@@ -96,7 +96,7 @@
                             <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["add"];?></div>
                         </div>
                     </div>
-                    <div class="col-6 mt-3"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button></div>
+                    <div class="col-6 mt-3 edit-profile-btn"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button></div>
                 </div>
                 <div class="row justify-content-center click">
                     <div class="col-12 mt-4 border_bot"><h1>Đơn hàng đã đặt</h1></div>
@@ -133,9 +133,9 @@
                             }
                         }
                         if(!empty($data["order_combo"])){
-                            echo "<div class=\"row \"><div class=\"nonemg text-center center_my\">";
+                            echo "<div class=\"row \"><div class=\"row nonemg text-center center_my\">";
                             foreach($data["order_combo"] as $row){
-                                echo "<div class=\"col-lg-12 mb-4\">
+                                echo "<div class=\"col-lg-6 mb-4\">
                                     <div class=\"card\">
                                         <div class=\"card-header text-center py-1\">
                                             <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>

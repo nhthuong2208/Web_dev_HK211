@@ -260,3 +260,31 @@ border-radius: 10px;
     height: 300px;
   }
 }
+
+#form-contact input, #form-contact textarea{
+  padding: 0.5rem;
+  width: 100%;
+  border: 1px solid #dfb883;
+  border-radius: 0.2rem;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+#form-contact button {
+  padding: 0.5rem 3rem;
+  background-color: #ffa62b;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+
+#form-contact button:hover {
+  background-color: #16697a;
+  transition: all .3s ease-in-out;
+}
+
+.name-contact-page {
+  color: #16697a;
+  font-size: 30px;
+  text-transform: uppercase;
+}

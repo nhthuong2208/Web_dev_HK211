@@ -118,26 +118,26 @@
                 if($data["user"] != "manager"){
                     echo "
                     <div class=\"col-11 col-sm-6 col-md-6 col-lg-6 col-xl-5 white border-10 myshadow padding-20\">
-                      <h4 class=\"mgl-12\">Send Messege</h4>
-                      <form action=\"\" onsubmit=\"return false;\">
+                      <h4 class=\"mgl-12 name-contact-page\">Gửi tin nhắn</h4>
+                      <form action=\"\" id=\"form-contact\" onsubmit=\"return false;\">
                         <div class=\"row\">
                           <div class=\"col-xxl-6\">
-                            <input type=\"text\" name=\"name\" placeholder=\"   Your name\" required>
+                            <input type=\"text\" name=\"name\" placeholder=\"   Tên của bạn\" required>
                           </div>
                           <div class=\"col-xxl-6\">
-                            <input type=\"text\" name=\"address\" placeholder=\"  Email address\" required>
+                            <input type=\"text\" name=\"address\" placeholder=\"  Địa chỉ email\" required>
                           </div>
                           <div class=\"col-xxl-6\">
-                            <input type=\"text\" name=\"phone\" placeholder=\"  Phone number\" required>
+                            <input type=\"text\" name=\"phone\" placeholder=\"  Số điện thoại\" required>
                           </div>
                           <div class=\"col-xxl-6\">
-                            <input type=\"text\" name=\"subject\" placeholder=\"  Subject\" required>
+                            <input type=\"text\" name=\"subject\" placeholder=\"  Chủ đề\" required>
                           </div>
                           <div class=\"col-12\">
-                            <textarea name=\"content\" placeholder=\"   Messege\" required></textarea>
+                            <textarea name=\"content\" placeholder=\"   Lời nhắn\" required></textarea>
                           </div>
                         </div>
-                        <button type=\"button\" class=\"btn btn-primary active mgl-12\">Send Messege</button>
+                        <button type=\"button\" class=\"btn btn-primary active mgl-12\">Gửi</button>
                       </form>
                     </div>";
                 }
