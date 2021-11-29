@@ -204,5 +204,9 @@ class member extends customer{
                                                 GROUP BY `cart`.`ID`)";
         return mysqli_query($this->connect, $query);
     }
+    public function delete_order_combo_name($id){
+        $query =    "DELETE FROM `order_combo` WHERE `order_combo`.`ID` = " . $id;
+        return mysqli_query($this->connect, $query);
+    }
 }
 ?>

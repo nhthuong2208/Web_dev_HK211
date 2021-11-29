@@ -45,29 +45,6 @@ function plusnode(element){
   display_total(row.getElementsByClassName("price")[0], row.getElementsByClassName("value_click")[0], row.getElementsByClassName("total")[0]);
 }
 
-function remove_product_incart(element){
-  var id = element.parentNode.parentNode.value;
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200) {
-      if(this.responseText == "ok"){
-        list.getElementsByTagName("h5")[0].innerText = enformat(String(Number(deformat(list.getElementsByTagName("h5")[0].innerText.split("(")[0])) - Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])))) + "(đ)";
-        element.parentNode.parentNode.remove();
-        document.getElementById("notice").innerHTML = add_notice("success", "Xóa sẳn phẩm thành công" );
-        document.getElementsByClassName("alert")[0].style.display = "block";
-        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
-      }
-      else if(this.responseText == "null"){
-        document.getElementById("notice").innerHTML = add_notice("fail", "Xóa sẳn phẩm thất bại" );
-        document.getElementsByClassName("alert")[0].style.display = "block";
-        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
-      }
-    }
-  };
-  xmlhttp.open("GET", "?url=Home/delete_product_incart/" + id + "/", true);
-  xmlhttp.send();
-}
-
 var node = document.getElementsByClassName("node");
 var totalh5 = 0;
 for(var i = 0; i < node.length ; i++){
@@ -80,10 +57,6 @@ for(var i = 0; i < node.length ; i++){
   total.innerText = enformat(total.innerText.split("(")[0]) + "(đ)";
 } 
 
-
-var list = document.getElementsByClassName("container-fuild")[0].children[0].children[1];
-list.getElementsByTagName("h5")[0].innerText = enformat(String(totalh5)) + "(đ)";
-console.log(list);
 document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
   var input = document.getElementById("myModal").getElementsByTagName("input");
   
@@ -96,24 +69,29 @@ document.getElementsByClassName("btn btn-primary")[3].onclick = function(){
     }
   }
   var children = document.getElementsByClassName("node");
-  var string = children.length;
-  if( children.length != 0){
-    for(var i = 0; i < children.length; i++){
-          string += "/" + children[i].parentNode.value + "/" + children[i].getElementsByClassName("value_click")[0].innerText + "/" + children[i].getElementsByTagName("select")[0].value;
-    }
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-      if (this.readyState == 4 && this.status == 200) {
-          window.location.href = this.responseText;
+  if(children.length > 0 || document.getElementsByClassName("card").length > 0){
+    var string = children.length;
+      for(var i = 0; i < children.length; i++){
+            string += "/" + children[i].parentNode.value + "/" + children[i].getElementsByClassName("value_click")[0].innerText + "/" + children[i].getElementsByTagName("select")[0].value;
       }
-    };
-    xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);
-    xmlhttp.send();
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.href = this.responseText;
+        }
+      };
+      xmlhttp.open("GET", "?url=Home/update_product_in_cart/" + string + "/", true);
+      xmlhttp.send();
   }
   else{
-    alert("Mời bạn mua sắm thêm sản phẩm");
+    document.getElementById("notice").innerHTML = add_notice("fail", "Bạn chưa có sản phẩm" );
+    document.getElementsByClassName("alert")[0].style.display = "block";
+    setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
   }
 };
+
+var list = document.getElementsByClassName("container-fuild")[0].children[0].children[1];
+list.getElementsByTagName("h5")[0].innerText = enformat(String(Number(list.getElementsByTagName("h5")[0].innerText) + totalh5)) + "(đ)";
 /***********************************************************/
 
 var modal = document.getElementById("myModal");
@@ -170,3 +148,54 @@ button.onclick = function(){
   xmlhttp.open("GET", "?url=Home/update_user/" + button.value + "/" + input[0].value + "/" + input[1].value + "/" + input[2].value + "/", true);
   xmlhttp.send();
 };
+
+function remove_combo(element){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    console.log(this.responseText);
+    if (this.readyState == 4 && this.status == 200){
+        if(this.responseText != "null"){
+          document.getElementById("notice").innerHTML = add_notice("success", "Xóa combo thành công" );
+          var h3 = document.getElementsByClassName("container-fuild")[0].children[0].children[1].getElementsByTagName("h3")[0];
+          h3.innerText = h3.innerText.split("(")[0] + "(" + String(Number(h3.innerText.split("(")[1].split(" ")[0]) - 1) + " " +  h3.innerText.split("(")[1].split(" ")[1] + " " + h3.innerText.split("(")[1].split(" ")[2];
+          var h5 = document.getElementsByClassName("container-fuild")[0].children[0].children[1].getElementsByTagName("h5")[0];
+          h5.innerText = enformat(String(Number(deformat(h5.innerText.split("(")[0])) - Number(element.parentNode.parentNode.parentNode.getElementsByTagName("h3")[0].innerText.split("/")[0]))) + "(đ)";
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+          element.parentNode.parentNode.parentNode.parentNode.remove();
+          }
+        else{
+          document.getElementById("notice").innerHTML = add_notice("fail", "Xóa combo thất bại" );
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        }
+    }
+  };
+  xmlhttp.open("GET", "?url=Home/delete_order_combo_name/" + element.parentNode.parentNode.parentNode.getElementsByTagName("span")[0].innerText + "/", true);
+  xmlhttp.send();
+}
+
+function remove_product_incart(element){
+  var id = element.parentNode.parentNode.value;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+      if(this.responseText == "ok"){
+        document.getElementsByClassName("container-fuild")[0].children[0].children[1].getElementsByTagName("h5")[0].innerText = enformat(String(Number(deformat(list.getElementsByTagName("h5")[0].innerText.split("(")[0])) - Number(deformat(element.parentNode.getElementsByClassName("total")[0].innerText.split("(")[0])))) + "(đ)";
+        var h3 = document.getElementsByClassName("container-fuild")[0].children[0].children[1].getElementsByTagName("h3")[0];
+        h3.innerText = h3.innerText.split("(")[0] + "(" + String(Number(h3.innerText.split("(")[1].split(" ")[0]) - 1) + " " +  h3.innerText.split("(")[1].split(" ")[1] + " " + h3.innerText.split("(")[1].split(" ")[2];
+        element.parentNode.parentNode.remove();
+        document.getElementById("notice").innerHTML = add_notice("success", "Xóa sẳn phẩm thành công" );
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
+      else if(this.responseText == "null"){
+        document.getElementById("notice").innerHTML = add_notice("fail", "Xóa sẳn phẩm thất bại" );
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
+    }
+  };
+  xmlhttp.open("GET", "?url=Home/delete_product_incart/" + id + "/", true);
+  xmlhttp.send();
+}

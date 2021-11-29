@@ -53,7 +53,7 @@ button[2].onclick = function(){
           document.getElementsByClassName("alert")[0].style.display = "block";
           setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
           var text = this.responseText;
-          setTimeout(function(){window.location.href = text;}, 1000);
+          setTimeout(function(){window.location.href = text;}, 800);
             //console.log(this.responseText);
           }
         else{
@@ -79,7 +79,7 @@ button[3].onclick = function(){
         if(this.responseText != "null"){
           document.getElementById("notice").innerHTML = add_notice("success", "Thanh toán thành công" );
           document.getElementsByClassName("alert")[0].style.display = "block";
-          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 800);
           var text = this.responseText;
           setTimeout(function(){window.location.href = text;}, 1500);
         }

@@ -13,7 +13,9 @@ function add_combo(element){
       }
       else{
         if(element.parentNode.parentNode.getElementsByTagName("select")[0].value == "Chọn chu kì gửi"){
-            alert("Hãy chọn chu kì bạn muốn!");
+          document.getElementById("notice").innerHTML = add_notice("fail", "Bạn chưa chọn chu kì");
+          document.getElementsByClassName("alert")[0].style.display = "block";
+          setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
             return;
         }
         var day_str = new Date();
@@ -29,10 +31,14 @@ function add_combo(element){
         xmlhttp.onreadystatechange = function(){
           if (this.readyState == 4 && this.status == 200){
             if(this.responseText != "null"){
-                  window.location.href = this.responseText;
+              document.getElementById("notice").innerHTML = add_notice("success", "Đã thêm thành công");
+              document.getElementsByClassName("alert")[0].style.display = "block";
+              setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
             }
             else{
-                alert("Thanh toán thất bại!");
+              document.getElementById("notice").innerHTML = add_notice("fail", "Thêm thất bại");
+              document.getElementsByClassName("alert")[0].style.display = "block";
+              setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
             }
           }
         };
@@ -41,9 +47,8 @@ function add_combo(element){
       }
 }
 
-function add_notice(string){
-  if(string == "OK") return '<div class="alert success" role="alert"><strong>Xóa thành công!</strong></div>';
-  return '<div class="alert fail" role="alert"><strong>Xóa thất bại!</strong></div>';
+function add_notice(alert, string){
+  return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
 }
 
 function remove_combo(cid, element){
@@ -51,11 +56,11 @@ function remove_combo(cid, element){
   xmlhttp.onreadystatechange = function(){
     if(this.responseText == "OK"){
       element.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
-      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementById("notice").innerHTML = add_notice("success", "Đã xóa combo");
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
     } else if(this.responseText == "Nope"){
-      document.getElementById("notice").innerHTML = add_notice(this.responseText);
+      document.getElementById("notice").innerHTML = add_notice("fail", "Xóa thất bại");
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
     }
@@ -74,9 +79,6 @@ document.getElementById("add_cycle_Btn").onclick = function(){
     form.style.display = "block";
   }
 }
-
-
-
 
 // modal add item
 var modal = document.getElementById("addCombo-modal");

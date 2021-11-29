@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
   <head>
     <!-- setting page -->
     <meta charset="utf-8">
@@ -56,10 +56,38 @@
                         <h2>Giỏ hàng</h2>
                     </div>
                     <?php
-                    if(!empty($data["product_in_cart"])){
-                            echo "<div class=\"col-12 col-xxl-11\">
-                                <div class=\"row nonemg d-flex flex-wrap\">";
                             $count = 0;
+                            $total = 0;
+                    
+                            echo "<div class=\"col-12 col-xxl-11\">
+                            <div class=\"row nonemg d-flex flex-wrap\">";
+                    if(!empty($data["order_combo"])){
+                        foreach($data["order_combo"] as $row){
+                          $count += 1;
+                          $total += (int)$row["price"];
+                            echo "<div class=\"ol-12 col-md-6 col-xl-4 col-xxl-4\">
+                            <section>
+                                <div class=\"card\"><span hidden>" . $row["id"] . "</span>
+                                    <div class=\"card-header text-center d-flex py-1\">
+                                        <h5 class=\"mb-0 col-11 fw-bold\">" . $row["name"] . "</h5><div class=\"col-1\" style=\"cursor: pointer;\" onclick=\"remove_combo(this)\">
+                                        <i class=\"fas fa-times\"></i>    
+                                    </div>
+                                        </div>		
+                                        <div class=\"card-body text-center\">
+                                            <h3 class=\"text-warning mb-2\">" . $row["price"] . "/tháng</h3>
+                                            <h6>Mỗi hộp bao gồm: </h6>
+                                            <ol class=\"list-group list-group-numbered\">";
+                                            foreach($row["product"] as $product){
+                                                echo "<li class=\"list-group-item\">" . $product["name"] . "</li>";
+                                            }
+                            echo        "</ol>
+                                        </div>
+                                        <div class=\"card-footer d-flex justify-content-between py-3\">
+                                        <h4>Chu kì: " . $row["cycle"] . "</h4><h4>Size: " . $row["size"] . "</h4>";
+                          echo "</div></div></section></div>";
+                        }
+                    }
+                    if(!empty($data["product_in_cart"])){
                             foreach($data["product_in_cart"] as $row){
                                 $count += 1;
                                 echo    "<div class=\"col-12 col-md-6 col-xl-4 col-xxl-4\">
@@ -130,7 +158,7 @@
                 <div class=\"row nonemg d-flex flex-row-reverse\">
                     <div class=\"col-12 col-sm-8 col-md-6 col-lg-5 col-xxl-4\">
                         <h3>Tổng thanh toán (".  $count ." sản phẩm)</h3>
-                        <h5></h5>
+                        <h5>" . $total . "</h5>
                         <div class=\"d-flex flex-wrap justify-content-center\">
                             <button id=\"myBtn\" type=\"button\" class=\"btn btn-primary\">Địa chỉ giao hàng</button>
                             <button type=\"button\" class=\"btn btn-primary\">Thanh toán</button>
