@@ -146,7 +146,7 @@
       </div>
 
       <div class="shop-collection">
-        <h2>--- Các sản phẩm của Shop ---</h2>
+        <h2><i class="far fa-hand-point-right"></i> Các sản phẩm của Shop <i class="far fa-heart"></i></h2>
         <div class="container">
           <div class="collection-layout">
           <?php
@@ -169,7 +169,7 @@
       </div>
 
       <div class="feature-news">
-        <h2>--- Tin tức nổi bật ---</h2>
+        <h2><i class="far fa-hand-point-right"></i> Tin tức nổi bật <i class="fas fa-fire-alt"></i></h2>
         <div class="container">
         <?php
           echo "<div class=\"attractive-new\">";
@@ -205,7 +205,7 @@
 
       <!-- Featured -->
       <div class="featured">
-        <h2>--- Sản phẩm được ưa chuộng ---</h2>
+        <h2><i class="far fa-hand-point-right"></i> Sản phẩm được ưa chuộng <i class="fas fa-chart-line"></i></h2>
 
         <div class="row1 container">
           <div class="swiper-container slider-2">
@@ -226,8 +226,9 @@
                       else if($data["user"] == "manager"){
                         foreach($data["featured"] as $row){ // manager
                           if($row["top_seller"] == 1){
-                            echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                            echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                            echo "<div class=\"swiper-slide\">
+                                    <div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
+                            echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/\"><span hidden>" . $row["id"] . "</span>";
                             echo $row["name"] . "</a><div class=\"price\"><span>" . $row["price"] . "đ</span></div></div></div></div>";
                           }
                         }

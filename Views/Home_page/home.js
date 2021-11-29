@@ -54,7 +54,7 @@ const swiper1 = new Swiper(".slider-1", {
 
 var user = document.getElementsByClassName("featured")[0].getElementsByTagName("span")[0].innerText;
 document.getElementsByClassName("featured")[0].getElementsByTagName("span")[0].remove();
-console.log(user);
+
 for (let index = 0; index < document.getElementsByClassName("addToCart").length; index++) {
   document.getElementsByClassName("addToCart")[index].value = document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].innerText;
   document.getElementsByClassName("addToCart")[index].getElementsByTagName("span")[0].remove();
