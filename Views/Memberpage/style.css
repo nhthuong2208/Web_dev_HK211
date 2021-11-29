@@ -18,10 +18,17 @@ input{
     margin-top: 10px;
     max-width: fit-content;
 }
+.pic img{
+    width: 250px !important;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid black;
+    border-radius: 50%;
+}
 .profile{
     width: 250px !important;
     max-height: 250px;
-    object-fit: contain, cover;
+    object-fit: cover;
     border: 1px solid black;
     border-radius: 50%;
 }
@@ -57,7 +64,7 @@ input{
     height: 90px;
     width: 90px;
     margin-bottom: 8px;
-    object-fit: contain, cover;
+    object-fit: cover;
     border: 1px solid black;
     border-radius: 50%;
 }
@@ -83,7 +90,7 @@ input{
     max-width: 120px;
     height: auto;
     max-height: 120px;
-    object-fit: contain, cover;
+    object-fit: cover;
     border: 1px solid black;
     border-radius: 50%;
 }
@@ -173,7 +180,7 @@ input{
     width: 100% !important;
     max-width: 100%;
     max-height: 300px;
-    object-fit: contain, cover;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 576px){

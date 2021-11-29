@@ -89,7 +89,7 @@ document.getElementsByTagName("button")[3].onclick = function(){
         var cmnd = profile.getElementsByClassName("col-7")[3].innerText;
         var phone = profile.getElementsByClassName("col-7")[4].innerText;
         var add = profile.getElementsByClassName("col-7")[5].innerText;
-        profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-5\"><label for=\"file_pic\" style=\"cursor: pointer;\"><img src=\"" + linkimg + "\" alt=\"profile\" class=\"profile\"></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" onchange=\"upload_pic(this)\"hidden></div>";
+        profile.innerHTML = "<div class=\"col-12 d-flex justify-content-center mb-5\"><label for=\"file_pic\" style=\"cursor: pointer;\" class=\"pic\"><img src=\"" + linkimg + "\" alt=\"profile\" class=\"profile\"/></label><input type=\"file\" id=\"file_pic\" name=\"file_pic\" onchange=\"upload_pic(this)\"hidden></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Họ tên:</div>";
         profile.innerHTML += "<div class=\"col-7 col-md-8\"><input type=\"text\" name=\"fname\" value=\"" + fname + "\"></div>";
         profile.innerHTML += "<div class=\"col-5 col-md-3\">Email:</div>";
