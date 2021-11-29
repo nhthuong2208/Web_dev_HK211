@@ -45,6 +45,12 @@
   padding: 10px 16px;
 }
 
+.editItem-modal-body i {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #ffa62b;
+}
+
 .editItem-modal-body input,
 .editItem-modal-body textarea,
 .editItem-modal-body select {

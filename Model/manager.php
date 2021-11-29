@@ -20,15 +20,27 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     function insert_news($key, $title, $content, $img_url, $short_content){
-        echo ("7");
         $query =    "INSERT INTO `news`(`news`.`key` , `news`.`time`, `news`.`title`, `news`.`content`, `news`.`img_url`, `news`.`short_content`)
                      VALUES (\"" . $key . "\", \"" . date("Y/m/d") . "\", \"" . $title . "\", \"" . $content . "\", \"" . $img_url . "\", \"" . $short_content . "\");";
-        mysqli_query($this->connect, $query);
-        echo mysqli_error($this->connect);
         return mysqli_query($this->connect, $query); 
     }
     function update_news($id, $key, $title, $content, $img_url, $short_content){
-        echo ("8");
+        echo ("$img_url");
+        $content_mod = explode("\"", $content);
+        $content = $content_mod[0];
+        for($i = 1; $i < count($content_mod); $i++){
+            $content = $content . "\\\"" . $content_mod[$i];
+        }
+        $title_mod = explode("\"", $title);
+        $title = $title_mod[0];
+        for($i = 1; $i < count($title_mod); $i++){
+            $title = $title . "\\\"" . $title_mod[$i];
+        }
+        $short_content_mod = explode("\"", $short_content);
+        $short_content = $short_content_mod[0];
+        for($i = 1; $i < count($short_content_mod); $i++){
+            $short_content = $short_content . "\\\"" . $short_content_mod[$i];
+        }
         $query = "UPDATE `news` SET `news`.`key` = \"" . $key . "\", `news`.`title` = \"" . $title . "\", `news`.`content` = \"" . $content . "\",  `news`.`img_url` = \"" . $img_url . "\", `news`.`short_content` = \"" . $short_content . "\" WHERE `news`.`ID` = " . (int)$id . ";";
         mysqli_query($this->connect, $query);
         echo mysqli_error($this->connect);

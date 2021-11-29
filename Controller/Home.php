@@ -3,8 +3,23 @@
 class Home extends Controller{
         function Home_page($user){
             $cus = $this->model($user);
+            $news = $cus->get_news();
+            $news_list = array();
+            foreach($news as $snews){
+                array_push($news_list, ([
+                    "id" => $snews["id"],
+                    "cid" => $snews["cid"],
+                    "key" => $snews["key"], 
+                    "time" => $snews["time"],
+                    "title" => $snews["title"],
+                    "content" => $snews["content"],
+                    "imgurl" => $snews["img_url"],
+                    "shortcontent" => $snews["short_content"],
+                    "comment" => $cus->get_comment_news($snews["id"])]));
+            }
             $this->view("Home_page", [
                 "user" => $user,
+                "news" => $news_list,
                 "collection" => $cus->get_swiper_slide_collection(), //$data["collection"] = $cus->get_swiper_slide_collection() 
                 "featured" => $cus->get_products("", "")
             ]);
@@ -136,25 +151,18 @@ class Home extends Controller{
         }
         function delete_news($user, $id){
             echo (int)$id[2];
-            $this->model("manager")->delete_news((int)$id[2]);
+            $this->model($user)->delete_news((int)$id[2]);
         }
-        // function insert_news($user, $array){
-        //     echo var_dump($array);
 
-        //     $this->model("manager")->insert_news($array[2], $array[3], $array[4], $array[5], $array[6]);
-        // }
         function add_comment_news($user, $array){
             $this->model($user)->add_comment_news($array[2], $array[3], $_SESSION["id"]);
         }
 
         function insert_news($user){
-            echo ("0");
             if(isset($_POST["key"]) && isset($_POST["title"]) && isset($_POST["url"]) && isset($_POST["content"]) && isset($_POST["shortcontent"]))
             {
-                echo ("1");
                 if(isset($_FILES["e-image-url"])){
                     if($_FILES['e-image-url']['name'][0] != ""){
-                        echo ("2");
                         if(!file_exists("./Views/images/" . $_FILES["e-image-url"]['name'][0])){
                             move_uploaded_file($_FILES['e-image-url']['tmp_name'][0], './Views/images/' . $_FILES['e-image-url']['name'][0]);
                         }
@@ -169,7 +177,7 @@ class Home extends Controller{
                     
                 }
             }
-            // $this->News($user);
+            $this->News($user);
         }
 
         function Cost_table($user){
@@ -325,7 +333,6 @@ class Home extends Controller{
         function add_new_item($user){
             if(isset($_POST["iname"]) && isset($_POST["price"]) && isset($_FILES["image-url"]) && isset($_POST["description"]) && isset($_POST["remain"]) && isset($_POST["category"]))
             {
-                echo var_dump($_POST["iname"]);
                 if(!file_exists("./Views/images/" . $_FILES["image-url"]['name'][0])){
                     move_uploaded_file($_FILES['image-url']['tmp_name'][0], './Views/images/' . $_FILES['image-url']['name'][0]);
                 }

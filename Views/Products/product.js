@@ -109,7 +109,6 @@ function add_notice(string){
 function remove_item(pid, element){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
-    console.log(this.responseText);
     if(this.responseText == "OK"){
       element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
       document.getElementById("notice").innerHTML = add_notice(this.responseText);

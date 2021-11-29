@@ -71,8 +71,8 @@ CREATE TABLE `COMMENT_NEWS`(
     `CID` BIGINT NOT NULL,
     `CONTENT` TEXT,
     `TIME` DATE,
-    FOREIGN KEY (`CID`) REFERENCES `ACCOUNT`(`ID`),
-    FOREIGN KEY (`NID`) REFERENCES `NEWS`(`ID`) 
+    FOREIGN KEY (`CID`) REFERENCES `ACCOUNT`(`ID`) ON DELETE CASCADE,
+    FOREIGN KEY (`NID`) REFERENCES `NEWS`(`ID`) ON DELETE CASCADE 
 );
 CREATE TABLE `CYCLE`( 
     `ID` INT PRIMARY KEY AUTO_INCREMENT, 
@@ -140,13 +140,43 @@ INSERT INTO `comment`(`comment`.`PID`, `comment`.`UID`, `comment`.`STAR`, `comme
 
 -- combo
 INSERT INTO `combo` (`combo`.`ID`, `combo`.`NAME`, `combo`.`COST`)VALUES 
-(1, "Combo 1", 299000);
+(1, "Combo 1", 399000),
+(2, "Combo 2", 499000),
+(3, "Combo 3", 599000),
+(4, "Combo 4", 699000),
+(5, "Combo 5", 799000),
+(6, "Combo 6", 999000);
 
 -- product in combo
 INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 3);
+
+-- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
+-- (1, 2, 1),
+-- (2, 2, 2),
+-- (3, 2, 3);
+
+-- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
+-- (1, 3, 1),
+-- (2, 3, 2),
+-- (3, 3, 3);
+
+-- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
+-- (1, 4, 1),
+-- (2, 4, 2),
+-- (3, 4, 3);
+
+-- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
+-- (1, 5, 1),
+-- (2, 5, 2),
+-- (3, 5, 3);
+
+-- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
+-- (1, 6, 1),
+-- (2, 6, 2),
+-- (3, 6, 3);
 
 -- cycle
 INSERT INTO `cycle`(`cycle`.`ID`, `cycle`.`CYCLE`) VALUES
