@@ -218,7 +218,7 @@
                         foreach($data["featured"] as $row){ // "
                           if($row["top_seller"] == 1){
                             echo "<div class=\"swiper-slide\"><div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                            echo "<div class=\"addToCart\" onclick=\"add_Product(this);\"><i class=\"fas fa-shopping-cart\"></i><span hidden>" . $row["id"] . "</span></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/\">";
+                            echo "<div class=\"addToCart\" onclick=\"add_Product(this);\"><i class=\"fas fa-shopping-cart\"></i><span hidden>" . $row["id"] . "</span></div></div><div class=\"bottom\"><a href=\"?url=Home/Item/" . $row["id"] . "\">";
                             echo $row["name"] . "</a><div class=\"price\"><span class=\"feature-item-price\">" . $row["price"] . "đ</span></div></div></div></div>";
                           }
                         }
@@ -228,7 +228,7 @@
                           if($row["top_seller"] == 1){
                             echo "<div class=\"swiper-slide\">
                                     <div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
-                            echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/\"><span hidden>" . $row["id"] . "</span>";
+                            echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/" . $row["id"] . "\">";
                             echo $row["name"] . "</a><div class=\"price\"><span class=\"feature-item-price\">" . $row["price"] . "đ</span></div></div></div></div>";
                           }
                         }
