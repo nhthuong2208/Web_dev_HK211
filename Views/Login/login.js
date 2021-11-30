@@ -63,6 +63,10 @@ $(function() {
 	});
 });
 
+function add_notice(alert, string){
+	return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
+  }
+
 var history_str = document.getElementsByClassName("demo")[0].innerHTML;
 document.getElementsByClassName("demo")[0].remove();
 
@@ -76,10 +80,15 @@ button.onclick = function(){
 		
 		if (this.readyState == 4 && this.status == 200){
 			if(this.responseText != "null"){
+				document.getElementById("notice").innerHTML = add_notice("success", "Đăng nhập thành công" );
+				document.getElementsByClassName("alert")[0].style.display = "block";
+				setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
 				window.location.href = this.responseText;
 			}
 			else{
-				alert("Username hoặc password bạn không chính xác!!"); // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
+				document.getElementById("notice").innerHTML = add_notice("fail", "Tên đăng nhập hoặc mật khẩu không đúng" );
+				document.getElementsByClassName("alert")[0].style.display = "block";
+				setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);; // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
 			}
 		}
 	};

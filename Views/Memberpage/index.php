@@ -213,7 +213,7 @@
         </div>
         <?php endif; ?>
         <?php if($data["state"] == "manager"):?>
-        <div class="row flex-wrap">
+        <div class="row flex-wrap m-0">
             <h2>Danh sách thành viên</h2>
             <?php if(!empty($data["member"])):?>
                 <?php foreach($data["member"] as $row): ?>
