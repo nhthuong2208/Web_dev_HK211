@@ -171,7 +171,7 @@ function remove_combo(element){
         }
     }
   };
-  xmlhttp.open("GET", "?url=Home/delete_order_combo_name/" + element.parentNode.parentNode.parentNode.getElementsByTagName("span")[0].innerText + "/", true);
+  xmlhttp.open("GET", "?url=Home/delete_order_combo_id/" + element.parentNode.parentNode.parentNode.getElementsByTagName("span")[0].innerText + "/", true);
   xmlhttp.send();
 }
 

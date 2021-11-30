@@ -275,18 +275,18 @@ class Home extends Controller{
             }
             echo "?url=/Home/Payment/";
         }
-        function delete_order_combo_name($user, $array){
-            if($this->model($user)->delete_order_combo_name($array[2])) echo "ok";
+        function delete_order_combo_id($user, $array){
+            if($this->model($user)->delete_order_combo_id($array[2])) echo "ok";
             else echo "null";
         }
         function update_cart_combo($user, $array){
             $action = $this->model($user);
             for($i = 0; $i < (int)$array[2]; $i++){
                 if(!($action->update_cart($array[2 + $i + 1]))) echo "null";
-                $this->model($user)->update_order_combo($_SESSION["id"]);
             }
+            $this->model($user)->update_order_combo($_SESSION["id"]);
             $_SESSION["id_cart"] = null;
-            echo "?url=/Home/Home_page/";
+            echo "?url=/Home/member_page/";
         }
         function member_page($user){
             if($user == "member"){
@@ -322,17 +322,23 @@ class Home extends Controller{
             $this->model($user)->add_item_comment($array[2], $array[3], $array[4], $_SESSION["id"]);
         }   
         function update_profile($user){
-            if( isset($_POST["fname"]) && isset($_POST["mail"]) && isset($_POST["username"]) && isset($_POST["pwd"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
+            if( isset($_POST["fname"]) && isset($_POST["mail"]) && isset($_POST["username"]) && isset($_POST["cmnd"]) && isset($_POST["phone"]) && isset($_POST["address"]))
             {
                 if(isset($_FILES["file_pic"])&& $_FILES["file_pic"]['name'] != ""){
                     if(!file_exists("./Views/images/" . $_FILES["file_pic"]['name']))
                         move_uploaded_file($_FILES['file_pic']['tmp_name'], './Views/images/' . $_FILES['file_pic']['name']);
                     $this->model($user)->update_pic($_SESSION["id"], './Views/images/' . $_FILES['file_pic']['name']);
                 }
-                $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["pwd"], $_POST["cmnd"], $_POST["phone"], $_POST["address"], $_POST["mail"]);
+                $this->model($user)->update_profile_nope_img($_SESSION["id"], $_POST["fname"], $_POST["username"], $_POST["cmnd"], $_POST["phone"], $_POST["address"], $_POST["mail"]);
             }
             $this->member_page($user);
             
+        }
+        function update_password_profile($user, $array){
+            if($this->model($user)->update_password_profile($_SESSION["id"], (string)$array[2])){
+                echo "ok";
+            }
+            else echo "null";
         }
         function create_cart($user, $array){
             if(!isset($_SESSION["id_cart"]) || !isset($_SESSION["cart_date"]) || $_SESSION["cart_date"] != $array[2]){

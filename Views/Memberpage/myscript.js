@@ -47,8 +47,20 @@ for(var i = 0; i < click[3].getElementsByClassName("node").length; i++){
         price[index].innerText = price[index].innerText.split(" ")[0] + " " + price[index].innerText.split(" ")[0] + " " + enformat(price[index].innerText.split(" ")[2]) + "(đ)";
     }
 }
-var pwd = click[2].getElementsByTagName("span")[0].innerText;
-click[2].getElementsByTagName("span")[0].remove();
+
+
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+var button = document.getElementsByClassName("btn btn-primary")[4];
+
+span.onclick = function() {
+  modal.style.display = "none";
+};
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 function upload_pic(element){
     var fileSelected = element.files;
@@ -75,6 +87,80 @@ function myFunction(index){
         input.type = "password";
       }
 }
+function changePwd(){
+    modal.style.display = "block";
+}
+var old
+function changeProfile(element){
+    if(element.innerText != "Xong"){
+        document.getElementsByClassName("frame_profile")[0].style.display = "none";
+        document.getElementsByClassName("frame_edit_profile")[0].style.display = "block";
+    }
+    else{
+        var input = element.parentNode.parentNode.getElementsByTagName("input");
+        var check = 0;
+        for (let index = 0; index < input.length; index++) {
+            if(input[index] == ""){
+                document.getElementById("notice").innerHTML = add_notice("fail", "Hãy điền thông tin còn thiếu");
+                document.getElementsByClassName("alert")[0].style.display = "block";
+                setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+                return;
+            }
+            if(input[index].value != input[index].defaultValue) check = 1;
+        }
+        if(check == 1){
+            document.getElementById("notice").innerHTML = add_notice("success", "Thông tin đã thay đổi");
+            document.getElementsByClassName("alert")[0].style.display = "block";
+            setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+            element.parentNode.parentNode.submit();
+        }
+        document.getElementsByClassName("frame_profile")[0].style.display = "block";
+        document.getElementsByClassName("frame_edit_profile")[0].style.display = "none";
+    }
+}
+
+function completechange(element){
+    var input = element.parentNode.parentNode.getElementsByTagName("input");
+    if(input[1].value != input[2].value){
+        document.getElementById("notice").innerHTML = add_notice("fail", "Mật khẩu xác nhận không khớp");
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        return;
+    }
+    if(input[0].value == input[1].value || input[0].value == input[2].value){
+        document.getElementById("notice").innerHTML = add_notice("fail", "Mật khẩu trùng với mật khẩu cũ");
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        return;
+    }
+    if(input[1].value == input[2].value && input[1].value == ""){
+        modal.style.display = "none";
+        return;
+    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+      if (this.readyState == 4 && this.status == 200) {
+          if(this.responseText != "null"){
+              modal.style.display = "none";
+              input[0].value = input[1].value;
+              input[1].value = "";
+              input[2].value = "";
+            document.getElementById("notice").innerHTML = add_notice("success", "Thay đổi mật khẩu thành công");
+            document.getElementsByClassName("alert")[0].style.display = "block";
+            setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+          }
+          else{
+            console.log(this.responseText);
+            document.getElementById("notice").innerHTML = add_notice("fail", "Thay đổi mật khẩu thất bại");
+            document.getElementsByClassName("alert")[0].style.display = "block";
+            setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+          }
+      }
+    };
+    xmlhttp.open("GET", "?url=Home/update_password_profile/" + input[1].value + "/", true);
+    xmlhttp.send();
+}
+/*
 document.getElementsByTagName("button")[3].onclick = function(){
     if(document.getElementsByTagName("button")[3].innerText == "Thiết lập tài khoản"){
         document.getElementsByTagName("button")[3].innerText = "Xác nhận";
@@ -125,7 +211,7 @@ document.getElementsByTagName("button")[3].onclick = function(){
         }
     }
 };
-
+*/
 
 
 

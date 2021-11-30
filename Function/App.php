@@ -1,7 +1,7 @@
 <?php
 class App{
 //Home/Function/para/para
-    protected $controller="Home"; //""
+    protected $controller="Home";
     protected $action="Home_page";
     protected $params=[];
 
@@ -31,13 +31,10 @@ class App{
         call_user_func_array([$this->controller, $this->action], $this->params);
 
     }
-        // Home/function/parametors
     function UrlProcess(){
         if( isset($_GET["url"]) ){
-            //echo $_GET["url"];
             return explode("/", filter_var(trim($_GET["url"], "/")));
         }
     }
-
 }
 ?>

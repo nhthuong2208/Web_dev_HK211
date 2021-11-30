@@ -242,16 +242,14 @@
 
                       echo "<div id=\"updateCombo-modal-" . $row['id']. "\" class=\"add-combo-modal\">
                     <div class=\"addCombo-modal-content\">
-                      <div class=\"addCombo-modal-header\">
+                      <div class=\"addCombo-modal-header\" id=\"updateCombo-modal\">
                         <span class=\"close-modal-addc-update-". $row['id']. "\">&times;</span>
                         <h2>Chỉnh sửa gói</h2>
                       </div>
                       <div class=\"addCombo-modal-body\">
                         <form action=\"?url=Home/update_new_combo\" method=\"POST\">
                           <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"cid\">
-                              Tên combo:
-                            </label>
+                            
                             <div class=\"col-lg-8\"><input value =\"" . $row["id"] . "\" type=\"text\" name=\"cid\" placeholder=\"Nhập tên combo\" hidden></div>
                           </div>
                           <div class=\"row\">
@@ -273,9 +271,13 @@
                             <div class=\"col-lg-8\">
                               <select id=\"c-shirt\" name=\"c-shirt\">
                                 <option selected disabled>Chọn áo cho combo</option>";
-                                foreach($data["product"] as $row){
-                                    if($row["cate"] == "Shirt"){
-                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                foreach($data["product"] as $row1){
+                                    if($row1["cate"] == "Shirt"){
+                                        echo "<option value=\"" . $row1["id"] . "\"";
+                                          foreach($row["product"] as $row2){
+                                            if($row1["name"] == $row2["name"]) echo " selected"; 
+                                          } 
+                                        echo">" . $row1["name"] . "</option>";
                                     }
                                 }
                             echo "</select>
@@ -288,9 +290,13 @@
                             <div class=\"col-lg-8\">
                               <select id=\"c-pants\" name=\"c-pants\">
                                 <option selected disabled>Chọn quần cho combo</option>";
-                                foreach($data["product"] as $row){
-                                    if($row["cate"] == "Trousers"){
-                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                foreach($data["product"] as $row1){
+                                    if($row1["cate"] == "Trousers"){
+                                        echo "<option value=\"" . $row1["id"] . "\"";
+                                          foreach($row["product"] as $row2){
+                                            if($row1["name"] == $row2["name"]) echo " selected"; 
+                                          } 
+                                        echo">" . $row1["name"] . "</option>";
                                     }
                                 }
                             echo "  </select>
@@ -303,9 +309,13 @@
                             <div class=\"col-lg-8\">
                               <select id=\"c-ass\" name=\"c-ass\">
                                 <option selected disabled>Chọn phụ kiện cho combo</option>";
-                                foreach($data["product"] as $row){
-                                    if($row["cate"] == "Accessories"){
-                                        echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
+                                foreach($data["product"] as $row1){
+                                    if($row1["cate"] == "Accessories"){
+                                        echo "<option value=\"" . $row1["id"] . "\"";
+                                          foreach($row["product"] as $row2){
+                                            if($row1["name"] == $row2["name"]) echo " selected"; 
+                                          } 
+                                        echo">" . $row1["name"] . "</option>";
                                     }
                                 }
                              echo " </select>

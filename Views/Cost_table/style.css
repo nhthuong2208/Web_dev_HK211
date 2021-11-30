@@ -14,12 +14,27 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.close-modal-addc, .close-modal-addc-update {
+.close-modal-addc {
   color: #fff;
   float: right;
   font-size: 28px;
   font-weight: bold;
   align-items: baseline;
+}
+
+#updateCombo-modal span {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  align-items: baseline;
+}
+
+#updateCombo-modal span:hover,
+#updateCombo-modal span:focus {
+  color: #ffa62b;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .close-modal-addc:hover,

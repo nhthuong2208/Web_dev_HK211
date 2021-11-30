@@ -34,7 +34,7 @@
     <?php require_once("./Views/Navbar/index.php"); ?>
 	<script src="./Views/Navbar/navbarScript.js"></script>
 
-	<div class="login mb-5" style="min-height: 60vh;">
+	<div class="login mb-5" style="min-height: 66vh;">
 		<div class="row justify-content-md-center h-100">
 			<div class="card-wrapper col-md-4">
 				<div class="card fat p-1 bg-warning">
