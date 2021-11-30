@@ -71,7 +71,7 @@ class manager extends customer{
         return mysqli_insert_id($this->connect);
     }
     public function add_sub_img($pid, $path){
-        if($path == ""){
+        if($path == "./Views/images/"){
             $path = './Views/images/default_image.png';
         }
         $query = "INSERT INTO `sub_img_url`(`sub_img_url`.`PID`, `sub_img_url`.`IMG_URL`)
