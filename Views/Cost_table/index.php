@@ -256,13 +256,13 @@
                             <label class=\"col-lg-4\" for=\"cname\">
                               Tên combo: 
                             </label>
-                            <div class=\"col-lg-8\"><input value =\"" . $row["name"] . "\" type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\"></div>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["name"] . "\" type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"price\">
                               Giá:
                             </label>
-                            <div class=\"col-lg-8\"><input value =\"" . $row["price"] . "\" type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\"></div>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["price"] . "\" type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"c-shirt\">
@@ -341,13 +341,13 @@
                             <label class=\"col-lg-4\" for=\"cname\">
                               Tên combo:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\"></div>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"price\">
                               Giá:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\"></div>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"c-shirt\">

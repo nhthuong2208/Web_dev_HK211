@@ -1,5 +1,19 @@
 filterComment("all");
 
+var forms = document.querySelectorAll('.needs-validation')
+Array.prototype.slice.call(forms)
+  .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+
+  
 // Add active class to the current control button (highlight it)
 let btnContainer = document.getElementById("filter-rating-btn");
 let tabs = btnContainer.getElementsByClassName("button-filter");

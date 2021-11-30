@@ -94,24 +94,24 @@
                         <h2>Thêm sản phẩm</h2>
                       </div>
                       <div class=\"addItem-modal-body\">
-                        <form action=\"?url=Home/add_new_item\" method=\"POST\" enctype=\"multipart/form-data\">
+                        <form action=\"?url=Home/add_new_item\" method=\"POST\" class=\"needs-validation \" novalidate=\"\" enctype=\"multipart/form-data\">
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"iname\">
                               Tên sản phẩm:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"iname\" placeholder=\"Nhập tên sản phẩm\"></div>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"iname\" placeholder=\"Nhập tên sản phẩm\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"price\">
                               Giá:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của sản phẩm\"></div>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của sản phẩm\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url\">
                             <i class=\"far fa-image\"></i> Ảnh sản phẩm: 
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"file\" id=\"image-url\" name=\"image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
+                            <div class=\"col-lg-8\"><input class =\"img_url\" type=\"file\" id=\"image-url\" name=\"image-url[]\" onchange=\"upload_pic(this)\"  class=\"form-control is-valid\" id=\"validationSuccess\" required hidden></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"image-url-1\">
@@ -141,29 +141,33 @@
                             <label class=\"col-lg-4\" for=\"description\">
                               Mô tả:
                             </label>
-                            <div class=\"col-lg-8\"><textarea name=\"description\" placeholder=\"Nhập mô tả sản phẩm\"></textarea></div>
+                            <div class=\"col-lg-8\"><textarea name=\"description\" placeholder=\"Nhập mô tả sản phẩm\" class=\"form-control is-valid\" id=\"validationSuccess\" required></textarea></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"remain\">
                               Số lượng tồn kho:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" placeholder=\"Nhập số lượng sản phẩm\"></div>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"remain\" placeholder=\"Nhập số lượng sản phẩm\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"category\">
+                            <label class=\"col-lg-4\" for=\"category\" class=\"form-control is-valid\" id=\"validationSuccess\" required>
                               Loại:
                             </label>
                             <div class=\"col-lg-8\">
-                              <select id=\"category\" name=\"category\">
-                                <option selected disabled>Chọn loại</option>
+                              <label for=\"validationCustom04\" class=\"form-label\"></label>
+                              <select name=\"category\" class=\"form-select\" id=\"validationCustom04\" required=\"\">
+                                <option selected=\"\" disabled=\"\" value=\"\">Chọn loại</option>
                                 <option value=\"Shirt\">Áo</option>
                                 <option value=\"Trousers\">Quần</option>
                                 <option value=\"Accessories\">Phụ kiện</option>
                               </select>
+                              <div class=\"invalid-feedback\">
+                                Vui lòng chọn loại.
+                              </div>
                             </div>
                           </div>
                           <div class=\"btn-conf-add\">
-                            <button type=\"submit\">Thêm</button>
+                            <button type=\"submit\" onclick = \"Validate()\">Thêm</button>
                           </div>
                         </form>
                       </div>
