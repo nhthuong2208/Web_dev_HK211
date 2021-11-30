@@ -336,7 +336,7 @@
                         <h2>Thêm gói mới</h2>
                       </div>
                       <div class=\"addCombo-modal-body\">
-                        <form action=\"?url=Home/add_new_combo\" method=\"POST\">
+                        <form action=\"?url=Home/add_new_combo\" method=\"POST\" class=\"needs-validation \" novalidate=\"\" >
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"cname\">
                               Tên combo:
@@ -350,48 +350,60 @@
                             <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"c-shirt\">
+                            <label class=\"col-lg-4\" for=\"c-shirt\" class=\"form-control is-valid\" id=\"validationSuccess\" required>
                               Áo:
                             </label>
                             <div class=\"col-lg-8\">
-                              <select id=\"c-shirt\" name=\"c-shirt\">
-                                <option selected disabled>Chọn áo cho combo</option>";
+                            <label for=\"validationCustom04\" class=\"form-label\" ></label>
+                              <select id=\"c-shirt\" name=\"c-shirt\" class=\"form-select\" id=\"validationCustom04\" required=\"\">
+                                <option selected=\"\" disabled=\"\" value=\"\">Chọn áo cho combo</option>";
                                 foreach($data["product"] as $row){
                                     if($row["cate"] == "Shirt"){
                                         echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
                                     }
                                 }
                             echo "</select>
+                            <div class=\"invalid-feedback\">
+                                Vui lòng chọn áo.
+                            </div>
                             </div>
                           </div>
                           <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"c-pants\">
+                            <label class=\"col-lg-4\" for=\"c-pants\" class=\"form-control is-valid\" id=\"validationSuccess\" required>
                               Quần:
                             </label>
                             <div class=\"col-lg-8\">
-                              <select id=\"c-pants\" name=\"c-pants\">
-                                <option selected disabled>Chọn quần cho combo</option>";
+                            <label for=\"validationCustom05\" class=\"form-label\" ></label>
+                              <select id=\"c-pants\" name=\"c-pants\" class=\"form-select\" id=\"validationCustom05\" required=\"\">
+                                <option selected=\"\" disabled=\"\" value=\"\">Chọn quần cho combo</option>";
                                 foreach($data["product"] as $row){
                                     if($row["cate"] == "Trousers"){
                                         echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
                                     }
                                 }
                             echo "  </select>
+                            <div class=\"invalid-feedback\">
+                                Vui lòng chọn quần.
+                            </div>
                             </div>
                           </div>
                           <div class=\"row\">
-                            <label class=\"col-lg-4\" for=\"c-ass\">
+                            <label class=\"col-lg-4\" for=\"c-ass\" class=\"form-control is-valid\" id=\"validationSuccess\" required>
                               Phụ kiện:
                             </label>
                             <div class=\"col-lg-8\">
-                              <select id=\"c-ass\" name=\"c-ass\">
-                                <option selected disabled>Chọn phụ kiện cho combo</option>";
+                            <label for=\"validationCustom06\" class=\"form-label\" ></label>
+                              <select id=\"c-ass\" name=\"c-ass\" class=\"form-select\" id=\"validationCustom06\" required=\"\">
+                                <option selected=\"\" disabled=\"\" value=\"\">Chọn phụ kiện cho combo</option>";
                                 foreach($data["product"] as $row){
                                     if($row["cate"] == "Accessories"){
                                         echo "<option value=\"" . $row["id"] . "\">" . $row["name"] . "</option>";
                                     }
                                 }
                              echo " </select>
+                            <div class=\"invalid-feedback\">
+                                Vui lòng chọn phụ kiện.
+                            </div>
                             </div>
                           </div>
                           <div class=\"btn-conf-add\">
