@@ -25,7 +25,7 @@
       </form>
 
       <div class="cart">
-        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="<?php if($_SESSION["user"] != "manager") echo "?url=Home/Cart/"; else echo "#";?>"><i class="fas fa-shopping-cart"></i> Giỏ</a></button>
+        <button id="cart-button-nav" class="btn btn-primary" type="button"><a href="<?php if(!isset($_SESSION["user"]) || isset($_SESSION["user"]) && $_SESSION["user"] != "manager") echo "?url=Home/Cart/"; else echo "#";?>"><i class="fas fa-shopping-cart"></i> Giỏ</a></button>
       </div>
 
       <div class="login-button">

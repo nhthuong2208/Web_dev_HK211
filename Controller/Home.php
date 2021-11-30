@@ -275,8 +275,8 @@ class Home extends Controller{
             }
             echo "?url=/Home/Payment/";
         }
-        function delete_order_combo_name($user, $array){
-            if($this->model($user)->delete_order_combo_name($array[2])) echo "ok";
+        function delete_order_combo_id($user, $array){
+            if($this->model($user)->delete_order_combo_id($array[2])) echo "ok";
             else echo "null";
         }
         function update_cart_combo($user, $array){
