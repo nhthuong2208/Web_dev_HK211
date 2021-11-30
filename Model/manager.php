@@ -169,7 +169,6 @@ class manager extends customer{
         return mysqli_insert_id($this->connect);
     }
     public function update_new_combo($id, $name, $price){
-        echo ("1");
         $query = "UPDATE `combo` SET `combo`.`NAME` =\"" . $name . "\", `combo`.`COST`=" . (int)$price. " WHERE `combo`.`ID`=" .$id;
         return mysqli_query($this->connect, $query);
     }
