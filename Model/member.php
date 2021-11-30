@@ -50,6 +50,12 @@ class member extends customer{
                     WHERE `account`.`ID` = " . $id .";";
         return mysqli_query($this->connect, $query);
     }
+    public function update_password_profile($id, $pwd){
+        $query =    "UPDATE `account`
+                    SET `account`.`PWD` = \"" . $pwd . "\"
+                    WHERE `account`.`ID` = " . $id .";";
+        return mysqli_query($this->connect, $query);
+    }
     public function delete_product_incart($id){
         $query =    "DELETE FROM `product_in_cart` WHERE `product_in_cart`.`ID` = " . $id .";";
         return mysqli_query($this->connect, $query);
@@ -89,14 +95,13 @@ class member extends customer{
                     GROUP BY `cart`.`ID`";
         return  mysqli_query($this->connect, $query);
     }
-    public function update_profile_nope_img($id, $fname, $user, $pwd, $cmnd, $phone, $add, $mail){
+    public function update_profile_nope_img($id, $fname, $user, $cmnd, $phone, $add, $mail){
         $query =    "UPDATE `account`
                     SET `account`.`CMND` = \"" . $cmnd . "\",
                         `account`.`FNAME` = \"" . $fname . "\",
                         `account`.`PHONE` = \"" . $phone . "\",
                         `account`.`ADDRESS` = \"" . $add . "\",
                         `account`.`USERNAME` = \"" . $user . "\",
-                        `account`.`PWD` = \"" . $pwd . "\",
                         `account`.`EMAIL` = \"" . $mail . "\"
                     WHERE `account`.`ID` = " . $id ;
         return mysqli_query($this->connect, $query);
@@ -166,7 +171,6 @@ class member extends customer{
     }
     function delete_order_combo_cbid($id, $cbid){
         $query =    "DELETE FROM `order_combo` WHERE `order_combo`.`UID` = " . $id . " AND `order_combo`.`CBID` = " . $cbid . " AND `order_combo`.`STATE` = 0";
-
         return mysqli_query($this->connect, $query);
     }
     function add_comment_news($content, $nid, $cid){

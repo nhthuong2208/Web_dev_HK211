@@ -196,7 +196,7 @@ input{
     z-index: 1000;
     padding-top: 100px;
     left: 0;
-    top: 0;
+    top: 0px;
     width: 100%; 
     height: 100%;
     overflow: auto; 
@@ -209,6 +209,7 @@ input{
     background-color: #fefefe;
     margin: auto;
     padding: 0;
+    top: 120px;
     width: 100%;
     max-width: 650px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -254,7 +255,7 @@ input{
 }
 
 .modal-body > .row{
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 .modal-body > .row > div{
@@ -274,7 +275,6 @@ input{
 }
 
 .edit-profile-btn button {
-    margin: 10px;
     padding: 0.5rem 1rem;
     background-color: #ffa62b;
     border: none;
@@ -282,7 +282,13 @@ input{
     color: #fff;
 }
 
+.edit-profile-btn button:nth-child(2){
+    margin-left: 3px;
+}
 .edit-profile-btn button:hover {
     background-color: #16697a;
     transition: all .3s ease-in-out;
+}
+.frame_edit_profile{
+    display: none;;
 }
