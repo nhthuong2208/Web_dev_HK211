@@ -79,24 +79,48 @@
             </div>
             <div class="col-12 col-lg-8 col-xl-8 pb-5">
                 <div class="row click"><span hidden><?php foreach($data["user"] as $row) echo $row["pwd"];?></span>
-                    <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
-                    <div class="col-12 border_bot mt-5 mb-3 ">
-                        <div class="row justify-content-center">
-                            <div class="col-5 col-md-3">Họ tên:</div>
-                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["name"];?></div>
-                            <div class="col-5 col-md-3">Email:</div>
-                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["mail"];?></div>
-                            <div class="col-5 col-md-3">Tên đăng nhập:</div>
-                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["username"];?></div>
-                            <div class="col-5 col-md-3">CMND/CCCD:</div>
-                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["cmnd"];?></div>
-                            <div class="col-5 col-md-3">Số điện thoại:</div>
-                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["phone"];?></div>
-                            <div class="col-5 col-md-3">Địa chỉ:</div>
-                            <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["add"];?></div>
+                    <div class="frame_profile">
+                        <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
+                        <div class="col-12 border_bot mt-5 mb-3 ">
+                            <div class="row justify-content-center">
+                                <div class="col-5 col-md-3">Họ tên:</div>
+                                <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["name"];?></div>
+                                <div class="col-5 col-md-3">Email:</div>
+                                <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["mail"];?></div>
+                                <div class="col-5 col-md-3">Tên đăng nhập:</div>
+                                <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["username"];?></div>
+                                <div class="col-5 col-md-3">CMND/CCCD:</div>
+                                <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["cmnd"];?></div>
+                                <div class="col-5 col-md-3">Số điện thoại:</div>
+                                <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["phone"];?></div>
+                                <div class="col-5 col-md-3">Địa chỉ:</div>
+                                <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["add"];?></div>
+                            </div>
                         </div>
+                        <div class="col-6 mt-3 edit-profile-btn"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button><button type="button" class="btn btn-primary">Thay đổi mật khẩu</button></div>
                     </div>
-                    <div class="col-6 mt-3 edit-profile-btn"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button></div>
+                    <div class="frame_edit_profile">
+                        <form action="?url=Home/update_profile" id="edit-profile" method="POST" enctype="multipart/form-data">
+                            <div class="col-12 mt-4 border_bot"><h1>Hồ sơ của tôi</h1></div>
+                            <div class="col-12 border_bot mt-5 mb-3 ">
+                                <div class="row justify-content-center">
+                                    <div class="col-5 col-md-3">Họ tên:</div>
+                                    <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["name"];?></div>
+                                    <div class="col-5 col-md-3">Email:</div>
+                                    <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["mail"];?></div>
+                                    <div class="col-5 col-md-3">Tên đăng nhập:</div>
+                                    <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["username"];?></div>
+                                    <div class="col-5 col-md-3">CMND/CCCD:</div>
+                                    <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["cmnd"];?></div>
+                                    <div class="col-5 col-md-3">Số điện thoại:</div>
+                                    <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["phone"];?></div>
+                                    <div class="col-5 col-md-3">Địa chỉ:</div>
+                                    <div class="col-7 col-md-8"><?php foreach($data["user"] as $row) echo $row["add"];?></div>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3 edit-profile-btn"><button type="button" class="btn btn-primary">Thiết lập tài khoản</button><button type="button" class="btn btn-primary">Thay đổi mật khẩu</button></div>
+                        </form>
+                    </div>
                 </div>
                 <div class="row justify-content-center click">
                     <div class="col-12 mt-4 border_bot"><h1>Đơn hàng đã đặt</h1></div>

@@ -283,10 +283,10 @@ class Home extends Controller{
             $action = $this->model($user);
             for($i = 0; $i < (int)$array[2]; $i++){
                 if(!($action->update_cart($array[2 + $i + 1]))) echo "null";
-                $this->model($user)->update_order_combo($_SESSION["id"]);
             }
+            $this->model($user)->update_order_combo($_SESSION["id"]);
             $_SESSION["id_cart"] = null;
-            echo "?url=/Home/Home_page/";
+            echo "?url=/Home/member_page/";
         }
         function member_page($user){
             if($user == "member"){

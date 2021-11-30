@@ -75,6 +75,9 @@ function myFunction(index){
         input.type = "password";
       }
 }
+function changeProfile(element){
+    let a = 1;
+}
 document.getElementsByTagName("button")[3].onclick = function(){
     if(document.getElementsByTagName("button")[3].innerText == "Thiết lập tài khoản"){
         document.getElementsByTagName("button")[3].innerText = "Xác nhận";
