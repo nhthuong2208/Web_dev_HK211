@@ -85,46 +85,53 @@
                     foreach($data["combo"] as $row){
                         echo "<div class=\"col-md-4 mb-4\">
                         <section>
-                            <div class=\"card\"><span hidden>" .  $row["id"] . "</span>
-                                <div class=\"card-header text-center py-1\">
-                                    <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
-                                    </div>		
-                                    <div class=\"card-body\">
-                                        <h3 class=\"text-warning mb-2\">" . $row["price"] . "/tháng</h3>
-                                        <h6>Mỗi hộp bao gồm: </h6>
-                                        <ol class=\"list-group list-group-numbered\">";
-                                        foreach($row["product"] as $product){
-                                            echo "<li class=\"list-group-item\">" . $product["name"] . "</li>";
-                                        }
-                        echo        "</ol>
-                                        <p>Chọn kích cỡ</p>
-                                        <div class=\"btn-group\" role=\"group\" aria-label=\"Basic radio toggle button group\">
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio1\" autocomplete=\"off\" checked=\"\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio1\">S</label>
-                                          
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio2\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio2\">M</label>
-                                          
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">L</label>
-                
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio4\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio4\">XL</label>
-                
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio5\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio5\">XXL</label>
-                                          </div>
-                                    </div>
-                                    <div class=\"card-footer d-flex justify-content-between py-3\">
-                                    <select class=\"form-select-sm\" aria-label=\"Small select\">
-                                        <option selected=\"0\">Chọn chu kì gửi</option>";
-                        $i = 1;
-                        foreach($data["cycle"] as $row1){
-                            echo "<option value=\"". $i . "\">Gửi mỗi ". $row1["cycle"] . "</option>";
-                            $i += 1;
-                        }
+                          <div class=\"card\"><span hidden>" .  $row["id"] . "</span>
+                            <div class=\"card-header text-center py-1\">
+                              <h5 class=\"mb-0 fw-bold\">" . $row["name"] . "</h5>
+                            </div>		
+                            <div class=\"card-body\">
+                              <h3 class=\"text-warning mb-2\">" . $row["price"] . "/tháng</h3>
+                              <h6>Mỗi hộp bao gồm: </h6>
+                              <ol class=\"list-group list-group-numbered\">";
+                              foreach($row["product"] as $product){
+                                  echo "<li class=\"list-group-item\">" . $product["name"] . "</li>";
+                              }
+                  echo        "</ol>
+                                <p>Chọn kích cỡ</p>
+                                <div class=\"btn-group\" role=\"group\" aria-label=\"Basic radio toggle button group\">
+                                  <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio1-" . $row['id'] ."\" autocomplete=\"off\" checked=\"\">
+                                  <label class=\"btn btn-outline-secondary\" for=\"btnRadio1-" . $row['id'] ."\">S</label>
+                                
+                                  <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio2-" . $row['id'] ."\" autocomplete=\"off\">
+                                  <label class=\"btn btn-outline-secondary\" for=\"btnRadio2-" . $row['id'] ."\">M</label>
+                                
+                                  <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3-" . $row['id'] ."\" autocomplete=\"off\">
+                                  <label class=\"btn btn-outline-secondary\" for=\"btnRadio3-" . $row['id'] ."\">L</label>
+      
+                                  <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio4-" . $row['id'] ."\" autocomplete=\"off\">
+                                  <label class=\"btn btn-outline-secondary\" for=\"btnRadio4-" . $row['id'] ."\">XL</label>
+      
+                                  <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio5-" . $row['id'] ."\" autocomplete=\"off\">
+                                  <label class=\"btn btn-outline-secondary\" for=\"btnRadio5-" . $row['id'] ."\">XXL</label>
+                                </div>
+                            </div>
+                            <div class=\"card-footer d-flex justify-content-between py-3\">
+                              <select class=\"form-select-sm\" aria-label=\"Small select\">
+                                  <option selected=\"0\">Chọn chu kì gửi</option>";
+                                  $i = 1;
+                                  foreach($data["cycle"] as $row1){
+                                      echo "<option value=\"". $i . "\">Gửi mỗi ". $row1["cycle"] . "</option>";
+                                      $i += 1;
+                                  }
 
-                    echo "</select><button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">Thanh toán</button></div></div></section></div>";
+                      echo "  </select>
+                              <button type=\"button\" class=\"btn btn-success btn-block\" onclick=\"add_combo(this);\">
+                                Thanh toán
+                              </button>
+                            </div>
+                          </div>
+                        </section>
+                      </div>";
                     }
                 }
             }
@@ -164,21 +171,21 @@
                         echo        "</ol>
                                         <p>Chọn kích cỡ</p>
                                         <div class=\"btn-group\" role=\"group\" aria-label=\"Basic radio toggle button group\">
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\"  autocomplete=\"off\" checked=\"\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio1\">S</label>
-                                          
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\"  autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio2\">M</label>
-                                          
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio3\">L</label>
-                
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio4\">XL</label>
-                
-                                            <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\"  autocomplete=\"off\">
-                                            <label class=\"btn btn-outline-secondary\" for=\"btnRadio5\">XXL</label>
-                                          </div>
+                                          <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio1-" . $row['id'] ."\" autocomplete=\"off\" checked=\"\">
+                                          <label class=\"btn btn-outline-secondary\" for=\"btnRadio1-" . $row['id'] ."\">S</label>
+                                        
+                                          <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio2-" . $row['id'] ."\" autocomplete=\"off\">
+                                          <label class=\"btn btn-outline-secondary\" for=\"btnRadio2-" . $row['id'] ."\">M</label>
+                                        
+                                          <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio3-" . $row['id'] ."\" autocomplete=\"off\">
+                                          <label class=\"btn btn-outline-secondary\" for=\"btnRadio3-" . $row['id'] ."\">L</label>
+              
+                                          <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio4-" . $row['id'] ."\" autocomplete=\"off\">
+                                          <label class=\"btn btn-outline-secondary\" for=\"btnRadio4-" . $row['id'] ."\">XL</label>
+              
+                                          <input type=\"radio\" class=\"btn-check\" name=\"btnGroupRadio\" id=\"btnRadio5-" . $row['id'] ."\" autocomplete=\"off\">
+                                          <label class=\"btn btn-outline-secondary\" for=\"btnRadio5-" . $row['id'] ."\">XXL</label>
+                                        </div>
                                     </div>
                                     <div class=\"card-footer d-flex justify-content-between py-3\">
                                     <select class=\"form-select-sm\" aria-label=\"Small select\">
@@ -199,10 +206,18 @@
                     //     </section></div>";
                     // } 
                     // else {
-                      echo "</select>
-                            <div ><button type=\"button\" class=\"btn btn-danger\" id=\"deleteCombo-btn\" data-bs-toggle=\"modal\" data-bs-target=\"#delcomboModal-" .$count . "\"><i class=\"fas fa-trash\"></i> Xóa</button></div>
-                            <div ><button type=\"button\" class=\"btn btn-success\" id=\"updateCombo-btn\"><i class=\"fas fa-edit\"></i> Chỉnh sửa</button></div>
+                    echo "</select>
+                            <div>
+                              <button type=\"button\" class=\"btn btn-danger\" id=\"deleteCombo-btn\" data-bs-toggle=\"modal\" data-bs-target=\"#delcomboModal-" .$count . "\">
+                                <i class=\"fas fa-trash\"></i> Xóa
+                              </button>
                             </div>
+                            <div>
+                              <button type=\"button\" class=\"btn btn-success\" id=\"updateCombo-btn-" . $row['id'] ."\" value = \"". $row['id']. "\" onClick = \"update_combo(this.value)\">
+                                <i class=\"fas fa-edit\"></i> Chỉnh sửa
+                              </button>
+                            </div>
+                          </div>
                           </div>
                         </section>";
                         echo "<div class=\"modal fade\" id=\"delcomboModal-" .$count . "\" tabindex=\"-1\" aria-labelledby=\"delcomboModalLabel-" .$count . "\" aria-hidden=\"true\">
@@ -224,11 +239,11 @@
                       </div>";  
                       echo "</div>";  
                       $count += 1;
-                    }
-                    echo "<div id=\"updateCombo-modal\" class=\"add-combo-modal\">
+
+                      echo "<div id=\"updateCombo-modal-" . $row['id']. "\" class=\"add-combo-modal\">
                     <div class=\"addCombo-modal-content\">
                       <div class=\"addCombo-modal-header\">
-                        <span class=\"close-modal-addc-update\">&times;</span>
+                        <span class=\"close-modal-addc-update-". $row['id']. "\">&times;</span>
                         <h2>Chỉnh sửa gói</h2>
                       </div>
                       <div class=\"addCombo-modal-body\">
@@ -302,19 +317,9 @@
                         </form>
                       </div>
                     </div>
-                  </div>";  
-                            
-                  
-                    }
-                
+                  </div>"; 
 
-                
-
-
-
-
-
-                echo "<div id=\"addCombo-modal\" class=\"add-combo-modal\">
+                  echo "<div id=\"addCombo-modal\" class=\"add-combo-modal\">
                     <div class=\"addCombo-modal-content\">
                       <div class=\"addCombo-modal-header\">
                         <span class=\"close-modal-addc\">&times;</span>
@@ -387,6 +392,8 @@
                     </div>
                   </div>";
                   
+                }
+              }    
             }
         ?>
         

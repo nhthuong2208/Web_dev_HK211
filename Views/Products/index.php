@@ -186,7 +186,7 @@
                       "\"class=\"card-img-top\" alt=\"card-grid-image\" /></a>
                       <div class=\"card-body\"><h5 class=\"card-title\">" . $row["name"] .
                       "</h5>
-                      <p class=\"card-text fw-bold fs-5\">" . $row["price"] . "đ</p>
+                      <p class=\"card-text each-item-price fw-bold fs-5\">" . $row["price"] . "đ</p>
                       <div class=\"d-flex justify-content-between\">";
                       if($data["user"] == "customer" || $data["user"] == "member"){
                         echo "<div style=\"text-align: left;\" class=\"quantity-section\"><div class=\"plus-qty-btn\"><i class=\"fas fa-minus-circle\" onclick=\"minus(this);\"></i></button></div>

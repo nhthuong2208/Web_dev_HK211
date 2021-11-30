@@ -171,11 +171,10 @@ class manager extends customer{
     public function update_new_combo($id, $name, $price){
         echo ("1");
         $query = "UPDATE `combo` SET `combo`.`NAME` =\"" . $name . "\", `combo`.`COST`=" . (int)$price. " WHERE `combo`.`ID`=" .$id;
-        mysqli_query($this->connect, $query);
-        echo mysqli_error($this->connect);
-        return mysqli_query($this->connect, $query);;
+        return mysqli_query($this->connect, $query);
     }
     public function add_product_in_combo($cbid, $shirt, $pant, $ass){
+
         $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$shirt . ");";
         mysqli_query($this->connect, $query);
         $query = "INSERT INTO `product_in_combo` (`product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUE (" . (int)$cbid . ", " . (int)$pant . ");";
@@ -184,23 +183,20 @@ class manager extends customer{
         return mysqli_query($this->connect, $query);
     }
     public function update_product_in_combo($cbid, $shirt, $pant, $ass){
-        echo("4");
-        echo($cbid);
-        echo($shirt);
-        echo($pant);
-        echo($ass);
-        $query = "UPDATE `product_in_combo` SET `product_in_combo`.`PID`=" . (int)$shirt. " WHERE `product_in_combo`.`CBID`=" .(int)$cbid. " AND `product_in_combo`.`ID`= " .(int)(1);
-        echo $query;
+        $query = "select id FROM product_in_combo WHERE cbid = '$cbid' limit 1";
+        $id = "";
+        $result = mysqli_query($this->connect, $query);
+        while($row = $result->fetch_assoc()) {
+            $id = $row["id"];                 
+        }
+        // echo ($id);
+        // echo ($cbid);
+        $query = "UPDATE `product_in_combo` SET `product_in_combo`.`PID`=" . (int)$shirt. " WHERE `product_in_combo`.`ID`=" .(int)$id;
         mysqli_query($this->connect, $query);
-        echo mysqli_error($this->connect);
-        $query = "UPDATE `product_in_combo` SET `product_in_combo`.`PID`=" . (int)$pant. " WHERE `product_in_combo`.`CBID`=" .(int)$cbid. " AND `product_in_combo`.`ID`= " .(int)(2);
-        echo $query;
+        $query = "UPDATE `product_in_combo` SET `product_in_combo`.`PID`=" . (int)$pant. " WHERE `product_in_combo`.`ID`=" .(int)$id+1;
         mysqli_query($this->connect, $query);
-        echo mysqli_error($this->connect);
-        $query = "UPDATE `product_in_combo` SET `product_in_combo`.`PID`=" . (int)$ass. " WHERE `product_in_combo`.`CBID`=" .(int)$cbid. " AND `product_in_combo`.`ID`= " .(int)(3);
-        echo $query;
+        $query = "UPDATE `product_in_combo` SET `product_in_combo`.`PID`=" . (int)$ass. " WHERE `product_in_combo`.`ID`=" .(int)$id+2;
         mysqli_query($this->connect, $query);
-        echo mysqli_error($this->connect);
     }
     public function add_cycle($time){
         $time = $time . " ngày";

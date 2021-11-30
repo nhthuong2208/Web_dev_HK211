@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 function minus(element){
   var a = Number(element.value) - 1;
-  if(a <= 0) element.value = 0;
+  if(a <= 1) element.value = 1;
   else  element.value = a;
 }
 function plus(element){
@@ -137,7 +137,7 @@ function delete_comment(cid, element){
       document.getElementById("notice").innerHTML = add_notice(this.responseText);
       document.getElementsByClassName("alert")[0].style.display = "block";
       setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
-      window.location.reload();
+      setTimeout(function(){window.location.reload()}, 600);
       
       //element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
     } else if(this.responseText == "Nope"){
@@ -193,6 +193,33 @@ function add_Product(element){
 if(document.getElementById("edit-itemBtn")){
   var ival = document.getElementById("get_name_val").innerText;
   document.getElementsByClassName("editItem-modal-body")[0].getElementsByTagName("input")[0].value = ival;
+}
+
+function enformat(element){
+  let nodestr = "";
+    for(var j = element.length; j > 3; j -= 3){
+        nodestr = "," + element[j-3] + element[j-2] + element[j-1] + nodestr;
+    }
+    if (element .length % 3 == 0){
+        nodestr = element[0] + element[1] + element[2] + nodestr;
+    }
+    else if(element.length % 3 == 2){
+        nodestr = element[0] + element[1] + nodestr;
+    }
+    else nodestr = element[0] + nodestr;
+    return nodestr;
+}
+function deformat(element){
+  var list = element.split(",");
+  var string = ""
+  for(var i = 0; i < list.length; i++) string += list[i];
+  return string;
+}
+
+document.getElementsByClassName("item-price")[0].innerText = enformat(String(Number(document.getElementsByClassName("item-price")[0].innerText.split("đ")[0]))) + "đ";
+var encode_related_item = document.getElementsByClassName("related-item-price");
+for (var i = 0; i < encode_related_item.length; i++){
+  encode_related_item[i].innerText = enformat(String(Number(encode_related_item[i].innerText.split("đ")[0]))) + "đ";
 }
 
 // Get the modal

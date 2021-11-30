@@ -151,32 +151,28 @@ INSERT INTO `combo` (`combo`.`ID`, `combo`.`NAME`, `combo`.`COST`)VALUES
 INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 1, 3);
+(3, 1, 3),
 
--- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
--- (1, 2, 1),
--- (2, 2, 2),
--- (3, 2, 3);
+(4, 2, 1),
+(5, 2, 3),
+(6, 2, 4),
 
--- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
--- (1, 3, 1),
--- (2, 3, 2),
--- (3, 3, 3);
+(7, 3, 2),
+(8, 3, 4),
+(9, 3, 3),
 
--- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
--- (1, 4, 1),
--- (2, 4, 2),
--- (3, 4, 3);
+(10, 4, 2),
+(11, 4, 3),
+(12, 4, 4),
 
--- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
--- (1, 5, 1),
--- (2, 5, 2),
--- (3, 5, 3);
+(13, 5, 1),
+(14, 5, 4),
+(15, 5, 3),
 
--- INSERT INTO `product_in_combo`(`product_in_combo`.`ID`, `product_in_combo`.`CBID`, `product_in_combo`.`PID`) VALUES
--- (1, 6, 1),
--- (2, 6, 2),
--- (3, 6, 3);
+(16, 6, 1),
+(17, 6, 3),
+(18, 6, 2);
+
 
 -- cycle
 INSERT INTO `cycle`(`cycle`.`ID`, `cycle`.`CYCLE`) VALUES
