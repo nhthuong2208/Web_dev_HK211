@@ -226,7 +226,7 @@
                       else if($data["user"] == "manager"){
                         foreach($data["featured"] as $row){ // manager
                           if($row["top_seller"] == 1){
-                            echo "<div class=\"swiper-slide\">
+                            echo "<div class=\"swiper-slide\"><span></span>
                                     <div class=\"product\"><div class=\"img-container\"><img src=\"" . $row["img"] ."\" alt=\"\"/>";
                             echo "</div><div class=\"bottom\"><a href=\"?url=Home/Item/" . $row["id"] . "\">";
                             echo $row["name"] . "</a><div class=\"price\"><span class=\"feature-item-price\">" . $row["price"] . "đ</span></div></div></div></div>";

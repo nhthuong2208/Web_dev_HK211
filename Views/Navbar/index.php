@@ -21,7 +21,7 @@
         <div class="form-group">
           <input class="form-control" type="text" placeholder="Search...">  
         </div>
-        <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
+        <button class="btn btn-dark" type="button" onclick="search_item(this)"><i class="fas fa-search"></i></button>
       </form>
 
       <div class="cart">
