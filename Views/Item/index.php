@@ -146,7 +146,7 @@
                           <h2>Chỉnh sửa sản phẩm</h2>
                         </div>
                         <div class=\"editItem-modal-body\">
-                          <form action=\"?url=Home/update_item/" . $row_product["id"] . "/\" method=\"POST\" class=\"needs-validation \" novalidate=\"\" enctype=\"multipart/form-data\">
+                          <form action=\"?url=Home/update_item/" . $row_product["id"] . "/\" method=\"POST\" enctype=\"multipart/form-data\">
                             <div class=\"row\">
                               <label class=\"col-lg-4\" for=\"name\">
                                 Tên sản phẩm:
@@ -163,7 +163,7 @@
                               <label class=\"col-lg-4\" for=\"e-image-url\">
                               <i class=\"far fa-image\"></i> Ảnh sản phẩm: 
                               </label>
-                              <div class=\"col-lg-8\"><img src=\"" . $row_product["img"] . "\" alt=\"main_img\" style=\"width: 50%; margin-bottom: 1rem;\"><input type=\"file\" id=\"e-image-url\" name=\"e-image-url[]\" onchange=\"upload_pic(this)\" class=\"form-control is-valid\" id=\"validationSuccess\" required hidden></div>
+                              <div class=\"col-lg-8\"><img src=\"" . $row_product["img"] . "\" alt=\"main_img\" style=\"width: 50%; margin-bottom: 1rem;\"><input type=\"file\" id=\"e-image-url\" name=\"e-image-url[]\" onchange=\"upload_pic(this)\" hidden></div>
                             </div>";
                             $count = 1;
                             foreach($data["sub_img"] as $row){
@@ -201,13 +201,12 @@
                               </div>
                             </div>
                             <div class=\"row\">
-                              <label for=\"validationCustom04\" class=\"form-label\"></label>
                               <label class=\"col-lg-4\" for=\"category\">
                                 Loại:
                               </label>
                               <div class=\"col-lg-8\">
-                                <select id=\"category\" name=\"category\"  class=\"form-select\" id=\"validationCustom04\" required=\"\">
-                                  <option selected=\"\" disabled=\"\" value=\"\" value=\"Shirt\""; if ($row_product["cate"] == "Shirt") echo "selected"; 
+                                <select id=\"category\" name=\"category\">
+                                  <option selected=\"\" disabled=\"\" value=\"Shirt\""; if ($row_product["cate"] == "Shirt") echo "selected"; 
                                   echo">Áo</option>
                                   <option value=\"Trousers\""; if ($row_product["cate"] == "Trousers") echo "selected"; 
                                   echo">Quần</option>
