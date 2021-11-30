@@ -149,14 +149,16 @@
 							</div>
 							</div>
 						</div>";
-						if($data["user"] != "customer") {
+						if($data["user"] == "member") {
 							echo "<div class=\"add-comment\">
-									<form action=\"\" onsubmit=\"return false;\">
+									<form action=\"\" > 
 									  <div class=\"mb-3\">
 									  	<input type=\"text\" value=\"" .($id). "\" name =\"news_id\" hidden>
 										<textarea class=\"form-control\" name=\"comment-content\" placeholder=\"Viết bình luận ...\"></textarea>
 									  </div>
-									  <button type=\"button\"  class=\"btn-sm btn btn-warning\">Bình luận</button>
+									  <a href=\"?url=Home/News_detail/". $row["id"] . "\">
+									  	<button type=\"button\"  class=\"btn-sm btn btn-warning\">Bình luận</button>
+									  </a>
 									</form>
 								  </div>";
 						} 

@@ -27,3 +27,23 @@ document.getElementsByClassName("add-comment")[0].getElementsByTagName("button")
     xmlhttp.open("POST", "?url=Home/add_comment_news/" + text[0].value + "/" + input.value, true);
     xmlhttp.send();
   }
+
+  function delete_comment(cid, element){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+      if(this.responseText == "OK"){
+        document.getElementById("notice").innerHTML = add_notice(this.responseText);
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+        setTimeout(function(){window.location.reload()}, 600);
+        
+        //element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+      } else if(this.responseText == "Nope"){
+        document.getElementById("notice").innerHTML = add_notice(this.responseText);
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+      }
+    }
+    xmlhttp.open("GET", "?url=Home/delete_comment/" + cid + "/", true);
+    xmlhttp.send();
+  }
