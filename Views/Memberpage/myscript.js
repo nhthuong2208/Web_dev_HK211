@@ -141,7 +141,10 @@ function completechange(element){
     xmlhttp.onreadystatechange = function(){
       if (this.readyState == 4 && this.status == 200) {
           if(this.responseText != "null"){
-              modal.style.display = "none";
+            modal.style.display = "none";
+            input[0].value = input[1].value;
+            input[1].value = "";
+            input[2].value = "";
             document.getElementById("notice").innerHTML = add_notice("success", "Thay đổi mật khẩu thành công");
             document.getElementsByClassName("alert")[0].style.display = "block";
             setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
