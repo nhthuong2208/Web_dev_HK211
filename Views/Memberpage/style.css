@@ -8,7 +8,7 @@ input{
     width: 100%;
 }
 .mybutton_click{
-    background-color: #ffa62b;;
+    /* background-color: #ffa62b;;
     color: white;
     cursor: pointer;
     font-size: medium;
@@ -16,7 +16,19 @@ input{
     border-radius: 10px;
     padding: 3px;
     margin-top: 10px;
-    max-width: fit-content;
+    max-width: fit-content; */
+    background-color: #ffa62b;
+    float: right;
+    margin-right: 10px;
+    font-size: x-small;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 30px;
+    margin-left: -15px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
 }
 .pic img{
     width: 250px !important;

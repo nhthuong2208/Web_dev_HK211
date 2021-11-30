@@ -53,9 +53,9 @@
                                     chỉ từ
                                     <span>199.000/tháng</span>
                                 </h1>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti ad natus facilis magni corporis alias.</p>
+                                <p>Đem đến cho bạn những gói hàng với chất lượng cao và phù hợp với xu hướng của giới trẻ hiện nay.</p>
                     
-                                <a href=\"?url/Home/Products/\">Shop Now</a>
+                                <a href=\"?url/Home/Products/\">Mua ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -224,11 +224,11 @@
                         <div class=\"modal-dialog modal-dialog-centered\">
                           <div class=\"modal-content\">
                             <div class=\"modal-header\">
-                              <h5 class=\"modal-title\" id=\"delcomboModalLabel-" .$count . "\">Bạn muốn xóa gói này</h5>
+                              <h5 class=\"modal-title\" id=\"delcomboModalLabel-" .$count . "\">Xác nhận</h5>
                               <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
                             </div>
                             <div class=\"modal-body\">
-                              
+                              Bạn có chắc chắn muốn xóa gói này
                             </div>
                             <div class=\"modal-footer\">
                               <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>
@@ -256,13 +256,13 @@
                             <label class=\"col-lg-4\" for=\"cname\">
                               Tên combo: 
                             </label>
-                            <div class=\"col-lg-8\"><input value =\"" . $row["name"] . "\" type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\"></div>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["name"] . "\" type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"price\">
                               Giá:
                             </label>
-                            <div class=\"col-lg-8\"><input value =\"" . $row["price"] . "\" type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\"></div>
+                            <div class=\"col-lg-8\"><input value =\"" . $row["price"] . "\" type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"c-shirt\">
@@ -341,13 +341,13 @@
                             <label class=\"col-lg-4\" for=\"cname\">
                               Tên combo:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\"></div>
+                            <div class=\"col-lg-8\"><input type=\"text\" name=\"cname\" placeholder=\"Nhập tên combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"price\">
                               Giá:
                             </label>
-                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\"></div>
+                            <div class=\"col-lg-8\"><input type=\"number\" name=\"price\" placeholder=\"Nhập giá của combo\" class=\"form-control is-valid\" id=\"validationSuccess\" required></div>
                           </div>
                           <div class=\"row\">
                             <label class=\"col-lg-4\" for=\"c-shirt\">

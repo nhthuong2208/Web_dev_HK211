@@ -1,3 +1,16 @@
+var forms = document.querySelectorAll('.needs-validation')
+Array.prototype.slice.call(forms)
+  .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+
 filterSelection("all");
 function filterSelection(c) {
   let x;
@@ -184,3 +197,44 @@ if(span){
     }
   }
 }
+
+
+function Validate(){
+  var img = document.getElementsByClassName("img_url")[0].value;
+  if(img === ""){
+    document.getElementById("notice").innerHTML = add_notice("fail", "Thiếu ảnh chính!");
+    document.getElementsByClassName("alert")[0].style.display = "block";
+    setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+  }
+}
+
+function add_notice(alert, string){
+  return '<div class="alert ' + alert + '" role="alert"><strong>' + string + '</strong></div>';
+}
+// function Validate(){
+//   var name =  document.getElementsByClassName("add_name").value;
+//   var price =  document.getElementsByClassName("add_price").value;
+//   var url =  document.getElementsByClassName("add_url").value;
+//   var description =  document.getElementsByClassName("add_description").value;
+//   var input =  document.getElementsByClassName("add_quantity").value;
+//   var input =  document.getElementsByClassName("add_type").value;
+// 	var xmlhttp = new XMLHttpRequest();
+// 	xmlhttp.onreadystatechange = function(){
+		
+// 		if (this.readyState == 4 && this.status == 200){
+// 			if(this.responseText != "null"){
+// 				document.getElementById("notice").innerHTML = add_notice("success", "Đăng nhập thành công" );
+// 				document.getElementsByClassName("alert")[0].style.display = "block";
+// 				setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
+// 				window.location.href = this.responseText;
+// 			}
+// 			else{
+// 				document.getElementById("notice").innerHTML = add_notice("fail", "Tên đăng nhập hoặc mật khẩu không đúng" );
+// 				document.getElementsByClassName("alert")[0].style.display = "block";
+// 				setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);; // addcart -> login => item // nhấn cart => login => cart // nhấn login => home => login đổi logout
+// 			}
+// 		}
+// 	};
+// 	xmlhttp.open("GET", "?url=Home/check_login/" + input[0].value + "/" + input[1].value + "/" + history_str + "/", true);
+// 	xmlhttp.send();
+// }

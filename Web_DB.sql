@@ -119,10 +119,12 @@ CREATE TABLE `BAN_ACCOUNT`(
 
 -- product value
 INSERT INTO `product`(`product`.`ID`, `product`.`NAME`, `product`.`PRICE`, `product`.`IMG_URL`, `product`.`NUMBER`, `product`.`DECS`, `product`.`CATEGORY`, `product`.`TOP_PRODUCT`) VALUES
-(1, "Shirt 1", 150000, "https://mcdn2.coolmate.me/uploads/November2021/1-0_copyu.jpg", 20, "Và chiếc áo Polo Cotton Compact Prime-Everyday ra mắt chính là sự cải tiến Coolmate muốn dành cho bạn, bởi đó là sự kết hợp giữa độ vừa vặn trong form dánh như một chiếc áo thun và sự thoải mái đến từ chất liệu Cotton Compact chất lượng cao, chiếc áo Polo Cotton Compact Prime-Everyday chính là chiếc áo cho câu trả lời của những chàng trai muốn tối ưu thời gian trong mỗi buổi sáng bởi sự tiện lợi và \"sẵn sàng để mặc\". ", "Shirt", 1),
-(2, "Shirt 2", 150000, "https://mcdn2.coolmate.me/uploads/November2021/monster4_56.jpg", 20, "Sự đặc biệt từ Áo nam Classic Sweatshirt chính là nằm ở phần thiết kế mới và kiểu dệt, Coolmate đã dành rất nhiều thời gian từ chọn vải nhưng không tìm được loại vải phù hợp: nếu ấm thì sẽ dễ bị xù lông, nếu ấm và không xù thì chiếc áo bạn mặc sẽ nặng và khó chịu vô cùng,... chúng tôi đã bắt tay vào chọn những sợi vải 90% Cotton đem đến cho khách hàng 1 chiếc áo Cotton mềm mại vừa đủ mà vẫn giữ ấm còn không gây bí khi mặc.", "Shirt", 0),
-(3, "Bambi Print Mini Backpack", 150000, "https://mcdn2.coolmate.me/uploads/November2021/IMG_68181.jpg", 20, "Quần Jogger nam chính là chiếc quần hội tụ các đặc điểm vô cùng nổi bật để đem đến cho khách hàng những trải nghiệm tốt nhất đến với người mặc. Quần All Week Jogger nổi bật với cách dệt kiểu Interlock là một mặt vải phẳng, trơn. Các vòng lặp trong kiểu dệt này có tác dụng làm tăng diện tích tiếp xúc với chất lỏng và hút nước nhanh hơn. Do đó loại vải này giúp người mặc cảm thấy thông thoáng, giảm nhiệt, giữ da luôn khô thoáng.", "Trousers", 1),
-(4, "Bucket Hat", 150000, "https://mcdn2.coolmate.me/uploads/November2021/b6_73.jpg", 20, "Nếu bạn đã sở hữu những chiếc mũ lưỡi trai thuần nam tính hoặc những dáng mũ fedora lịch lãm, kiểu dáng mũ cao bồi cách điệu bụi bặm, và đang muốn tìm cho mình một chiếc mũ mang đến vẻ trẻ trung, năng động thì Bucket Hat chính là câu trả lời của bạn đây. Care & Share ra mắt phiên bản mũ Bucket Hat cùng với nhiều thiết kế ấn tượng nhưng không hề mất đi vẻ nam tính, đơn giản của bạn khi mang chiếc mũ này nhé!", "Accessories", 1);
+(1, "Áo Polo Cotton", 219000, "https://mcdn2.coolmate.me/uploads/November2021/1-0_copyu.jpg", 20, "Và chiếc áo Polo Cotton Compact Prime-Everyday ra mắt chính là sự cải tiến Coolmate muốn dành cho bạn, bởi đó là sự kết hợp giữa độ vừa vặn trong form dánh như một chiếc áo thun và sự thoải mái đến từ chất liệu Cotton Compact chất lượng cao, chiếc áo Polo Cotton Compact Prime-Everyday chính là chiếc áo cho câu trả lời của những chàng trai muốn tối ưu thời gian trong mỗi buổi sáng bởi sự tiện lợi và \"sẵn sàng để mặc\". ", "Shirt", 1),
+(2, "Áo nam Casual Sweatshirt", 329000, "https://mcdn2.coolmate.me/uploads/November2021/monster4_56.jpg", 20, "Sự đặc biệt từ Áo nam Classic Sweatshirt chính là nằm ở phần thiết kế mới và kiểu dệt, Coolmate đã dành rất nhiều thời gian từ chọn vải nhưng không tìm được loại vải phù hợp: nếu ấm thì sẽ dễ bị xù lông, nếu ấm và không xù thì chiếc áo bạn mặc sẽ nặng và khó chịu vô cùng,... chúng tôi đã bắt tay vào chọn những sợi vải 90% Cotton đem đến cho khách hàng 1 chiếc áo Cotton mềm mại vừa đủ mà vẫn giữ ấm còn không gây bí khi mặc.", "Shirt", 0),
+(3, "Quần nam Jogger Sweatpants", 299000, "https://mcdn2.coolmate.me/uploads/November2021/IMG_68181.jpg", 20, "Quần Jogger nam chính là chiếc quần hội tụ các đặc điểm vô cùng nổi bật để đem đến cho khách hàng những trải nghiệm tốt nhất đến với người mặc. Quần All Week Jogger nổi bật với cách dệt kiểu Interlock là một mặt vải phẳng, trơn. Các vòng lặp trong kiểu dệt này có tác dụng làm tăng diện tích tiếp xúc với chất lỏng và hút nước nhanh hơn. Do đó loại vải này giúp người mặc cảm thấy thông thoáng, giảm nhiệt, giữ da luôn khô thoáng.", "Trousers", 1),
+(4, "Quần Jeans Basic Slim", 499000, "https://mcdn2.coolmate.me/uploads/November2021/uBT5A8118-(1)_copy.jpg", 20, "Nếu bạn đang tìm kiếm một chiếc quần Jeans vừa vặn, thoải mái, trẻ trung cùng mức giá hợp lý, thì đây là lựa chọn rất đáng để thử. Hơn 1 năm phát triển sản phẩm, Coolmate tự hào giới thiệu đến bạn chiếc Jeans đầu tiên của Coolmate với dáng Slim Fit với 3 màu dễ mặc dễ phối với những món đồ có sẵn trong tủ đồ nhà bạn. Coolmate đã quan tâm từng chi tiết của chiếc quần rất kỹ lưỡng: từng chiếc cúc quần, miếng da phía sau,... đều được đặt hàng riêng để hoàn thiện. Đây hứa hẹn sẽ là chiếc quần Jeans xứng đáng có trong tủ đồ của bạn.", "Trousers", 0),
+(5, "Tất cổ ngắn New Cotton", 139000, "https://mcdn2.coolmate.me/uploads/November2021/vo1.jpg", 20, "Khi mang tất, chung ta thường gặp phải tính trạng rách, nhanh nhão, bí bách không thâm hút mồ hôi dẫn đến bốc mùi khó chịu ảnh hưởng đến sinh hoạt chung e dè và tự ti. Thương hiệu #Coolmate tạo ra sản phẩm TẤT CỔ NGẮN NEW COTTON kết hợp công nghệ dệt và tiêu chuẩn Nhật Bản, sợi tự nhiên Cotton organic bền hơn, và đặc biệt là có tính năng khử mùi đem lại những lợi ích thiết thực có thể cảm nhận ngay khi sử dụng.", "Accessories", 1);
+(6, "Bucket Hat", 150000, "https://mcdn2.coolmate.me/uploads/November2021/b6_73.jpg", 20, "Nếu bạn đã sở hữu những chiếc mũ lưỡi trai thuần nam tính hoặc những dáng mũ fedora lịch lãm, kiểu dáng mũ cao bồi cách điệu bụi bặm, và đang muốn tìm cho mình một chiếc mũ mang đến vẻ trẻ trung, năng động thì Bucket Hat chính là câu trả lời của bạn đây. Care & Share ra mắt phiên bản mũ Bucket Hat cùng với nhiều thiết kế ấn tượng nhưng không hề mất đi vẻ nam tính, đơn giản của bạn khi mang chiếc mũ này nhé!", "Accessories", 1);
 
 -- account
 INSERT INTO `account`(`account`.`CMND`, `account`.`FNAME`, `account`.`PHONE`, `account`.`ADDRESS`, `account`.`USERNAME`, `account`.`PWD`, `account`.`IMG_URL`, `account`.`RANK`, `account`.`EMAIL`)VALUES
@@ -131,8 +133,8 @@ INSERT INTO `account`(`account`.`CMND`, `account`.`FNAME`, `account`.`PHONE`, `a
 
 -- comment
 INSERT INTO `comment`(`comment`.`PID`, `comment`.`UID`, `comment`.`STAR`, `comment`.`CONTENT`, `comment`.`TIME`) VALUES
-(1, 1, 5, "test", "2021-10-20"),
-(1, 1, 3, "abcd", "2021-10-30"),
+(1, 1, 5, "Rất tốt ạ", "2021-10-20"),
+(1, 1, 3, "Bình thường", "2021-10-30"),
 (1, 1, 1, "Không thích :v", "2021-10-28"),
 (1, 2, 5, "Toẹt dời", "2021-11-23"),
 (2, 1, 3, "Hơi tệ tí nhe", "2021-11-11"),
@@ -204,10 +206,18 @@ INSERT INTO `sub_img_url`(`sub_img_url`.`ID`, `sub_img_url`.`PID`, `sub_img_url`
 (10, 3, "https://mcdn2.coolmate.me/uploads/November2021/IMG_6835.jpg"),
 (11, 3, "https://mcdn2.coolmate.me/uploads/November2021/IMG_6833.jpg"),
 (12, 3, "https://mcdn2.coolmate.me/uploads/November2021/den-3_copyu.jpg"),
-(13, 4, "https://mcdn2.coolmate.me/uploads/November2021/cun4_51.jpg"),
-(14, 4, "https://mcdn2.coolmate.me/uploads/November2021/cun5_14.jpg"),
-(15, 4, "https://mcdn2.coolmate.me/uploads/November2021/b1.jpg"),
-(16, 4, "https://mcdn2.coolmate.me/uploads/November2021/cun2_(1).jpg");
+(13, 4, "https://mcdn2.coolmate.me/uploads/November2021/a1-0_copy.jpg"),
+(14, 4, "https://mcdn2.coolmate.me/uploads/November2021/BT5A8160-(1)_copy.jpg"),
+(15, 4, "https://mcdn2.coolmate.me/uploads/November2021/BT5A8172-(1)_copy.jpg"),
+(16, 4, "https://mcdn2.coolmate.me/uploads/November2021/3-6_73.jpg"),
+(17, 5, "https://mcdn2.coolmate.me/uploads/November2021/vo3.jpg"),
+(18, 5, "https://mcdn2.coolmate.me/uploads/November2021/vo5.jpg"),
+(19, 5, "https://mcdn2.coolmate.me/uploads/November2021/vo2.jpg"),
+(20, 5, "https://mcdn2.coolmate.me/uploads/June2021/2L6A3918_copy1.jpg"),
+(21, 6, "https://mcdn2.coolmate.me/uploads/November2021/cun4_51.jpg"),
+(22, 6, "https://mcdn2.coolmate.me/uploads/November2021/cun5_14.jpg"),
+(23, 6, "https://mcdn2.coolmate.me/uploads/November2021/b1.jpg"),
+(24, 6, "https://mcdn2.coolmate.me/uploads/November2021/cun2_(1).jpg");
 
 INSERT INTO `news`(`news`.`ID`, `news`.`CID`, `news`.`KEY`, `news`.`TIME`, `news`.`TITLE`, `news`.`CONTENT`, `news`.`IMG_URL`, `news`.`SHORT_CONTENT`) VALUES
 (1, 1, "Localbrand", "2021/02/20", "Phá tan sự nhàm chán bằng loạt kiểu phối đồ Streetwear Style", "'Street Style chính là một cụm từ khá quen thuộc. Nhưng bạn có thực sự hiểu rõ được ý nghĩa là thật sự của Street Style là gì? Và xu hướng của thời trang này tại Việt Nam chưa? Hôm nay, Chipi sẽ chia sẻ giúp bạn hiểu rõ hơn về phong cách thời trang này, cùng tham khảo nhé!\n\n\nStreet Style hay còn gọi là phong cách thời trang đường phố, cũng giống như tên gọi của nó. Đây chính là phong cách thời trang không phải phát triển từ những bộ sưu tập của nhà thiết kế mà từ đường phố.\n\nHiện nay bạn có thể dễ dàng thấy được Street Style ở bất cứ đâu trong giới trẻ trên đường phố. Chắc chắn phong cách thời trang này sẽ được giới trẻ ưa chuộng trong năm nay. Không giống như những phong cách thời trang khác, Street Style giống một cốc sinh tố hỗn hợp của rất nhiều phong cách khác nhau.\n\nKhó có thể chỉ ra được đặc điểm cụ thể của một Street Style. Bởi lẽ chúng được kết hợp từ khá nhiều phong cách khác nhau, nó dựa trên những gu thẩm mỹ của mỗi người. Vô cùng biến hoá và năng động với nhiều thiết kế trang phục khác nhau. Cùng với đó là phụ kiện đi kèm khá đa dạng và phong phú. \n\nChính bởi sự ngẫu hứng và năng động này mà Street Style đã trở thành một nguồn cảm hứng bất tận dành cho giới trẻ hiện nay. Đem tới sự tự do thoải mái trong việc chọn lựa những bộ trang phục thể hiện cá tính của mình.", "./Views/images/news_4.png", "Gợi ý những set đồ street style cực chất từ các local brand giúp các bạn thay vì mua riêng…"),
