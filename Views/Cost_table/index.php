@@ -242,7 +242,7 @@
 
                       echo "<div id=\"updateCombo-modal-" . $row['id']. "\" class=\"add-combo-modal\">
                     <div class=\"addCombo-modal-content\">
-                      <div class=\"addCombo-modal-header\">
+                      <div class=\"addCombo-modal-header\" id=\"updateCombo-modal\">
                         <span class=\"close-modal-addc-update-". $row['id']. "\">&times;</span>
                         <h2>Chỉnh sửa gói</h2>
                       </div>
