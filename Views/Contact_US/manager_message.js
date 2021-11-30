@@ -1,6 +1,6 @@
 function inform(element){
     modal.getElementsByTagName("input")[0].value = element.parentNode.getElementsByTagName("input")[1].value;
-    id_message = element.parentNode.getElementsByTagName("input")[0].value;
+    id_message = element.parentNode.parentNode.getElementsByTagName("h4")[0].innerText.split("#")[1];
     modal.style.display = "block";
 }
 
@@ -42,10 +42,10 @@ function sendMessage(element){
         document.getElementById("notice").innerHTML = add_notice("success", "Thư đã phản hồi");
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){document.getElementsByClassName("alert")[0].style.opacity = 0;}, 1500);
-       var get = document.getElementsByClassName("col-12 mt-3 mydotted");
+       var get = document.getElementsByClassName("col-12 white border-10 myshadow padding-20 mydotted");
        for (let index = 0; index < get.length; index++) {
-           if(get[index].getElementsByClassName("col-6")[0].innerText.split("#")[1] == id_message){
-            get[index].getElementsByClassName("col-6")[1].innerText = "Đã phản hồi";
+           if(get[index].getElementsByTagName("h4")[0].innerText.split("#")[1] == id_message){
+            get[index].getElementsByTagName("h6")[0].innerText = "Đã phản hồi";
             break;
            }
        }

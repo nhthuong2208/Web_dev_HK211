@@ -171,7 +171,7 @@
                             <input type=\"text\" name=\"subject\" value=\"" . $row["sub"] . "\" disabled>
                             </div>
                             <div class=\"col-12\">
-                            <textarea name=\"content\" value=\"" . $row["content"] . "\" disabled></textarea>
+                            <textarea name=\"content\" disabled>" . $row["content"] . "</textarea>
                             </div>
                           </div>
                           <button type=\"button\" class=\"btn btn-primary active mgl-12\" onclick=\"inform(this);\">Phản hồi</button>
